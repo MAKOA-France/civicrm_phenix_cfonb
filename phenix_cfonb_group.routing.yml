@@ -5,3 +5,11 @@ phenix_cfonb_group.save.pdf:
     _title: 'Tous les marques'
   requirements:
     _permission: 'access content'
+
+phenix_cfonb_group.user.not.connected.over.month:
+  path: '/pesonnes/morethanthreemonth'
+  defaults:
+    _controller: '\Drupal\phenix_cfonb_group\Controller\PhenixController::UserNotConnectedOverMonth'
+    _title: ''
+  requirements:
+    _permission: 'access content'
