@@ -4,10 +4,55 @@
       attach: function(context, settings) {
 
         $(document).ready(function() {
-          $('#printerParticipants').on('click', function () {
-            printContent() 
-          });
 
+          jQuery('.views-field.views-field-user-bulk-form [type="checkbox"]').on('change', function() {
+            if (jQuery('.views-field.views-field-user-bulk-form [type="checkbox"]:checked').length) {
+              let allId = [];
+              jQuery('.views-field.views-field-user-bulk-form [type="checkbox"]:checked').each(function(id, el) {
+                let encryptedId = jQuery(el).val();
+                // Decode the Base64 encoded string
+                let decodedString = atob(encryptedId);
+                
+                // Parse the JSON string
+                let jsonArray = JSON.parse(decodedString)[1];
+                allId.push(jsonArray);
+              })
+              let ids = JSON.stringify(allId);
+              $('.link-to-send-mail').attr('data-all-id', ids)
+            }else {
+              $('.link-to-send-mail').attr('data-all-id', '')
+            }
+          })
+
+          $('.link-to-send-mail').once('check').on('click', function() {
+            if ($(this).attr('data-all-id')) {
+              let ids = $(this).attr('data-all-id');console.log(ids, 'kkk', $(this).attr('data-all-id'))
+               $.ajax({
+                url: '/pesonnes/morethanthreemonth',
+                data: {id: ids},
+                success: (successResult, val, ee) => {
+                  let allmail = successResult.mail;
+
+                  let content = "Bonjour, Nous avons remarqué que vous ne vous êtes pas connecté(e) à votre compte depuis plus de trois mois. Nous espérons que tout va bien pour vous."
+"                                    Nous tenions à vous rappeler que votre compte adhérent vous donne accès à de nombreuses ressources et avantages exclusifs. Pour continuer à bénéficier de tous ces services, nous vous invitons à vous reconnecter dès que possible."    
+"              Cliquez sur le bouton ci-dessous pour vous connecter à votre compte :";
+
+                  let mailtoLink = 'mailto:' + allmail + '?subject=INACTIVATION DE COMPTE DEPUIS PLUS DE 3 MOIS&body=' + content;
+                  location.href = mailtoLink
+                  // $('.link-to-send-mail').
+                  console.log('valeur : ', successResult)
+                },
+                error: function(error) {
+                  console.log(error, 'ERROR')
+                }
+              }); 
+            }
+          })
+
+            $('#printerParticipants').on('click', function () {
+              printContent() 
+          });
+          
           function printContent() {
 
             // Get all elements with the class "hidden"
