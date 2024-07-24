@@ -8,8 +8,15 @@
 	
 }
 
+p.link-to-send-mail.btn.btn-primary {
+    cursor: pointer;
+    color: #0074bd;
+    font-weight: bold;
+}
 
-
+p.link-to-send-mail.btn.btn-primary {
+    display: none;
+}
 .path-frontpage #bottom_part .password_link , .path-frontpage #bottom_part  .back_link {
 	  display: flex;
     justify-content: center;
