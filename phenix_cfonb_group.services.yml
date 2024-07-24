@@ -1,0 +1,4 @@
+services:
+  phenix_cfonb_group.custom_service:
+    class: Drupal\phenix_cfonb_group\CustomService
+    arguments: ['@entity_type.manager', '@config.factory']

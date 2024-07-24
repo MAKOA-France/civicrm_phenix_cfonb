@@ -66,18 +66,131 @@ function phenix_cfonb_group_views_pre_view(ViewExecutable $view, $display_id, ar
     // // Load the view.
     // $viewc = Views::getView($view_name);
 
-    // Check if the view exists.
-    $html = render($view->render())->__toString();  
-    $html = str_replace('views-field views-field-edit-civicrm-participant', 'hidden', $html);
-    $html = str_replace('views-field views-field-views-bulk-operations-bulk-form', 'hidden', $html);
-    $html = str_replace('views-field views-field-register-date', 'hidden', $html);
-    // dump($html);
-    $html = str_replace('<table', '<table style="table {width: 100% !important; height: 2100px !important; border-collapse: collapse;width: 100%;margin-bottom: 1rem;border-radius: 3px;}" ', $html);
-    // dump($html);
-    $html = htmlspecialchars($html);
-    $view->attachment_after['#markup'] = '<footer><a id="printerParticipants" data-content-to-print="' . $html. '"  href="#" >Imprimer la liste</a></footer>';
+    // // Check if the view exists.
+    // $html = render($view->render())->__toString();  
+    // $html = str_replace('views-field views-field-edit-civicrm-participant', 'hidden', $html);
+    // $html = str_replace('views-field views-field-views-bulk-operations-bulk-form', 'hidden', $html);
+    // $html = str_replace('views-field views-field-register-date', 'hidden', $html);
+    // // dump($html);
+    // $html = str_replace('<table', '<table style="table {width: 100% !important; height: 2100px !important; border-collapse: collapse;width: 100%;margin-bottom: 1rem;border-radius: 3px;}" ', $html);
+    // // dump($html);
+    // $html = htmlspecialchars($html);
+    // $view->attachment_after['#markup'] = '<footer><a id="printerParticipants" data-content-to-print="' . $html. '"  href="#" >Imprimer la liste</a></footer>';
+  }
+
+
+
+  //Page admin utilisateurs
+  if ($view->id() == 'user_admin_people' && $display_id == 'page_1') {
+    // Add the custom markup field.
+    // dump($view->display_handler->display->options);
+   /*  $view->display_handler->options['fields']['custom_field'] = [
+      'id' => 'custom_markup',
+      'table' => 'views',
+      'field' => 'nothing',
+      'label' => 'Custom Markup tssee',
+      'alter' => [
+        'text' => '<div class="my-custom-markup">This is custom markup text</div>',
+        'make_link' => FALSE,
+        'alter_text' => TRUE,
+        'word_boundary' => FALSE,
+        'ellipsis' => FALSE,
+        'strip_tags' => FALSE,
+        'trim' => FALSE,
+        'html' => TRUE,
+      ],
+      'element_type' => '',
+      'element_class' => '',
+      'empty' => '',
+      'hide_alter_empty' => TRUE,
+      'plugin_id' => 'field',
+    ]; */
+
+
+
+
+  /*   $view->display_handler->display->options['fields']['custom_field_1'] = [
+      'id' => 'custom_field_1',
+      'table' => 'views',
+      'field' => 'uid',
+      'alter' => [
+        'text' => FALSE,
+        'make_link' => FALSE,
+        'absolute' => FALSE,
+        'word_boundary' => FALSE,
+        'ellipsis' => FALSE,
+        'strip_tags' => FALSE,
+        'trim' => FALSE,
+        'html' => FALSE,
+      ],
+      'element_type' => '',
+      'element_class' => '',
+      'empty' => '',
+      'hide_alter_empty' => TRUE,
+      'plugin_id' => 'field',
+    ]; */
+  }
+
+
+}
+
+/**
+ * Implements hook_views_post_build().
+ */
+function  phenix_cfonb_group_views_post_build(ViewExecutable $view) {
+  // Check if this is the correct view and display.
+  if ($view->id() == 'user_admin_people' /* && $view->current_display == 'default' */) {
+    // Add the custom markup field.
+    
+   /*  $contacts = \Civi\Api4\Contact::get(FALSE)
+      ->addSelect('employer_id.display_name')
+      ->addWhere('id', '=', 12781)
+      ->execute(); */
+
+
+
+    $field = [
+      'id' => 'custom_markup',
+      'table' => 'views',
+      'field' => 'nothing',
+      'label' => 'Custom Markupfffff',
+      'alter' => [
+        'text' => '<div class="my-custom-markup">This is custom markup text</div>',
+        'make_link' => FALSE,
+        'alter_text' => TRUE,
+        'word_boundary' => FALSE,
+        'ellipsis' => FALSE,
+        'strip_tags' => FALSE,
+        'trim' => FALSE,
+        'html' => TRUE,
+      ],
+      'element_type' => '',
+      'element_class' => '',
+      'empty' => '',
+      'hide_alter_empty' => TRUE,
+      'plugin_id' => 'field',
+    ];
+// dump($view->display_handler->options);
+    // Add the field to the view display.
+    $view->display_handler->options['fields']['custom_field'] = $field;
   }
 }
+
+/**
+ * Implements hook_views_data().
+ */
+function phenix_cfonb_group_views_data() {
+  $data['views']['uid'] = [
+    'title' => t('Employeur'),
+    'help' => t('Displays custom data.'),
+    'field' => [
+      'id' => 'custom_field_1',
+    ],
+  ];
+  return $data;
+}
+
+
 
 
 /**
@@ -250,18 +363,18 @@ function phenix_cfonb_group_entity_view_alter(array &$build, \Drupal\Core\Entity
 function phenix_cfonb_group_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query) {
 
   //Feuille de presence ==> ne pas afficher les contact qui sont supprimés
-  if ($view->storage->get('id') == 'attendance_sheet' && $view->current_display == 'attendance_sheet_edit') {
-    $query->where[] =  array(
-      'conditions' => array(
-        array(
-          'field' => 'civicrm_contact_civicrm_participant.is_deleted',
-          'value' => 'false',
-          'operator' => '=',
-        ),
-      ),
-      'type' => 'AND',
-    );
-  }
+  // if ($view->storage->get('id') == 'attendance_sheet' && $view->current_display == 'attendance_sheet_edit') {
+  //   $query->where[] =  array(
+  //     'conditions' => array(
+  //       array(
+  //         'field' => 'civicrm_contact_civicrm_participant.is_deleted',
+  //         'value' => 'false',
+  //         'operator' => '=',
+  //       ),
+  //     ),
+  //     'type' => 'AND',
+  //   );
+  // }
 }
 
 
@@ -289,5 +402,57 @@ function phenix_cfonb_group_preprocess_media(&$variables) {
         // $variables['file_url'] = $absolute_uri;
       }
     }
+
+     /** start alter view doc -- TDOO */
+     $media = $variables['media'];
+     if ($media->hasField('field_media_document')) {
+       $file_entity = $media->field_media_document->entity;
+       $idTokenized = base64_encode($media->id());
+       $filename = getNodeFieldValue($file_entity, 'filename');
+       $variables['content']['thumbnail']['#suffix'] = '<a href="/media/' . $media->id() . '/download?token=' . $idTokenized . '"> ' . $filename  . '</p>';
+       $variables['attributes']['class'][] = 'detail-page-document-cv';
+       // Get the file entity from the file field.
+       $variables['#cache']['max-age'] = 0;
+     }
+     /** end */
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function phenix_cfonb_group_views_data_alter(array &$data) {
+  $data['views']['phase_filter'] = [
+    'title' => t('Filtre par dernièr accès'),
+    'filter' => [
+      'title' => t('Filtre par dernièr accès'),
+      'help' => t('Provides a custom filter for last access to the owner account.'),
+      'field' => 'access',
+      'id' => 'views_filter_last_access',// Expose the filter to users.
+      'expose' => [
+        'operator' => false, // Optional: Set to true to expose operator options.
+        'label' => t('Last Access Filter'), // Label for the exposed filter.
+        'identifier' => 'views_filter_last_access', // Unique identifier for the filter.
+        'multiple' => false, // Set to true if the filter can accept multiple values.
+        'reduce_duplicates' => false, // Optional: Reduce duplicate filter options.
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function phenix_cfonb_group_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'custom_mail_key':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = /* $params['body'] */' tests';
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8';
+      // Add CC addresses.
+      if (!empty($params['cc'])) {
+        $message['headers']['Cc'] = implode(', ', 'sitraka-22@makoa');
+      }
+      break;
   }
 }
