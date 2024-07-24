@@ -112,6 +112,35 @@ class PhenixController extends ControllerBase
         // Load the existing media entity based on your criteria.
         return \Drupal::database()->query("select mid from media_field_data where name like '%Feuille de presence ". $idEvent ."-date%'")->fetch();
     }
+
+    public function UserNotConnectedOverMonth() {
+        $response =
+        $allIds = \Drupal::request()->query->get('id');
+        $email = '';
+        if ($allIds) {
+            \Drupal::service('civicrm')->initialize();
+            $allIds = json_decode($allIds);
+            foreach($allIds as $id) {
+                $cid = $this->getCidAndEmail($id)[0]['contact_id'];
+
+                //TODO PROVISOIRE , IL FAUT RECUPERER LE MAIL DU REFERENT A LA PLACE
+                $email .= $this->getCidAndEmail($id)[0]['uf_name'] . ';';
+            }
+        }
+
+        return  new JsonResponse(['mail' => $email]);
+    }
+
+    private function getCidAndEmail ($id) {
+        $contact_id = NULL;
+        \Drupal::service('civicrm')->initialize();
+        $account = \Drupal::currentUser()->id();
+        $uFMatches = $uFMatches = \Civi\Api4\UFMatch::get(FALSE)
+        ->addSelect('uf_name', 'contact_id')
+        ->addWhere('uf_id', '=', $id)
+        ->execute()->getIterator();
+        return iterator_to_array($uFMatches);
+    }
 }
 
 
