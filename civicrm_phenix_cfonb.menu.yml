@@ -1,0 +1,6 @@
+# civicrm_phenix_cfonb.admin_menu:
+#   title: 'Custom Admin Menu'
+#   description: 'A custom admin menu for your module.'
+#   parent: system.admin_config
+#   route_name: phenix_cfonb_group.view_page
+

@@ -130,7 +130,7 @@ class PhenixController extends ControllerBase
 
         return  new JsonResponse(['mail' => $email]);
     }
-
+    
     private function getCidAndEmail ($id) {
         $contact_id = NULL;
         \Drupal::service('civicrm')->initialize();
@@ -140,6 +140,10 @@ class PhenixController extends ControllerBase
         ->addWhere('uf_id', '=', $id)
         ->execute()->getIterator();
         return iterator_to_array($uFMatches);
+    }
+    public function test() {
+        
+        return  new JsonResponse(['mail' => 'test5']);
     }
 }
 

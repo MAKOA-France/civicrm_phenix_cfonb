@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\phenix_cfonb_group;
+namespace Drupal\civicrm_phenix_cfonb;
 
 use Drupal\taxonomy\Entity\Term;
 use \Drupal\media\Entity\Media;
@@ -16,7 +16,7 @@ use \Drupal\Component\Utility\UrlHelper;
 
 /**
  * Class PubliciteService
- * @package Drupal\phenix_cfonb_group\Services
+ * @package Drupal\civicrm_phenix_cfonb\Services
  */
 class CustomService {
 
@@ -64,36 +64,6 @@ class CustomService {
     // Obtenir le timestamp
     return $timestamp = $currentDate->getTimestamp();
  }
-
- public function timestampTwoMonth() {
-    $currentDate = new \DateTime();
-
-    // Soustraire un mois
-    $currentDate->modify('-2 months');
-
-   //  dump($currentDate, ' deux mois');
-    // Obtenir le timestamp
-    return $timestamp = $currentDate->getTimestamp();
- }
-
- public function timestampThreeMonth() {
-   // Crée un objet DateTime représentant la date et l'heure actuelles
-   $currentDate = new \DateTime();
-
-   // Afficher la date actuelle
-
-   // Soustraire trois mois
-   $currentDate->modify('-3 months');
-
-   // Afficher la nouvelle date après soustraction
-   $currentDate->format('Y-m-d H:i:s') ;
-
-   // Obtenir le timestamp
-   $timestamp = $currentDate->getTimestamp();
-
-   return $timestamp;
- }
-
-  
+ 
 
 }

@@ -1,4 +1,4 @@
-phenix_cfonb_group:
+civicrm_phenix_cfonb:
   version: 2.2
   css:
     component:

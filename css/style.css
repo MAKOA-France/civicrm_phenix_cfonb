@@ -1,171 +1,80 @@
-.path-frontpage #auth_box #middle_part > h2.title {
-	display: flex;
-	justify-content: center;
+@font-face {
+    font-family: 'custom-icon-cv';
+    src: url('custom-font-awesome/custom-icon-cv.eot');
+    src: url('custom-font-awesome/custom-icon-cv.eot?') format('embedded-opentype'),
+         url('custom-font-awesome/custom-icon-cv.woff') format('woff'),
+         url('custom-font-awesome/custom-icon-cv.ttf') format('truetype'),
+         url('custom-font-awesome/custom-icon-cv.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li:hover {
+    background-color: #fce6e7;
+}
+.my-meeting.row{
+	overflow: hidden;
+}
+.my-meeting.row:before,
+.my-meeting.row:after {
+	content: "";
+	background: url(/files/after-section-reunion.png) no-repeat center 0;
+	position: absolute;
+	background-size: cover;
+	height: 346px;
+}
+.my-meeting.row:before {
+	left: 8px;
+	bottom: 90px;
+	width: 155px;
+}
+.my-meeting.row:after {
+	right: -33px;
+	top: 36px;
+	width: 170px;
 }
 
-.path-frontpage #bottom_part  {
-	margin-top: -110px;
-	
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li {
+	list-style: none;
+}
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li:nth-of-type(odd) {
+    background-color: #e7e0d9;
+	border-radius: 20px 0;
+}
+.page-tous-mes-groupes .views-element-container .item-list ul {
+	margin-left: 0;
+}
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 h2, .section-toutes-mes-reunions .block-views-block-civievents-base-sur-le-contact-block-7 h2 {
+    font-weight: 600;
+    font-size: 2.3rem;
+    font-family: 'DM Serif Display' !important;
+    margin-bottom: 2rem;
 }
 
-p.link-to-send-mail.btn.btn-primary {
-    cursor: pointer;
-    color: #0074bd;
-    font-weight: bold;
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li a {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    line-height: initial;
+    color: #140d3d;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
-
-p.link-to-send-mail.btn.btn-primary {
-    display: none;
-}
-.path-frontpage #bottom_part .password_link , .path-frontpage #bottom_part  .back_link {
-	  display: flex;
-    justify-content: center;
-}
-
-.path-frontpage .region.region--highlighted.grid-full.layout--pass--content-medium {
-	  display: flex;
-    flex-direction: column;
-}
-
-.path-frontpage .region.region--content.grid-full.layout--pass--content-medium.ie11-autorow {
-	/*margin-left: -16%;*/
-	display: flex;
-}
-
-.path-frontpage nav.tabs-wrapper > ul.tabs.tabs--primary {
-	  /*display: flex;*/
-    justify-content: center;
-    /*margin-left: -56px;*/
-}
-
-.path-frontpage #block-olivero-primary-local-tasks {
-	margin-bottom: 0;
-}
-.path-frontpage #block-olivero-content {
-	    margin-top: 25px;
-}
-
-.path-frontpage #auth_box {
-    width: 25%;
-	}
-#auth_box.password {
-    width: 25%;
-}
-
-#auth_box.password .region.region--highlighted {
-	display: flex;
-} 
-#auth_box.password .region.region--highlighted .tabs.tabs--primary {
-	width: max-content;
-}
-#auth_box.password #block-olivero-content {
-	display: flex;
-  grid-column: unset;
-}
-#auth_box.password form.user-pass {
-	width: 85%;
-}
-#auth_box.password #bottom_part {
-	    /* margin-top: -110px; */
-}
-
-.page-user-password .form-actions.js-form-wrapper.form-wrapper {
-	display: inline-flex;
-}
-
-.page-user-password .js-form-item.form-item.js-form-type-textfield.form-item-name.js-form-item-name {
-	text-align: center;
-}
-.page-user-password .back-to-login a {
-	color: black;
-}
-.page-user-password #block-b-zf-content .user-pass{
-	width : 100% !important;
-}
-.page-user-password .back-to-login {
-	
-    margin-top: 1rem;
-	padding: 5px 20px;
-    height: 29px;
-    font-size: 1rem;
-    background-color: #eee;
-    color: #0a0a0a;
-    text-shadow: 0 1px #e3f1f1;
-    border: 1px solid;
-    border-color: #ccc;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    outline: 0;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    background-image: none;
-    box-shadow: none;
-}
-
-#auth_box.password #bottom_part .login_link {
-	display: flex;
-  justify-content: center;
-}
-#auth_box.password #bottom_part .back_link {
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li a:before {
+    content: '\e81a';
+    font-family: "custom-icon-cv";
+    font-weight: 900;
+    margin-right: 1rem;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    background-color: #3e7269;
+    border-radius: 100%;
+    border: 2px solid #FFF;
+    box-shadow: 1px 1px 5px #0000005e;
     display: flex;
     justify-content: center;
-}
-
-
-@media only screen and (max-width: 768px) {
-	#auth_box.password {
-    width: 97%;
-}
-  /* For mobile phones: */
-  .path-frontpage #auth_box {
-    width: 100%;
-	}
-	
-	.path-frontpage .region.region--content.grid-full.layout--pass--content-medium.ie11-autorow{
-    margin-left: 0;
-	}
-	.path-frontpage #middle_part {
-		    min-height: 550px;
-	}
-	.path-frontpage #middle_part {
-		min-height: 600px;
-	}
-}
-  
-
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1440px) {
-	.path-frontpage #auth_box {
-    width: 100%;
-	}
-	.path-frontpage #block-olivero-content .block__content {
-		display: flex;
-	}
-	.path-frontpage #block-olivero-content .block__content .user-login-form {
-		margin: auto;
-	}
-	.path-frontpage #the_logo img {
-		max-width: 40%;
-    margin: auto;
-	}
-}
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-	#auth_box.password {
-    width: 72%;
-  }
-  /* For mobile phones: */
-  .path-frontpage #auth_box {
-    width: 100%;
-	}
-/*	.path-frontpage #auth_box */
-	
-	.path-frontpage .region.region--content.grid-full.layout--pass--content-medium.ie11-autorow{
-    margin-left: 0;
-	}
-	.path-frontpage #the_logo img {
-		max-width: 40%;
-    margin: auto;
-	}
+    align-items: center;
 }

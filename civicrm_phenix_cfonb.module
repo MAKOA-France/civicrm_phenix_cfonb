@@ -1,0 +1,118 @@
+<?php 
+
+use \Drupal\views\Views;
+/**
+ * Implements hook_preprocess_page().
+ */
+function civicrm_phenix_cfonb_preprocess_page(&$variables)
+{
+  $variables['#attached']['library'][] = 'civicrm_phenix_cfonb/civicrm_phenix_cfonb';
+  $current_path = \Drupal::service('path.current')->getPath();
+  
+
+}
+
+
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function civicrm_phenix_cfonb_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  // Check if it's the view you want to alter.
+  
+
+
+
+  //Page admin utilisateurs
+  if ($view->id() == 'user_admin_people' && $display_id == 'page_1') {
+    
+  }
+
+
+}
+
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function civicrm_phenix_cfonb_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['#attached']['library'][] = 'civicrm_phenix_cfonb/civicrm_phenix_cfonb';
+}
+
+
+
+function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
+  
+  $view = $variables['view'];
+  $field = $variables['field'];
+  $requests = \Drupal::request();
+  $row = $variables['row'];
+  if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
+    if ($field->field == 'rendered_item') {
+      // dump($row);
+    }
+  }
+
+  
+	if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_5') {
+    if ($field->field == 'frontend_title') {
+      // $formatted = implode(' ',str_split($value, 2));
+      $title = $field->getValue($row);
+      $default_title = $title ? $title : $row->civicrm_group_civicrm_group_contact_title;
+      $group_id = $row->civicrm_group_civicrm_group_contact_id_1;
+			$html = '<div class="my-meeting">
+      <a href="/civicrm-group/' . $group_id . '">' . $default_title . '</a>
+      </div>';
+      $html = ['#markup' =>  $html]; 
+      $variables['output'] = $html;
+    }
+  }
+}
+
+
+/**
+ * 
+ * Gestion de permission par rapport à l'utilisateur anonyme
+ * 
+ * Implements hook_entity_access().
+ */
+function civicrm_phenix_cfonb_media_access(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Session\AccountInterface $account) {
+  if ($account->isAnonymous()) {
+   
+  }
+}
+
+
+
+
+/**
+ * Ce code sert à afficher 
+ * Implements hook_entity_view_alter().
+ */
+function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+
+}
+ 
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query) {
+
+  //Feuille de presence ==> ne pas afficher les contact qui sont supprimés
+  // if ($view->storage->get('id') == 'attendance_sheet' && $view->current_display == 'attendance_sheet_edit') {
+  //   $query->where[] =  array(
+  //     'conditions' => array(
+  //       array(
+  //         'field' => 'civicrm_contact_civicrm_participant.is_deleted',
+  //         'value' => 'false',
+  //         'operator' => '=',
+  //       ),
+  //     ),
+  //     'type' => 'AND',
+  //   );
+  // }
+}

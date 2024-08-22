@@ -1,0 +1,7 @@
+# civicrm_phenix_cfonb.save.pdf:
+#   path: '/meeting/savepdf'
+#   defaults:
+#     _controller: '\Drupal\civicrm_phenix_cfonb\Controller\PhenixController::savePdf'
+#     _title: 'Tous les marques'
+#   requirements:
+#     _permission: 'access content'

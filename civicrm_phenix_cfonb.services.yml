@@ -1,0 +1,4 @@
+services:
+  civicrm_phenix_cfonb.custom_service:
+    class: Drupal\civicrm_phenix_cfonb\CustomService
+    arguments: ['@entity_type.manager', '@config.factory']

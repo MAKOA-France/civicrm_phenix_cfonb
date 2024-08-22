@@ -1,0 +1,6 @@
+# civicrm_phenix_cfonb.content:
+#   title: 'custom title for ....'
+#   description: 'A custom admin page...'
+#   parent: entity.user.collection
+#   route_name: custom_admin_page.view
+#   weight: 100
