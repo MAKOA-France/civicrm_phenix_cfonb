@@ -70,6 +70,31 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $variables['output'] = $html;
     }
   }
+
+    //Page detail commissions / groupe
+    if ($view->storage->id() == 'civi_groupe_evenements' /* && $view->current_display == 'block_1' */) {
+      $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+      $custom_service->customizeViewReunionOfTheCommissionPage($variables);
+  
+      
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
+{
+    return [
+      'civicrm_phenix_cfonb_alter_view_detail_commission_reunion' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'alter-view-detail-commission-reunion'
+      ],
+    ];
 }
 
 
@@ -115,4 +140,31 @@ function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $vi
   //     'type' => 'AND',
   //   );
   // }
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  // Get the current request object.
+  $request = \Drupal::request();
+
+  // Get the path of the current request.
+  $current_path = $request->getPathInfo();
+
+   // Check if the path contains "/civicrm-group/".
+   if (strpos($current_path, '/civicrm-group/') !== false) {
+    if ($entity->getEntityTypeId() == 'media') {
+      // unset($build[''])
+      $build['field_media_document'][0]['#attributes']['class'][] = 'to-hide-doc';
+      $build['#attributes']['class'][] = 'to-hide-doc';
+    }
+  }
+
+
+  if ($entity->getEntityTypeId() === 'civicrm_group' and $view_mode === 'full') {
+    //unset($build['#civicrm_group']->getFieldDefinitions()['field_documents_groupe']); 
+    $build['#attributes']['class'][] = 'group-detail-page';
+  }
+
 }

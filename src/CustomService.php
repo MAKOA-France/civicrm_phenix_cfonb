@@ -64,6 +64,68 @@ class CustomService {
     // Obtenir le timestamp
     return $timestamp = $currentDate->getTimestamp();
  }
- 
+ public function customizeViewReunionOfTheCommissionPage(&$var) {
+  $view = $var['view'];
+  $field = $var['field'];
+  $requests = \Drupal::request();
+  $row = $var['row'];
+
+  if ($field->field == 'title' ) {
+    $current_id = $var['row']->id;
+    $start_date = $row->civicrm_event_start_date;
+    $start_date = $this->formatDateWithMonthInLetterAndHours($start_date);
+    $value = $field->getValue($row);
+    $classOddAndEven = 'odd';
+    if ($view->current_display == 'block_1') {
+      $classOddAndEven = 'even';
+    }
+
+    $var['output'] = [
+      '#theme' => 'civicrm_phenix_cfonb_alter_view_detail_commission_reunion',
+      '#cache' => ['max-age' => 0],
+      '#content' => [
+        'start_date' => $start_date,
+        'event_id' => $current_id,
+        'class_odd_even' => $classOddAndEven,
+        'title' => $value
+      ]
+    ];
+  }
+}
+
+/**
+     * Permet de récupérer le jour/mois/année heure:minute
+     * @return array()
+     */
+    public function formatDateWithMonthInLetterAndHours ($start_date) {
+      // Create a DateTime object from the date string
+      $dateTime = new \DateTime($start_date);
+  
+      // Get the day
+      $day = $dateTime->format('d');
+
+      // Get the month
+      $month = $dateTime->format('m');
+      // Obtient le mois en français
+      setlocale(LC_TIME, 'fr_FR.utf8');
+      $month = strftime('%B', $dateTime->getTimestamp());
+
+      // Get the year
+      $year = $dateTime->format('Y');
+      
+      // Get the hour
+      $hour = $dateTime->format('H');
+
+      // Get the minute value.
+      $minute = $dateTime->format('i');
+
+      return [
+          'day' => $day, 
+          'month' => $month, 
+          'year' => $year,
+          'hour' => $hour,
+          'minute' => $minute
+      ];
+  }
 
 }

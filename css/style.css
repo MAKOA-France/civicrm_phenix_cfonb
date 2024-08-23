@@ -8,7 +8,97 @@
     font-weight: normal;
     font-style: normal;
   }
-
+  .group-detail-page .layout.layout--twocol-section.layout--twocol-section--50-50 + .layout--onecol {
+    display: none !important;
+    color: cyan;
+    background-color: red;
+}
+.section-civicrm-group .views-element-container h2:before {
+    content: '\e81a' !important;
+    position: relative;
+    font-family: "custom-icon-cv" !important;
+    font-style: normal;
+    font-weight: 400 !important;
+}
+.section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
+    background-color: #f7f5f3;
+    border-radius: 50px 0;
+    padding: 50px 20px;
+    margin: 0;
+    gap: 30px;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+}
+.section-civicrm-group .layout--twocol-section .layout__region.layout__region--first {
+    border-right: unset !important;
+    border-left: 5px solid #fff;
+    padding: 0 0 0 30px;
+    margin: 0;
+}
+.civicrm-entity--view-mode-full .layout--twocol-section .layout__region {
+    margin: 0 !important;
+}
+.section-civicrm-group .meeting-com.odd {
+    background-color: #fff;
+    pointer-events: none;
+}
+.section-civicrm-group .meeting-com, .page-toutes-mes-reunions .meeting-com {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    background-color: #e7e0d9;
+    border-radius: 50px 0;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.section-civicrm-group .meeting-com .date-meet, .page-toutes-mes-reunions .meeting-com .date-meet {
+    padding: 10px;
+    display: grid;
+    text-align: center;
+    border-radius: 30px 0;
+    background-color: #fff;
+    color: #140d3d;
+    min-width: 110px;
+}
+.section-civicrm-group .meeting-com.odd .date-meet, .section-civicrm-group .meeting-com.odd .title-meet .title-meet-commission a, .section-civicrm-group .meeting-com.odd span {
+    color: #acacac;
+    pointer-events: none;
+}
+.section-civicrm-group .layout__region .contextual-region h2, .section-civicrm-group .group-detail-page .layout--onecol h2, .section-civicrm-group .last-doc-title h2.main-title-last-doc, .section-civicrm-group .meeting-head .meetings, .section-civicrm-event .block-blocklisteparticipant h3, .section-civicrm-event .last-doc-title h2.main-title-last-doc {
+    border-bottom: initial;
+    text-align: initial;
+    color: #3d3d3d;
+    font-size: xxx-large;
+    font-weight: 600;
+    font-family: "DM Serif Display" !important;
+}
+.section-civicrm-group .meeting-com .date-meet .day, .page-toutes-mes-reunions .meeting-com .date-meet .day {
+    font-size: xxx-large;
+    font-weight: bold;
+    line-height: normal;
+    font-family: "DM Serif Display" !important;
+}
+.section-civicrm-group .meeting-com.odd .date-meet, .section-civicrm-group .meeting-com.odd .title-meet .title-meet-commission a, .section-civicrm-group .meeting-com.odd span {
+    color: #acacac;
+    pointer-events: none;
+}
+.section-civicrm-group .date-meet .month-and-year, .page-toutes-mes-reunions .date-meet .month-and-year {
+    font-size: small;
+    line-height: initial;
+}
+.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block-views h2 {
+    background: #fff;
+    border-radius: 50px 0;
+    text-align: center;
+    padding: 15px 0;
+    margin: 0 0 30px;
+    line-height: initial;
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: 500;
+    font-family: "new-order" !important;
+}
 .page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li:hover {
     background-color: #fce6e7;
 }
