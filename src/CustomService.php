@@ -93,6 +93,36 @@ class CustomService {
   }
 }
 
+      
+public function getTypeDocument ($media) {
+  if (!$media) {
+    return null;
+  }
+  $type_doc = '';
+  $type_doc_value = $this->getNodeFieldValue($media, 'field_type_de_document');
+  if ($type_doc_value != 18) {
+    $type_doc = $media->get('field_type_de_document')->getFieldDefinition()->getItemDefinition()->getSettings()['allowed_values'][$type_doc_value];
+  }
+  return $type_doc;
+}
+
+public function getNodeFieldValue ($node, $field) {
+  $value = '';
+  $getValue = $node->get($field)->getValue();
+  if (!empty($getValue)) {
+    if (isset($getValue[0]['target_id'])) { //For entity reference (img / taxonomy ...)
+      $value = $getValue[0]['target_id'];
+    }elseif (isset($getValue[0]['value']))  { //For simple text / date
+      $value = $getValue[0]['value'];
+    }else if(isset($getValue[0]['uri'])) {
+      $value = $getValue[0]['uri'];
+    }else { //other type of field
+      $value = $getValue['x-default'];
+    }
+  }
+  return $value;
+}
+
 /**
      * Permet de récupérer le jour/mois/année heure:minute
      * @return array()

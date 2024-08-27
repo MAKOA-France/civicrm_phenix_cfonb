@@ -50,6 +50,8 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $field = $variables['field'];
   $requests = \Drupal::request();
   $row = $variables['row'];
+  $current_user = \Drupal::currentUser();
+  $user_roles = $current_user->getRoles();
   if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
     if ($field->field == 'rendered_item') {
       // dump($row);
@@ -78,6 +80,38 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   
       
     }
+
+      // You can now use $email for further processing.
+	if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_7') {
+    // $variables['view']->header['area']->options['content'] = [];
+    if ((!in_array('super_utilisateur', $user_roles) && !in_array('admin_client', $user_roles) && !in_array('permanent', $user_roles) && !in_array('administrator', $user_roles))) {
+      $variables['view']->header['area']->options['content']['value'] = '<h2><i class="far fa-calendar-alt"></i> [view:title] </h2>';
+    }    
+  }
+
+
+  
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_7') {
+    // $custom_service->customizeMeetingList()
+    $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+    if ($field->field == 'title') {
+      $title = $field->getValue($row);
+      
+      $date = $row->created_id_civicrm_contact_start_date;
+      $dateArray = $custom_service->formatDateWithMonthInLetterAndHours($date);
+
+      $variables['output'] = [
+        '#theme' => 'page_list_meeting',
+        '#cache' => ['max-age' => 0],
+        '#content' => [
+          'meeting_info' => $dateArray,
+          'title' => $title,
+        ],
+      ];
+    }
+  }
+
+
 }
 
 /**
@@ -93,6 +127,22 @@ function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
         'render element' => 'children',
         'path' => $path . '/templates',
         'template' => 'alter-view-detail-commission-reunion'
+      ],
+      'detail_group' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'phenix-custom-block-detail-group'
+      ],
+      'page_list_meeting' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'page-list-meeting'
       ],
     ];
 }

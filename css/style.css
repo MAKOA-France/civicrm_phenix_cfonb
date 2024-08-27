@@ -42,6 +42,72 @@
     background-color: #fff;
     pointer-events: none;
 }
+.section-civicrm-group .communication .block-blockdetailcommission--2 .icon-group {
+    width: 130px;
+    height: 130px;
+    background-color: #3e7269;
+    border-radius: 100%;
+    border: 2px solid #FFF;
+    box-shadow: 1px 1px 5px #0000005e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section-civicrm-group .communication .block-blockdetailcommission--2 .icon-group i {
+    font-size: 3rem;
+    color: #FFF;
+}
+.icon-custom-group-person:before {
+    content: '\e81a';
+}
+.section-civicrm-group .meeting-com .title-meet .title-meet-commission a, .page-toutes-mes-reunions .meeting-com .title-meet .title-meet-commission a {
+    color: #140d3d;
+    font-size: x-large;
+    font-weight: 700;
+    line-height: initial;
+}
+#block-blockmescommissions .all-group-who-s-mine .each-group h3, .block-blockdetailcommission--2 .detail-group-title .group-info .group-name {
+    color: #140d3d;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.section-civicrm-group .block-blockdetailcommission--2 .detail-group-title .group-info .group-name {
+    margin: 20px 0 0;
+    font-size: 2rem;
+}
+.section-civicrm-group .meeting-com .title-meet, .page-toutes-mes-reunions .meeting-com .title-meet {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+.section-civicrm-group .block-blockdetailcommission--2 .detail-group-title .group-info {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.section-civicrm-group .item-list ul li > div > span > a {
+    display: none;
+}
+.section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after, .section-civicrm-event #main .civicrm-entity--type-civicrm-event:after {
+    content: "";
+    background: url(/files/after-sestion-details-commission.png) no-repeat right bottom;
+    right: 30px;
+    bottom: 30px;
+    width: 90px;
+    height: 130px;
+    position: absolute;
+    background-size: contain;
+}
+#block-blockmescommissions .all-group-who-s-mine .each-group p, .block-blockdetailcommission--2 .detail-group-title .group-info .group-members {
+    color: #707070;
+    margin-bottom: 0;
+}
+[class^="icon-custom-"]:before, [class*=" icon-custom-"]:before {
+    font-family: "custom-icon-cv";
+    font-style: normal;
+    font-weight: 400;
+}
 .section-civicrm-group .meeting-com, .page-toutes-mes-reunions .meeting-com {
     display: flex;
     align-items: center;
@@ -60,6 +126,49 @@
     background-color: #fff;
     color: #140d3d;
     min-width: 110px;
+}
+.section-civicrm-group .grid-container.full.hero.communication {
+    background: unset;
+}
+.section-civicrm-group .detail-group-title {
+    background-color: #f7f5f3;
+    border-radius: 30px 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:before, .section-civicrm-event #main .civicrm-entity--type-civicrm-event:before {
+    content: "";
+    background: url(/files/before-section-details-comission.png) no-repeat center 0;
+    top: 30px;
+    left: 30px;
+    width: 90PX;
+    height: 50px;
+    position: absolute;
+    background-size: contain;
+}
+.section-civicrm-group .printParticipants footer a, .section-civicrm-group .printParticipants .more-link a {
+    background-color: #140d3d;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 15px 0;
+    font-size: .9rem;
+    box-shadow: initial;
+    font-weight: 400;
+    line-height: initial;
+}
+.section-civicrm-group .views-field-display-name {
+    text-decoration: none !important;
+}
+.section-civicrm-group table > thead > tr > th:not(:last-child), .section-civicrm-event table > thead > tr > th:not(:last-child) {
+    border-right: solid 1px #b4b4b4;
+}
+.section-civicrm-group table >thead > tr, .section-civicrm-event table >thead > tr {
+    background-color: #e7e0d9;
+    font-weight: 600;
+    text-decoration: none;
 }
 .section-civicrm-group .meeting-com.odd .date-meet, .section-civicrm-group .meeting-com.odd .title-meet .title-meet-commission a, .section-civicrm-group .meeting-com.odd span {
     color: #acacac;

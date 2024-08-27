@@ -1,0 +1,15 @@
+<div class="detail-group-title">
+    <div class="icon-group"><i class="icon-custom-group-person icon-comission"></i></div>
+    <div class="group-info">
+        <p class="group-name">{{ content.data.group_name }}</p>
+        <p class="group-members">Membres : {{ content.data.totatl_member }} personnes</p>
+    </div>
+</div>
+
+{% if content.data.group_presentation %}
+    <p class="group-presentation-title"> </p>
+
+    <p class="group-presentation-description">
+        {{ content.data.group_presentation }}
+    </p>
+{% endif %}
