@@ -20,6 +20,87 @@
     font-style: normal;
     font-weight: 400 !important;
 }
+.intitule-event {
+    color: #707070;
+    margin-bottom: 0;
+    font-family: "new-order", sans-serif !important;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+.section-civicrm-event #main .civicrm-entity--type-civicrm-event .meeting-page {
+    display: flex;
+    justify-content: center;
+}
+.section-civicrm-event #main .civicrm-entity--type-civicrm-event .main-title-last-doc {
+    color: #140d3d;
+    font-weight: 600;
+    font-size: xx-large;
+    text-align: left;
+    font-family: "new-order", sans-serif !important;
+    padding: 15px 0 0;
+}
+.line-container-plus, .line-container-moins {
+    display: flex;
+    align-items: center;
+}
+.hr-line-accoredon, .title-and-chevron .hr-other-doc {
+    border: 1px solid #7070704d;
+    width: 100%;
+    max-width: 100%;
+}
+.section-civicrm-event .layout__region .views-element-container.contextual-region.block-views h2 {
+    border-bottom: initial;
+    text-align: initial;
+    color: #3d3d3d;
+    font-size: xxx-large;
+    font-weight: 600;
+    font-family: "DM Serif Display" !important;
+}
+.section-civicrm-event .date-start-and-end, .section-civicrm-event .date-end-event {
+    background-color: #edeae77a;
+    padding: 5px 20px;
+    border-radius: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+.section-civicrm-event article.contextual-region.civicrm-entity.civicrm-entity--type-civicrm-event.civicrm-entity--view-mode-full {
+    top: 21px;
+}
+.eventt-time {
+    text-transform: capitalize;
+    font-family: "new-order", sans-serif !important;
+    font-style: normal;
+    color: #707070;
+    display: flex !important;
+    font-weight: 600;
+}
+.section-civicrm-event #main .civicrm-entity--type-civicrm-event h2.intitule-h2 {
+    color: #140d3d;
+    font-weight: 600;
+    font-size: xx-large;
+    text-align: center;
+    font-family: "new-order", sans-serif !important;
+    padding: 15px 0 0;
+}
+.line-container-plus a.btn-see-other-doc, .line-container-moins a.btn-dismiss-other-doc {
+    white-space: nowrap;
+    padding: 0 3rem;
+    color: #140d3d;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.section-civicrm-event .date-start-event {
+    color: #707070;
+    display: flex !important;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0 !important;
+    gap: 10px;
+}
 .section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
     background-color: #f7f5f3;
     border-radius: 50px 0;
@@ -66,6 +147,30 @@
     font-weight: 700;
     line-height: initial;
 }
+.section-civicrm-event #main .civicrm-entity--type-civicrm-event .meeting-page .icon-custom-calendar {
+    font-size: 3rem;
+    color: #FFF;
+    width: 130px;
+    height: 130px;
+    background-color: #3e7269;
+    border-radius: 100%;
+    border: 2px solid #FFF;
+    box-shadow: 1px 1px 5px #0000005e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-custom-calendar:before {
+    content: '\e80d';
+}
+.section-civicrm-event #main .civicrm-entity--type-civicrm-event {
+    border-radius: 50px 0;
+    padding: 3rem;
+    border: initial;
+    background: #f7f5f3;
+    margin-bottom: 40px;
+    position: relative;
+}
 #block-blockmescommissions .all-group-who-s-mine .each-group h3, .block-blockdetailcommission--2 .detail-group-title .group-info .group-name {
     color: #140d3d;
     font-weight: 600;
@@ -80,6 +185,78 @@
     flex-direction: column;
     row-gap: 15px;
 }
+ .section-civicrm-event .last-doc-title h2.main-title-last-doc {
+    border-bottom: initial;
+    text-align: initial;
+    color: #3d3d3d;
+    font-size: xxx-large;
+    font-weight: 600;
+    font-family: "DM Serif Display" !important;
+}
+.first-element-doc {
+    display: inline-flex;
+    margin: 30px 0;
+    gap: 50px;
+    width: 100%;
+}
+.first-element-doc a.custom-icon-first-element {
+    width: 15%;
+    height: auto;
+}
+.first-element-doc .content-frist-doc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+.detail-title-resume-first-doc {
+    gap: 155px;
+    display: flex;
+}
+.custom-section-doc .description, .first-element-doc .content-frist-doc .date-size-first-doc {
+    font-size: 0.89rem;
+    position: relative;
+}
+.edit-doc-button {
+    text-transform: uppercase;
+    font-size: .75rem;
+    color: #3e7269;
+    padding: 0px 15px;
+    font-weight: 600;
+    border-radius: 20px 0;
+    line-height: initial;
+}
+.custom-section-doc {
+    display: flex;
+    padding-top: 17px;
+}
+.custom-section-doc .custom-icon-document {
+    width: 3%;
+}
+.custom-section-doc .description-with-date-size {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 27px;
+}
+.custom-section-doc .description, .first-element-doc .content-frist-doc .date-size-first-doc {
+    font-size: 0.89rem;
+    position: relative;
+}
+.custom-section-doc .date-creation {
+    color: #b1b1b1;
+    font-size: 0.7rem;
+}
+.section-others-documents {
+    display: none;
+}
+.title-first-doc a, .title-first-doc a:hover {
+    color: #e52329;
+    font-weight: 500;
+}
+.detail-date-button-first-doc {
+    display: inline-grid;
+}
 .section-civicrm-group .block-blockdetailcommission--2 .detail-group-title .group-info {
     text-align: center;
     position: relative;
@@ -89,7 +266,7 @@
 .section-civicrm-group .item-list ul li > div > span > a {
     display: none;
 }
-.section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after, .section-civicrm-event #main .civicrm-entity--type-civicrm-event:after {
+.section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after, .section-civicrm-event #main .asheeeeeeeeeeeeee.meeting-page:after {
     content: "";
     background: url(/files/after-sestion-details-commission.png) no-repeat right bottom;
     right: 30px;

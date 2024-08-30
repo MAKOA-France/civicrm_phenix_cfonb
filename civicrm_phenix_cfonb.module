@@ -1,6 +1,7 @@
 <?php 
 
 use \Drupal\views\Views;
+use Drupal\file\Entity\File;
 /**
  * Implements hook_preprocess_page().
  */
@@ -144,6 +145,14 @@ function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
         'path' => $path . '/templates',
         'template' => 'page-list-meeting'
       ],
+      'civicrm_phenix_cfonb_custom_last_doc' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'civicrm-phenix-cfonb-custom-last-doc'
+      ],
     ];
 }
 
@@ -161,14 +170,329 @@ function civicrm_phenix_cfonb_media_access(\Drupal\Core\Entity\EntityInterface $
 }
 
 
+function getFieldValue($field, $entity) {
+	$value = $entity->get($field)->getValue() ? $entity->get($field)->getValue()[0]['value'] : '';
+	return $value;
+}
 
+function hideLabelOfValueField (&$build, $fieldName) {
+  $build[$fieldName]['#label_display'] = 'hidden';
+}
 
 /**
  * Ce code sert à afficher 
  * Implements hook_entity_view_alter().
  */
 function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+/* Formattage page civicrm-event */
+  if ($build['#entity_type'] == 'civicrm_event') {
+    $civi_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+    //hide these fields
+    unset($build['fee_label']);
+    unset($build['participant_listing_id']); // champ Liste des participants
+    unset($build['max_additional_participants']);//champ Nombre maximum de participants en plus par régistration
+    unset($build['event_full_text']);//champ Information sur l'événement
+    unset($build['default_role_id']); // champ Rôle par défaut
+    unset($build['created_date']);//champ DATE DE CRÉATION DE L'ÉVÉNEMENT
+    unset($build['custom_123']); //champ Convocation / Ordre du jour
+    unset($build['custom_124']); //champ Compte rendu / Procès Verbal
+    unset($build['custom_125']); //champ Pouvoir (modèle pour AG)
+    unset($build['custom_4']); //champ Checkbox text
+    unset($build['custom_5']); //champ Checkbox Position
+    unset($build['custom_6']); //champ Link Label
+    unset($build['custom_7']); //champ Introduction
+    unset($build['custom_115']); //champ Programme
+    unset($build['event_type_id']); //champ Type d'événement
 
+    $title = getFieldValue('title', $entity);
+    $intitule = $entity->event_title;
+
+    hideLabelOfValueField($build, 'description');
+    hideLabelOfValueField($build, 'start_date');
+    hideLabelOfValueField($build, 'end_date');
+    // hideLabelOfValueField($build, 'custom_179');
+
+    
+    $idgroup = getNodeFieldValue($entity, 'custom_179');
+    $intitule = \Civi\Api4\Group::get(FALSE)
+      ->addSelect('title')
+      ->addWhere('id', '=', $idgroup)
+      ->execute()->first()['title'];
+    $title = '<div class="intitule-event">' . $intitule . '</div><h2 class="intitule-h2">' . $title  . '</h2>';
+    // dump($build);
+    //Get start/end date values
+    $start_date = getFieldValue('start_date', $entity);
+    $end_date = getFieldValue('end_date', $entity);
+    //adding class to date
+    $build['end_date']['#attributes']['class'][] = 'date-end-event  test-classssss';
+    $build['start_date']['#attributes']['class'][] = 'date-start-event  test-classssss';
+    // dump($build);
+
+    $current_path = \Drupal::service('path.current')->getPath();
+    
+    $db = \Drupal::database();
+    // dump($build);
+    $all_dates = $db->query('select title, start_date, end_date from civicrm_event where id = ' . $entity->id())->fetch();
+    $get_end_date = $all_dates->end_date;
+    $get_start_date = $all_dates->start_date;
+    
+    $formated_Y_m_d_start_date = $civi_service->formatDateTo_Y_m_d($get_start_date);
+    $formated_Y_m_d_end_date = $civi_service->formatDateTo_Y_m_d($get_end_date);
+    setlocale(LC_TIME, 'fr_FR');
+    $formated_start_date = new \DateTime($get_start_date);
+    $formatted_dateSt = \Drupal::service('date.formatter')->format($formated_start_date->getTimestamp(), 'custom', 'l, j F  Y H:i');
+    $formated_end_date = new \DateTime($get_end_date);
+    $formatted_dateEn = \Drupal::service('date.formatter')->format($formated_end_date->getTimestamp(), 'custom', 'l, j F  Y H:i');
+
+    //enlever la minute si c'est 00
+    $formatted_dateEn = str_replace(':00', 'h', $formatted_dateEn);
+    $build['end_date'][0]['#text'] = $formatted_dateEn;
+   
+
+
+    
+
+    if ($formated_Y_m_d_start_date === $formated_Y_m_d_end_date) { //if event started and end at the same day
+      $end_date_val = $build['end_date'][0]['#context'];
+      $formated_end_date = new \DateTime($get_end_date);
+      $formated_end_date = $formated_end_date->format('H:i');
+      $formated_date_start = $formated_start_date->format('Y-m-d H:i');
+
+      //enlever la minute si c'est 00
+      $formated_end_date = str_replace(':00', 'h', $formated_end_date);
+      $build['end_date'][0]['#text'] = $formated_end_date;
+    }
+    $build['end_date'][0]['#text'] = $formated_end_date;
+
+
+    
+    //enlever la minute si c'est 00
+    $formatted_dateSt = str_replace(':00', 'h', $formatted_dateSt);
+    
+    $build['start_date'][0]['#text'] = $formatted_dateSt;
+    $build['start_date'][0]['#prefix'] = '<div class="date-start-and-end date-duration-meeting"><time class="eventt-time">' . $formatted_dateSt . ' - ' . $formatted_dateEn . '</time>';
+    $build['end_date'][0]['#suffix'] = '</div>';
+    
+    // $build['start_date']['#suffix'] = '<span> - </span>';
+    $build['start_date']['#weight'] = -2;
+    $build['end_date']['#weight'] = -2;
+    $build['title']['#weight'] = -3;
+    $build['custom_179']['#weight'] = -4;
+    $build['description']['#weight'] = -1;
+
+    // hideLabelOfValueField($build, 'custom_179');
+
+    $build['custom_131']['#title'] = 'Groupes : ';
+    //load view by id
+    $args = [];
+    $view = \Drupal\views\Views::getView('civi_event_fichiers');
+    if (is_object($view)) {
+      $view->setArguments($args);
+      $view->setDisplay('block_1');
+      $view->preExecute();
+      $view->execute();
+      $view_result = $view->result;
+
+      if ($view_result) {
+        $pouvoir_pour_ag = isset($view_result[0]->civicrm_value_sp_cifique_r__38_pouvoir_mod_le__125) ? $view_result[0]->civicrm_value_sp_cifique_r__38_pouvoir_mod_le__125 : '';
+        $convocation_ordre_du_jour =  isset($view_result[0]->civicrm_value_sp_cifique_r__38_convocation_ordre_du_jour_123) ?$view_result[0]->civicrm_value_sp_cifique_r__38_convocation_ordre_du_jour_123 : '';
+        $compte_rendu_proc_s_verbal = isset($view_result[0]->civicrm_value_sp_cifique_r__38_compte_rendu_proc_s_verbal_12) ? $view_result[0]->civicrm_value_sp_cifique_r__38_compte_rendu_proc_s_verbal_12 : '';
+
+        if ($compte_rendu_proc_s_verbal || $convocation_ordre_du_jour || $pouvoir_pour_ag) {
+        $content = $view->buildRenderable('block_1', $args);
+        $rendered_view = \Drupal::service('renderer')->render($content);
+        $build['custom_131']['#suffix'] = '<p class="attachmennts">Documents : </p>' . $rendered_view->__toString();
+        }
+
+      }
+    }
+
+    $doc = $build['#civicrm_event']->get('field_documents')->getValue();
+      $doc_ids = array_column($doc, 'target_id');
+    
+
+    $all_documents = [];
+    $total_docs = 0;
+    foreach ($doc_ids as $paragraph_id) {
+      $media = \Drupal\media\Entity\Media::load($paragraph_id);
+      if ($media) {
+        $id_document = $media->get('field_media_document')->getValue();
+        if ($id_document) {
+
+          $title_doc = $media->label();
+          $file = $media->get('field_media_document')->entity;
+          $mimetype = $file->getMimeType();
+          $createfileurl = $file->createFileUrl();
+          $sizz = $civi_service->getFileSize($file);
+
+          $created_at = $civi_service->convertTimesptamToDate($civi_service->getNodeFieldValue($media, 'created'));
+          
+
+          switch($mimetype) {
+            case 'application/pdf':
+              $file_type = 'pdf-3.png';
+              break;
+            case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+              $file_type = 'pdf-2.png';
+              break;
+              case 'application/msword':
+              $file_type = 'pdf-2.png';
+              break;
+              case 'application/rtf':
+                $txt_file = '.rtf';
+              break;
+            case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+              $file_type = 'pdf.png';
+              break;
+            case 'application/vnd.ms-excel':
+              $file_type = 'pdf.png';
+              break;
+            }
+
+
+
+          $all_documents[$title_doc][] = [
+            'fileType' => $file_type,
+            'fileurl' => $file->createFileUrl(),
+            'size' => $sizz,
+            'fileId' => $file->id(),
+            'description' => $title_doc,
+            'created_at' => $created_at,
+            'media_id' => $media->id(), 
+          ];
+
+
+
+
+          /* $nom_document = $id_document[0]['description'];
+          $id_document = $id_document[0]['target_id'];
+          $file = \Drupal\file\Entity\File::load($id_document);
+          if($file) {
+            $total_docs++;
+            $file_uri = $file->get('uri')->getValue()[0]['value'];
+            $tmp_uri = $file_uri;
+
+
+            $tmp_name = str_replace ('public://documents/', '', $tmp_uri);
+            $nom_document = $nom_document ? $nom_document : $tmp_name;
+
+            $file_url = file_create_url($file_uri);
+            $link = \Drupal\Core\Link::fromTextAndUrl($nom_document, \Drupal\Core\Url::fromUri($file_url));
+            $link_html .= '
+            <img loading="lazy" src="/files/styles/vignette_24x24/public/media-icons/generic/generic.png">
+            '
+            . \Drupal::service('renderer')->render($link->toRenderable())->__toString(). '<br>';
+
+          } */
+        }
+      }
+    }
+
+    // dump($all_documents);
+
+    //TODO ADD CONDITOIN IF ALLDOC n'EST PAS VIDE recuperer le doc et mettre comme le CV dernier dOC   le #theme c'est phenix_custom_block_custom_last_doc peut etre
+
+    $get_first_element = reset($all_documents);
+    $first_title = array_keys($all_documents)[0];
+    $first_element_id = $get_first_element[0]['media_id'];
+    $media = Drupal\media\Entity\Media::load($first_element_id);
+    $file_type = 'application/pdf';//default
+    if ($media) {
+      // $title = $first_title;
+      // $first_element_file_id = getNodeFieldValue($media, 'field_media_document');
+      // $first_file_document = File::load($first_element_file_id);
+      // $first_file_extension = getNodeFieldValue($first_file_document, 'filemime');
+      $file_type = $get_first_element[0]['fileType'];
+    }
+    $file_size_readable = $get_first_element[0]['size'];
+
+
+    // // Convert the size to a human-readable format
+    // $file_size_readable = round($file_size_bytes / 1024, 2);
+
+    $date_doc = $civi_service->convertTimesptamToDate($civi_service->getNodeFieldValue($media, 'created'));
+
+    // $html = ['#markup' => $media_extrait];
+    // $html = \Drupal::service('renderer')->render($html);
+    unset($all_documents[$first_title][0]);
+
+    //Récuperation du second dernier document
+    /* $secondElm = reset($all_documents)[1];
+    $secondElmId = $secondElm['media_id'];
+    $media = Media::load($secondElmId);
+    $secondDataDoc = $civi_service->getDataSecondDocument($media);
+    unset($all_documents[$first_title][1]);   *///TODO Commenté pour le moment à decommenté si on en a besoin
+    //end recuperation ****----------
+    
+    // $allowToEdit = $civi_service->checkIfUserCanEditDoc ();
+    
+    $counted_doc = count(reset($all_documents));
+
+    $file_id = $civi_service->getNodeFieldValue($media, 'field_media_document');
+    $file0bj = File::load($file_id);
+    $file_size_readable = $civi_service->getFileSize($file0bj);
+    // $display_see_other_doc = ($counted_doc > 1); TODO 
+    $display_see_other_doc = (count($all_documents) > 2 || count(reset($all_documents)));//TODO à mettre sup à 2 car les deux seront au dessus
+
+
+
+    $module_path = \Drupal::service('module_handler')->getModule('civicrm_phenix_cfonb')->getPath();
+    $image_path = $module_path . '/file/pdf-3.png';
+
+    $event_id = $build['#civicrm_event']->get('id')->getValue()[0]['value'];
+
+
+    switch($file_type) {
+      case 'application/pdf':
+        $file_type = 'pdf-3.png';
+        break;
+      case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+        $file_type = 'pdf-2.png';
+        break;
+        case 'application/msword':
+        $file_type = 'pdf-2.png';
+        break;
+        case 'application/rtf':
+          $txt_file = '.rtf';
+        break;
+      case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+        $file_type = 'pdf.png';
+        break;
+      case 'application/vnd.ms-excel':
+        $file_type = 'pdf.png';
+        break;
+      }
+
+    
+    $build['documents'] = [
+      '#theme' => 'civicrm_phenix_cfonb_custom_last_doc',
+      '#cache' => ['max-age' => 0],
+      '#content' => [
+        'pic' => $image_path,
+        'data' => $all_documents,
+        'first_element' => $get_first_element,
+        'first_title' => $first_title,
+        'file_type' => $file_type,
+        'file_size' => $file_size_readable/* $file_size */,
+        'date_doc' => $date_doc,
+        'first_element_id' => $first_element_id,
+        'first_element_title' => $first_title,
+        'display_see_other_doc' => $display_see_other_doc,
+        'is_page_last_doc' => true,
+        'can_edit_doc' => true,//$allowToEdit,
+        // 'second_document_data' => $secondDataDoc
+      ]
+    ];
+
+
+
+
+    $build['download_all_doc']['#markup'] = $total_docs > 1 ? '<br>
+    
+    <a data-total-docs="'.$total_docs.'" href="/media_download_all/civicrm_event/' . $event_id . '/field_documents" class="media-download-all">Télécharger tous les fichiers (zip)aaaaaa</a>' : '';
+    //custom title display
+    $build['start_date']['#prefix'] = ucfirst($title) . '<br>';
+  }
 }
  
 
@@ -215,6 +539,70 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
   if ($entity->getEntityTypeId() === 'civicrm_group' and $view_mode === 'full') {
     //unset($build['#civicrm_group']->getFieldDefinitions()['field_documents_groupe']); 
     $build['#attributes']['class'][] = 'group-detail-page';
+  }
+
+
+  if ($entity->getEntityTypeId() === 'civicrm_event') {
+    // Modify the node view for the 'full' view mode.
+    if ($view_mode === 'full') {
+      $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+      // Add a custom field to the entity view.
+      unset($build['max_participants']);
+      
+      // Get the current user object.
+      $current_user = \Drupal::currentUser();
+      // Check if the user is authenticated (logged in).
+      if ($current_user->isAuthenticated()) {
+        // Get the email address of the current user.
+        $email = $current_user->getEmail();
+        // You can now use $email for further processing.
+        $cid = $custom_service->getContactIdByEmail($email);
+        $event_id = \Drupal::request()->attributes->get('civicrm_event')->get('id')->getValue()[0]['value'];
+        $participant_id = \Civi\Api4\Participant::get(FALSE)
+        ->addSelect('id')
+        ->addWhere('contact_id', '=', $cid)
+        ->addWhere('event_id', '=', $event_id)
+        ->execute()->first();
+        $participant_id = isset($participant_id['id']) ? $participant_id['id'] : null;
+        // dump($participant_id, $cid, $event_id);
+        $build['title'][0]['#prefix'] = '<div class="title-detail-meeting">';
+        $build['title'][0]['#suffix'] = '</div>';
+        // unset($build['end_date']);
+        // unset($build['start_date']);
+
+        $build['custom_179']['#prefix'] = '<div class=" asheeeeeeeeeeeeee meeting-page"><i class="icon-custom-calendar custom-icon-meeting"></i></div>';
+        $build['description']['#prefix'] = '<div class="meeting-confirm-my-presence">
+        
+        <a href="/civicrm-participant/' . $participant_id . '/edit" class="button js-form-submit form-submit">Je confirme ma présence</a>
+        </div>'
+        ;
+        // $ex = '<a href="#" class="button js-form-submit form-submit">Excuser</a>';
+      }
+    }
+    
+    
+    //Ne pas afficher l'affichage par defaut des documents
+    if (isset($build['_layout_builder'][0]['content'])) {
+      foreach($build['_layout_builder'][0]['content'] as $key_layout => $value_layout){
+        
+        if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'title') {
+          $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#context']['value'] = '';
+        }
+
+        if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'end_date') {
+          $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#text'] = '';
+          $build['_layout_builder'][0]['content'][$key_layout]['content']['#title'] = '';
+        }
+        if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'start_date') {
+          $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#text'] = '';
+          $build['_layout_builder'][0]['content'][$key_layout]['content']['#title'] = '';
+        }
+
+        if (isset($value_layout['#plugin_id']) && strpos($value_layout['#plugin_id'], 'civicrm_event:civicrm_event:field_documents') !== false) {
+          unset($build['_layout_builder'][0]['content'][$key_layout]);
+        }
+      }
+    }
   }
 
 }

@@ -49,6 +49,21 @@ class CustomService {
     $this->configFactory = $configFactory;
   }
 
+  public function convertTimesptamToDate($timestamp) {
+    $format = 'd.m.y';
+    // Create a new DrupalDateTime object using the timestamp.
+    $date = DrupalDateTime::createFromTimestamp($timestamp);
+
+    // Format the date using the desired format.
+    $formatted_date = $date->format($format);
+    return $formatted_date;
+  }
+
+  public function getFileSize($file_object) {
+    $first_doc_file_url = $this->getNodeFieldValue($file_object, 'uri');
+    $first_doc_file_size = filesize($first_doc_file_url);
+    return round($first_doc_file_size / 1024, 0);
+  }
   
   private function newDateTime() {
     return new \DateTime();
@@ -123,6 +138,20 @@ public function getNodeFieldValue ($node, $field) {
   return $value;
 }
 
+public function getContactIdByEmail ($email) {
+  $db = \Drupal::database();
+  if ($email) {
+    return $db->query("select contact_id from civicrm_email where email = '" . $email . "'")->fetch()->contact_id;
+  }
+  return false;
+}
+
+
+public function formatDateTo_Y_m_d ($dateString) {
+  $formatedDate = new \DateTime($dateString);
+  $formatedDate = $formatedDate->format('Y-M-d');
+  return $formatedDate;
+}
 /**
      * Permet de récupérer le jour/mois/année heure:minute
      * @return array()

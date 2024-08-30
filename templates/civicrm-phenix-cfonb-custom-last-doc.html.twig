@@ -1,0 +1,200 @@
+<div class="last-doc-title">
+          
+          <h2 class="main-title-last-doc"><i class="fas fa-file"></i>Documents</h2>
+              </div>
+<div class="medium-12">
+  
+          
+
+
+
+
+    
+    <div class="first-element-doc">
+      <a href="/media/{{ content.first_element_id }}/download" class="custom-icon-first-element first-left-element">
+        <img src="/files/file/{{ content.file_type }}">
+      </a>  
+      <div class="content-frist-doc">
+        <div class="detail-title-resume-first-doc">
+
+          <div class="extrait-resume">
+            <h2 class="title-first-doc">
+              <a href="/media/{{ content.first_element_id }}/download">
+                {{ content.first_element_title }}
+              </a>
+            </h2>
+            {% if (content.resume) %}
+             <div class="content-resume-doc">
+              {{ content.resume|raw }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if content.not_adherent_or_social and not content.first_element  %}
+            {% if content.group_id%}
+              {# <a class="btn-add-meeting" style="width: fit-content" href="/media/add/document?group_id={{ content.group_id }}"><i class="fa fa-plus-circle"></i>Ajouter un document</a> #}
+            {% else %}
+              <a class="btn-add-meeting" style="width: fit-content" href="/media/add/document?term_id={{ content.term_id }}"><i class="fa fa-plus-circle"></i>Ajouter un document</a>
+            {% endif %}
+          {% endif %}
+        </div>
+
+         <div class="detail-date-button-first-doc">
+          <div  class="date-size-first-doc ">
+            <span>{{ content.date_doc }}  | {{ content.file_size }} Ko </span>
+
+              {% if content.filiere %}
+                | <span class="">
+                    {{ content.filiere }} 
+                </span>
+              {% endif %}
+              {% if content.first_type_de_document  is not empty %}
+                | <span class="type-first-doc">
+                    {{ content.first_type_de_document }} 
+                </span>
+              {% endif %}
+              {% if content.can_edit_doc %}
+              <a href="/media/{{ content.first_element_id }}/edit" class="edit-doc-button btn-ask-question-home"> <i class="fas fa-edit"></i>  Modifier</a>
+              {% endif %}
+            </div>
+            <a href="/media/{{ content.first_element_id }}/download" class="media-download-file-first"><i class='icon-custom-download-file'></i>Télécharger le document</a>
+          </div>
+        </div>
+  </div>
+
+    {# SECOND ELEMENT  #}
+
+    {% if content.second_document_data %}
+    <div class="first-element-doc">
+      <a href="/media/{{ content.second_document_data.second_element_id  }}/download" class="custom-icon-first-element right-element-doc">
+        <img src="/files/assets/{{ content.second_document_data.file_type }}">
+      </a>  
+      <div class="content-frist-doc">
+        <div class="detail-title-resume-first-doc">
+
+          <div class="extrait-resume">
+            <h2 class="title-first-doc">
+              <a href="/media/{{ content.second_document_data.second_element_id }}/download">
+                {{ content.second_document_data.title }}
+              </a>
+            </h2>
+            {% if (content.resume) %}
+              <div class="content-resume-doc">
+                {{ content.resume|raw }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if content.not_adherent_or_social and not content.first_element  %}
+            {% if content.group_id%}
+              {# <a class="btn-add-meeting" style="width: fit-content" href="/media/add/document?group_id={{ content.group_id }}"><i class="fa fa-plus-circle"></i>Ajouter un document</a> #}
+            {% else %}
+              <a class="btn-add-meeting" style="width: fit-content" href="/media/add/document?term_id={{ content.term_id }}"><i class="fa fa-plus-circle"></i>Ajouter un document</a>
+            {% endif %}
+          {% endif %}
+        </div>
+
+         <div class="detail-date-button-first-doc">
+          <div  class="date-size-first-doc ">
+            <span>{{ content.second_document_data.date_doc }}  | {{ content.second_document_data.file_size }} Ko </span>
+
+              {% if content.second_document_data.filiere %}
+                | <span class="">
+                    {{ content.second_document_data.filiere }} 
+                </span>
+              {% endif %}
+              {% if content.second_document_data.type_doc  is not empty %}
+                | <span class="type-first-doc">
+                    {{ content.second_document_data.type_doc }} 
+                </span>
+              {% endif %}
+              {% if content.can_edit_doc %}
+              <a href="/media/{{ content.second_document_data.second_element_id }}/edit" class="edit-doc-button btn-ask-question-home"> <i class="fas fa-edit"></i>  Modifier</a>
+              {% endif %}
+            </div>
+            <a href="/media/{{ content.second_document_data.second_element_id }}/download" class="media-download-file-first"><i class='icon-custom-download-file'></i>Télécharger le document</a>
+          </div>
+        </div>
+  </div>
+  {# END SECOND ELEMENT #}
+  {% endif %}
+
+{% if content.second_document_data %}
+  </div> {# closing tag div with class two-elements#}
+{% endif %}
+
+  {% if content.display_see_other_doc %}
+    <div class="line-container-plus">
+      <hr class="hr-line-accoredon"> 
+      <a class="btn-see-other-doc"><i class="fa fa-angle-double-down" aria-hidden="true"></i> Voir les autres documents <i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+      <hr class="hr-line-accoredon">
+    </div>
+  {% endif %}  
+</div>
+
+<div class="max-w-xl mx-auto px-8 py-6 custom-my-account section-others-documents">
+  {% set temp_title = '' %}
+  {% set i = 0 %}
+  {% for title, elm in content.data %}
+    {% if (temp_title != title)%}
+    <div class="title-and-chevron">
+      {% if (i>0) and content.is_page_last_doc %}
+        <hr class="hr-other-doc">
+        <h2 class="main-title"> {{ title }} </h2></div>
+      {% endif %}  
+    {% endif %}
+    {% set id_para = '' %}
+    {% set tmp = '' %}
+    {% for each_data in elm %}
+      {{ each_data['current_paragraph_accroche'] | raw }}
+      {{ each_data['current_paragraph_contenu'] | raw }}
+        {% set id_para = each_data['paragraph_id'] %}
+      <div class="section-document custom-section-doc">
+        <a href="/media/{{ each_data['media_id'] }}/download" class="custom-icon-document each-img-link">
+          <img class="" src="/files/file/{{ each_data['fileType'] }}">
+        </a>
+        <div class="description-with-date-size">
+          <a href="/media/{{ each_data['media_id'] }}/download" class="each-img-link">
+            <span class="description">{{ each_data['description'] }}</span>
+          </a>
+          <div class="date-and-size">
+            <span class="date-creation">{{ each_data['created_at'] }}  <span>
+              {% if each_data['size'] %}
+                <span class="file-size">| {{ each_data['size'] }} Ko<span> 
+              {% endif %}
+
+              {% if each_data['filiere'] %}
+                | <span class="type-doc">{{ each_data['filiere'] }}<span>
+              {% endif %}
+              {% if each_data['type_document'] %}
+                | <span class="type-doc">{{ each_data['type_document'] }}<span>
+              {% endif %}
+
+              {% if content.can_edit_doc %}
+                <a href="/media/{{ each_data['media_id'] }}/edit" class="edit-doc-button btn-ask-question-home dernierdoc">  <i class="fas fa-edit"></i> Modifier</a>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% if (tmp != id_para)%}
+      <div class="btn-download-files">
+        <a href="/media_download_all/paragraph/{{ id_para }}/field_document" class="media-download-all">Télécharger les fichiers <i class="fa fa-file-archive" aria-hidden="true"></i></a>
+      </div>
+    {% endif %} 
+    {% set tmp = id_para %}
+    {% set temp_title = title %}
+    {% set i = i + 1 %}
+  {% endfor %}
+  
+  {% if content.event_id %}
+    <a href="/media_download_all/civicrm_event/{{content.event_id}}/field_documents" class="media-download-all downloda-all-event-doc">Télécharger tous les fichiers (zip)</a>
+  {% endif %}
+  <div class="line-container-moins">
+
+    <hr class="hr-line-accoredon"> 
+    <a class="btn-dismiss-other-doc"><i class="fa fa-angle-double-up" aria-hidden="true"></i> Masquer la liste des documents <i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+    <hr class="hr-line-accoredon">
+  </div>
+
+</div>
