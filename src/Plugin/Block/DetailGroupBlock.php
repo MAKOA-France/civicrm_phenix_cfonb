@@ -24,6 +24,15 @@ class DetailGroupBlock  extends BlockBase  {
 
 
 
+  private function truncateByWords($text, $wordLimit = 50) {
+    $words = explode(' ', $text);
+    if (count($words) > $wordLimit) {
+        $words = array_slice($words, 0, $wordLimit);
+        $text = implode(' ', $words) . '...';
+    }
+    return $text;
+}
+
   /**
    * {@inheritdoc}
    */
@@ -43,7 +52,7 @@ class DetailGroupBlock  extends BlockBase  {
     $defaultTitle = $this->getGroupName($group_id)['title'];
     $data['group_name'] = $publicTitle ? $publicTitle : $defaultTitle;
     $description = $this->getGroupName($group_id)['frontend_description'];
-    $data['group_presentation'] = $description ? $description : '';
+    $data['group_presentation'] = $description ? $this->truncateByWords($description) : '';
 
     // $allDocuments = $this->getAllDocuments ($group_id);
     

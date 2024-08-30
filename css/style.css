@@ -49,6 +49,17 @@
     width: 100%;
     max-width: 100%;
 }
+.section-civicrm-event .layout__region .views-element-container.contextual-region.block-views h2:before {
+    content: '\e81a';
+    position: relative;
+    font-family: "custom-icon-cv" !important;
+    font-style: normal;
+    font-weight: 400 !important;
+}
+.last-doc-title i.fas.fa-file {
+    margin-right: 1rem;
+    padding-right: 5px;
+}
 .section-civicrm-event .layout__region .views-element-container.contextual-region.block-views h2 {
     border-bottom: initial;
     text-align: initial;

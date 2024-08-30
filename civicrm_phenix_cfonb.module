@@ -390,8 +390,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 
     // dump($all_documents);
 
-    //TODO ADD CONDITOIN IF ALLDOC n'EST PAS VIDE recuperer le doc et mettre comme le CV dernier dOC   le #theme c'est phenix_custom_block_custom_last_doc peut etre
-
     $get_first_element = reset($all_documents);
     $first_title = array_keys($all_documents)[0];
     $first_element_id = $get_first_element[0]['media_id'];
@@ -493,6 +491,11 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     //custom title display
     $build['start_date']['#prefix'] = ucfirst($title) . '<br>';
   }
+
+  if ($build['#entity_type'] == 'civicrm_group') {
+    // dump($build);
+  }
+
 }
  
 
@@ -539,6 +542,34 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
   if ($entity->getEntityTypeId() === 'civicrm_group' and $view_mode === 'full') {
     //unset($build['#civicrm_group']->getFieldDefinitions()['field_documents_groupe']); 
     $build['#attributes']['class'][] = 'group-detail-page';
+
+
+
+
+    if (isset($build['_layout_builder'][0]['content'])) {
+      foreach($build['_layout_builder'][0]['content'] as $key_layout => $value_layout){
+        // dump($value_layout);
+        // if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'title') {
+        //   $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#context']['value'] = '';
+        // }
+
+        if (isset($value_layout['content']['#field_name']) && $value_layout['content']['#field_name'] == 'frontend_description') {
+          $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#context'] = [];
+          // $build['_layout_builder'][0]['content'][$key_layout]['content']['#title'] = '';
+        }
+        // if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'start_date') {
+        //   $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#text'] = '';
+        //   $build['_layout_builder'][0]['content'][$key_layout]['content']['#title'] = '';
+        // }
+
+        // if (isset($value_layout['#plugin_id']) && strpos($value_layout['#plugin_id'], 'civicrm_event:civicrm_event:field_documents') !== false) {
+        //   unset($build['_layout_builder'][0]['content'][$key_layout]);
+        // }
+      }
+    }
+
+
+
   }
 
 
@@ -571,20 +602,21 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
         // unset($build['start_date']);
 
         $build['custom_179']['#prefix'] = '<div class=" asheeeeeeeeeeeeee meeting-page"><i class="icon-custom-calendar custom-icon-meeting"></i></div>';
-        $build['description']['#prefix'] = '<div class="meeting-confirm-my-presence">
+        /* $build['description']['#prefix'] = '<div class="meeting-confirm-my-presence">
         
         <a href="/civicrm-participant/' . $participant_id . '/edit" class="button js-form-submit form-submit">Je confirme ma présence</a>
         </div>'
-        ;
+        ; */
         // $ex = '<a href="#" class="button js-form-submit form-submit">Excuser</a>';
       }
     }
     
     
     //Ne pas afficher l'affichage par defaut des documents
+    // $build['_layout_builder'][1]['#settings']['#id'] = 'nouveau-test-partici';
+    // dump($build['_layout_builder'][1]);
     if (isset($build['_layout_builder'][0]['content'])) {
       foreach($build['_layout_builder'][0]['content'] as $key_layout => $value_layout){
-        
         if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'title') {
           $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#context']['value'] = '';
         }
