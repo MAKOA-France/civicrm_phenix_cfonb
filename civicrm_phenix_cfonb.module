@@ -55,7 +55,7 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $user_roles = $current_user->getRoles();
   if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
     if ($field->field == 'rendered_item') {
-      // dump($row);
+      // ($row);
     }
   }
 
@@ -219,19 +219,19 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
       ->addWhere('id', '=', $idgroup)
       ->execute()->first()['title'];
     $title = '<div class="intitule-event">' . $intitule . '</div><h2 class="intitule-h2">' . $title  . '</h2>';
-    // dump($build);
+    // ($build);
     //Get start/end date values
     $start_date = getFieldValue('start_date', $entity);
     $end_date = getFieldValue('end_date', $entity);
     //adding class to date
     $build['end_date']['#attributes']['class'][] = 'date-end-event  test-classssss';
     $build['start_date']['#attributes']['class'][] = 'date-start-event  test-classssss';
-    // dump($build);
+    // ($build);
 
     $current_path = \Drupal::service('path.current')->getPath();
     
     $db = \Drupal::database();
-    // dump($build);
+    // ($build);
     $all_dates = $db->query('select title, start_date, end_date from civicrm_event where id = ' . $entity->id())->fetch();
     $get_end_date = $all_dates->end_date;
     $get_start_date = $all_dates->start_date;
@@ -253,7 +253,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     
 
     if ($formated_Y_m_d_start_date === $formated_Y_m_d_end_date) { //if event started and end at the same day
-      $end_date_val = $build['end_date'][0]['#context'];
+      $end_date_val = isset($build['end_date'][0]['#context']) ?  $build['end_date'][0]['#context'] : '';
       $formated_end_date = new \DateTime($get_end_date);
       $formated_end_date = $formated_end_date->format('H:i');
       $formated_date_start = $formated_start_date->format('Y-m-d H:i');
@@ -388,10 +388,11 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
       }
     }
 
-    // dump($all_documents);
+     if (!empty($all_documents)) {
+
 
     $get_first_element = reset($all_documents);
-    $first_title = array_keys($all_documents)[0];
+    $first_title = isset(array_keys($all_documents)[0]) ? array_keys($all_documents)[0] : '';
     $first_element_id = $get_first_element[0]['media_id'];
     $media = Drupal\media\Entity\Media::load($first_element_id);
     $file_type = 'application/pdf';//default
@@ -482,7 +483,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
       ]
     ];
 
-
+  }
 
 
     $build['download_all_doc']['#markup'] = $total_docs > 1 ? '<br>
@@ -493,7 +494,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
   }
 
   if ($build['#entity_type'] == 'civicrm_group') {
-    // dump($build);
+    // ($build);
   }
 
 }
@@ -548,7 +549,7 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
 
     if (isset($build['_layout_builder'][0]['content'])) {
       foreach($build['_layout_builder'][0]['content'] as $key_layout => $value_layout){
-        // dump($value_layout);
+        // ($value_layout);
         // if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'title') {
         //   $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#context']['value'] = '';
         // }
@@ -595,7 +596,7 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
         ->addWhere('event_id', '=', $event_id)
         ->execute()->first();
         $participant_id = isset($participant_id['id']) ? $participant_id['id'] : null;
-        // dump($participant_id, $cid, $event_id);
+        // ($participant_id, $cid, $event_id);
         $build['title'][0]['#prefix'] = '<div class="title-detail-meeting">';
         $build['title'][0]['#suffix'] = '</div>';
         // unset($build['end_date']);
@@ -614,9 +615,12 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
     
     //Ne pas afficher l'affichage par defaut des documents
     // $build['_layout_builder'][1]['#settings']['#id'] = 'nouveau-test-partici';
-    // dump($build['_layout_builder'][1]);
+    // ($build['_layout_builder'][1]);
     if (isset($build['_layout_builder'][0]['content'])) {
       foreach($build['_layout_builder'][0]['content'] as $key_layout => $value_layout){
+        if (!isset($build['_layout_builder'][0]['content'][$key_layout]['content'])) {
+          continue;
+        }
         if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'title') {
           $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#context']['value'] = '';
         }
