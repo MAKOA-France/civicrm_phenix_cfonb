@@ -1,7 +1,7 @@
 name: 'Cfonb phenix custom module'
 type: module
 description: 'for cfonb '
-core_version_requirement: '^8 || ^9'
+core_version_requirement: ^8 || ^9 || ^10
 package: 'Custom'
 dependencies:
   - drupal:views

@@ -93,6 +93,8 @@
     text-align: center;
     font-family: "new-order", sans-serif !important;
     padding: 15px 0 0;
+    position: relative;
+    z-index: 55;
 }
 .line-container-plus a.btn-see-other-doc, .line-container-moins a.btn-dismiss-other-doc {
     white-space: nowrap;
@@ -134,7 +136,10 @@
     background-color: #fff;
     pointer-events: none;
 }
-.section-civicrm-group .communication .block-blockdetailcommission--2 .icon-group {
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active {
+    color: white !important;
+}
+.section-civicrm-group .communication .block-blockdetailcommission--2 .icon-group, .section-civicrm-group .communication .block-b-zf-blockdetailcommission--2 .icon-group {
     width: 130px;
     height: 130px;
     background-color: #3e7269;
@@ -145,7 +150,7 @@
     justify-content: center;
     align-items: center;
 }
-.section-civicrm-group .communication .block-blockdetailcommission--2 .icon-group i {
+.section-civicrm-group .communication .block-blockdetailcommission--2 .icon-group i, .section-civicrm-group .communication .block-b-zf-blockdetailcommission--2  .icon-group i {
     font-size: 3rem;
     color: #FFF;
 }

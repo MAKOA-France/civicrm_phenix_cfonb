@@ -10,6 +10,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\file\Entity\File;
 use Drupal\Component\Utility\Unicode;
+use IntlDateFormatter;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 use \Drupal\Component\Utility\UrlHelper;
@@ -167,7 +168,20 @@ public function formatDateTo_Y_m_d ($dateString) {
       $month = $dateTime->format('m');
       // Obtient le mois en français
       setlocale(LC_TIME, 'fr_FR.utf8');
-      $month = strftime('%B', $dateTime->getTimestamp());
+      // $month = strftime('%B', $dateTime->getTimestamp());
+
+
+      $dateTime = new \DateTime(); // Your DateTime object here
+
+      // Create an IntlDateFormatter instance
+      $formatter = new IntlDateFormatter(
+          'fr_FR', // Locale for French; adjust as needed
+          IntlDateFormatter::LONG, // Style of date formatting
+          IntlDateFormatter::NONE // No need for time formatting
+      );
+
+      // Format the month
+      $month = $formatter->format($dateTime->getTimestamp());
 
       // Get the year
       $year = $dateTime->format('Y');

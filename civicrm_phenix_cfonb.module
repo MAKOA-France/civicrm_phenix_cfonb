@@ -220,12 +220,13 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     hideLabelOfValueField($build, 'end_date');
     // hideLabelOfValueField($build, 'custom_179');
 
-    
-    $idgroup = getNodeFieldValue($entity, 'custom_179');
-    $intitule = \Civi\Api4\Group::get(FALSE)
+    if ($entity->hasField('custom_179')) {
+      $idgroup = getNodeFieldValue($entity, 'custom_179');
+      $intitule = \Civi\Api4\Group::get(FALSE)
       ->addSelect('title')
       ->addWhere('id', '=', $idgroup)
       ->execute()->first()['title'];
+    }
     $title = '<div class="intitule-event">' . $intitule . '</div><h2 class="intitule-h2">' . $title  . '</h2>';
     // ($build);
     //Get start/end date values
@@ -334,7 +335,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
           $sizz = $civi_service->getFileSize($file);
 
           $created_at = $civi_service->convertTimesptamToDate($civi_service->getNodeFieldValue($media, 'created'));
-          
 
           switch($mimetype) {
             case 'application/pdf':
@@ -354,6 +354,9 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
               break;
             case 'application/vnd.ms-excel':
               $file_type = 'pdf.png';
+              break;
+            case 'application/zip':
+              $file_type = 'zip-file.png';
               break;
             }
 
@@ -629,15 +632,15 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
         if (!isset($build['_layout_builder'][0]['content'][$key_layout]['content'])) {
           continue;
         }
-        if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'title') {
+        if (isset($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name']) && $build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'title') {
           $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#context']['value'] = '';
         }
 
-        if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'end_date') {
+        if (isset($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name']) && $build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'end_date') {
           $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#text'] = '';
           $build['_layout_builder'][0]['content'][$key_layout]['content']['#title'] = '';
         }
-        if ($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'start_date') {
+        if (isset($build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name']) && $build['_layout_builder'][0]['content'][$key_layout]['content']['#field_name'] == 'start_date') {
           $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#text'] = '';
           $build['_layout_builder'][0]['content'][$key_layout]['content']['#title'] = '';
         }
@@ -657,14 +660,15 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
 function civicrm_phenix_cfonb_preprocess_block(&$variables) {
   // Check if the block is a specific block you want to alter.
   // For example, if you want to target a block with a specific machine name:
-  if ($variables['content']['#bundle'] == 'civicrm_group' && $variables['plugin_id'] == 'field_block:civicrm_group:civicrm_group:title') {
+  if (isset($variables['content'][0]['#bundle']) && $variables['content'][0]['#bundle'] == 'civicrm_group' && $variables['plugin_id'] == 'field_block:civicrm_group:civicrm_group:title') {
     $current_group_id = \Drupal::request()->get('civicrm_group')->get('id')->getValue()[0]['value'];
     $btn_add_meet = '<a class="btn-add-meeting" href="/civicrm-event/add?group_id=' . $current_group_id . '"><i class="fa fa-plus-circle"></i>Ajouter une réunion</a>';
     if (isAdherent()) {
       $btn_add_meet = '';
     }
     
-      $variables['content'][0]['#context']['value'] = Drupal\Core\Render\Markup::create('<div class="meeting-head"><span class="meetings"><i class="icon-custom-calendar"></i>Réunions</span> ' . $btn_add_meet . '');
+    // dump($variables['content']);
+      $variables['content'][0][0]['#context']['value'] = Drupal\Core\Render\Markup::create('<div class="meeting-head"><span class="meetings"><i class="icon-custom-calendar"></i>Réunions</span> ' . $btn_add_meet . '');
       $variables['attributes']['class'][] = 'bloc-head-meetings-in-theme '. json_encode(\Drupal::currentUser()->getRoles());
 
   }
