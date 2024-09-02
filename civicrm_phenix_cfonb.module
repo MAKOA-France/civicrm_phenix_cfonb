@@ -193,7 +193,7 @@ function hideLabelOfValueField (&$build, $fieldName) {
  */
 function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
 /* Formattage page civicrm-event */
-  if ($build['#entity_type'] == 'civicrm_event') {
+  if (isset($build['#entity_type']) && $build['#entity_type'] == 'civicrm_event') {
     $civi_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
     //hide these fields
     unset($build['fee_label']);
@@ -504,9 +504,9 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $build['start_date']['#prefix'] = ucfirst($title) . '<br>';
   }
 
-  if ($build['#entity_type'] == 'civicrm_group') {
-    // ($build);
-  }
+  // if ($build['#entity_type'] == 'civicrm_group') {
+  //   // ($build);
+  // }
 
 }
  
