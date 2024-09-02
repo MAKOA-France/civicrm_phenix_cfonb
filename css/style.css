@@ -290,6 +290,9 @@ a.btn-add-meeting {
     justify-content: center;
     align-items: center;
 }
+.group-presentation-description {
+    z-index: 2;
+}
 .section-civicrm-group .meeting-head {
     display: flex;
     align-items: center;
