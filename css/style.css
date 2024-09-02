@@ -277,6 +277,28 @@
 .section-civicrm-group .item-list ul li > div > span > a {
     display: none;
 }
+a.btn-add-meeting {
+    text-transform: uppercase;
+    font-size: .75rem;
+    color: #af1f7b;
+    padding: 10px 15px;
+    font-weight: 600;
+    background-color: #f7f5f3;
+    border-radius: 20px 0;
+    line-height: initial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section-civicrm-group .meeting-head {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.section-civicrm-group .btn-add-meeting i {
+    margin-right: 1rem;
+    font-size: 20px;
+}
 .section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after, .section-civicrm-event #main .asheeeeeeeeeeeeee.meeting-page:after {
     content: "";
     background: url(/files/after-sestion-details-commission.png) no-repeat right bottom;
@@ -286,6 +308,14 @@
     height: 130px;
     position: absolute;
     background-size: contain;
+}
+
+.section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
+    margin-top: 20px;
+}
+
+.section-civicrm-event #main .asheeeeeeeeeeeeee.meeting-page:after {
+    top: 158px;
 }
 #block-blockmescommissions .all-group-who-s-mine .each-group p, .block-blockdetailcommission--2 .detail-group-title .group-info .group-members {
     color: #707070;
@@ -464,4 +494,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.section-civicrm-group .title-meet-commission a:before {
+    display: none !important;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) { 
+    .section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after {
+        display: none;
+    }
+
+    .section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
+        background-color: #f7f5f3;
+        border-radius: 50px 0;
+        padding: 40px 0px;
+        margin: 0;
+        gap: 0;
+        flex-wrap: nowrap;
+        flex-direction: column-reverse;
+    }
+    .section-civicrm-group .views-send-selection-form form{
+        overflow: auto;
+    }
+    .section-civicrm-group .civicrm-entity--view-mode-full .layout--twocol-section .layout__region {
+        border-bottom: 1px solid rgba(217, 32, 38, .0);
+        margin: 3rem 0 1rem;
+        padding: 0;
+    }
+    .section-civicrm-group .civicrm-entity .layout__region .block-views .contextual-region ul li {
+        margin-left: 0;
+    }
+
+    .section-civicrm-group .layout--twocol-section .layout__region.layout__region--first {
+        padding-left : 0;
+    }
 }
