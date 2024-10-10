@@ -1,0 +1,43 @@
+ <div class="container-c-nav">
+        <nav class="sidebar-c-nav">
+            <ul>
+                <li class="menu-c-nav-item" data-text="Ceci est le texte pour l'élément 1"  data-target="content1">
+                    <i class="fas fa-calendar"></i>
+                </li>
+                <li class="menu-c-nav-item" data-text="Ceci est le texte pour l'élément 2"  data-target="content2">
+                    <i class="fas fa-user-friends"></i> 
+                </li>
+                <li class="menu-c-nav-item" data-text="Ceci est le texte pour l'élément 3"  data-target="content3">
+                    <i class="fas fa-file-alt"></i>
+                </li>
+            </ul>
+        </nav>
+        <div class="content-c-nav">
+            <div class="text-bloc-c-nav" id="text-block">
+                <div id="content1" class="dynamic-content" style="display: none;">
+                    <div class="all-meetings">
+                    {% for key, elm in content.meet %}
+                        <div class="each-meet-c">
+                            <div class="icon-meet">
+                                <i class="far fa-calendar"></i>
+                            </div>
+                            <div class="meeting-title-and-date">
+                                <a href="/civicrm-event/{{ elm.id }}"><h3>{{ elm.event_title |capitalize }}</h3></a>
+                                <div class="date-meet">
+                                    <p>{{ elm.formated_date }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <a href="/toutes-mes-reunions" class="btn button all-meeting">Toutes mes réunions</a>
+                    </div>
+                </div>
+                <div id="content2" class="dynamic-content" style="display: none;">
+                    <p>Contenu de la liste des  groupes.</p>
+                </div>
+                <div id="content3" class="dynamic-content" style="display: none;">
+                    <p>Toutes les communications</p>
+                </div>
+            </div>
+        </div>
+    </div>

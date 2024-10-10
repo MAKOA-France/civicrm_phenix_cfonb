@@ -50,6 +50,143 @@ class CustomService {
     $this->configFactory = $configFactory;
   }
 
+  private function getAllEventId () {
+    $query = "SELECT
+      Event.start_date AS event_start_date,
+      civicrm_contact.id AS id,
+      Event.id AS event_id, 
+      Event.title as event_title
+    FROM
+      civicrm_contact
+    INNER JOIN civicrm_event AS Event ON civicrm_contact.id = Event.created_id
+    WHERE
+    DATE_FORMAT(
+            (Event.start_date  + INTERVAL 7200 SECOND),
+            '%Y-%m-%dT%H:%i:%s'
+        ) >= DATE_FORMAT(
+            (NOW() + INTERVAL 7200 SECOND),
+            '%Y-%m-%dT%H:%i:%s'
+        )
+      -- (DATE_FORMAT((Event.start_date + INTERVAL 7200 SECOND), '%Y-%m-%dT%H:%i:%s') >= DATE_FORMAT((NOW() + INTERVAL 7200 SECOND), '%Y-%m-%dT%H:%i:%s'))
+      AND
+       (Event.is_active = '1')
+    ";
+
+      $results =  \Drupal::database()->query($query)->fetchAll();
+      return $results;
+  } 
+
+
+ 
+  private function checkIfContactIsInsideAGroup ($cid) {
+
+    $allEvent = $this->getAllEventId();
+    $contactInsideAgroup = [];
+    foreach($allEvent as $event) {
+      $event_id = $event->event_id;
+      if ($event_id) {
+
+        $events = \Civi\Api4\Event::get(false)
+        ->addSelect('rsvpevent_cg_linked_groups.rsvpevent_cf_linked_groups')
+        ->addWhere('id', '=', $event_id)
+        ->execute();
+        if ($events) {
+          
+          $eventGroupId = $events->getIterator();
+          $eventGroupId = iterator_to_array($eventGroupId);  
+          $current_user = \Drupal::currentUser();
+          $user_roles = $current_user->getRoles();
+          foreach ($eventGroupId as $group_id) {
+            if ($group_id['rsvpevent_cg_linked_groups.rsvpevent_cf_linked_groups']) {
+
+              $allContactId = \Civi\Api4\GroupContact::get(FALSE)
+              ->addSelect('contact_id')
+              ->addWhere('group_id', '=', $group_id['rsvpevent_cg_linked_groups.rsvpevent_cf_linked_groups'][0])
+              ->execute()->getIterator();
+              $allContactId = iterator_to_array($allContactId);  
+              $allContactId = array_column($allContactId, 'contact_id');
+              
+              $authorizedToSeeAllmeet = in_array($cid, $allContactId);
+              if (in_array('administrator', $user_roles) || in_array('super_utilisateur', $user_roles) || in_array('permanent', $user_roles)) {
+                $authorizedToSeeAllmeet = true;
+              }
+              
+              $contactInsideAgroup[$event_id] = $authorizedToSeeAllmeet;
+            }
+          }
+
+
+          
+          
+        }
+      }
+    }
+
+    return $contactInsideAgroup;
+  }
+
+
+  public function getAllMeetings ($cid) {
+    /* $query = "SELECT
+    Event.start_date AS event_start_date,
+    civicrm_contact.id AS id,
+    Event.id AS event_id, Event.title as event_title
+  FROM
+    civicrm_contact
+  INNER JOIN civicrm_event AS Event ON civicrm_contact.id = Event.created_id
+  WHERE
+    (DATE_FORMAT((Event.start_date + INTERVAL 7200 SECOND), '%Y-%m-%dT%H:%i:%s') >= DATE_FORMAT(('2023-07-18T22:00:00' + INTERVAL 7200 SECOND), '%Y-%m-%dT%H:%i:%s'))
+    AND (Event.is_active = '1') AND civicrm_contact.id = $cid limit 3
+  ";
+  $results =  \Drupal::database()->query($query)->fetchAll();
+
+  return $results; */
+
+  $isAllowedMeeting = $this->checkIfContactIsInsideAGroup($cid);
+    
+    // Use the ArrayFilter class to remove false values
+    $isAllowedMeeting = $this->removeFalseValues($isAllowedMeeting);
+    $isAllowedMeeting = array_keys($isAllowedMeeting);
+    if ($isAllowedMeeting) {
+      $isAllowedMeeting = implode(', ', $isAllowedMeeting);
+      
+      $query = "SELECT
+    `created_id_civicrm_contact`.`start_date` AS `event_start_date`,
+    `created_id_civicrm_contact`.`title`  as event_title,
+    `civicrm_contact`.`id` AS `id`,
+    `created_id_civicrm_contact`.`id` AS `created_id_civicrm_contact_id`
+FROM
+    `civicrm_contact`
+INNER JOIN
+    `civicrm_event` AS `created_id_civicrm_contact` ON `civicrm_contact`.`id` = `created_id_civicrm_contact`.`created_id`
+WHERE
+    (
+        DATE_FORMAT(
+            (`created_id_civicrm_contact`.`start_date` + INTERVAL 7200 SECOND),
+            '%Y-%m-%dT%H:%i:%s'
+        ) >= DATE_FORMAT(
+            (NOW() + INTERVAL 7200 SECOND),
+            '%Y-%m-%dT%H:%i:%s'
+        )
+    )
+    AND
+    (`created_id_civicrm_contact`.`is_active` = '1')  AND `created_id_civicrm_contact`.`id` IN (" . $isAllowedMeeting . ")   ORDER BY
+    `event_start_date` ASC limit 3;
+";
+    $results =  \Drupal::database()->query($query)->fetchAll();
+    
+  }
+   
+    return $results;
+}
+
+  
+public function removeFalseValues($array) {
+  return array_filter($array, function ($value) {
+      return $value !== false;
+  });
+}
+
   public function convertTimesptamToDate($timestamp) {
     $format = 'd.m.y';
     // Create a new DrupalDateTime object using the timestamp.
@@ -160,16 +297,21 @@ public function formatDateTo_Y_m_d ($dateString) {
     public function formatDateWithMonthInLetterAndHours ($start_date) {
       // Create a DateTime object from the date string
       $dateTime = new \DateTime($start_date);
-  
+      
       // Get the day
       $day = $dateTime->format('d');
-
+      
       // Get the month
       $month = $dateTime->format('m');
-      // Obtient le mois en français
+      $months = $dateTime->format('m');
+      $jour = $dateTime->format('D');
       setlocale(LC_TIME, 'fr_FR.utf8');
+      // Obtient le mois en français
       // $month = strftime('%B', $dateTime->getTimestamp());
 
+      $day_abbreviation = strftime('%a', $dateTime->getTimestamp());
+      $day_abbreviation = str_replace('.', '', $day_abbreviation);
+      $day_abbreviation = ucfirst($day_abbreviation);
 
       $dateTime = new \DateTime(); // Your DateTime object here
 
@@ -195,9 +337,11 @@ public function formatDateTo_Y_m_d ($dateString) {
       return [
           'day' => $day, 
           'month' => $month, 
+          'num_month' => $months, 
           'year' => $year,
           'hour' => $hour,
-          'minute' => $minute
+          'minute' => $minute,
+          'jour' => $day_abbreviation
       ];
   }
 

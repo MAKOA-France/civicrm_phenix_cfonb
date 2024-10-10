@@ -1,8 +1,8 @@
-<div class="last-doc-title">
+<div class="last-doc-title {{ content.page_detail_group }} ">
           
           <h2 class="main-title-last-doc"><i class="fas fa-file"></i>Documents</h2>
               </div>
-<div class="medium-12">
+<div class="medium-12  {{ content.page_detail_group }}">
   
           
 
@@ -10,7 +10,7 @@
 
 
     
-    <div class="first-element-doc">
+    <div class="first-element-doc ">
       <a href="/media/{{ content.first_element_id }}/download" class="custom-icon-first-element first-left-element">
         <img src="/files/file/{{ content.file_type }}">
       </a>  
@@ -132,7 +132,7 @@
   {% endif %}  
 </div>
 
-<div class="max-w-xl mx-auto px-8 py-6 custom-my-account section-others-documents">
+<div class="max-w-xl mx-auto px-8 py-6 custom-my-account section-others-documents  {{ content.page_detail_group }}">
   {% set temp_title = '' %}
   {% set i = 0 %}
   {% for title, elm in content.data %}

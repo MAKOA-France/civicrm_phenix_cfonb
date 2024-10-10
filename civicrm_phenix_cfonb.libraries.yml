@@ -1,5 +1,5 @@
 civicrm_phenix_cfonb:
-  version: 2.2
+  version: 2.3
   css:
     component:
       css/style.css: {}

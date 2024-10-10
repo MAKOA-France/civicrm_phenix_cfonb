@@ -5,6 +5,7 @@
         <p class="group-members">Membres : {{ content.data.totatl_member }} personnes</p>
     </div>
 
+</div>
 {% if content.data.group_presentation %}
     <p class="group-presentation-title"> </p>
 
@@ -12,5 +13,3 @@
         {{ content.data.group_presentation   | raw  }}
     </p>
 {% endif %}
-
-</div>

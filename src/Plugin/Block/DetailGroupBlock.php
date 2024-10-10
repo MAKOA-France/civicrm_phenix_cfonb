@@ -56,7 +56,9 @@ class DetailGroupBlock  extends BlockBase  {
 
     // $allDocuments = $this->getAllDocuments ($group_id);
     
-    // $allOtherDocs = $this->getAllDocs($group_id);
+    /* $allOtherDocs = $this->getAllDocs($group_id);
+
+    if ($allInfoDocs) {
 
     foreach ($allOtherDocs as $docId) {
       $mediaObject = \Drupal::service('entity_type.manager')->getStorage('media')->load($docId);
@@ -85,7 +87,7 @@ class DetailGroupBlock  extends BlockBase  {
       ]; 
     
     }
-    
+    } */
     
     return [
       '#theme' => 'detail_group',

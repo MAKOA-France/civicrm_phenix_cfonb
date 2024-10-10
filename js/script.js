@@ -26,6 +26,45 @@
                   $('.line-container-plus').show();
               }
             });
+
+            const menuItems = document.querySelectorAll('.menu-c-nav-item');
+const textBlock = document.getElementById('text-block');
+const sidebar = document.querySelector('.container-c-nav');
+
+// Fonction pour afficher le div correspondant à l'élément survolé
+function showContent(targetId) {
+    // Masquer tous les contenus
+    const contents = textBlock.querySelectorAll('.dynamic-content');
+    contents.forEach(content => {
+        content.style.display = 'none';
+    });
+
+    // Afficher le contenu correspondant
+    const targetContent = document.getElementById(targetId);
+    if (targetContent) {
+        targetContent.style.display = 'block';
+    }
+}
+
+// Écouter les événements sur les éléments du menu
+menuItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+        const targetId = item.getAttribute('data-target');
+        showContent(targetId);
+    });
+});
+
+// Cacher le contenu lorsque la souris quitte la barre latérale
+sidebar.addEventListener('mouseleave', () => {
+    const contents = textBlock.querySelectorAll('.dynamic-content');
+    contents.forEach(content => {
+        content.style.display = 'none';
+    });
+});
+
+
+
+
         });
 
       }

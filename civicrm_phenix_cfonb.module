@@ -129,6 +129,14 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
 function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
 {
     return [
+      'nav_group_and_meeting' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'nav-meeting-and-group'
+      ],
       'civicrm_phenix_cfonb_alter_view_detail_commission_reunion' => [
         'variables' => [
         'content' => Null,
@@ -160,6 +168,14 @@ function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
         'render element' => 'children',
         'path' => $path . '/templates',
         'template' => 'civicrm-phenix-cfonb-custom-last-doc'
+      ],
+      'document_group' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'document_group'
       ],
     ];
 }
@@ -504,6 +520,42 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $build['start_date']['#prefix'] = ucfirst($title) . '<br>';
   }
 
+  if (isset($build['#entity_type']) && $build['#entity_type'] == 'civicrm_group') {
+    if (isset($build['_layout_builder'])) {
+
+      foreach ($build['_layout_builder'] as $key => $value) {
+        // dump($build['_layout_builder']);
+        if (isset($value['content'])) {
+          foreach($value['content'] as $k => $v) {
+            if (isset($v['#plugin_id']) && $v['#plugin_id'] == 'field_block:civicrm_group:civicrm_group:field_documents_groupe') {
+
+
+            // Get the block plugin manager service.
+            $block_manager = \Drupal::service('plugin.manager.block');
+
+            // Create a block plugin instance.
+            $block_plugin = $block_manager->createInstance('document_document_group');
+
+            // Get the block's configuration and context.
+            // $block_plugin->setConfiguration([]);
+            // $block_plugin->setContext([]);
+            
+            // Build the block render array.
+            $block_build = $block_plugin->build();
+
+            // Render the block.
+            $renderer = \Drupal::service('renderer');
+            $block_content = $renderer->render($block_build);
+
+              $build['_layout_builder'][$key]['content'][$k]['content'][0] = [ '#theme' =>  'document_group', "#content" => $block_content ];
+            }
+            
+          }
+        }
+      }
+    }
+  }
+
   // if ($build['#entity_type'] == 'civicrm_group') {
   //   // ($build);
   // }
@@ -628,6 +680,7 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
     // $build['_layout_builder'][1]['#settings']['#id'] = 'nouveau-test-partici';
     // ($build['_layout_builder'][1]);
     if (isset($build['_layout_builder'][0]['content'])) {
+      
       foreach($build['_layout_builder'][0]['content'] as $key_layout => $value_layout){
         if (!isset($build['_layout_builder'][0]['content'][$key_layout]['content'])) {
           continue;
@@ -648,6 +701,19 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
         if (isset($value_layout['#plugin_id']) && strpos($value_layout['#plugin_id'], 'civicrm_event:civicrm_event:field_documents') !== false) {
           unset($build['_layout_builder'][0]['content'][$key_layout]);
         }
+
+
+        //ne pas afficher la date
+        if (isset($value_layout['content'][0]['#field_name']) && ($value_layout['content'][0]['#field_name'] == 'title' || $value_layout['content'][0]['#field_name'] == 'start_date' || $value_layout['content'][0]['#field_name'] == 'end_date')){
+          $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#title'] = '';
+          $build['_layout_builder'][0]['content'][$key_layout]['content'][0][0]['#text'] = '';
+          
+          if ($value_layout['content'][0]['#field_name'] == 'title') {
+            $build['_layout_builder'][0]['content'][$key_layout]['content'][0][0]['#context']['value'] = '';
+            // dump($build['_layout_builder'][0]['content'][$key_layout]['content']);
+          }
+        }
+
       }
     }
   }
