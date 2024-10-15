@@ -4,4 +4,7 @@ civicrm_phenix_cfonb:
     component:
       css/style.css: {}
   js:
-    js/script.js: {}    
+    js/script.js: {} 
+
+  dependencies:
+    - core/jquery

@@ -1,10 +1,39 @@
 (function($, Drupal, drupalSettings) {
 
-    Drupal.behaviors.cfonb = {
+    Drupal.behaviors.cfonbContext = {
       attach: function(context, settings) {
 
         $(document).ready(function() {
             // This function is toogle of last document
+
+
+            if (!$('.btn-my-account').length) {
+              $('<button class="btn-my-account" data-toggle="dropdown" data-target="#submenu-my-profil"></button>').insertBefore('[block="block-b-zf-account-menu"]');
+            }
+            
+            
+
+            $(window).on('scroll', function() {
+              var scrollTop = $(window).scrollTop();
+              var elementOffset = $('.group-presentation-description').offset().top;
+      
+              // Check if the element touches the top of the screen
+              if (scrollTop <= elementOffset) {
+                  $('#block-b-zf-navigationmeetingandgroupblock').css('position', 'static');
+                  console.log('relatkiv')
+                  jQuery('.dynamic-content').css('top', '23%');
+                  jQuery('.dynamic-content').css('width', '23%');
+                } else {
+                  $('#block-b-zf-navigationmeetingandgroupblock').css('position', 'fixed');
+                  jQuery('.dynamic-content').css('top', '0');
+                  jQuery('.dynamic-content').css('width', '600%');
+                  console.log('fixed li')
+
+              }
+            });
+
+
+
             
             var layouts = $('.section-civicrm-event article .layout.layout--onecol');
   
@@ -70,3 +99,38 @@ sidebar.addEventListener('mouseleave', () => {
       }
     }
 })(jQuery, Drupal, drupalSettings);    
+
+
+(function($) {
+  Drupal.behaviors.civicrm_phenix_cfonb = {
+      attach: function(context, settings) {
+        console.log('firing')
+        $(window).on('load', function() {
+
+          if (!$('.icon-custom-user-account').length) {
+            jQuery('[href="/user"]').prepend('<i class="icon-custom-user-account"></i>');
+          }
+          if (!$('.icon-custom-logout-accout.cus-cus').length) {
+            jQuery('[data-drupal-link-system-path="user/logout"]').prepend('<i class="icon-custom-logout-accout cus-cus"></i>');
+          }
+          if (!$('.icon-custom-refresh.todiee').length) {
+            jQuery('a[href*="/unmasquerade"]').prepend('<i class="icon-custom-refresh todiee"></i>');
+          }
+
+          jQuery('.custom-element').insertAfter('.btn-my-account');
+
+
+
+          if ($('.btn-my-account').length) {
+            console.log('mIssy')
+            once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
+              element.addEventListener('click', function () {
+                console.log('firing click');
+                $('[block="block-b-zf-account-menu"]').toggle();
+              });
+            });
+          }
+        }) 
+      }
+  }
+})(jQuery)

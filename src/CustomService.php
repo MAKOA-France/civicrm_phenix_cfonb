@@ -14,6 +14,8 @@ use IntlDateFormatter;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 use \Drupal\Component\Utility\UrlHelper;
+use Drupal\node\Entity\Node;
+
 
 /**
  * Class PubliciteService
@@ -76,8 +78,144 @@ class CustomService {
       return $results;
   } 
 
+/**
+   * Permet de recuperer tous mes groupes
+   */
+  public function getAllMyGroup ($cid) {
+    $query = "SELECT
+        civicrm_group_civicrm_group_contact.id AS civicrm_group_civicrm_group_contact_id,
+        civicrm_group_civicrm_group_contact.title AS civicrm_group_civicrm_group_contact_title,
+        civicrm_group_civicrm_group_contact.frontend_title AS civicrm_group_civicrm_group_contact_frontend_title,
+        civicrm_group_civicrm_group_contact.parents AS civicrm_group_civicrm_group_contact_parents,
+        civicrm_group_civicrm_group_contact.name AS civicrm_group_civicrm_group_contact_name,
+        civicrm_group_civicrm_group_contact.group_type AS civicrm_group_civicrm_group_contact_group_type,
+        MIN(civicrm_contact.id) AS id,
+        MIN(users_field_data_civicrm_uf_match.uid) AS users_field_data_civicrm_uf_match_uid,
+        MIN(civicrm_contact_civicrm_uf_match.id) AS civicrm_contact_civicrm_uf_match_id,
+        MIN(civicrm_group_civicrm_group_contact.id) AS civicrm_group_civicrm_group_contact_id_1
+    FROM
+        civicrm_contact
+        LEFT JOIN civicrm_uf_match civicrm_uf_match ON civicrm_contact.id = civicrm_uf_match.contact_id
+        LEFT JOIN users_field_data users_field_data_civicrm_uf_match ON civicrm_uf_match.uf_id = users_field_data_civicrm_uf_match.uid
+        LEFT JOIN civicrm_uf_match users_field_data_civicrm_uf_match__civicrm_uf_match ON users_field_data_civicrm_uf_match.uid = users_field_data_civicrm_uf_match__civicrm_uf_match.uf_id
+        LEFT JOIN civicrm_contact civicrm_contact_civicrm_uf_match ON users_field_data_civicrm_uf_match__civicrm_uf_match.contact_id = civicrm_contact_civicrm_uf_match.id
+        LEFT JOIN civicrm_group_contact civicrm_group_contact ON civicrm_contact.id = civicrm_group_contact.contact_id AND civicrm_group_contact.status = 'Added'
+        LEFT JOIN civicrm_group civicrm_group_civicrm_group_contact ON civicrm_group_contact.group_id = civicrm_group_civicrm_group_contact.id
+    WHERE
+    (civicrm_group_civicrm_group_contact.group_type LIKE '%3%')  AND
+         (civicrm_group_civicrm_group_contact.is_active = '1')
+        AND civicrm_contact.id = $cid
+    GROUP BY
+        civicrm_group_civicrm_group_contact_id,
+        civicrm_group_civicrm_group_contact_title,
+        civicrm_group_civicrm_group_contact_frontend_title,
+        civicrm_group_civicrm_group_contact_parents,
+        civicrm_group_civicrm_group_contact_name,
+        civicrm_group_civicrm_group_contact_group_type
+    ORDER BY
+        civicrm_group_civicrm_group_contact_parents ASC,
+        civicrm_group_civicrm_group_contact_name ASC limit 3
+    "; 
 
+    $results =  \Drupal::database()->query($query)->fetchAll();
+
+    return $results;
+  }
+
+/**
+   * Permet de recuperer tous mes groupes
+   */
+  public function getAllCommunicationId ($cid) {
+    $query = "SELECT `node_field_data`.`nid` AS `nid`
+    FROM
+    `node_field_data`
+    WHERE (`node_field_data`.`status` = '1') 
+      AND (`node_field_data`.`type` IN ('communication'))
+    ORDER BY `node_field_data`.`created` DESC
+    LIMIT 3 OFFSET 0";
+
+
+    $results =  \Drupal::database()->query($query)->fetchCol();
+    
+    return $results;
+  }
+
+  public function getAllinfoCom ($cid) {
+    $nids = $this->getAllCommunicationId($cid);
+    $neededData = [];
+    if ($nids) {
+      foreach ($nids as $nid) {
+        $node = Node::load($nid);
+        $title = $node->label();
+        $dateComplete = $this->getDayMonthLetterYear($node);
+        $dateComplete = $dateComplete['day'] . ' ' . $dateComplete['month'] . ' ' . $dateComplete['year'];
+        $description = $this->getNodeFieldValue($node, 'field_description');
+        $keywords = $this->getKeywords ($node);
+        $neededData[] = [
+          'title' => $title,
+          'dateComplete' => $dateComplete,
+          'description' => $description,
+          'nid' => $nid,
+          'keywords' => $keywords
+        ];
+      }
+    }
+    return $neededData;
+  }
+  
+  /**
+   * 
+   */
+  public function getKeywords(Node $node) {
+    $keywordIds = $node->get('field_mots_cles')->getValue();
+    $allKeywords = '';
+    if ($keywordIds) {
+      $keywordIds = array_column($keywordIds, 'target_id');
+      $keywordIds = Term::loadMultiple($keywordIds);
+      foreach($keywordIds as $keyword) {
+        $allKeywords .= $keyword->label() . ', ';
+      }
+    }
+    $allKeywords = rtrim($allKeywords, ', ');
+
+    return $allKeywords;
+  }
  
+  public function getDayMonthLetterYear($node) {
+    $createdTimestamp = $node->getCreatedTime();
+    $date = new \DateTime();
+    $dateTime = $date->setTimestamp($createdTimestamp);
+        
+
+        // Get the day
+      $day = $dateTime->format('d');
+      
+      // Get the month
+      setlocale(LC_TIME, 'fr_FR.utf8');
+
+      $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
+
+      $dateTime = new \DateTime(); // Your DateTime object here
+
+      // Create an IntlDateFormatter instance
+      $formatter = new IntlDateFormatter(
+          'fr_FR', // Locale for French; adjust as needed
+          IntlDateFormatter::LONG, // Style of date formatting
+          IntlDateFormatter::NONE // No need for time formatting
+      );
+
+      // Format the month
+      $month = $formatter->format($dateTime->getTimestamp());
+
+      // Get the year
+      $year = $dateTime->format('Y');
+      $month_in_letters = strftime('%B', $dateTime->getTimestamp());
+      
+
+      return ['month' => $month_in_letters, 'day' => $day, 'year' => $year ];
+  }
+
+
   private function checkIfContactIsInsideAGroup ($cid) {
 
     $allEvent = $this->getAllEventId();
@@ -309,7 +447,8 @@ public function formatDateTo_Y_m_d ($dateString) {
       // Obtient le mois en français
       // $month = strftime('%B', $dateTime->getTimestamp());
 
-      $day_abbreviation = strftime('%a', $dateTime->getTimestamp());
+      $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
+      $day_abbreviation = $formatter->format($dateTime);
       $day_abbreviation = str_replace('.', '', $day_abbreviation);
       $day_abbreviation = ucfirst($day_abbreviation);
 

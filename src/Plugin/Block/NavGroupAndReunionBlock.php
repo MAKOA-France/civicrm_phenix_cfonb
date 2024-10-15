@@ -81,7 +81,10 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
     $cid = $user_id ? $c_service->getContactIdByEmail($email) : $getId;
     $all_meetings = $c_service->getAllMeetings($cid);
 
-    $all_meetings = $c_service->getAllMeetings($cid);
+    $all_groups = $c_service->getAllMyGroup($cid);
+
+    $all_comm = $c_service->getAllinfoCom($cid);
+
     foreach ($all_meetings as $meet) {
       $formated_date = $c_service->formatDateWithMonthInLetterAndHours ($meet->event_start_date);
       $hour = isset($formated_date['hour']) ? ' | ' . $formated_date['hour'] . ':' . $formated_date['minute'] : '';
@@ -91,13 +94,14 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
     }
     
     // You can now use $this->entityTypeManager for entity operations.
-
     return [
       '#theme' => 'nav_group_and_meeting',
       '#cache' => ['max-age' => 0],
       '#content' => [
         'data' => [], // Assuming you have data to pass here.
-        'meet' => $all_meetings
+        'meet' => $all_meetings,
+        'groupes' => $all_groups,
+        'all_com' => $all_comm
       ],
     ];
   }

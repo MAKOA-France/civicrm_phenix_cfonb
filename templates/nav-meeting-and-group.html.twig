@@ -32,11 +32,43 @@
                     <a href="/toutes-mes-reunions" class="btn button all-meeting">Toutes mes réunions</a>
                     </div>
                 </div>
+
+
                 <div id="content2" class="dynamic-content" style="display: none;">
-                    <p>Contenu de la liste des  groupes.</p>
+                    <div class="all-groupes">
+                    {% for keys, elms in content.groupes %}
+                        <div class="each-group-c">
+                            <div class="icon-group">
+                                <i class="far fa-calendar"></i>
+                            </div>
+                            <div class="group-c-title">
+                                <a href="/civicrm-group/{{ elms.civicrm_group_civicrm_group_contact_id_1 }}"><h3>{{ elms.civicrm_group_civicrm_group_contact_frontend_title |capitalize }}</h3></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <a href="/tous-mes-groupes" class="btn button all-groupes">Tous mes groupes</a>
+                    </div>
                 </div>
+
+
+                
+                
                 <div id="content3" class="dynamic-content" style="display: none;">
-                    <p>Toutes les communications</p>
+                    <div class="b-communication">
+                        {% for keys_com, com in content.all_com %}
+                            <div class="each-title-and-date">
+                                <a href="/node/{{ com.nid }}"><span class="title-com">{{ com.title }}</span></a>
+                                <span class="date-com">{{ com.dateComplete }}</span>
+                            </div>
+                            <div class="c-com-desc">
+                                <p class="p-desc">{{ com.description }}</p>
+                            </div>
+                            <div class="com-keyword">
+                                {{ com.keywords }}
+                            </div>
+                            <hr class="com-hr">
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

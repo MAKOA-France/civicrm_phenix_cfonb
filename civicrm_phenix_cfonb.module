@@ -738,6 +738,57 @@ function civicrm_phenix_cfonb_preprocess_block(&$variables) {
       $variables['attributes']['class'][] = 'bloc-head-meetings-in-theme '. json_encode(\Drupal::currentUser()->getRoles());
 
   }
+
+  if (isset($variables['plugin_id']) && $variables['plugin_id'] == 'system_menu_block:account') {
+
+      // Get the current user.
+      $current_user = \Drupal::currentUser();
+
+      // Get the user ID.
+      $uid = $current_user->id();
+
+      // Get the username.
+      $username = $current_user->getAccountName();
+
+      $variables['elements']['#suffix'] = '<p> bloo </p>';
+      $custom_element = [
+        '#type' => 'html_tag',
+        '#tag' => 'div',
+        '#attributes' => ['class' => ['custom-element']],
+        '#value' => $username,
+      ];
+  
+      // Append the custom element directly to the block's content array.
+      $variables['title_suffix']['custom_element'] = $custom_element;
+
+
+      if (isset($variables['content']['#items'])) {
+        $items = &$variables['content']['#items'];
+    
+        // Get the last item key and check if it's 'masquerade.unmasquerade'.
+        $last_item_key = array_key_last($items);
+        if ($last_item_key && strpos($last_item_key, 'masquerade.unmasquerade') !== false) {
+    
+          // Get the last item (masquerade.unmasquerade).
+          $last_item = $items[$last_item_key];
+    
+          // Remove the last item from the array.
+          unset($items[$last_item_key]);
+    
+          // Convert the array into an indexed array.
+          $items = array_values($items);
+    
+          // Insert the 'masquerade.unmasquerade' item into the second-to-last position.
+          array_splice($items, count($items) - 1, 0, [$last_item]);
+    
+          // Convert the indexed array back to its original structure.
+          $items = array_combine(
+            array_keys($variables['content']['#items']),
+            $items
+          );
+        }
+        }
+  }
 }
 
 function isAdherent () {
