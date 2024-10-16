@@ -5,3 +5,11 @@
 #     _title: 'Tous les marques'
 #   requirements:
 #     _permission: 'access content'
+
+civicrm_phenix_cfonb.text_bienvenu_home:
+  path: '/civicrm-phenix-cfonb/text-bienvenu-home'
+  defaults:
+    _title: 'Text Bienvenu Home'
+    _form: 'Drupal\civicrm_phenix_cfonb\Form\TextBienvenuHome'
+  requirements:
+    _permission: 'access content'
