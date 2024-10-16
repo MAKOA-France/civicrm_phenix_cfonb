@@ -8,7 +8,27 @@
     font-weight: normal;
     font-style: normal;
   }
-  .group-detail-page .layout.layout--twocol-section.layout--twocol-section--50-50 + .layout--onecol {
+
+  /* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
+/* @font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+} */
+@font-face {
+    font-family: 'Montserrat Variable';
+    font-weight: normal;
+    font-display: swap;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/montserrat:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  }
+
+a, p, h1, h2, h3, div{
+    font-family: "Montserrat Variable", sans-serif !important;
+}
+.group-detail-page .layout.layout--twocol-section.layout--twocol-section--50-50 + .layout--onecol {
     display: none !important;
     background-color: red;
 }
@@ -172,7 +192,7 @@
 }
 .section-civicrm-group .meeting-com .title-meet .title-meet-commission a, .page-toutes-mes-reunions .meeting-com .title-meet .title-meet-commission a {
     color: #140d3d;
-    font-size: x-large;
+    font-size: large;
     font-weight: 700;
     line-height: initial;
 }
@@ -356,7 +376,7 @@ a.btn-add-meeting {
     width: 100%;
     gap: 20px;
     background-color: #e7e0d9;
-    border-radius: 50px 0;
+    border-radius: 20px;
     padding: 15px;
     margin-bottom: 20px;
 }
@@ -422,13 +442,13 @@ a.btn-add-meeting {
     color: #3d3d3d;
     font-size: xxx-large;
     font-weight: 600;
-    font-family: "DM Serif Display" !important;
+    font-family: 'Montserrat Variable';
 }
 .section-civicrm-group .meeting-com .date-meet .day, .page-toutes-mes-reunions .meeting-com .date-meet .day {
     font-size: xxx-large;
     font-weight: bold;
     line-height: normal;
-    font-family: "DM Serif Display" !important;
+    font-family: 'Montserrat Variable';
 }
 .section-civicrm-group .meeting-com.odd .date-meet, .section-civicrm-group .meeting-com.odd .title-meet .title-meet-commission a, .section-civicrm-group .meeting-com.odd span {
     color: #acacac;
@@ -854,6 +874,195 @@ ul.dropdown.menu li.menu-item a {
     text-transform: capitalize;
 }
 
+div#block-b-zf-textedebienvenuhome h1:nth-of-type(2) {
+    color: #003a74;
+}
+.maclasse {
+    display: flex;
+}
+.maclasse .field-content .grid-margin-y {
+    border: none;
+}
+.maclasse .views-field.views-field-view-node .field-content {
+    padding-left: 16px;
+}
+.section1 #block-views-block-actualites-block-1 .maclasse .views-row {
+    padding-left: 0;
+}
+.maclasse .created {
+    font-style: normal;
+    color: gray;
+}
+.is-front .views-field-body .grid-x.grid-margin-x.grid-margin-y {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.maclasse h3 a {
+    color: #003a74;
+    font-weight: bold;
+}
+.is-front .block-views-block-actualites-block-1 .grid-margin-y:not(.grid-y) > .cell {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.c-bodyc {
+    height: 90px;
+}
+.maclasse .cell.medium-7 h3 {
+    height: 97px;
+}
+div.top-bar#main-menu {
+    margin-top: 17px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.is-front .more-link {
+    text-align: center;
+}
+.maclasse .cell.medium-5 {
+    border: 1px solid #efebeb;
+    border-radius: 8px;
+}
+
+.is-front .full.hero .grid-container.contextual-region {
+    margin: unset;
+    padding: unset;
+    
+    max-width: none;
+}
+.is-front #block-views-block-block-hero-block-1 {
+    background: url(/files/2021-10/carrouselBg.png);
+    max-height: none;
+    margin-bottom: 1.5rem;
+}
+.is-front .views-field.views-field-field-slide {
+    width: auto !important;
+}
+.is-front .views_slideshow_cycle_slide .views-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+.is-front .views-field.views-field-field-slide .field-content img {
+    position: relative;
+    width: auto;
+    max-width: none;
+}
+article.grid-container {
+    max-width: 100rem;
+}
+#footer .site-logo img { 
+    width: 35%;
+    height: auto;
+}
+#footer .site-logo {
+    justify-content: space-around;
+    height: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+#footer {
+    background: #cdd2d7 !important;
+    margin-top: 5rem;
+    width: 100%;
+    height: 100% !important;
+    background-image: url(/files/relooking/arrow-foot.png) !important;
+    color: #fff;
+    height: 533px !important;
+    background-repeat: no-repeat !important;
+    background-position: left !important;
+}
+
+#footer #footer-region {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+#footer-region nav.contextual-region {
+    width: 100%;
+    top: 314px;
+} 
+#footer-region nav > ul.menu li a::after {
+    content: '|'; /* Ajoute un pipe après chaque lien */
+    margin: 0 10px; /* Espace de chaque côté du pipe */
+}
+#footer-region nav > ul.menu li:last-child a::after {
+    content: ''; /* Retire le pipe après le dernier élément */
+}
+#footer-region nav > ul.menu {
+    display: inline-flex;
+    flex-wrap: nowrap;
+}
+#footer-region nav {
+    text-align: center;
+}
+#footer-region nav > ul.menu li a {
+    color: black !important;
+    text-transform: capitalize !important;
+}
+
+#footer-region  div#block-makoa, #footer-region  div#block-makoa a {
+    background: white;
+    color: black;
+    top: 375px;
+    width: 100%;
+    text-align: center;
+}
+#footer nav ul li.menu-item a {
+    font-size: 1.0rem !important;
+}
+
+footer a.fab.fa-linkedin {
+    font-size: 33px;
+    color: #003a74 !important;
+}
+footer div#block-reseauxsociaux {
+    top: 332px;
+    text-align: center;
+    width: 100%;
+}
+.is-front #block-views-block-block-hero-block-1 .views-field-field-texte-slider {
+    max-width: unset !important;
+    position: absolute !important;
+    top: 35%;
+    left: 190px;
+    transform: translateY(-50%);
+    color: white;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#block-views-block-actualites-block-1 .more-link a {
+    margin-right: .5rem;
+    border-radius: 9px !important;
+}
+
+div#block-b-zf-textedebienvenuhome {
+    padding-left: 363px;
+}
+div#block-b-zf-textedebienvenuhome h1:first-of-type {
+    color: #af1f7b;
+    font-weight: bold;
+}
+
+.is-front div#block-views-block-actualites-block-1 i.far.fa-newspaper {
+    display: none;
+}
+.is-front div#block-views-block-actualites-block-1 h2 {
+    color: #003a74;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.7rem;
+    padding-left: 18px;
+}
 
 
 a.btn.button.all-meeting {
@@ -881,3 +1090,20 @@ a.btn.button.all-meeting {
     display: none;
     margin-top: 20px;
 } */
+
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (max-width: 768px) { 
+        .maclasse {
+            display: flex;
+            flex-direction: column;
+        }  
+        div#block-b-zf-textedebienvenuhome {
+            padding-left: 11px;
+        }
+        .is-front .views-field.views-field-field-slide .field-content img {
+            position: relative;
+            width: auto;
+            max-width: 100%;
+        }
+    }

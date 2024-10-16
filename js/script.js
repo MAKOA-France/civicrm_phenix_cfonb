@@ -6,6 +6,8 @@
         $(document).ready(function() {
             // This function is toogle of last document
 
+          var $wrapper = $('<div class="maclasse"></div>');
+          $('.block-views-block-actualites-block-1 .views-row').wrapAll($wrapper);
 
             if (!$('.btn-my-account').length) {
               $('<button class="btn-my-account" data-toggle="dropdown" data-target="#submenu-my-profil"></button>').insertBefore('[block="block-b-zf-account-menu"]');
@@ -15,10 +17,12 @@
 
             $(window).on('scroll', function() {
               var scrollTop = $(window).scrollTop();
-              var elementOffset = $('.group-presentation-description').offset().top;
-      
-              // Check if the element touches the top of the screen
-              if (scrollTop <= elementOffset) {
+              if ($('.group-presentation-description').offset()) {
+
+                var elementOffset = $('.group-presentation-description').offset().top;
+                
+                // Check if the element touches the top of the screen
+                if (scrollTop <= elementOffset) {
                   $('#block-b-zf-navigationmeetingandgroupblock').css('position', 'static');
                   console.log('relatkiv')
                   jQuery('.dynamic-content').css('top', '23%');
@@ -28,7 +32,8 @@
                   jQuery('.dynamic-content').css('top', '0');
                   jQuery('.dynamic-content').css('width', '600%');
                   console.log('fixed li')
-
+                  
+                }
               }
             });
 
@@ -107,6 +112,21 @@ sidebar.addEventListener('mouseleave', () => {
         console.log('firing')
         $(window).on('load', function() {
 
+          // Create the new div container
+    // var $container = $('<div class="cust-actu-container"></div>');
+
+    // // Insert the new div before the first .views-row
+    // $('#views_slideshow_cycle_div_block_hero-block_1_0 .views-row').first().before($container);
+
+    // // Move all .views-row elements into the new div container
+    // $('#views_slideshow_cycle_div_block_hero-block_1_0 .views-row').appendTo($container);
+    
+    
+
+  // Close the new div after the last views-row
+
+
+
           if (!$('.icon-custom-user-account').length) {
             jQuery('[href="/user"]').prepend('<i class="icon-custom-user-account"></i>');
           }
@@ -122,10 +142,8 @@ sidebar.addEventListener('mouseleave', () => {
 
 
           if ($('.btn-my-account').length) {
-            console.log('mIssy')
             once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
               element.addEventListener('click', function () {
-                console.log('firing click');
                 $('[block="block-b-zf-account-menu"]').toggle();
               });
             });
