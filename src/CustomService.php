@@ -223,7 +223,7 @@ class CustomService {
     foreach($allEvent as $event) {
       $event_id = $event->event_id;
       if ($event_id) {
-
+    \Drupal::service('civicrm')->initialize();
         $events = \Civi\Api4\Event::get(false)
         ->addSelect('rsvpevent_cg_linked_groups.rsvpevent_cf_linked_groups')
         ->addWhere('id', '=', $event_id)
