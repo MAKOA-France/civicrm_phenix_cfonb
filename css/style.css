@@ -318,6 +318,10 @@ a, p, h1, h2, h3, div{
 .section-civicrm-group .item-list ul li > div > span > a {
     display: none;
 }
+#block-b-zf-main-menu li ul li.is-active a, #block-menuprincipal li ul li a:hover, #block-b-zf-main-menu li ul li a:hover {
+    color: #af1f7b !important;
+    text-decoration: none;
+}
 a.btn-add-meeting {
     text-transform: uppercase;
     font-size: .75rem;
@@ -338,6 +342,9 @@ a.btn-add-meeting {
     display: flex;
     align-items: center;
     gap: 30px;
+}
+header .fa-search {
+    color: #003a74 !important;
 }
 .section-civicrm-group .btn-add-meeting i {
     margin-right: 1rem;
@@ -377,14 +384,14 @@ a.btn-add-meeting {
     gap: 20px;
     background-color: #e7e0d9;
     border-radius: 20px;
-    padding: 15px;
+    padding: 17px;
     margin-bottom: 20px;
 }
 .section-civicrm-group .meeting-com .date-meet, .page-toutes-mes-reunions .meeting-com .date-meet {
     padding: 10px;
     display: grid;
     text-align: center;
-    border-radius: 30px 0;
+    border-radius: 15px;
     background-color: #fff;
     color: #140d3d;
     min-width: 110px;
@@ -394,11 +401,32 @@ a.btn-add-meeting {
 }
 .section-civicrm-group .detail-group-title {
     background-color: #f7f5f3;
-    border-radius: 30px 0;
+    border-radius: 20px;
     padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+}
+.section-espace-documentaire .sidebar-c-nav, .section-sitemap .sidebar-c-nav, .page-mentions-legales .sidebar-c-nav , .section-contact  .sidebar-c-nav {
+    width: 25%;
+}
+.menu-c-nav-item.third svg{
+    max-height: 56px;
+}
+.menu-c-nav-item.second svg{
+    min-height: 55px;
+}
+.menu-c-nav-item svg {
+    background-color: #af1f7b;
+    border-radius: 9px !important;
+    height: 110%;
+    padding: 10px;
+    font-size: 23px !important;
+    width: 113px;
+    min-width: 57px;
+}
+.text-bloc-c-nav {
     position: relative;
 }
 .section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:before, .section-civicrm-event #main .civicrm-entity--type-civicrm-event:before {
@@ -412,7 +440,7 @@ a.btn-add-meeting {
     background-size: contain;
 }
 .section-civicrm-group .printParticipants footer a, .section-civicrm-group .printParticipants .more-link a {
-    background-color: #140d3d;
+    background-color: #af1f7b;
     color: white;
     padding: 10px 30px;
     border-radius: 15px 0;
@@ -460,7 +488,7 @@ a.btn-add-meeting {
 }
 .section-civicrm-group .layout--twocol-section--50-50 .layout__region .block-views h2 {
     background: #fff;
-    border-radius: 50px 0;
+    border-radius: 10px;
     text-align: center;
     padding: 15px 0;
     margin: 0 0 30px;
@@ -551,39 +579,6 @@ a.btn-add-meeting {
     display: none !important;
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (max-width: 768px) { 
-    .section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after {
-        display: none;
-    }
-
-    .section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
-        background-color: #f7f5f3;
-        border-radius: 50px 0;
-        padding: 40px 0px;
-        margin: 0;
-        gap: 0;
-        flex-wrap: nowrap;
-        flex-direction: column-reverse;
-    }
-    .section-civicrm-group .views-send-selection-form form{
-        overflow: auto;
-    }
-    .section-civicrm-group .civicrm-entity--view-mode-full .layout--twocol-section .layout__region {
-        border-bottom: 1px solid rgba(217, 32, 38, .0);
-        margin: 3rem 0 1rem;
-        padding: 0;
-    }
-    .section-civicrm-group .civicrm-entity .layout__region .block-views .contextual-region ul li {
-        margin-left: 0;
-    }
-
-    .section-civicrm-group .layout--twocol-section .layout__region.layout__region--first {
-        padding-left : 0;
-    }
-}
-
-
 
 .container-c-nav {
     display: flex;
@@ -598,7 +593,7 @@ li.menu-c-nav-item i {
     font-size: 40px;
 }
 .sidebar-c-nav {
-    width: 130%;
+    width: 83px;
     background-color: #f0f0f0;
     padding: 10px;
     padding-left: 0px;
@@ -669,8 +664,34 @@ hr.com-hr {
     padding-bottom: 30px;
 }
 #block-b-zf-navigationmeetingandgroupblock {
-    position: fixed;
-    top: 17%;
+    position: static;
+    top: 69px;
+}
+.top-bar ul li ul li ul.submenu.is-dropdown-submenu {
+    margin-left: 5px !important;
+}
+
+.page-node-type-page-site .sidebar-c-nav {
+    width: 25%;
+}
+.page-node-type-page-site .text-bloc-c-nav {
+    position: absolute;
+}
+header .top-bar ul li ul {
+    background: #F1F1F1;
+    border-radius: 10px;
+    border: none;
+    margin-top: 21px;
+    padding-top: 8px;
+    padding-left: 0px;
+    width: 360px;
+}
+ul.submenu.is-dropdown-submenu.first-sub.vertical.js-dropdown-active li a {
+    line-height: 22px;
+}
+#main-menu.top-bar li a {
+    font-size: 1rem;
+    color: black;
 }
 ul[block="block-b-zf-account-menu"] li a {
     color: white;
@@ -856,6 +877,18 @@ nav#block-b-zf-account-menu .trigger.focusable {
     background-color: #003a74;
 }
 
+.page-node-type-page-site .dynamic-content {
+    width: 500px;
+}
+#footer nav ul li.menu-item a {
+    padding: 11px 0px;
+}
+.new-before-style::before {
+    top: auto;
+}
+.grid-container.na-pages {
+    position: relative;
+}
 .dynamic-content {
     display: block;
     
@@ -865,8 +898,8 @@ nav#block-b-zf-account-menu .trigger.focusable {
     z-index: 2555;
     padding-top: 12px;
     padding-left: 24px;
-    width: 23%;
-    top: 0;
+    top: -21px;
+    width: 500px;
     border-radius: 6px;
 }
 
@@ -961,6 +994,8 @@ article.grid-container {
 #footer .site-logo img { 
     width: 35%;
     height: auto;
+    top: 15px;
+    margin-top: 8%;
 }
 #footer .site-logo {
     justify-content: space-around;
@@ -986,10 +1021,14 @@ article.grid-container {
     justify-content: space-between;
     flex-direction: column;
 }
-#footer-region nav.contextual-region {
-    width: 100%;
-    top: 314px;
+#footer-region nav.contextual-region, #footer-region nav.menu--footer {
+    width: max-content;
+    margin-top: 170px ;
 } 
+ 
+#footer-region .fab {
+    font-family: 'Font Awesome 5 Brands' !important;
+}
 #footer-region nav > ul.menu li a::after {
     content: '|'; /* Ajoute un pipe après chaque lien */
     margin: 0 10px; /* Espace de chaque côté du pipe */
@@ -1008,11 +1047,15 @@ article.grid-container {
     color: black !important;
     text-transform: capitalize !important;
 }
+.section-civicrm-group .civicrm-entity .layout__region li, .section-civicrm-group .civicrm-entity .layout__region .block-views .contextual-region ul li {
+    margin-left: 0;
+    margin-bottom: 0;
+}
 
 #footer-region  div#block-makoa, #footer-region  div#block-makoa a {
     background: white;
     color: black;
-    top: 375px;
+    margin-top: 5vw;
     width: 100%;
     text-align: center;
 }
@@ -1025,7 +1068,7 @@ footer a.fab.fa-linkedin {
     color: #003a74 !important;
 }
 footer div#block-reseauxsociaux {
-    top: 332px;
+    margin-top: 45px;
     text-align: center;
     width: 100%;
 }
@@ -1091,9 +1134,206 @@ a.btn.button.all-meeting {
     margin-top: 20px;
 } */
 
+.section-accueil-extranet .grid-container.na-pages:before,
+.section-espace-documentaire  .grid-container.hero-taxonomy:before,
+.page-node-type-page-site .grid-container.na-pages:before,
+.section-civicrm-event .grid-container.na-pages:before,
+.section-mentions-legales .grid-container.na-pages:before,
+.section-sitemap .grid-container.na-pages:before,
+ .grid-container.hero.communication:before {
+    content: "";
+    background: url(/files/relooking/arrow%20vertical.png) no-repeat center 0;
+    right: 0;
+    width: 23%;
+    height: 800px;
+    background-size: contain;
+    position: fixed;
+}
+.grid-container.na-pages.new-before-style:before {
+    /* content: ""; */
+    /* background: url(/files/relooking/arrow%20vertical.png) no-repeat center 0; */
+    /* right: 0; */
+    /* width: 38%; */
+    /* height: 800px; */
+    /* background-size: contain; */
+    position: fixed;
+    /* top: 0; */
+    /* left: 88%; */
+}
+.civicrm-entity .layout__region h2  .fa-users-cog:before {
+    display: none;
+}
+.section-civicrm-group .item-list ul li > div.views-field-title > span > a {
+    display: block;
+    color: #141313;
+}
+.item-list .views-field.views-field-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    background-color: #e7e0d9;
+    border-radius: 11px;
+    padding: 17px;
+    margin-bottom: 20px;
+}
+.grid-x.align-middle  button.float-right {
+    position: absolute;
+    top: 20.2%;
+    right: 322px;
+}
+input#site-search {
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 6px;
+}
+.grid-x.align-middle {
+    position: relative;
+}
+.grid-x.align-middle .cell.medium-1 {
+    display: flex;
+    width: 73% !important;
+}
+.grid-x.align-middle .cell.medium-11 {
+    width: 16% !important;
+}
+.grid-x.align-middle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dynamic-content {
+    display: none;
+}
+
+    @media  (max-width: 1366px) {
+        .section-accueil-extranet .grid-container.na-pages:before, .section-espace-documentaire .grid-container.hero-taxonomy:before, .page-node-type-page-site .grid-container.na-pages:before, .section-civicrm-event .grid-container.na-pages:before, .section-mentions-legales .grid-container.na-pages:before, .section-sitemap .grid-container.na-pages:before, .grid-container.hero.communication:before {
+            display: none;
+        }
+    }
+    @media (max-width: 1200px) { 
+        body {
+            background-color: rgb(65, 42, 170);
+        }
+    }
+    
+    @media (max-width: 1024px) { /*ipad pro */
+        body {
+            background-color: rgb(107, 177, 28);
+        }
+    }
+    
+    @media (max-width: 992px) { /* ipad air */
+        #footer-region nav.contextual-region, #footer-region nav.menu--footer {
+            width: auto;
+        }
+        .toolbar-tray-open.toolbar-vertical.toolbar-fixed {
+            margin-inline-start: 0 !important;
+        }
+        body {
+            background-color: cyan;
+        }
+        nav.sidebar-c-nav {
+            display: none;
+        }
+        .text-bloc-c-nav {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .role--adherent ul[block="block-b-zf-account-menu"] {
+            position: absolute;
+            left: -92px;
+            top: 43px;
+            right: 0;
+        }
+        .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            left: 223px;
+            color: white;
+            display: flex;
+            align-items: flex-end;
+        }
+    }
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -22px;
+            right: 9px;
+        }
+        input#site-search {
+            display: none;
+        }
+        .section-civicrm-group aside#sidebar_left {
+            width: 100%;
+            z-index: 10;
+        }
+
+        .section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after {
+            display: none;
+        }
+        .dynamic-content {
+            display: flex;
+            height: auto;
+            background-color: #f0f0f0;
+            position: relative;
+            z-index: 2555;
+            padding-top: 12px;
+            padding-left: 24px;
+            top: -21px;
+            width: 100%;
+            border-radius: 6px;
+        }
+    
+        .section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
+            background-color: #f7f5f3;
+            border-radius: 50px 0;
+            padding: 40px 0px;
+            margin: 0;
+            gap: 0;
+            flex-wrap: nowrap;
+            flex-direction: column-reverse;
+        }
+        .section-civicrm-group .views-send-selection-form form{
+            overflow: auto;
+        }
+        .section-civicrm-group .civicrm-entity--view-mode-full .layout--twocol-section .layout__region {
+            border-bottom: 1px solid rgba(217, 32, 38, .0);
+            margin: 3rem 0 1rem;
+            padding: 0;
+        }
+        .section-civicrm-group .civicrm-entity .layout__region .block-views .contextual-region ul li {
+            margin-left: 0;
+        }
+    
+        .section-civicrm-group .layout--twocol-section .layout__region.layout__region--first {
+            padding-left : 0;
+        }
+        .section-accueil-extranet .grid-container.na-pages:before, .section-espace-documentaire .grid-container.hero-taxonomy:before, .page-node-type-page-site .grid-container.na-pages:before, .section-civicrm-event .grid-container.na-pages:before, .section-mentions-legales .grid-container.na-pages:before, .section-sitemap .grid-container.na-pages:before, .grid-container.hero.communication:before {
+            display: none;
+        }
+        .section-civicrm-group .meeting-head {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-direction: column;
+        }
+        .section-civicrm-group .meeting-com, .page-toutes-mes-reunions .meeting-com {
+            display: flex;
+            align-items: normal;
+            width: 100%;
+            gap: 20px;
+            background-color: #e7e0d9;
+            border-radius: 20px;
+            padding: 17px;
+            margin-bottom: 20px;
+            flex-direction: column;
+        }
         .maclasse {
             display: flex;
             flex-direction: column;
