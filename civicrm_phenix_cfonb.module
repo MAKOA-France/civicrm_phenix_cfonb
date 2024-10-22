@@ -737,7 +737,7 @@ function civicrm_phenix_cfonb_preprocess_block(&$variables) {
     }
     
     // dump($variables['content']);
-      $variables['content'][0][0]['#context']['value'] = Drupal\Core\Render\Markup::create('<div class="meeting-head"><span class="meetings"><i class="icon-custom-calendar"></i>Réunions</span> ' . $btn_add_meet . '');
+      $variables['content'][0][0]['#context']['value'] = Drupal\Core\Render\Markup::create('<div class="meeting-head"><h2 class="meetings"><i class="icon-custom-calendar"></i>Réunions</h2> ' . $btn_add_meet . '');
       $variables['attributes']['class'][] = 'bloc-head-meetings-in-theme '. json_encode(\Drupal::currentUser()->getRoles());
 
   }

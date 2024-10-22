@@ -95,7 +95,7 @@ a, p, h1, h2, h3, div{
     padding-right: 5px;
 }
 p.group-name {
-    font-size: 2.1rem !important;
+    font-size: 45px !important;
 }
 .section-civicrm-event .layout__region .views-element-container.contextual-region.block-views h2 {
     border-bottom: initial;
@@ -177,7 +177,7 @@ p.group-name {
     border-radius: 9px !important;
 }
 .section-civicrm-group table a, .section-civicrm-group table td, .section-civicrm-group table th {
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active {
     color: white !important;
@@ -196,6 +196,9 @@ p.group-name {
 .section-civicrm-group div#block-b-zf-content {
     bottom: 35px;
     margin-bottom: 24px;
+}
+.maclasse .field-content .grid-margin-y {
+    padding-right: 0;
 }
 .section-civicrm-group .communication .block-blockdetailcommission--2 .icon-group i, .section-civicrm-group .communication .block-b-zf-blockdetailcommission--2  .icon-group i {
     font-size: 3rem;
@@ -336,9 +339,24 @@ p.group-name {
     color: #af1f7b !important;
     text-decoration: none;
 }
+.section-civicrm-group .grid-container.full.hero.communication {
+    max-width: 90rem;
+}
+.civicrm-entity--view-mode-full .layout--twocol-section .layout__region {
+    padding-left: 0 !important;
+    padding-right: 12px !important;
+}
+.section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
+    padding-left: 0;
+    padding-right: 0;
+}
+.civicrm-entity--view-mode-full .layout--onecol:first-of-type {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 a.btn-add-meeting {
     text-transform: uppercase;
-    font-size: .75rem;
+    font-size: 1rem;
     color: #af1f7b;
     padding: 10px 15px;
     font-weight: 600;
@@ -377,6 +395,12 @@ a[href="/communication"]:before {
 .top-bar .grid-container {
     padding-right: 0.9375rem;
     padding-left: 3.9375rem;
+    margin: 0 auto;
+}
+.layout-container section.grid-container {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+    max-width: 90rem;
     margin: 0 auto;
 }
 a[href="/rencontres-ateliers"]:before {
@@ -509,7 +533,7 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     background-color: #af1f7b;
     color: white;
     padding: 10px 30px;
-    border-radius: 15px 0;
+    border-radius: 7px;
     font-size: .9rem;
     box-shadow: initial;
     font-weight: 400;
@@ -530,7 +554,7 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     color: #acacac;
     pointer-events: none;
 }
-.section-civicrm-group .layout__region .contextual-region h2, .section-civicrm-group .group-detail-page .layout--onecol h2, .section-civicrm-group .last-doc-title h2.main-title-last-doc, .section-civicrm-group .meeting-head .meetings, .section-civicrm-event .block-blocklisteparticipant h3, .section-civicrm-event .last-doc-title h2.main-title-last-doc {
+.section-civicrm-group .layout__region .contextual-region h2, .section-civicrm-group .group-detail-page .layout--onecol h2, .section-civicrm-group .last-doc-title h2.main-title-last-doc, .section-civicrm-group .meeting-head .h2, .section-civicrm-event .block-blocklisteparticipant h3, .section-civicrm-event .last-doc-title h2.main-title-last-doc {
     border-bottom: initial;
     text-align: initial;
     color: #3d3d3d;
@@ -666,6 +690,34 @@ li.menu-c-nav-item i {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
     padding-right: 11px;
+}
+#footer {
+    margin-top: 0;
+}
+.page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1 {
+    font-size: 65px !important;
+}
+.page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
+    font-size: 35px !important;
+}
+.page-node-type-page h3, .section-civicrm-group h3, .section-civicrm-event h3 {
+    font-size: 25px;
+}
+.page-node-type-page p, .section-civicrm-group  p, .section-civicrm-event  p {
+    font-size: 20px;/*paragraph*/
+}
+.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block-views h2 {
+    margin-left: 12px;
+}
+.section-civicrm-group .views-element-container.contextual-region.block-views {
+    margin-left: 3px;
+}
+.block-layout-builder {
+    font-size: 20px;/*paragraph*/
+}
+.grid-container.na-pages#main {
+    margin-bottom: 6rem;
+    padding-bottom: 3rem;
 }
 
 .sidebar-c-nav ul {
@@ -980,6 +1032,7 @@ div#block-b-zf-textedebienvenuhome h1:nth-of-type(2) {
 }
 .maclasse {
     display: flex;
+    width: 100%;
 }
 .maclasse .field-content .grid-margin-y {
     border: none;
@@ -989,6 +1042,7 @@ div#block-b-zf-textedebienvenuhome h1:nth-of-type(2) {
 }
 .section1 #block-views-block-actualites-block-1 .maclasse .views-row {
     padding-left: 0;
+    width: 100%;
 }
 .maclasse .created {
     font-style: normal;
@@ -997,7 +1051,7 @@ div#block-b-zf-textedebienvenuhome h1:nth-of-type(2) {
 .is-front .views-field-body .grid-x.grid-margin-x.grid-margin-y {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: auto;
 }
 .maclasse h3 a {
     color: #003a74;
@@ -1005,15 +1059,21 @@ div#block-b-zf-textedebienvenuhome h1:nth-of-type(2) {
 }
 .is-front .block-views-block-actualites-block-1 .grid-margin-y:not(.grid-y) > .cell {
     height: auto;
-    width: 100%;
+    width: auto;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     justify-content: space-between;
     align-items: baseline;
 }
+p.btn-see-rapport {
+    background-color: #d3278c;
+    width: 20%;
+    padding: 6px;
+    border-radius: 7px;
+}
 .c-bodyc {
-    height: 90px;
+    height: 140px;
 }
 .maclasse .cell.medium-7 h3 {
     height: 97px;
@@ -1157,7 +1217,7 @@ footer div#block-reseauxsociaux {
 }
 
 div#block-b-zf-textedebienvenuhome {
-    padding-left: 363px;
+    padding-left: 248px;
 }
 div#block-b-zf-textedebienvenuhome h1:first-of-type {
     color: #af1f7b;
@@ -1166,6 +1226,10 @@ div#block-b-zf-textedebienvenuhome h1:first-of-type {
 
 .is-front div#block-views-block-actualites-block-1 i.far.fa-newspaper {
     display: none;
+}
+span.second-text {
+    color: #003b74;
+    font-weight: 200;
 }
 .is-front div#block-views-block-actualites-block-1 h2 {
     color: #003a74;
@@ -1178,6 +1242,38 @@ div#block-b-zf-textedebienvenuhome h1:first-of-type {
 
 a.btn.button.all-meeting {
     background-color: #af1f7b;
+}
+.views-field.views-field-field-slide:before {
+    content: '';
+    display: block;
+    width: 104%;
+    height: 100%;
+    z-index: 9;
+    position: absolute;
+    top: 0;
+    left: -17px;
+    background-image: url(/files/relooking/arrow_slide.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+.views-field.views-field-field-slide {
+    position: relative;
+}
+.views-slideshow-controls-bottom.clearfix {
+    position: absolute;
+    top: 89%;
+    z-index: 5;
+    left: 170px;
+}
+.is-front .views-slideshow-controls-bottom ul#widget_pager_bottom_block_hero-block_1.views-slideshow-pager-bullets li.active {
+    background: white;
+}
+.is-front ul#widget_pager_bottom_block_hero-block_1 li {
+    background: none;
+}
+.is-front ul#widget_pager_bottom_block_hero-block_1 li {
+    border: 2px solid #dfab3b;
 }
 .icon-meet i {
     display: inline-flex;
@@ -1211,7 +1307,7 @@ a.btn.button.all-meeting {
  .grid-container.hero.communication:before {
     content: "";
     background: url(/files/relooking/arrow%20vertical.png) no-repeat center 0;
-    right: 70px;
+    right: -52px;
     width: 23%;
     height: 800px;
     background-size: contain;
@@ -1235,16 +1331,16 @@ a.btn.button.all-meeting {
     display: block;
     color: #141313;
 }
-span.meetings .icon-custom-calendar {
+h2.meetings .icon-custom-calendar {
     padding-right: 15px;
 }
 .layout--twocol-section.layout--twocol-section--50-50  .views-element-container.contextual-region h2{
-    font-size: 1.4rem !important;
+    font-size: 35px !important;
     
     text-transform: CAPITALIZE;
 }
-.views-element-container.contextual-region.block-views h2 , .meeting-head span.meetings, .section-civicrm-group h2{
-    font-size: 1.7rem !important;
+.views-element-container.contextual-region.block-views h2 , .meeting-head h2.meetings, .section-civicrm-group h2{
+    font-size: 35px !important;
 }
 .item-list .views-field.views-field-title {
     display: flex;

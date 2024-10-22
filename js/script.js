@@ -57,7 +57,7 @@
 
                   if ($('#block-b-zf-navigationmeetingandgroupblock').length) {
 
-                    let footerOffset = $('#footer').offset().top;
+                    let footerOffset = $('#footer').offset().top - 50;
                     let scrollTop = $(window).scrollTop();
                     let testOffset = $('#block-b-zf-navigationmeetingandgroupblock').offset().top;
                     let testHeight = $('#block-b-zf-navigationmeetingandgroupblock').outerHeight();
@@ -65,7 +65,7 @@
                     // Si l'élément #test atteint le #footer
                     if (scrollTop + testHeight >= footerOffset) {
                         $('#block-b-zf-navigationmeetingandgroupblock').css({
-                            'position': 'static',
+                            'position': 'sticky',
                             'top': '0'
                         });
                       }
