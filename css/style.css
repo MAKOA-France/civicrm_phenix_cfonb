@@ -38,6 +38,11 @@ a, p, h1, h2, h3, div{
 #block-b-zf-blockdocumentgroup > .page-detail-groupoes {
     display: none;
 }
+.icon-group svg#Groupe_3068 {
+    font-size: 10px;
+    width: 35px;
+    height: 50px;
+}
 .section-civicrm-group  .group-detail-page .layout.layout--twocol-section.layout--twocol-section--50-50 + .layout--onecol {
     display: block !important;
     background-color: unset;
@@ -88,6 +93,9 @@ a, p, h1, h2, h3, div{
 .last-doc-title i.fas.fa-file {
     margin-right: 1rem;
     padding-right: 5px;
+}
+p.group-name {
+    font-size: 2.1rem !important;
 }
 .section-civicrm-event .layout__region .views-element-container.contextual-region.block-views h2 {
     border-bottom: initial;
@@ -162,8 +170,14 @@ a, p, h1, h2, h3, div{
     margin: 0 !important;
 }
 .section-civicrm-group .meeting-com.odd {
-    background-color: #fff;
+    background-color: #e7e0d9 !important;
     pointer-events: none;
+}
+.button-purple {
+    border-radius: 9px !important;
+}
+.section-civicrm-group table a, .section-civicrm-group table td, .section-civicrm-group table th {
+    font-size: 0.8rem;
 }
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active {
     color: white !important;
@@ -343,12 +357,63 @@ a.btn-add-meeting {
     align-items: center;
     gap: 30px;
 }
+a[href="/communication"], a[href="/rencontres-ateliers"], a[href="/faq"] {
+    display: flex !important;
+}
+a[href="/communication"]:before {
+    content: '';
+    display: block;
+    width: 23px;
+    margin-top: -3px;
+    height: 23px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 311.433 428.225"><path d="M209.283,120.028H196.312V0H34.119A29.184,29.184,0,0,0,4.91,29.191V399.035A29.18,29.18,0,0,0,34.1,428.225H287.15a29.18,29.18,0,0,0,29.191-29.191V120.028H209.283Zm-9.724,186.546H73.016V282.236H199.523v24.337Zm48.658-58.4H73.034V223.837H248.217Zm0-58.4H73.034v-24.32H248.217v24.32Zm-38.933-82.719H316.341L209.283,0Z" fill="%23212121"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.top-bar#main-menu .grid-container {
+    width: 84rem !important;
+    max-width: 84rem !important;
+}
+.top-bar .grid-container {
+    padding-right: 0.9375rem;
+    padding-left: 3.9375rem;
+    margin: 0 auto;
+}
+a[href="/rencontres-ateliers"]:before {
+    margin-right: 9px;
+}
+a[href="/faq"]:before {
+    content: '';
+    display: block;
+    width: 25px;
+    margin-top: -3px;
+    height: 23px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.248 448.25"><path d="M0,448.25v-.039L.234,44.82A44.765,44.765,0,0,1,44.84,0H403.428a44.873,44.873,0,0,1,44.82,44.82V313.766a44.873,44.873,0,0,1-44.82,44.82H89.66L.023,448.219Zm224.105-186.3a24.117,24.117,0,1,0,24.113,24.117A24.144,24.144,0,0,0,224.105,261.945Zm0-148.2c13.184,0,23.191,5.3,28.188,14.93a29.321,29.321,0,0,1-1.9,29.7c-4.609,6.594-10.832,12.336-16.852,17.891-7.621,7.023-15.477,14.273-20.641,23.578-6.5,11.711-6.137,24.836-5.875,34.422l.012.359c.031,1.125.055,2.211.07,3.211h34.852c0-17.6,1.16-21.4,4.23-27.023,3.617-6.656,8.754-11.633,14.7-17.4,6.422-6.211,13.66-13.219,21.1-24.211,13.738-20.344,7.309-46.484-.367-59.086-11.3-18.453-32.3-29.031-57.637-29.031-30.246,0-56.043,18.742-65.719,47.742l31.23,13.148C192.98,131.438,202.133,113.742,224.105,113.742Z" fill="%23212121"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 9px;
+}
+a[href="/rencontres-ateliers"]:before {
+    content: '';
+    display: block;
+    width: 25px;
+    margin-top: -3px;
+    height: 22px;
+    padding: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox=\'0 0 583.95 467.152\'><path id=\'Icon_fa-solid-users-rectangle\' d=\'M87.592,0A87.614,87.614,0,0,0,0,87.591v291.97a87.614,87.614,0,0,0,87.592,87.591H496.357a87.614,87.614,0,0,0,87.592-87.591V87.591A87.614,87.614,0,0,0,496.357,0Zm-29.2,87.591a29.166,29.166,0,0,1,29.2-29.2H496.357a29.166,29.166,0,0,1,29.2,29.2v291.97a29.166,29.166,0,0,1-29.2,29.2H87.592a29.166,29.166,0,0,1-29.2-29.2Zm145.8,72.993a43.8,43.8,0,1,0-43.8,43.8A43.8,43.8,0,0,0,204.2,160.584ZM87.592,282.207a24.357,24.357,0,0,0,24.362,24.361h51.187a94.786,94.786,0,0,1,59.49-67.153,48.166,48.166,0,0,0-23.084-5.839H136.225a48.675,48.675,0,0,0-48.632,48.631Zm333.216,24.361H472a24.357,24.357,0,0,0,24.362-24.361,48.616,48.616,0,0,0-48.632-48.631H384.4a47.9,47.9,0,0,0-23.084,5.839,94.786,94.786,0,0,1,59.49,67.153Zm-81.388-42.883a61.868,61.868,0,0,0-10.949-.912H255.478a61.868,61.868,0,0,0-10.949.912,65.9,65.9,0,0,0-51,42.883,64.562,64.562,0,0,0-3.741,21.9,21.845,21.845,0,0,0,21.9,21.9H372.268a21.845,21.845,0,0,0,21.9-21.9,64.562,64.562,0,0,0-3.741-21.9A65.9,65.9,0,0,0,339.421,263.686Zm127.739-103.1a43.8,43.8,0,1,0-43.8,43.8A43.8,43.8,0,0,0,467.16,160.584ZM291.975,233.576a58.394,58.394,0,1,0-58.395-58.394A58.395,58.395,0,0,0,291.975,233.576Z\' fill=\'%23212121\'/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 header .fa-search {
     color: #003a74 !important;
 }
 .section-civicrm-group .btn-add-meeting i {
     margin-right: 1rem;
     font-size: 20px;
+}
+body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block-views h2 {
+    font-family: "Montserrat Variable", sans-serif !important;
 }
 .section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after, .section-civicrm-event #main .asheeeeeeeeeeeeee.meeting-page:after {
     content: "";
@@ -384,17 +449,18 @@ header .fa-search {
     gap: 20px;
     background-color: #e7e0d9;
     border-radius: 20px;
-    padding: 17px;
+    padding: 0;
     margin-bottom: 20px;
 }
 .section-civicrm-group .meeting-com .date-meet, .page-toutes-mes-reunions .meeting-com .date-meet {
     padding: 10px;
     display: grid;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: #fff;
     color: #140d3d;
-    min-width: 110px;
+    min-width: 125px;
+    height: 150px;
 }
 .section-civicrm-group .grid-container.full.hero.communication {
     background: unset;
@@ -593,22 +659,24 @@ li.menu-c-nav-item i {
     font-size: 40px;
 }
 .sidebar-c-nav {
-    width: 83px;
+    width: 100px;
     background-color: #f0f0f0;
     padding: 10px;
-    padding-left: 0px;
+    padding-left: 5px;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
+    padding-right: 11px;
 }
 
 .sidebar-c-nav ul {
     list-style-type: none;
     padding: 0;
     margin-left: 5px;
+    margin-bottom: 2px;
 }
 
 .sidebar-c-nav li {
-    padding: 5px; /* Ajustez le rembourrage des éléments du menu */
+    padding: 10px; /* Ajustez le rembourrage des éléments du menu */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -632,7 +700,7 @@ li.menu-c-nav-item i {
 .each-group-c {
     display: flex;
     gap: 12px;
-    align-items: baseline;
+    align-items: center;
 }
 
 .each-title-and-date {
@@ -643,11 +711,11 @@ li.menu-c-nav-item i {
     padding-bottom: 20px;
 }
 .section-civicrm-group div#content {
-    width: 90%;
+    width: 89%;
     padding-left: 10px;
 }
 .section-civicrm-group aside#sidebar_left {
-    width: 5%;
+    width: 6%;
     z-index: 10;
 }
 .com-keyword {
@@ -1005,7 +1073,7 @@ article.grid-container {
     align-items: center;
 }
 #footer {
-    background: #cdd2d7 !important;
+    background: #F1F1F1 !important;
     margin-top: 5rem;
     width: 100%;
     height: 100% !important;
@@ -1115,8 +1183,8 @@ a.btn.button.all-meeting {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background-color: #fca65e;
     border-radius: 50%;
     padding: 8px;
@@ -1143,7 +1211,7 @@ a.btn.button.all-meeting {
  .grid-container.hero.communication:before {
     content: "";
     background: url(/files/relooking/arrow%20vertical.png) no-repeat center 0;
-    right: 0;
+    right: 70px;
     width: 23%;
     height: 800px;
     background-size: contain;
@@ -1167,6 +1235,17 @@ a.btn.button.all-meeting {
     display: block;
     color: #141313;
 }
+span.meetings .icon-custom-calendar {
+    padding-right: 15px;
+}
+.layout--twocol-section.layout--twocol-section--50-50  .views-element-container.contextual-region h2{
+    font-size: 1.4rem !important;
+    
+    text-transform: CAPITALIZE;
+}
+.views-element-container.contextual-region.block-views h2 , .meeting-head span.meetings, .section-civicrm-group h2{
+    font-size: 1.7rem !important;
+}
 .item-list .views-field.views-field-title {
     display: flex;
     align-items: center;
@@ -1176,6 +1255,8 @@ a.btn.button.all-meeting {
     border-radius: 11px;
     padding: 17px;
     margin-bottom: 20px;
+    
+    padding-bottom: 0;
 }
 .grid-x.align-middle  button.float-right {
     position: absolute;
@@ -1261,6 +1342,12 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .civicrm-entity--view-mode-full .layout--onecol:first-of-type {
+            padding: 0 !important;
+        }
+        a[href="/communication"]:before, a[href="/rencontres-ateliers"]:before, a[href="/faq"]:before {
+           display: none;
+        }
         .grid-x.align-middle button.float-right {
             position: absolute;
             top: -22px;
