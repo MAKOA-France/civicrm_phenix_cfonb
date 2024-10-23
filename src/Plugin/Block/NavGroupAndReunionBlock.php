@@ -94,6 +94,9 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
     }
     
     // You can now use $this->entityTypeManager for entity operations.
+    if (!$cid) {
+      return;
+    }
     return [
       '#theme' => 'nav_group_and_meeting',
       '#cache' => ['max-age' => 0],

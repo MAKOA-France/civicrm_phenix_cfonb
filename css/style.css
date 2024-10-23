@@ -388,8 +388,43 @@ a[href="/communication"]:before {
     background-size: contain;
     background-repeat: no-repeat;
 }
+body #backtotop {
+    background: url(../backtotop.png) no-repeat center center; /* PNG image as the main background */
+    border: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="265" height="239.396" viewBox="0 0 265 239.396" style="transform: rotate(270deg) scaleY(-1);"><g id="Icon_akar-arrow-forward" data-name="Icon akar-arrow-forward" transform="translate(-3 -6)"><path id="Tracé_62" data-name="Tracé 62" d="M39.783,168.585a17.283,17.283,0,0,1-12.221-29.5L79.351,87.292,27.562,35.5A17.283,17.283,0,0,1,52,11.062l64.01,64.01a17.283,17.283,0,0,1,0,24.441L52,163.523A17.228,17.228,0,0,1,39.783,168.585Z" transform="translate(146.925 0)" fill="%23fff"/><path id="Tracé_63" data-name="Tracé 63" d="M20.283,188.886A17.283,17.283,0,0,1,3,171.6V158.8A145.3,145.3,0,0,1,148.3,13.5H250.717a17.283,17.283,0,1,1,0,34.565H148.3A110.862,110.862,0,0,0,37.565,158.8v12.8A17.283,17.283,0,0,1,20.283,188.886Z" transform="translate(0 56.51)" fill="%23fff"/></g></svg>');
+    bottom: 20px;
+    background-color: #d3278c;
+    background-size: 55%;
+    cursor: pointer;
+    position: fixed;
+    right: 13px;
+    text-indent: -9999px;
+    width: auto;
+    height: 5%;
+    z-index: 300;
+    padding: 37px;
+    border-radius: 21px;
+}
+
+.role--anonymous  .views-slideshow-controls-bottom.clearfix {
+    position: absolute;
+    top: 18.5%;
+    z-index: 5;
+    left: 183px;
+}
+
 .top-bar#main-menu .grid-container {
     width: 84rem !important;
+    max-width: 84rem !important;
+}
+.role--anonymous .grid-container.hero [class*="js-view-dom-id-"] {
+    max-width: unset;
+}
+.role--anonymous  #footer-region nav.contextual-region, .role--anonymous  #footer-region nav.menu--footer {
+    width: auto;
+}
+.role--anonymous .top-bar#main-menu .grid-container {
+    width: 58rem !important;
     max-width: 84rem !important;
 }
 .top-bar .grid-container {
@@ -695,7 +730,7 @@ li.menu-c-nav-item i {
     margin-top: 0;
 }
 .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1 {
-    font-size: 65px !important;
+    font-size: 60px !important;
 }
 .page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
     font-size: 35px !important;
@@ -846,20 +881,27 @@ i.icon-custom-logout-accout.cus-cus, i.icon-custom-refresh.todiee {
 .role--anonymous ul[block="block-b-zf-account-menu"] {
     position: absolute;
     left: auto;
-    top: 87px;
-    /* top: 100%; */
-    right: 306px;
-    display: none;
-    min-width: 280px;
+    display: flex;
+    top: 0;
+    top: -11px;
+    right: -56px;
+    min-width: 0;
     width: auto;
-    padding: 0.5rem 0;
-    color: white;
+    padding: 0;
+    color: #040000 !important;
     font-size: 0.85rem;
-    background: #003a74;
+    background: none;
     border-radius: 7px;
     z-index: 10;
-    box-shadow: 1px 1px 4px rgb(59, 59, 59);
-    flex-direction: column;
+    box-shadow: none;
+    flex-direction: row-reverse;
+}
+.role--anonymous ul[block="block-b-zf-account-menu"] li a[href="/user/login"] {
+    color: #ede5e500;
+}
+.role--anonymous ul[block="block-b-zf-account-menu"] li:nth-child(2) a {
+    border-radius: 7px;
+    padding-bottom: 0 !important;
 }
 .custom-element {
     display: inline;
@@ -880,6 +922,15 @@ a[href="/contact/demande_d_acces_a_l_extranet"] {
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
+}
+.role--anonymous  a[href="/contact/demande_d_acces_a_l_extranet"] {
+    display: inline-block;
+    background-color: #af1f7b !important;
+    color: white !important;
+}
+.role--anonymous  #block-b-zf-account-menu .menu .menu-item a:hover {
+    border-bottom: none;
+    box-sizing: border-box;
 }
 
 ul[block="block-b-zf-account-menu"] li:last-child {
@@ -1048,7 +1099,7 @@ div#block-b-zf-textedebienvenuhome h1:nth-of-type(2) {
     font-style: normal;
     color: gray;
 }
-.is-front .views-field-body .grid-x.grid-margin-x.grid-margin-y {
+.is-front .views-field-body .grid-x.grid-margin-x.grid-margin-y, .section-accueil-extranet .views-field-body .grid-x.grid-margin-x.grid-margin-y{
     display: flex;
     flex-direction: column;
     width: auto;
@@ -1057,7 +1108,7 @@ div#block-b-zf-textedebienvenuhome h1:nth-of-type(2) {
     color: #003a74;
     font-weight: bold;
 }
-.is-front .block-views-block-actualites-block-1 .grid-margin-y:not(.grid-y) > .cell {
+.is-front .block-views-block-actualites-block-1 .grid-margin-y:not(.grid-y) > .cell, .section-accueil-extranet  .block-views-block-actualites-block-1 .grid-margin-y:not(.grid-y) > .cell{
     height: auto;
     width: auto;
     display: flex;
@@ -1071,6 +1122,7 @@ p.btn-see-rapport {
     width: 20%;
     padding: 6px;
     border-radius: 7px;
+    position: relative;
 }
 .c-bodyc {
     height: 140px;
@@ -1110,11 +1162,29 @@ div.top-bar#main-menu {
     flex-direction: row;
     align-items: center;
     width: 100%;
+    position: relative;
 }
 .is-front .views-field.views-field-field-slide .field-content img {
     position: relative;
     width: auto;
     max-width: none;
+    max-width: 100%;
+}
+.views-field.views-field-field-texte-slider button:before {
+    content: '';
+    display: block;
+    width: 2%;
+    padding: 20px;
+    height: 3%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width=\'265\' height=\'239.396\' viewBox=\'0 0 265 239.396\'><g id=\'Icon_akar-arrow-forward\' data-name=\'Icon akar-arrow-forward\' transform=\'translate(-3 -6)\'><path id=\'Tracé_62\' data-name=\'Tracé 62\' d=\'M39.783,168.585a17.283,17.283,0,0,1-12.221-29.5L79.351,87.292,27.562,35.5A17.283,17.283,0,0,1,52,11.062l64.01,64.01a17.283,17.283,0,0,1,0,24.441L52,163.523A17.228,17.228,0,0,1,39.783,168.585Z\' transform=\'translate(146.925 0)\' fill=\'%23fff\'/><path id=\'Tracé_63\' data-name=\'Tracé 63\' d=\'M20.283,188.886A17.283,17.283,0,0,1,3,171.6V158.8A145.3,145.3,0,0,1,148.3,13.5H250.717a17.283,17.283,0,1,1,0,34.565H148.3A110.862,110.862,0,0,0,37.565,158.8v12.8A17.283,17.283,0,0,1,20.283,188.886Z\' transform=\'translate(0 56.51)\' fill=\'%23fff\'/></g></svg>');
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.views-field.views-field-field-texte-slider button {
+    color: white;
 }
 article.grid-container {
     max-width: 100rem;
@@ -1246,7 +1316,7 @@ a.btn.button.all-meeting {
 .views-field.views-field-field-slide:before {
     content: '';
     display: block;
-    width: 104%;
+    width: 100%;
     height: 100%;
     z-index: 9;
     position: absolute;

@@ -82,6 +82,8 @@ class CustomService {
    * Permet de recuperer tous mes groupes
    */
   public function getAllMyGroup ($cid) {
+    if ($cid) {
+
     $query = "SELECT
         civicrm_group_civicrm_group_contact.id AS civicrm_group_civicrm_group_contact_id,
         civicrm_group_civicrm_group_contact.title AS civicrm_group_civicrm_group_contact_title,
@@ -118,7 +120,7 @@ class CustomService {
     "; 
 
     $results =  \Drupal::database()->query($query)->fetchAll();
-
+  }
     return $results;
   }
 

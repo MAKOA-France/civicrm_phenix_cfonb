@@ -4,6 +4,10 @@
       attach: function(context, settings) {
 
         $(document).ready(function() {
+
+
+          $("#backtotop").wrap('<div class="wrapper-c-btn"></div>');
+
             // This function is toogle of last document
 
             if (window.matchMedia("(min-width: 992px)").matches) {
