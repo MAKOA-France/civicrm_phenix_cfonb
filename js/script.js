@@ -189,7 +189,9 @@ if (window.matchMedia("(min-width: 992px)").matches) {
           if ($('.btn-my-account').length) {
             once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
               element.addEventListener('click', function () {
-                $('[block="block-b-zf-account-menu"]').toggle();
+                if (!$('.role--anonymous').length) {
+                  $('[block="block-b-zf-account-menu"]').toggle();
+                }
               });
             });
           }
