@@ -6,6 +6,9 @@
         $(document).ready(function() {
 
 
+          jQuery('.section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 .layout__region--first').insertAfter('.layout__region--second');
+
+
           $("#backtotop").wrap('<div class="wrapper-c-btn"></div>');
 
             // This function is toogle of last document

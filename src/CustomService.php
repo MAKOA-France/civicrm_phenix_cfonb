@@ -373,6 +373,7 @@ public function removeFalseValues($array) {
       $classOddAndEven = 'even';
     }
 
+    // dump($start_date);
     $var['output'] = [
       '#theme' => 'civicrm_phenix_cfonb_alter_view_detail_commission_reunion',
       '#cache' => ['max-age' => 0],
@@ -435,6 +436,27 @@ public function formatDateTo_Y_m_d ($dateString) {
      * @return array()
      */
     public function formatDateWithMonthInLetterAndHours ($start_date) {
+
+
+
+
+      //Create a DrupalDateTime object.
+      $date = new DrupalDateTime($start_date, new \DateTimeZone('UTC'));
+      $day_comm = $date->format('d');
+      $year_comm = $date->format('Y');
+      $month_comm = \Drupal::service('date.formatter')->format($date->getTimestamp(), 'custom', 'F', 'fr');
+
+            // Get the hour
+            $hour_comm = $date->format('H');
+
+            // Get the minute value.
+            $minute_comm = $date->format('i');
+      // // Extract the day, month, and year.
+
+      // // Format the month in French.
+
+      // dump($dayk, $yeark, $monthk);die;
+
       // Create a DateTime object from the date string
       $dateTime = new \DateTime($start_date);
       
@@ -476,12 +498,12 @@ public function formatDateTo_Y_m_d ($dateString) {
       $minute = $dateTime->format('i');
 
       return [
-          'day' => $day, 
-          'month' => $month, 
+          'day' => $day_comm, 
+          'month' => $month_comm, 
           'num_month' => $months, 
           'year' => $year,
-          'hour' => $hour,
-          'minute' => $minute,
+          'hour' => $hour_comm,
+          'minute' => $minute_comm,
           'jour' => $day_abbreviation
       ];
   }

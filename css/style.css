@@ -83,6 +83,9 @@ a, p, h1, h2, h3, div{
     width: 100%;
     max-width: 100%;
 }
+.slide-content-home h1 {
+    font-weight: bold;
+}
 .section-civicrm-event .layout__region .views-element-container.contextual-region.block-views h2:before {
     content: '\e81a';
     position: relative;
@@ -160,7 +163,7 @@ p.group-name {
     flex-wrap: nowrap;
     flex-direction: row-reverse;
 }
-.section-civicrm-group .layout--twocol-section .layout__region.layout__region--first {
+.section-civicrm-group .layout--twocol-section .layout__region.layout__region--second {
     border-right: unset !important;
     border-left: 5px solid #fff;
     padding: 0 0 0 30px;
@@ -1221,6 +1224,7 @@ p.btn-see-rapport {
     padding-left: 83px;
     padding-top: 12px;
     padding-bottom: 12px;
+    top: 20px;
 }
 .is-front [block="block-views-block-actualites-block-1"] {
     position: relative;
@@ -1259,7 +1263,7 @@ div.top-bar#main-menu {
     border-radius: 8px;
 }
 
-.is-front .full.hero .grid-container.contextual-region {
+.is-front .full.hero .grid-container.contextual-region, .is-front .full.hero .grid-container {
     margin: unset;
     padding: unset;
     
@@ -1471,7 +1475,7 @@ a.btn.button.all-meeting {
 }
 .views-slideshow-controls-bottom.clearfix {
     position: absolute;
-    top: 90%;
+    top: 87%;
     z-index: 5;
     left: 170px;
 }
@@ -1635,6 +1639,81 @@ input#site-search {
         body {
             background-color: rgb(107, 177, 28);
         }
+        #footer-region nav.contextual-region, #footer-region nav.menu--footer {
+            width: 100%;
+            margin-top: 170px;
+        }
+        .is-front .medium-9.cell {
+            width: 90%;
+            margin-right: 0;
+        }
+        input#site-search {
+            display: none;
+        }
+        .is-front .views-field.views-field-field-slide .field-content img {
+            position: relative;
+            width: 100%;
+            height: 455px;
+            max-width: none;
+            max-width: 100%;
+            object-fit: cover;
+        }
+        .is-front aside#sidebar_left {
+            width: 100%;
+        }
+        .top-bar#main-menu .grid-container {
+            width: 84rem !important;
+            max-width: 84rem !important;
+            padding-left: 10px;
+        }
+        a[href="/communication"]:before, a[href="/rencontres-ateliers"]:before, a[href="/faq"]:before {
+            display: none;
+        }
+        nav#block-menuprincipal .dropdown.menu {
+            gap: 6;
+        }
+        #main-menu.top-bar li a {
+            font-size: 0.9rem;
+            color: black;
+        }
+        .is-front .medium-8.cell#content {
+            width: 97%;
+        }
+        .maclasse .cell.medium-7 h3 {
+            height: 150px;
+        }
+        .c-bodyc {
+            height: 195px;
+        }
+        #footer-region nav > ul.menu {
+            display: inline-flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            gap: 27px;
+        }
+        #footer-region nav.contextual-region, #footer-region nav.menu--footer {
+            width: 100%;
+            margin-top: 150px;
+        }
+        #footer {
+            height: 682px !important;
+        }
+        .grid-container.na-pages#main {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: 20.2%;
+            right: 199px;
+        }
+        .views-field.views-field-field-slide:before {
+            display: none;
+     
+        }
+        p.btn-see-rapport {
+            width: 41%;
+        }
     }
     
     @media (max-width: 992px) { /* ipad air */
@@ -1729,6 +1808,81 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .role--anonymous nav#block-b-zf-account-menu ul li:nth-child(2) a {
+            display: inline-block;
+            background-color: #003b74 !important;
+            color: white !important;
+        }
+        .is-front .medium-9.cell {
+            max-width: 100%;
+            margin-left: 0;
+        }
+        .is-front .medium-8.cell#content {
+            width: 95%;
+        }
+ 
+        .is-front .grid-x.grid-margin-x {
+            margin: 0;
+        }
+        .align-right {
+            left: 190px;
+        }
+        .is-front .site-logo {
+            width: 100%;
+        }
+        #footer-region nav > ul.menu {
+            display: inline-flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+        }
+        #footer .site-logo img {
+            width: 65%;
+            height: auto;
+            top: 15px;
+            margin-top: 8%;
+        }
+        #footer-region nav.contextual-region, #footer-region nav.menu--footer {
+            width:100%;
+            margin-top: 68px;
+        }
+        .is-front h2 {
+            font-size: 16px !important;
+        }
+        p.text-above-img {
+            position: absolute;
+            top: 76%;
+            left: 46px;
+        }
+        .views-element-container.contextual-region.block-views h2, .meeting-head h2.meetings, .section-civicrm-group h2 {
+            font-size: 20px !important;
+        }
+        .is-front h1 {
+            font-size: 20px !important;
+        }
+        .page-node-type-page h3, .section-civicrm-group h3, .section-civicrm-event h3 {
+            font-size: 18px;
+        }
+        #footer {
+            height: 647px !important;
+        }
+        .c-bodyc {
+            height: auto;
+        }
+        .maclasse .cell.medium-7 h3 {
+            height: 100%;
+        }
+        .section1 #block-views-block-actualites-block-1 {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+        .is-front div#block-views-block-actualites-block-1 h2 {
+            text-align: center;
+        }
+        #footer div#block-makoa {
+            display: flex;
+            justify-content: space-around;
+        }
         p.btn-see-rapport {
             background-color: #d3278c;
             width: 84%;
@@ -1779,14 +1933,18 @@ input#site-search {
         .role--anonymous .medium-8.cell#content {
             width: 95%;
         }
+        .page-node-type-page p, .section-civicrm-group p, .section-civicrm-event p {
+            font-size: 16px;
+        }
         .align-right {
-            float: right;
+            float: none;
             position: absolute;
             margin-top: 4px;
-            left: 230px;
-            color: white;
-            display: flex;
-            align-items: flex-end;
+            margin-left: 164px;
+            left: 0 !important;
+        }
+        .views-field.views-field-field-slide:before{
+            display: none;
         }
         .role--anonymous ul[block="block-b-zf-account-menu"] li:nth-child(1):after {
             content: "";
@@ -1812,7 +1970,7 @@ input#site-search {
             color: white !important;
         }
         .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1 {
-            font-size: 18px !important;
+            font-size: 22px !important;
         }
         .is-front .content table tr td:first-child {
             width: 100%;
@@ -1921,7 +2079,7 @@ input#site-search {
             position: relative;
             width: auto;
             max-width: 100%;
-            height: 252px;
+            height: 310px;
             width: unset;
             object-fit: cover;
         }

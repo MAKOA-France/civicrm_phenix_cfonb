@@ -3,6 +3,7 @@
 use \Drupal\views\Views;
 use Drupal\file\Entity\File;
 use Drupal\user\Entity\User;
+use Drupal\node\Entity\Node;
 /**
  * Implements hook_preprocess_page().
  */
@@ -62,11 +63,45 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $row = $variables['row'];
   $current_user = \Drupal::currentUser();
   $user_roles = $current_user->getRoles();
+  $cus_serv = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+  if ($view->storage->id() == 'block_hero' &&  $view->current_display == 'block_1') {
+    
+    $html = '';
+    $btn = '';
+    if ($field->field == 'field_texte_slider') {
+      $the_value = $field->getValue($row);
+      $nid = $row->nid;
+      $node = Node::load($nid);
+      if ($node) {
+        $slide_subtitle = $cus_serv->getNodeFieldValue($node, 'field_sous_titre_du_slide');
+        $field_titre_du_slide = $cus_serv->getNodeFieldValue($node, 'field_titre_du_slide');
+        $btn_slide = $node->get('field_lien_qui_s_affiche_comme_b')->getValue();
+        if ($btn_slide) {
+          $txt_btn = $btn_slide[0]['title'];
+          $link_btn = $btn_slide[0]['uri'];
+          $link_btn = str_replace('internal:', '', $link_btn);
+          $btn = '<p class="btn-see-rapport"><button><a href="' . $link_btn . '">' . $txt_btn . '</a></button></p>';
+        }
+        $html .= '<div class="slide-content-home">
+        <h1>' . $field_titre_du_slide . ' </h1>
+        <h2>' . $slide_subtitle . ' </h2>
+        ' . $btn . '
+        </div>';
+        $html = ['#markup' =>  $html]; 
+        $variables['output'] = $html;
+      }
+    }
+  }
+
+
+
+
   if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
     if ($field->field == 'rendered_item') {
       // ($row);
     }
   }
+
   
 
   
