@@ -5,6 +5,9 @@
 
         $(document).ready(function() {
 
+          jQuery('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1 header > h2').insertBefore('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1');
+
+
 
           jQuery('.section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 .layout__region--first').insertAfter('.layout__region--second');
 
