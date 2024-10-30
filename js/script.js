@@ -7,6 +7,10 @@
 
           jQuery('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1 header > h2').insertBefore('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1');
 
+          if ($('.views-element-container.medium-6.block-views.block-views-block-civievents-base-sur-le-contact-block-2').length <2) {
+            console.log(' friess')
+            jQuery('.views-element-container.medium-6.block-views-block-civievents-base-sur-le-contact-block-2').insertBefore('.section-accueil-extranet  section.grid-container.section1 > .grid-x.grid-margin-x.grid-margin-y');
+          }
 
 
           jQuery('.section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 .layout__region--first').insertAfter('.layout__region--second');

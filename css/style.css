@@ -473,8 +473,11 @@ nav#block-menuprincipal .dropdown.menu {
     padding: 10px; /* optional for spacing */
     box-sizing: border-box; /* ensures padding doesn't affect the width */
 }
-.role--anonymous aside#sidebar_left {
+.is-front.role--adherent aside#sidebar_left {
     display: none;
+}
+.section-contact.role--anonymous aside#sidebar_left, .page-node-type-page-site.role--anonymous aside#sidebar_left {
+    display: block;
 }
 .role--anonymous  #footer-region nav.contextual-region, .role--anonymous  #footer-region nav.menu--footer {
     width: auto;
@@ -491,7 +494,7 @@ nav#block-menuprincipal .dropdown.menu {
 .layout-container section.grid-container {
     padding-right: 0.9375rem;
     padding-left: 0.9375rem;
-    max-width: 90rem;
+    max-width: 98rem;
     margin: 0 auto;
 }
 a[href="/rencontres-ateliers"]:before {
@@ -825,9 +828,12 @@ li.menu-c-nav-item i {
 .section-civicrm-group .grid-container.na-pages#main {
     padding-right: 0;
 }
-.grid-container.na-pages#main {
-    margin-bottom: 6rem;
-    padding-bottom: 3rem;
+.is-front section#main #block-b-zf-content table {
+    margin-bottom: 0;
+}
+.is-front section#main {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 .is-front .content table tr td:first-child {
     width: 157%;
@@ -1239,6 +1245,64 @@ div#block-views-block-civievents-base-sur-le-contact-block-1 {
     right: 0;
 
 }
+div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li {
+    padding-bottom: 0;
+}
+div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul{
+    margin-bottom: 0; 
+}
+div#block-views-block-civievents-base-sur-le-contact-block-2 .views-field-title { 
+    margin-bottom: 0;
+}
+div#block-views-block-civievents-base-sur-le-contact-block-2 .more-link {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: #f1f1f1;
+    border-radius: 0 0 8px 8px;
+}
+div#block-views-block-civievents-base-sur-le-contact-block-2 .more-link a {
+    display: block;
+    width: 50%;
+    text-align: center;
+}
+div#block-views-block-civievents-base-sur-le-contact-block-2 .field-content {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 12px solid #003a7e;
+    padding: 20px;
+    width: 25%;
+}
+p.hour-value {
+    color: #d3278c;
+}
+p.subject-value {
+    color: #003a7e;
+}
+.hour-complet {
+    margin-top: 20px;
+}
+p.label-hour, .label-subject {
+    margin: 0;
+    font-size: 15px !important;
+    color: gray;
+}
+.date-complet p {
+    font-weight: bold;
+    padding-top: 9px;
+    text-align: center;
+}
+
+.date-complet {
+    background: #f7f5f3;
+    padding: 10px;
+}
+div#block-views-block-civievents-base-sur-le-contact-block-2 span.views-field.views-field-title {
+    background: no-repeat;
+}
+span.views-field.views-field-title .container-meet-c .date-complet a:before {
+    display: none;
+}
 [block="block-views-block-civievents-base-sur-le-contact-block-1"] {
     padding-left: 54%;
     padding-top: 16px;
@@ -1252,6 +1316,11 @@ div#block-views-block-civievents-base-sur-le-contact-block-1 {
 .section-accueil-extranet div#block-views-block-communication-block-1 {
     border: none;
     position: relative;
+}
+
+.section-accueil-extranet  section.grid-container.section1 > .grid-x.grid-margin-x.grid-margin-y {
+    position: relative;
+    top: 50px;
 }
  
 
@@ -1287,18 +1356,49 @@ div#block-views-block-civievents-base-sur-le-contact-block-1 {
     display: none;
 }
 
+
+.section-accueil-extranet  [block="block-views-block-civievents-base-sur-le-contact-block-2"] header {
+    position: relative;
+}
+.section-accueil-extranet  [block="block-views-block-civievents-base-sur-le-contact-block-2"] h2 .fa-calendar-alt {
+    display: none;
+}
+
+.section-accueil-extranet  [block="block-views-block-civievents-base-sur-le-contact-block-2"] h2 {
+    text-align: left !important;
+    margin-left: 60px;
+    font-weight: bold;
+    color: #003a7e;
+}
+
+.section-accueil-extranet  [block="block-views-block-civievents-base-sur-le-contact-block-2"] h2::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 34.057px;
+    position: absolute;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 id%3D%22Icon_ionic-ios-calendar%22 data-name%3D%22Icon ionic-ios-calendar%22 width%3D%22276.31%22 height%3D%22255.057%22 viewBox%3D%220 0 276.31 255.057%22%3E%3Cpath id%3D%22Trac%C3%A9_16%22 data-name%3D%22Trac%C3%A9 16%22 d%3D%22M253.116%2C6.75H226.548V22.691A5.329%2C5.329%2C0%2C0%2C1%2C221.234%2C28H210.607a5.329%2C5.329%2C0%2C0%2C1-5.314-5.314V6.75H77.766V22.691A5.329%2C5.329%2C0%2C0%2C1%2C72.452%2C28H61.825a5.329%2C5.329%2C0%2C0%2C1-5.314-5.314V6.75H29.943A26.646%2C26.646%2C0%2C0%2C0%2C3.375%2C33.318V213.984a26.646%2C26.646%2C0%2C0%2C0%2C26.568%2C26.568H253.116a26.646%2C26.646%2C0%2C0%2C0%2C26.568-26.568V33.318A26.646%2C26.646%2C0%2C0%2C0%2C253.116%2C6.75Zm5.314%2C199.263A13.323%2C13.323%2C0%2C0%2C1%2C245.146%2C219.3H37.914A13.323%2C13.323%2C0%2C0%2C1%2C24.63%2C206.013V86.455a5.329%2C5.329%2C0%2C0%2C1%2C5.314-5.314H253.116a5.329%2C5.329%2C0%2C0%2C1%2C5.314%2C5.314Z%22 transform%3D%22translate(-3.375 14.505)%22 fill%3D%22%23003a7e%22%2F%3E%3Cpath id%3D%22Trac%C3%A9_17%22 data-name%3D%22Trac%C3%A9 17%22 d%3D%22M30.255%2C9.814A5.329%2C5.329%2C0%2C0%2C0%2C24.941%2C4.5H14.314A5.329%2C5.329%2C0%2C0%2C0%2C9%2C9.814V25.755H30.255Z%22 transform%3D%22translate(44.136 -4.5)%22 fill%3D%22%23003a7e%22%2F%3E%3Cpath id%3D%22Trac%C3%A9_18%22 data-name%3D%22Trac%C3%A9 18%22 d%3D%22M46%2C9.814A5.329%2C5.329%2C0%2C0%2C0%2C40.691%2C4.5H30.064A5.329%2C5.329%2C0%2C0%2C0%2C24.75%2C9.814V25.755H46Z%22 transform%3D%22translate(177.168 -4.5)%22 fill%3D%22%23003a7e%22%2F%3E%3C%2Fsvg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 8px;
+    left: 0;
+}
+
 .grid-container.section1 .grid-x.grid-margin-x.grid-margin-y > h2:first-of-type::before {
-   content: "";
+    content: "";
     display: block;
     width: 100%;
-    height: 0.6%;
+    height: 29px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='287.688' height='183.076' viewBox='0 0 287.688 183.076'%3E%3Cpath id='Icon_material-group' data-name='Icon material-group' d='M197.651,85.961a39.23,39.23,0,1,0-39.23-39.23A39.067,39.067,0,0,0,197.651,85.961Zm-104.614,0a39.23,39.23,0,1,0-39.23-39.23A39.067,39.067,0,0,0,93.037,85.961Zm0,26.154c-30.469,0-91.537,15.3-91.537,45.769v32.692H184.574V157.884C184.574,127.415,123.506,112.115,93.037,112.115Zm104.614,0c-3.792,0-8.108.262-12.684.654,15.169,10.985,25.761,25.761,25.761,45.115v32.692h78.46V157.884C289.188,127.415,228.119,112.115,197.651,112.115Z' transform='translate(-1.5 -7.5)' fill='%23003a7e'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
-    top: 11.8%;
-    left: -39%;
+    top: 12px;
+    left: -48%;
+}
+div#block-makoa p {
+    font-size: 15px;
 }
 
 .section-accueil-extranet .views-field.views-field-frontend-title .field-content a:before {
@@ -1484,7 +1584,7 @@ article.grid-container {
 }
 #footer-region nav > ul.menu li a {
     color: black !important;
-    text-transform: capitalize !important;
+    text-transform: none !important;
 }
 .section-civicrm-group .civicrm-entity .layout__region li, .section-civicrm-group .civicrm-entity .layout__region .block-views .contextual-region ul li {
     margin-left: 0;
@@ -1530,7 +1630,7 @@ footer div#block-reseauxsociaux {
 }
 
 div#block-b-zf-textedebienvenuhome {
-    padding-left: 248px;
+    padding-left: 186px;
 }
 div#block-b-zf-textedebienvenuhome h1:first-of-type {
     color: #af1f7b;
@@ -1683,8 +1783,11 @@ h2.meetings .icon-custom-calendar {
     border-radius: 11px;
     padding: 17px;
     margin-bottom: 20px;
-    
+    padding-left: 0;
     padding-bottom: 0;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 {
+    padding-left: 0;
 }
 .grid-x.align-middle  button.float-right {
     position: absolute;

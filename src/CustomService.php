@@ -451,6 +451,11 @@ public function formatDateTo_Y_m_d ($dateString) {
 
             // Get the minute value.
             $minute_comm = $date->format('i');
+
+
+            $dayName = $date->format('l'); // Get full day name
+            $firstThreeLetters = substr($dayName, 0, 3); // Get the first three letters
+
       // // Extract the day, month, and year.
 
       // // Format the month in French.
@@ -504,7 +509,8 @@ public function formatDateTo_Y_m_d ($dateString) {
           'year' => $year,
           'hour' => $hour_comm,
           'minute' => $minute_comm,
-          'jour' => $day_abbreviation
+          'jour' => $day_abbreviation,
+          'day_letter' => $firstThreeLetters
       ];
   }
 
