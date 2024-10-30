@@ -4,6 +4,12 @@ use \Drupal\views\Views;
 use Drupal\file\Entity\File;
 use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\media\Entity\Media;
+
+
+
 /**
  * Implements hook_preprocess_page().
  */
@@ -53,6 +59,21 @@ function civicrm_phenix_cfonb_form_alter (&$form, \Drupal\Core\Form\FormStateInt
   }
 }
 
+function getfulldate ($timestamp) {
+  // Set the locale to French.
+  setlocale(LC_TIME, 'fr_FR.UTF-8');
+
+  // Define the timestamp.
+  $timestamp = $timestamp; // Example timestamp.
+
+  // Create a DrupalDateTime object.
+  $date = DrupalDateTime::createFromTimestamp($timestamp);
+
+  // Format the date to "day month year" with the locale.
+  $formatted_date = strftime('%d %B %Y', $date->getTimestamp());
+  return $formatted_date;
+}
+
 
 
 function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
@@ -64,6 +85,85 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $current_user = \Drupal::currentUser();
   $user_roles = $current_user->getRoles();
   $cus_serv = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+
+
+
+
+  if ($view->storage->id() == 'communication' &&  $view->current_display == 'block_1') {
+
+    if ($field->field != 'title') {
+      $variables['output'] = '';
+    }
+    if ($field->field == 'title') {
+
+      $title = $field->getValue($row);
+      $nid = $row->nid;
+      $desc = $cus_serv->getNodeFieldValue($row->_entity, 'field_description');
+      $desc = $cus_serv->getNodeFieldValue($row->_entity, 'field_description');
+      $keywordsIds = $row->_entity->get('field_mots_cles')->getValue();
+      $date_crea = $row->node_field_data_created;
+      $fulldate = getfulldate($date_crea);
+      $fichier = $cus_serv->getNodeFieldValue($row->_entity, 'field_lien_vers_fichier_');
+      $filedisplay = '';
+      if ($fichier) {
+        $file = File::load($fichier);
+        $filemime = $file->get('filemime')->getValue()[0]['value'];
+        if ($filemime) {
+          switch($filemime) {
+            case 'application/pdf':
+              $filedisplay = 'pdf-3.png';
+              break;
+            case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+              $filedisplay = 'pdf-2.png';
+              break;
+              case 'application/msword':
+              $filedisplay = 'pdf-2.png';
+              break;
+              case 'application/rtf':
+                $filedisplay = '.rtf';
+              break;
+            case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+              $filedisplay = 'pdf.png';
+              break;
+            case 'application/vnd.ms-excel':
+              $filedisplay = 'pdf.png';
+              break;
+            }
+
+            $img_file = $filedisplay ? '<div class="img-illust-doc"><img src="/files/file/'. $filedisplay .'"></div>' : '';
+        }
+        
+      }
+      
+      $allkeywords = '';
+      if ($keywordsIds)  {
+        $keywordsIds = array_column($keywordsIds, 'target_id');
+        $terms = Term::loadMultiple($keywordsIds);
+        $keys = [];
+        foreach ($terms as $term) {
+          // Work with each term.
+          $term_name = $term->getName();
+          $keys[] = $term_name;
+          // Do something with $term_name.
+        }
+        $allkeywords = implode(', ', $keys);
+      }
+
+      $hmltcom = '';
+      $hmltcom .= '<div class="c-each-com">
+        ' . $img_file . '
+        <div class="c-title-description">
+          <div class="title-and-date"><a href="/node/' .$nid. '">' . $title .  '</a><p class="date">Date : '.$fulldate.'</p></div>
+          <p class="com-desc">' . $desc . '</p>
+          <p class="com-keyword"> ' . $allkeywords . ' </p>
+        </div>
+      </div>';
+      
+      $hmltcom = ['#markup' =>  $hmltcom];  
+      $variables['output'] = $hmltcom;
+      // dump($field->field);
+    }
+  }
 
   if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_2') {
     $htmls = '';
