@@ -354,6 +354,14 @@ function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
         'path' => $path . '/templates',
         'template' => 'document_group'
       ],
+      'block_custom_navigation' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'block-custom-navigation'
+      ],
     ];
 }
 
