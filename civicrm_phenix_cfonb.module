@@ -76,6 +76,8 @@ function getfulldate ($timestamp) {
 
 
 
+
+
 function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   
   $view = $variables['view'];
@@ -104,10 +106,22 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $date_crea = $row->node_field_data_created;
       $fulldate = getfulldate($date_crea);
       $fichier = $cus_serv->getNodeFieldValue($row->_entity, 'field_lien_vers_fichier_');
+
+
+  
+
       $filedisplay = '';
       if ($fichier) {
         $file = File::load($fichier);
+
+        $uri = $file->get('uri')->getValue()[0]['value'];
+        if ($uri) {
+          $uri = str_replace('public:/', '', $uri);
+        }
+
+
         $filemime = $file->get('filemime')->getValue()[0]['value'];
+        // dump($file);
         if ($filemime) {
           switch($filemime) {
             case 'application/pdf':
@@ -130,7 +144,7 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
               break;
             }
 
-            $img_file = $filedisplay ? '<div class="img-illust-doc"><img src="/files/file/'. $filedisplay .'"></div>' : '';
+            $img_file = $filedisplay ? '<a class="linked-a-c" href="/files/'. $uri .'"><div class="img-illust-doc"><img src="/files/file/'. $filedisplay .'"></div></a>' : '';
         }
         
       }
@@ -198,8 +212,8 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $nid = $row->nid;
       $node = Node::load($nid);
       if ($node) {
-        $slide_subtitle = $cus_serv->getNodeFieldValue($node, 'field_sous_titre_du_slide');
-        $field_titre_du_slide = $cus_serv->getNodeFieldValue($node, 'field_titre_du_slide');
+        $slide_subtitle = $cus_serv->getNodeFieldValue($node, 'field_sous_titre_slide');
+        $field_titre_slide = $cus_serv->getNodeFieldValue($node, 'field_titre_slide');
         $btn_slide = $node->get('field_lien_qui_s_affiche_comme_b')->getValue();
         if ($btn_slide) {
           $txt_btn = $btn_slide[0]['title'];
@@ -208,7 +222,7 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
           $btn = '<p class="btn-see-rapport"><button><a href="' . $link_btn . '">' . $txt_btn . '</a></button></p>';
         }
         $html .= '<div class="slide-content-home">
-        <h1>' . $field_titre_du_slide . ' </h1>
+        <h1>' . $field_titre_slide . ' </h1>
         <h2>' . $slide_subtitle . ' </h2>
         ' . $btn . '
         </div>';
@@ -883,10 +897,39 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
 
 }
 
+
+function civicrm_phenix_cfonb_preprocess_html(&$variables) {
+  if (\Drupal::request()->attributes->get('taxonomy_term')) {
+    // dump($variables, \Drupal::request()->attributes->get('taxonomy_term'));
+    $variables['attributes']['class'][] = 'page-c-taxonomy-ss';
+    $term = \Drupal::request()->attributes->get('taxonomy_term');
+    $tid = $term->get('tid')->getValue()[0]['value'];
+    $fileid = $term->get('field_image')->getValue()[0]['target_id'];
+    $media = Media::load($fileid);
+    $file = $media->get('field_media_image')->getValue()[0]['target_id'];
+    $file = File::load($file);
+    $uri = $file->get('uri')->getValue()[0]['value'];
+    if ($uri) {
+      $uri = str_replace('public:/', '/files', $uri);
+      $variables['attributes']['data-bg-img'] = $uri;
+    }
+  }
+}
+
 /**
  * Implements hook_preprocess_block().
  */
 function civicrm_phenix_cfonb_preprocess_block(&$variables) {
+
+  if (\Drupal::request()->attributes->get('taxonomy_term')) {
+    // dump($variables, $variables['plugin_id']);
+    // dump($variables);
+    if ($variables['plugin_id'] == 'page_title_block') {
+
+    }
+  }
+  
+
   // Check if the block is a specific block you want to alter.
   // For example, if you want to target a block with a specific machine name:
   if (isset($variables['content'][0]['#bundle']) && $variables['content'][0]['#bundle'] == 'civicrm_group' && $variables['plugin_id'] == 'field_block:civicrm_group:civicrm_group:title') {

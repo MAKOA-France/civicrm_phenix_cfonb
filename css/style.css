@@ -381,7 +381,7 @@ a.btn-add-meeting {
     align-items: center;
     gap: 30px;
 }
-a[href="/communication"], a[href="/rencontres-ateliers"], a[href="/faq"] {
+.dropdown.menu a[href="/communication"], .dropdown.menu a[href="/rencontres-ateliers"], .dropdown.menu a[href="/faq"] {
     display: flex !important;
 }
 p.btn-see-rapport a {
@@ -398,7 +398,7 @@ p.text-above-img span {
     display: block;
 }
  
-a[href="/communication"]:before {
+.dropdown.menu a[href="/communication"]:before {
     content: '';
     display: block;
     width: 23px;
@@ -500,7 +500,7 @@ nav#block-menuprincipal .dropdown.menu {
 a[href="/rencontres-ateliers"]:before {
     margin-right: 9px;
 }
-a[href="/faq"]:before {
+.dropdown.menu a[href="/faq"]:before {
     content: '';
     display: block;
     width: 25px;
@@ -510,6 +510,37 @@ a[href="/faq"]:before {
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 9px;
+}
+.img-illust-doc img::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    top: -0;
+    left: 0;
+    height: 294px;
+    background-image: url("/files/relooking/download flag.PNG");
+}
+.img-illust-doc {
+    position: relative;
+}
+.img-illust-doc-added::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 169px;
+    background-image: url("/files/relooking/download flag.PNG");
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-top: 22px;
+    position: absolute;
+}
+.section-accueil-extranet .more-link {
+    display: inline-grid;
+    display: flex;
+    justify-content: space-around;
 }
 a[href="/rencontres-ateliers"]:before {
     content: '';
@@ -804,7 +835,18 @@ li.menu-c-nav-item i {
 #footer {
     margin-top: 0;
 }
-.page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1 {
+.slide-content-home h1 p  {
+    font-weight: 200;
+}
+
+.hero.hero-taxonomy {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 493px;
+    max-width: 100% !important;
+}
+.page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1, .slide-content-home h1 p {
     font-size: 60px !important;
 }
 .page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
@@ -1335,12 +1377,28 @@ span.views-field.views-field-title .container-meet-c .date-complet a:before {
     width: 100%;
 }
 .img-illust-doc {
-    width: 7%;
+    width: 100%;
 }
 .title-and-date a {
     color: #003B74;
 }
-
+.linked-a-c {
+    width: 10%;
+}
+div#block-views-block-communication-block-1 {
+    top: 38px;
+}
+.section-accueil-extranet div#block-views-block-communication-block-1 h2 {
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
+.section-accueil-extranet p.date {
+    font-size: 17px;
+    color: gray;
+}
+.menu--account .menu .menu-item--active-trail a.is-active {
+    color: white !important;
+}
 p.com-desc {
     font-weight: bold;
 }
@@ -1356,13 +1414,29 @@ p.com-desc {
     content: "";
     display: block;
     width: 100%;
-    height: 28px;
+    height: 30px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192.589' height='264.82' viewBox='0 0 192.589 264.82'%3E%3Cpath id='Icon_simple-googledocs' data-name='Icon simple-googledocs' d='M131.294,74.227h-8.022V0H22.972A18.048,18.048,0,0,0,4.91,18.052V246.768A18.045,18.045,0,0,0,22.961,264.82H179.447A18.045,18.045,0,0,0,197.5,246.768V74.227h-66.2ZM125.28,189.589H47.027V174.539h78.232v15.051Zm30.09-36.115H47.038V138.424H155.37Zm0-36.115H47.038V102.32H155.37v15.04ZM131.294,66.205h66.2L131.294,0Z' transform='translate(-4.909)' fill='%23003a7e'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
     top: 24px;
     left: 0;
+}
+
+.section-accueil-extranet  div#block-views-block-actualites-block-1 h2 {
+    margin-bottom: 0;
+}
+
+.section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-2"] h2 {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-1 {
+    margin-top: 0;
+}
+
+.section-accueil-extranet  div#block-views-block-communication-block-1 .more-link {
+    padding-top: 30px;
 }
 
 .section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-1"] .more-link a{
@@ -1515,6 +1589,43 @@ div.top-bar#main-menu {
     padding: unset;
     
     max-width: none;
+}
+.section-contact .grid-container.full.hero.communication {
+    background: url("/files/relooking/who contact.jpg");
+    background-repeat: no-repeat;
+    max-width: 1170px;
+    margin-top: 1rem;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    width: 100%;
+    max-width: 100%;
+    height: 493px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.section-contact .grid-container.hero.communication:before {
+    right: -90px;
+    z-index: -1;
+}
+
+.section-communication .grid-container.full.hero.communication {
+    background: url(/files/relooking/stephan-widua-3YAIvBNlZM4-unsplash.jpg);
+    max-width: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 493px;
+    max-width: 100% !important;
+    background-position-y: 83%;
+}
+.page-communication .grid-container.hero.communication:before {
+    right: -90px;
+    z-index: -1;
 }
 .is-front #block-views-block-block-hero-block-1 {
     background: url(/files/2021-10/carrouselBg.png);
@@ -1772,6 +1883,13 @@ a.btn.button.all-meeting {
     height: 800px;
     background-size: contain;
     position: fixed;
+}
+.page-c-taxonomy-ss .grid-container.hero-taxonomy:before{
+    right: -92px;
+    z-index: -1;
+}
+.grid-container.full.hero.hero-taxonomy {
+    background-image: none !important;
 }
 .grid-container.na-pages.new-before-style:before {
     /* content: ""; */
@@ -2066,6 +2184,74 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .item-list .views-field.views-field-title {
+            display: flex;
+            flex-direction: column;
+        }
+        div#block-views-block-civievents-base-sur-le-contact-block-2 .more-link a {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .dropdown.menu a[href="/communication"]::before, .dropdown.menu a[href="/rencontres-ateliers"]::before, .dropdown.menu a[href="/faq"]::before {
+            display: none !important;
+        }
+        div#block-views-block-civievents-base-sur-le-contact-block-2 .field-content {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border: 12px solid #003a7e;
+            padding: 20px;
+            width: 100%;
+        }
+        .slide-content-home h1 p {
+            font-size: 22px !important;
+        }
+        .grid-container.section1 .grid-x.grid-margin-x.grid-margin-y > h2:first-of-type {
+            padding-left: 80px;
+        }
+ 
+        .section-accueil-extranet .layout-container section.grid-container {
+            max-width: 90%;
+        }
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-1, .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 {
+            width: 91%;
+            border: none;
+        }
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-1, .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 {
+            width: 91%;
+            border: none;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .is-front [block="block-views-block-actualites-block-1"]:before, .section-accueil-extranet [block="block-views-block-actualites-block-1"]:before {
+            display:none;
+        }
+        .grid-container.section1 .grid-x.grid-margin-x.grid-margin-y > h2:first-of-type::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 25px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='287.688' height='183.076' viewBox='0 0 287.688 183.076'%3E%3Cpath id='Icon_material-group' data-name='Icon material-group' d='M197.651,85.961a39.23,39.23,0,1,0-39.23-39.23A39.067,39.067,0,0,0,197.651,85.961Zm-104.614,0a39.23,39.23,0,1,0-39.23-39.23A39.067,39.067,0,0,0,93.037,85.961Zm0,26.154c-30.469,0-91.537,15.3-91.537,45.769v32.692H184.574V157.884C184.574,127.415,123.506,112.115,93.037,112.115Zm104.614,0c-3.792,0-8.108.262-12.684.654,15.169,10.985,25.761,25.761,25.761,45.115v32.692h78.46V157.884C289.188,127.415,228.119,112.115,197.651,112.115Z' transform='translate(-1.5 -7.5)' fill='%23003a7e'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            top: 12px;
+            left: -152px;
+        }
+        div#block-views-block-civievents-base-sur-le-contact-block-1:before {
+            display: none;
+        }
+        [block="block-views-block-civievents-base-sur-le-contact-block-1"] {
+            padding-left: 0;
+            padding-top: 16px;
+        }
+        div#block-views-block-civievents-base-sur-le-contact-block-2 span.views-field.views-field-title {
+            background: no-repeat;
+            padding-right: 0;
+        }
         .role--anonymous nav#block-b-zf-account-menu ul li:nth-child(2) a {
             display: inline-block;
             background-color: #003b74 !important;
@@ -2198,8 +2384,17 @@ input#site-search {
             float: none;
             position: absolute;
             margin-top: 4px;
-            margin-left: 164px;
+            margin-left: 150px;
             left: 0 !important;
+        }
+        .is-front div#block-views-block-actualites-block-1 .views-row {
+            margin-bottom: 0 !important;
+            padding-bottom: 0;
+        }
+        nav#block-menuprincipal .dropdown.menu {
+            display: flex;
+            gap: 11px;
+            flex-direction: column;
         }
         .views-field.views-field-field-slide:before{
             display: none;

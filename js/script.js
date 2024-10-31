@@ -5,6 +5,32 @@
 
         $(document).ready(function() {
 
+          once('cfonbContext', '.c-each-com', context).forEach((element) => {
+            $(element).on('mouseout', function () {
+              $(element).find('.img-illust-doc').removeClass('img-illust-doc-added')
+              
+            })
+            $(element).on('mouseover', function () {
+              console.log(element, $(element.closest('.img-illust-doc')))
+             $(element).find('.img-illust-doc').addClass('img-illust-doc-added')
+            });
+          });
+
+          let img = jQuery('.page-c-taxonomy-ss').attr('data-bg-img');
+          if (img) {
+
+          let style = `
+              background-image: url("${img}") !important;
+              background-size: cover !important;
+              background-position: center !important;
+              background-repeat: no-repeat !important;
+          `;
+
+          // Apply the style attribute to the target element
+          jQuery('.page-c-taxonomy-ss .grid-container.hero-taxonomy').attr('style', style);
+
+          }
+
           jQuery('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1 header > h2').insertBefore('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1');
 
           if ($('.views-element-container.medium-6.block-views.block-views-block-civievents-base-sur-le-contact-block-2').length <2) {
