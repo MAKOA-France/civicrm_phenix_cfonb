@@ -284,6 +284,8 @@ p.group-name {
     justify-content: space-between;
     width: 100%;
 }
+
+
 .detail-title-resume-first-doc {
     gap: 155px;
     display: flex;
@@ -291,15 +293,41 @@ p.group-name {
 .cu-navigation {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    width: 100%;
+    gap: 1%;
+}
+p.icon-meet-c, .icon-commis, .icon-comm{
+    display: flex;
+    justify-content: space-evenly;
 }
 .cu-navigation div {
     background-color: #f1f1f1;
-    height: 200px;
-    width: 32%;
+    height: 222px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+}
+.icon-meet-c svg#Icon_ionic-ios-calendar {
+    width: 60px;
+        height: auto;
+}
+.cu-navigation p {
+    color: black;
+}
+ .cu-nav-group svg  {
+    width: 80px;
+    height: auto;
+}
+.cu-nav-com svg {
+    width: 38px;
+    height: auto;
+}
+.cu-nav-meet, .cu-nav-com, .cu-nav-group {
+    display: flex;
+    flex-direction: column;
 }
 .custom-section-doc .description, .first-element-doc .content-frist-doc .date-size-first-doc {
     font-size: 0.89rem;
@@ -1025,9 +1053,9 @@ i.icon-custom-logout-accout.cus-cus, i.icon-custom-refresh.todiee {
 .role--adherent ul[block="block-b-zf-account-menu"] {
     position: absolute;
     left: auto;
-    top: 86px;
+    top: 55px;
     /* top: 100%; */
-    right: 295px;
+    right: 0;
     display: none;
     min-width: 280px;
     width: auto;
@@ -1515,8 +1543,58 @@ p.com-desc {
 div#block-makoa p {
     font-size: 15px;
 }
+.section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-3"] .item-list ul li {
+    list-style: none;
+    margin-top: 22px;
 
-.section-accueil-extranet .views-field.views-field-frontend-title .field-content a:before {
+}
+
+.section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-3"] h2 .fa-users-cog {
+    display: none;
+}
+
+.section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-3"] header > h2 {
+    position: relative;
+    text-align: left;
+    padding-left: 70px;  
+    color: #003a74;
+    font-weight: bold;
+}
+.section-accueil-extranet div#block-b-zf-blockhomeadherentnavigation {
+    margin-bottom: 30px;
+}
+[block="block-views-block-civievents-base-sur-le-contact-block-3"] header > h2:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    background-repeat: no-repeat;
+    width: 55px;
+    background-size: contain;
+    height: 55px;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22287.688%22%20height%3D%22183.076%22%20viewBox%3D%220%200%20287.688%20183.076%22%3E%3Cpath%20id%3D%22Icon_material-group%22%20data-name%3D%22Icon%20material-group%22%20d%3D%22M197.651%2C85.961a39.23%2C39.23%2C0%2C1%2C0-39.23-39.23A39.067%2C39.067%2C0%2C0%2C0%2C197.651%2C85.961Zm-104.614%2C0a39.23%2C39.23%2C0%2C1%2C0-39.23-39.23A39.067%2C39.067%2C0%2C0%2C0%2C93.037%2C85.961Zm0%2C26.154c-30.469%2C0-91.537%2C15.3-91.537%2C45.769v32.692H184.574V157.884C184.574%2C127.415%2C123.506%2C112.115%2C93.037%2C112.115Zm104.614%2C0c-3.792%2C0-8.108.262-12.684.654%2C15.169%2C10.985%2C25.761%2C25.761%2C25.761%2C45.115v32.692h78.46V157.884C289.188%2C127.415%2C228.119%2C112.115%2C197.651%2C112.115Z%22%20transform%3D%22translate(-1.5%20-7.5)%22%20fill%3D%22%23003a74%22%3E%3C/path%3E%3C/svg%3E");
+}
+
+
+.section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-3"] .item-list ul .views-field.views-field-frontend-title .field-content a {
+    position: relative;
+}
+
+.section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-3"] .item-list ul .views-field.views-field-frontend-title .field-content a:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0 !important;
+    margin-left: 8px;
+}
+
+.section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-1"] .item-list .views-field.views-field-frontend-title .field-content a:before, 
+.section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-3"] .item-list ul .views-field.views-field-frontend-title .field-content a:before
+
+{
     content: "";
     display: block;
     width: 100%;
@@ -2147,6 +2225,9 @@ input#site-search {
         body {
             background-color: cyan;
         }
+        .page-accueil-extranet  div#block-views-block-civievents-base-sur-le-contact-block-3 {
+            width: 100%;
+        }
         nav.sidebar-c-nav {
             display: none;
         }
@@ -2197,6 +2278,12 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+
+        .cu-navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
         .item-list .views-field.views-field-title {
             display: flex;
             flex-direction: column;

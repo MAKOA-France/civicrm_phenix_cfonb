@@ -31,11 +31,10 @@
 
           }
 
-          jQuery('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1 header > h2').insertBefore('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1');
+          jQuery('.section-accueil-extranet #block-views-block-civievents-base-sur-le-contact-block-1 header > h2').insertAfter('.section-accueil-extranet  #block-b-zf-blockhomeadherentnavigation');
 
           if ($('.views-element-container.medium-6.block-views.block-views-block-civievents-base-sur-le-contact-block-2').length <2) {
-            console.log(' friess')
-            jQuery('.views-element-container.medium-6.block-views-block-civievents-base-sur-le-contact-block-2').insertBefore('.section-accueil-extranet  section.grid-container.section1 > .grid-x.grid-margin-x.grid-margin-y');
+            jQuery('.views-element-container.medium-6.block-views-block-civievents-base-sur-le-contact-block-2').insertAfter('.section-accueil-extranet  #block-b-zf-blockhomeadherentnavigation');
           }
 
 
@@ -69,18 +68,15 @@
 
                     // if ($('.group-presentation-description').offset()) {                    
                       var elementOffset = $('.group-presentation-description').length ? $('.group-presentation-description').offset().top : $('.grid-container.na-pages').offset().top ;
-                      console.log([elementOffset, scrollTop, $('.group-presentation-description').length ])
                       // Check if the element touches the top of the screen
                       if (scrollTop <= elementOffset) {
                         $('#block-b-zf-navigationmeetingandgroupblock').css('position', 'static');
-                        console.log('relatkiv')
                       jQuery('.dynamic-content').css('top', '-21px');
                       jQuery('.dynamic-content').css('width', '500px');
                     } else {
                       $('#block-b-zf-navigationmeetingandgroupblock').css('position', 'fixed');
                       jQuery('.dynamic-content').css('top', '0');
                       jQuery('.dynamic-content').css('width', '500px');
-                      console.log('fixed li')
                       
                     }
                   // }
@@ -188,7 +184,6 @@ if (window.matchMedia("(min-width: 992px)").matches) {
 (function($) {
   Drupal.behaviors.civicrm_phenix_cfonb = {
       attach: function(context, settings) {
-        console.log('firing')
         $(window).on('load', function() {
 
           // Create the new div container
