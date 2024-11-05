@@ -30,7 +30,7 @@ final class BlockHomeAdherentNavigationBlock extends BlockBase {
       '#theme' => 'block_custom_navigation',
       '#cache' => ['max-age' => 0],
       '#content' => [
-        'data' => $data,
+        // 'data' => $data,
       ],
     ];
   }

@@ -66,6 +66,12 @@ a, p, h1, h2, h3, div{
     display: flex;
     justify-content: center;
 }
+
+
+ul.submenu.is-dropdown-submenu.first-sub.vertical.js-dropdown-active {
+    z-index: 999;
+}
+
 .section-civicrm-event #main .civicrm-entity--type-civicrm-event .main-title-last-doc {
     color: #140d3d;
     font-weight: 600;
@@ -1328,11 +1334,38 @@ div#block-views-block-civievents-base-sur-le-contact-block-1 {
     right: 0;
 
 }
+div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li .field-content{
+    width: 100%;
+}
+
+.section-civicrm-event  .grid-container.na-pages:before {
+    right: -92px;
+    content: "";
+    background: url(/files/relooking/arrow%20vertical.png) no-repeat center 0;
+    width: 23%;
+    height: 800px;
+    background-size: contain;
+    position: fixed;
+}
+
 div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li {
     padding-bottom: 0;
+    list-style: none;
+    border: 12px solid #003a7e;
+    padding: 20px;
+    border-left: solid 5.5px #003a7e;
+    border-right: solid 5.5px #003a7e;
+    margin-bottom: 10px;
 }
+
 div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul{
     margin-bottom: 0; 
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 div#block-views-block-civievents-base-sur-le-contact-block-2 .views-field-title { 
     margin-bottom: 0;
@@ -1349,13 +1382,35 @@ div#block-views-block-civievents-base-sur-le-contact-block-2 .more-link a {
     width: 50%;
     text-align: center;
 }
-div#block-views-block-civievents-base-sur-le-contact-block-2 .field-content {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: 12px solid #003a7e;
-    padding: 20px;
-    width: 25%;
+
+.group-h2 {
+    position: relative;
 }
+.section-accueil-extranet .more-link a {
+    border-radius: 10px;
+    border-radius: 10px;
+    display: block;
+    width: 42%;
+    text-align: center;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(1),
+ .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(5), 
+ .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(9) {
+    border-left: 9px solid #003a7e;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(4),
+ .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(8), 
+ .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(12),
+  .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:last-child {
+    border-right: 9px solid #003a7e;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
 p.hour-value {
     color: #d3278c;
 }
@@ -1374,6 +1429,7 @@ p.label-hour, .label-subject {
     font-weight: bold;
     padding-top: 9px;
     text-align: center;
+    color: black;
 }
 
 .date-complet {
@@ -1512,18 +1568,19 @@ p.com-desc {
     margin-left: 60px;
     font-weight: bold;
     color: #003a7e;
+    padding-bottom: 13px !important;
 }
 
 .section-accueil-extranet  [block="block-views-block-civievents-base-sur-le-contact-block-2"] h2::before {
     content: "";
     display: inline-block;
     width: 100%;
-    height: 28px;
+    height: 31px;
     position: absolute;
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 id%3D%22Icon_ionic-ios-calendar%22 data-name%3D%22Icon ionic-ios-calendar%22 width%3D%22276.31%22 height%3D%22255.057%22 viewBox%3D%220 0 276.31 255.057%22%3E%3Cpath id%3D%22Trac%C3%A9_16%22 data-name%3D%22Trac%C3%A9 16%22 d%3D%22M253.116%2C6.75H226.548V22.691A5.329%2C5.329%2C0%2C0%2C1%2C221.234%2C28H210.607a5.329%2C5.329%2C0%2C0%2C1-5.314-5.314V6.75H77.766V22.691A5.329%2C5.329%2C0%2C0%2C1%2C72.452%2C28H61.825a5.329%2C5.329%2C0%2C0%2C1-5.314-5.314V6.75H29.943A26.646%2C26.646%2C0%2C0%2C0%2C3.375%2C33.318V213.984a26.646%2C26.646%2C0%2C0%2C0%2C26.568%2C26.568H253.116a26.646%2C26.646%2C0%2C0%2C0%2C26.568-26.568V33.318A26.646%2C26.646%2C0%2C0%2C0%2C253.116%2C6.75Zm5.314%2C199.263A13.323%2C13.323%2C0%2C0%2C1%2C245.146%2C219.3H37.914A13.323%2C13.323%2C0%2C0%2C1%2C24.63%2C206.013V86.455a5.329%2C5.329%2C0%2C0%2C1%2C5.314-5.314H253.116a5.329%2C5.329%2C0%2C0%2C1%2C5.314%2C5.314Z%22 transform%3D%22translate(-3.375 14.505)%22 fill%3D%22%23003a7e%22%2F%3E%3Cpath id%3D%22Trac%C3%A9_17%22 data-name%3D%22Trac%C3%A9 17%22 d%3D%22M30.255%2C9.814A5.329%2C5.329%2C0%2C0%2C0%2C24.941%2C4.5H14.314A5.329%2C5.329%2C0%2C0%2C0%2C9%2C9.814V25.755H30.255Z%22 transform%3D%22translate(44.136 -4.5)%22 fill%3D%22%23003a7e%22%2F%3E%3Cpath id%3D%22Trac%C3%A9_18%22 data-name%3D%22Trac%C3%A9 18%22 d%3D%22M46%2C9.814A5.329%2C5.329%2C0%2C0%2C0%2C40.691%2C4.5H30.064A5.329%2C5.329%2C0%2C0%2C0%2C24.75%2C9.814V25.755H46Z%22 transform%3D%22translate(177.168 -4.5)%22 fill%3D%22%23003a7e%22%2F%3E%3C%2Fsvg%3E");
     background-size: contain;
     background-repeat: no-repeat;
-    top: 12px;
+    top: 10px;
     left: 0;
 }
 
@@ -1548,6 +1605,57 @@ div#block-makoa p {
     margin-top: 22px;
 
 }
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li .field-content{
+    width: 100%;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li {
+    list-style: none;
+    width: 25%;
+    border: 12px solid #003a7e;
+    padding: 20px;
+    border-left: solid 5.5px #003a7e;
+    border-right: solid 5.5px #003a7e;
+    margin-bottom: 10px;
+}
+
+
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(1), .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(5), .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(9) {
+    border-left: 9px solid #003a7e;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(4),
+ .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(8),
+  .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(12), 
+  .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:last-child  {
+    border-right: 9px solid #003a7e;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list .views-field.views-field-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    background-color: white;
+    border-radius: 11px;
+    padding: 17px;
+    margin-bottom: 20px;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 span.views-field.views-field-start-date {
+    display: none;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 {
+    width: 100%;
+}
 
 .section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-3"] h2 .fa-users-cog {
     display: none;
@@ -1568,7 +1676,8 @@ div#block-makoa p {
     position: absolute;
     left: 0;
     background-repeat: no-repeat;
-    width: 55px;
+    top: 8px;
+    width: 48px;
     background-size: contain;
     height: 55px;
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22287.688%22%20height%3D%22183.076%22%20viewBox%3D%220%200%20287.688%20183.076%22%3E%3Cpath%20id%3D%22Icon_material-group%22%20data-name%3D%22Icon%20material-group%22%20d%3D%22M197.651%2C85.961a39.23%2C39.23%2C0%2C1%2C0-39.23-39.23A39.067%2C39.067%2C0%2C0%2C0%2C197.651%2C85.961Zm-104.614%2C0a39.23%2C39.23%2C0%2C1%2C0-39.23-39.23A39.067%2C39.067%2C0%2C0%2C0%2C93.037%2C85.961Zm0%2C26.154c-30.469%2C0-91.537%2C15.3-91.537%2C45.769v32.692H184.574V157.884C184.574%2C127.415%2C123.506%2C112.115%2C93.037%2C112.115Zm104.614%2C0c-3.792%2C0-8.108.262-12.684.654%2C15.169%2C10.985%2C25.761%2C25.761%2C25.761%2C45.115v32.692h78.46V157.884C289.188%2C127.415%2C228.119%2C112.115%2C197.651%2C112.115Z%22%20transform%3D%22translate(-1.5%20-7.5)%22%20fill%3D%22%23003a74%22%3E%3C/path%3E%3C/svg%3E");
@@ -1590,7 +1699,9 @@ div#block-makoa p {
     top: 0 !important;
     margin-left: 8px;
 }
-
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-3 {
+    width: 100%;
+}
 .section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-1"] .item-list .views-field.views-field-frontend-title .field-content a:before, 
 .section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-3"] .item-list ul .views-field.views-field-frontend-title .field-content a:before
 
@@ -1603,18 +1714,20 @@ div#block-makoa p {
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-    top: 30px;
+    top: -3px;
     margin-left: 8px;
 }
 .section-accueil-extranet .views-field.views-field-frontend-title .field-content {
     background-color: #f1f1f1;
     padding: 11px;
     border-radius: 7px;
+    display: block;
 }
 
 .section-accueil-extranet .views-field.views-field-frontend-title .field-content a {
     color: #003a74 !important;
-    padding-left: 33px;
+    padding-left: 48px;
+    position: relative;
 } 
 
 .section-accueil-extranet .layout-container section.grid-container {
@@ -1673,6 +1786,30 @@ div.top-bar#main-menu {
 .maclasse .cell.medium-5 {
     border: 1px solid #efebeb;
     border-radius: 8px;
+}
+
+.page-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-4"] header h2{
+    text-align: left;
+    padding-left: 70px;
+    color: #003a74;
+    font-weight: bold;
+    position:relative;
+}
+
+.page-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-4"] header h2:before{
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 31px;
+    position: absolute;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 id%3D%22Icon_ionic-ios-calendar%22 data-name%3D%22Icon ionic-ios-calendar%22 width%3D%22276.31%22 height%3D%22255.057%22 viewBox%3D%220 0 276.31 255.057%22%3E%3Cpath id%3D%22Trac%C3%A9_16%22 data-name%3D%22Trac%C3%A9 16%22 d%3D%22M253.116%2C6.75H226.548V22.691A5.329%2C5.329%2C0%2C0%2C1%2C221.234%2C28H210.607a5.329%2C5.329%2C0%2C0%2C1-5.314-5.314V6.75H77.766V22.691A5.329%2C5.329%2C0%2C0%2C1%2C72.452%2C28H61.825a5.329%2C5.329%2C0%2C0%2C1-5.314-5.314V6.75H29.943A26.646%2C26.646%2C0%2C0%2C0%2C3.375%2C33.318V213.984a26.646%2C26.646%2C0%2C0%2C0%2C26.568%2C26.568H253.116a26.646%2C26.646%2C0%2C0%2C0%2C26.568-26.568V33.318A26.646%2C26.646%2C0%2C0%2C0%2C253.116%2C6.75Zm5.314%2C199.263A13.323%2C13.323%2C0%2C0%2C1%2C245.146%2C219.3H37.914A13.323%2C13.323%2C0%2C0%2C1%2C24.63%2C206.013V86.455a5.329%2C5.329%2C0%2C0%2C1%2C5.314-5.314H253.116a5.329%2C5.329%2C0%2C0%2C1%2C5.314%2C5.314Z%22 transform%3D%22translate(-3.375 14.505)%22 fill%3D%22%23003a7e%22%2F%3E%3Cpath id%3D%22Trac%C3%A9_17%22 data-name%3D%22Trac%C3%A9 17%22 d%3D%22M30.255%2C9.814A5.329%2C5.329%2C0%2C0%2C0%2C24.941%2C4.5H14.314A5.329%2C5.329%2C0%2C0%2C0%2C9%2C9.814V25.755H30.255Z%22 transform%3D%22translate(44.136 -4.5)%22 fill%3D%22%23003a7e%22%2F%3E%3Cpath id%3D%22Trac%C3%A9_18%22 data-name%3D%22Trac%C3%A9 18%22 d%3D%22M46%2C9.814A5.329%2C5.329%2C0%2C0%2C0%2C40.691%2C4.5H30.064A5.329%2C5.329%2C0%2C0%2C0%2C24.75%2C9.814V25.755H46Z%22 transform%3D%22translate(177.168 -4.5)%22 fill%3D%22%23003a7e%22%2F%3E%3C%2Fsvg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 10px;
+    left: 0;
+}
+.page-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-4"] header i.far.fa-calendar-alt {
+    display: none;
 }
 
 .is-front .full.hero .grid-container.contextual-region, .is-front .full.hero .grid-container {
@@ -1963,7 +2100,7 @@ a.btn.button.all-meeting {
 .section-accueil-extranet .grid-container.na-pages:before,
 .section-espace-documentaire  .grid-container.hero-taxonomy:before,
 .page-node-type-page-site .grid-container.na-pages:before,
-.section-civicrm-event .grid-container.na-pages:before,
+/* .section-civicrm-event .grid-container.na-pages:before, */
 .section-mentions-legales .grid-container.na-pages:before,
 .section-sitemap .grid-container.na-pages:before,
  .grid-container.hero.communication:before {
@@ -1979,6 +2116,11 @@ a.btn.button.all-meeting {
     right: -92px;
     z-index: -1;
 }
+
+.block-views-block-civievents-base-sur-le-contact-block-2 .views-field-title a:before {
+    display: none !important;
+}
+
 .grid-container.full.hero.hero-taxonomy {
     background-image: none !important;
 }
@@ -2067,6 +2209,20 @@ input#site-search {
         .section-accueil-extranet .grid-container.na-pages:before, .section-espace-documentaire .grid-container.hero-taxonomy:before, .page-node-type-page-site .grid-container.na-pages:before, .section-civicrm-event .grid-container.na-pages:before, .section-mentions-legales .grid-container.na-pages:before, .section-sitemap .grid-container.na-pages:before, .grid-container.hero.communication:before {
             display: none;
         }
+        .section-accueil-extranet .layout-container section.grid-container {
+            max-width: 90%;
+        }
+        .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: 20.2%;
+            right: 259px;
+        }
+        .maclasse .cell.medium-7 h3 {
+            height: 140px;
+        }
+        .c-bodyc {
+            height: 176px;
+        }
         body {
             background-color: rgb(142, 170, 42);
         }
@@ -2147,11 +2303,56 @@ input#site-search {
             width: 97%;
         }
         .maclasse .cell.medium-7 h3 {
-            height: 150px;
+            height: 183px;
         }
         .c-bodyc {
-            height: 195px;
+            height: 200px;
         }
+
+
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li {
+            width: auto;
+        }
+
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(1), 
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(3), 
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(5) {
+            border-left: 9px solid #003a7e;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(2),
+         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(4), 
+         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(6), 
+         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(8), 
+         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:last-child {
+            border-right: 9px solid #003a7e;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .section-accueil-extranet .grid-x.align-middle .cell.medium-11 {
+            width: 40% !important;
+        }
+
+        .section-accueil-extranet .grid-x.align-middle .cell.medium-1 {
+            display: flex;
+            width: 60% !important;
+        }
+
+        .dropdown.menu a[href="/communication"]:before, .dropdown.menu a[href="/faq"]:before {
+            display: none;
+        }
+
         #footer-region nav > ul.menu {
             display: inline-flex;
             flex-wrap: nowrap;
@@ -2172,7 +2373,7 @@ input#site-search {
         .grid-x.align-middle button.float-right {
             position: absolute;
             top: 20.2%;
-            right: 199px;
+            right: 270px;
         }
         .views-field.views-field-field-slide:before {
             display: none;
@@ -2279,10 +2480,35 @@ input#site-search {
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
 
+        div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li {
+            border: none;
+        }
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(1) {
+            border: none;
+        }
         .cu-navigation {
             display: flex;
             flex-direction: column;
             gap: 10px;
+        }
+
+         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-1 {
+            position: relative;
+            height: auto;
+            width: 100%;
+        }
+
+
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(4), .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(8), .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(12), .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:last-child {
+            /* border-right: none;
+            border-top-right-radius: none;
+            border-bottom-right-radius: none; */
+        }
+         .section-accueil-extranet .section1 #block-views-block-actualites-block-1 .views-row {
+            margin-bottom: 0;
+        }
+        .section-accueil-extranet .more-link a {
+            width: 100%;
         }
         .item-list .views-field.views-field-title {
             display: flex;
@@ -2481,11 +2707,71 @@ input#site-search {
             font-size: 16px;
         }
         .align-right {
-            float: none;
+            float: right;
             position: absolute;
             margin-top: 4px;
-            margin-left: 150px;
-            left: 0 !important;
+            margin-left: 40px;
+        }
+        .page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
+            font-size: 20px !important;
+        }
+        [block="block-views-block-civievents-base-sur-le-contact-block-3"] header > h2:before {
+            top: 4px;
+            width: 35px;
+        }
+        .cu-navigation {
+            display: flex;
+            align-items: center;
+            width: 92%;
+            gap: 9px;
+        }
+        }
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:last-child {
+            border: none;
+        }
+        .page-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-4"] header h2:before {
+            height: 24px;
+            top: 2px;
+        }
+        .section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-2"] h2 {
+            margin-left: 78px;
+        }
+        #footer-region nav > ul.menu li a::after {
+            display: none;
+        }
+        .cu-nav-group svg {
+            width: 59px;
+            height: auto;
+        }
+        .cu-navigation div {
+            background-color: #f1f1f1;
+            height: 163px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        .section-accueil-extranet .grid-x.grid-margin-x.align-middle .medium-9.cell {
+            width: auto;
+        }
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li,
+         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(4),
+          .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(6),
+           .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(8),
+            .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:last-child {
+                border: 12px solid #003a7e !important;
+        }
+        .section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-2"] h2::before {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 27px;
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            top: -3px;
+            left: 19px;
         }
         .is-front div#block-views-block-actualites-block-1 .views-row {
             margin-bottom: 0 !important;
