@@ -79,7 +79,6 @@ function getfulldate ($timestamp) {
 
 
 function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
-  
   $view = $variables['view'];
   $field = $variables['field'];
   $requests = \Drupal::request();
@@ -87,12 +86,35 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $current_user = \Drupal::currentUser();
   $user_roles = $current_user->getRoles();
   $cus_serv = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+  
+  
+  
+  
+  
+  if ($view->storage->id() == 'communication' &&  $view->current_display == 'page_1') {
+    if ($field->field == 'field_mots_cles') {
+      $variables['output'] = ''; // Optionally, you can clear the content.
+  
+    }
+    if ($field->field == 'field_description') {
+      $desc = $field->getValue($row);
+      $keywords = $row->_entity->get('field_mots_cles')->getValue();
+      $keywords = array_column($keywords, 'target_id');
+      $terms = Term::loadMultiple($keywords);
+      $term_names = [];
+      foreach ($terms as $term) {
+        $term_names[] = $term->getName();  // Get the name of the term
+      }
+      
+      // Join the term names with a comma
+      $term_names_string = implode(', ', $term_names);
+      $cus_desc = ['#markup' =>   '<div class="desc-pt"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div>'];  
+      $variables['output'] = $cus_desc;
 
-
-
+    }
+  }
 
   if ($view->storage->id() == 'communication' &&  $view->current_display == 'block_1') {
-
     if ($field->field != 'title') {
       $variables['output'] = '';
     }

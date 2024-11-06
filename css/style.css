@@ -461,6 +461,13 @@ a.btn-add-meeting {
     justify-content: center;
     align-items: center;
 }
+p.keywords-com {
+    color: gray;
+}
+.desc-pt {
+    display: flex;
+    flex-direction: column;
+}
 .group-presentation-description {
     z-index: 2;
 }
