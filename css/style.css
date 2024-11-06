@@ -197,7 +197,7 @@ p.group-name {
 .section-civicrm-group .communication .block-blockdetailcommission--2 .icon-group, .section-civicrm-group .communication .block-b-zf-blockdetailcommission--2 .icon-group {
     width: 130px;
     height: 130px;
-    background-color: #af1f7b;
+    background-color: #d3278c;
     border-radius: 100%;
     border: 2px solid #FFF;
     box-shadow: 1px 1px 5px #0000005e;
@@ -230,7 +230,7 @@ p.group-name {
     color: #FFF;
     width: 130px;
     height: 130px;
-    background-color: #af1f7b;
+    background-color: #d3278c;
     border-radius: 100%;
     border: 2px solid #FFF;
     box-shadow: 1px 1px 5px #0000005e;
@@ -389,11 +389,23 @@ p.icon-meet-c, .icon-commis, .icon-comm{
     display: none;
 }
 #block-b-zf-main-menu li ul li.is-active a, #block-menuprincipal li ul li a:hover, #block-b-zf-main-menu li ul li a:hover {
-    color: #af1f7b !important;
+    color: #d3278c !important;
     text-decoration: none;
 }
 .section-civicrm-group .grid-container.full.hero.communication {
-    max-width: 90rem;
+    max-width: 81%;
+}
+.page-civicrm .ui-widget-content.ui-autocomplete a {
+    color: #222 !important;
+}
+.date-meet {
+    margin-left: 20px;
+}
+.date-meet p {
+    color: gray;
+}
+span.title-com {
+    color: #003a74;
 }
 .civicrm-entity--view-mode-full .layout--twocol-section .layout__region {
     padding-left: 0 !important;
@@ -407,10 +419,13 @@ p.icon-meet-c, .icon-commis, .icon-comm{
     padding-left: 20px;
     padding-right: 20px;
 }
+.meeting-title-and-date h3 {
+    color: black;
+}
 a.btn-add-meeting {
     text-transform: uppercase;
     font-size: 1rem;
-    color: #af1f7b;
+    color: #d3278c;
     padding: 10px 15px;
     font-weight: 600;
     background-color: #f7f5f3;
@@ -680,7 +695,7 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     min-height: 55px;
 }
 .menu-c-nav-item svg {
-    background-color: #af1f7b;
+    background-color: #d3278c;
     border-radius: 9px !important;
     height: 110%;
     padding: 10px;
@@ -702,7 +717,7 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     background-size: contain;
 }
 .section-civicrm-group .printParticipants footer a, .section-civicrm-group .printParticipants .more-link a {
-    background-color: #af1f7b;
+    background-color: #d3278c;
     color: white;
     padding: 10px 30px;
     border-radius: 7px;
@@ -723,7 +738,7 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 6px solid #af1f7b;
+    border-left: 6px solid #d3278c;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
 }
@@ -845,7 +860,7 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     color: #fff;
     width: 60px;
     height: 60px;
-    background-color: #af1f7b;
+    background-color: #d3278c;
     border-radius: 100%;
     border: 2px solid #FFF;
     box-shadow: 1px 1px 5px #0000005e;
@@ -966,7 +981,7 @@ li.menu-c-nav-item i {
 }
 
 .sidebar-c-nav li i {
-    color: #af1f7b; /* Couleur de l'icône */
+    color: #d3278c; /* Couleur de l'icône */
     margin-right: 5px; /* Espacement entre l'icône et le texte */
 }
 
@@ -1074,6 +1089,9 @@ i.icon-custom-logout-accout.cus-cus, i.icon-custom-refresh.todiee {
     box-shadow: 1px 1px 4px rgb(59, 59, 59);
     flex-direction: column;
 }
+.date-com {
+    color: gray;
+}
 .role--anonymous ul[block="block-b-zf-account-menu"] {
     position: absolute;
     left: auto;
@@ -1111,7 +1129,7 @@ a[href="/contact/demande_d_acces_a_l_extranet"]:hover {
 }
 a[href="/contact/demande_d_acces_a_l_extranet"] {
     display: inline-block;
-    background-color: #af1f7b;
+    background-color: #d3278c;
     color: white;
     padding: 10px 20px;
     border-radius: 3px;
@@ -1121,7 +1139,7 @@ a[href="/contact/demande_d_acces_a_l_extranet"] {
 }
 .role--anonymous nav#block-b-zf-account-menu ul li:nth-child(2) a {
     display: inline-block;
-    background-color: #af1f7b !important;
+    background-color: #d3278c !important;
     color: white !important;
 }
 .role--anonymous  #block-b-zf-account-menu .menu .menu-item a:hover {
@@ -2000,7 +2018,7 @@ div#block-b-zf-textedebienvenuhome {
     padding-left: 186px;
 }
 div#block-b-zf-textedebienvenuhome h1:first-of-type {
-    color: #af1f7b;
+    color: #d3278c;
     font-weight: bold;
 }
 
@@ -2021,7 +2039,7 @@ span.second-text {
 
 
 a.btn.button.all-meeting {
-    background-color: #af1f7b;
+    background-color: #d3278c;
 }
 .is-front .medium-8.cell#content {
     width: 82%;
@@ -2090,7 +2108,7 @@ a.btn.button.all-meeting {
 }
 .icon-meet {
     padding-right: 21px;
-    padding-top: 10px;
+    padding-top: 0;
 }
 /* .text-bloc-c-nav {
     display: none;
@@ -2724,7 +2742,6 @@ input#site-search {
             align-items: center;
             width: 92%;
             gap: 9px;
-        }
         }
         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:last-child {
             border: none;

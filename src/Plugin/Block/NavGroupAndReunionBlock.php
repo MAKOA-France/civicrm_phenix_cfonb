@@ -87,8 +87,9 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
 
     foreach ($all_meetings as $meet) {
       $formated_date = $c_service->formatDateWithMonthInLetterAndHours ($meet->event_start_date);
+      // dump($formated_date);
       $hour = isset($formated_date['hour']) ? ' | ' . $formated_date['hour'] . ':' . $formated_date['minute'] : '';
-      $meet->formated_date = $formated_date['jour'] . '  ' . $formated_date['day']  . '/' . $formated_date['num_month'] . '/' . $formated_date['year'] . $hour;
+      $meet->formated_date = $formated_date['day_letter'] . '  ' . $formated_date['day']  . '/' . $formated_date['num_month'] . '/' . $formated_date['year'] . $hour;
       // $linked_group = $burger_service->getLinkedGroupWithEvent ($meet->event_id); 
       // $meet->linked_group = $linked_group;
     }
