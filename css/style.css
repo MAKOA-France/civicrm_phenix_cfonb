@@ -225,6 +225,32 @@ p.group-name {
     font-weight: 700;
     line-height: initial;
 }
+#content2.dynamic-content {
+    top: 64px;
+}
+#content3.dynamic-content {
+    top: 140px;
+}
+.section-communication .grid-container.full.hero.communication .contextual-region.block-core h1 {
+    display: none;
+}
+.grid-container.full.hero.communication {
+    position: relative;
+}
+.grid-container.full.hero.communication:after {
+    content: '';
+    display: block;
+    width: 104%;
+    height: 100%;
+    z-index: 98888888888888;
+    position: absolute;
+    top: 12px;
+    right: 0;
+    background-image: url(/files/relooking/arrow_slide.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
 .section-civicrm-event #main .civicrm-entity--type-civicrm-event .meeting-page .icon-custom-calendar {
     font-size: 3rem;
     color: #FFF;
@@ -438,6 +464,33 @@ a.btn-add-meeting {
 .group-presentation-description {
     z-index: 2;
 }
+.section-communication ul.pager__items.js-pager__items {
+    text-align: right;
+}
+
+.section-communication ul.pager__items.js-pager__items li.pager__item--active a {
+    background-color: #d3278c;
+    color: white;
+    padding: 7px 16px;
+    border-top-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+}
+.section-communication li.pager__item.pager__item--previous span, .section-communication .pager__item--next  span{
+    font-size: 32px;
+    color: black;
+}
+.section-communication ul.pager__items.js-pager__items li a {
+    padding: 14px;
+}
+.section-communication li.pager__item.pager__item--next {
+    padding-left: 30px;
+}
+
+.section-communication li.pager__item.pager__item--previous {
+    padding-right: 30px;
+}
+
+
 .section-civicrm-group .meeting-head {
     display: flex;
     align-items: center;
@@ -471,9 +524,9 @@ p.text-above-img span {
     background-repeat: no-repeat;
 }
 body #backtotop {
-    background: url(../backtotop.png) no-repeat center center; /* PNG image as the main background */
+    background: url(../backtotop.png) no-repeat center center;
     border: 0;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="265" height="239.396" viewBox="0 0 265 239.396" style="transform: rotate(270deg) scaleY(-1);"><g id="Icon_akar-arrow-forward" data-name="Icon akar-arrow-forward" transform="translate(-3 -6)"><path id="Tracé_62" data-name="Tracé 62" d="M39.783,168.585a17.283,17.283,0,0,1-12.221-29.5L79.351,87.292,27.562,35.5A17.283,17.283,0,0,1,52,11.062l64.01,64.01a17.283,17.283,0,0,1,0,24.441L52,163.523A17.228,17.228,0,0,1,39.783,168.585Z" transform="translate(146.925 0)" fill="%23fff"/><path id="Tracé_63" data-name="Tracé 63" d="M20.283,188.886A17.283,17.283,0,0,1,3,171.6V158.8A145.3,145.3,0,0,1,148.3,13.5H250.717a17.283,17.283,0,1,1,0,34.565H148.3A110.862,110.862,0,0,0,37.565,158.8v12.8A17.283,17.283,0,0,1,20.283,188.886Z" transform="translate(0 56.51)" fill="%23fff"/></g></svg>');
+    /* background-image: url(data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="265" height="239.396" viewBox="0 0 265 239.396" style="transform: rotate(270deg) scaleY(-1);"><g id="Icon_akar-arrow-forward" data-name="Icon akar-arrow-forward" transform="translate(-3 -6)"><path id="Tracé_62" data-name="Tracé 62" d="M39.783,168.585a17.283,17.283,0,0,1-12.221-29.5L79.351,87.292,27.562,35.5A17.283,17.283,0,0,1,52,11.062l64.01,64.01a17.283,17.283,0,0,1,0,24.441L52,163.523A17.228,17.228,0,0,1,39.783,168.585Z" transform="translate(146.925 0)" fill="%23fff"/><path id="Tracé_63" data-name="Tracé 63" d="M20.283,188.886A17.283,17.283,0,0,1,3,171.6V158.8A145.3,145.3,0,0,1,148.3,13.5H250.717a17.283,17.283,0,1,1,0,34.565H148.3A110.862,110.862,0,0,0,37.565,158.8v12.8A17.283,17.283,0,0,1,20.283,188.886Z" transform="translate(0 56.51)" fill="%23fff"/></g></svg>); */
     bottom: 20px;
     background-color: #d3278c;
     background-size: 55%;
@@ -484,8 +537,14 @@ body #backtotop {
     width: auto;
     height: 5%;
     z-index: 300;
-    padding: 37px;
+    padding: 26px;
     border-radius: 21px;
+    width: 12px;
+    height: 26.396px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='139.396' viewBox='0 0 265 239.396' style='transform: scaleY(-1)%20rotate(90deg);margin-top:0;'%3E%3Cg id='Icon_akar-arrow-forward' data-name='Icon akar-arrow-forward' transform='translate(-3%20-6)'%3E%3Cpath id='Tracé_62' data-name='Tracé 62' d='M39.783,168.585a17.283,17.283,0,0,1-12.221-29.5L79.351,87.292,27.562,35.5A17.283,17.283,0,0,1,52,11.062l64.01,64.01a17.283,17.283,0,0,1,0,24.441L52,163.523A17.228,17.228,0,0,1,39.783,168.585Z' transform='translate(146.925%200)' fill='%23fff'/%3E%3Cpath id='Tracé_63' data-name='Tracé 63' d='M20.283,188.886A17.283,17.283,0,0,1,3,171.6V158.8A145.3,145.3,0,0,1,148.3,13.5H250.717a17.283,17.283,0,1,1,0,34.565H148.3A110.862,110.862,0,0,0,37.565,158.8v12.8A17.283,17.283,0,0,1,20.283,188.886Z' transform='translate(0%2056.51)' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 27px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .is-front aside#sidebar_left h2 {
     font-size: 24px !important;
@@ -589,10 +648,10 @@ a[href="/rencontres-ateliers"]:before {
     content: '';
     display: inline-block;
     width: 100%;
-    top: 0;
+    top: -18px;
     left: 0;
     height: 169px;
-    background-image: url("/files/relooking/download flag.PNG");
+    background-image: url("/files/relooking/download flag.png");
     background-size: contain;
     background-repeat: no-repeat;
     vertical-align: middle;
@@ -901,11 +960,15 @@ li.menu-c-nav-item i {
     font-weight: 200;
 }
 
+.page-node-type-page-site .grid-container.na-pages:before {
+    right: -92px !important;
+}
+
 .hero.hero-taxonomy {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 493px;
+    height: 410px;
     max-width: 100% !important;
 }
 .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1, .slide-content-home h1 p {
@@ -1856,18 +1919,47 @@ div.top-bar#main-menu {
     right: -90px;
     z-index: -1;
 }
+.grid-container.full.hero.hero-taxonomy {
+    margin-top: 0;
+}
+.page-node-type-page-site .breadcrumb ol li a {
+    position: relative;
+}
+.page-node-type-page-site .breadcrumb ol li a:after {
+    border-width: 5px 5px 5px 0;
+    left: 11px;
+    z-index: 9;
+    top: 29px;
+    transform: translateY(-87%);
+    border: solid transparent;
+    position: relative;
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23003a74'><path d='M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z'></path></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+}
 
 .section-communication .grid-container.full.hero.communication {
     background: url(/files/relooking/stephan-widua-3YAIvBNlZM4-unsplash.jpg);
-    max-width: none;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-repeat: no-repeat;
     background-size: 100%;
-    height: 493px;
-    max-width: 100% !important;
+    left: 3px;
+    height: 410px;
     background-position-y: 83%;
+    margin-top: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 97%;
+    max-width: 1527px;
+    width: 100%;
 }
 .page-communication .grid-container.hero.communication:before {
     right: -90px;
@@ -2280,6 +2372,31 @@ input#site-search {
         body {
             background-color: rgb(107, 177, 28);
         }
+        .section-civicrm-group .views-send-selection-form form {
+            overflow-x: scroll;
+        }
+
+        .is-front #block-views-block-block-hero-block-1 .views-field-field-texte-slider {
+            width: 90% !important;
+        }
+        .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1, .slide-content-home h1 p {
+            font-size: 50px !important;
+        }
+        .grid-x.align-middle .cell.medium-11 {
+            width: 100% !important;
+        }
+        .grid-x.align-middle .medium-9.cell .grid-x.align-middle{
+            width: 100%;
+        }
+        .grid-x.align-middle .medium-9.cell{
+            width: 43%;
+        }
+        .grid-x.align-middle .medium-3.cell{
+            width: 50%;
+        }
+        .grid-x.align-middle {
+            width: 100%;
+        }
         #footer-region nav.contextual-region, #footer-region nav.menu--footer {
             width: 100%;
             margin-top: 170px;
@@ -2414,7 +2531,7 @@ input#site-search {
         }
         .align-right {
             margin-top: 4px;
-            left: 423px;
+            /* left: 423px; */
         }
         .grid-x.align-middle button.float-right {
             position: absolute;
@@ -2488,7 +2605,7 @@ input#site-search {
             float: right;
             position: absolute;
             margin-top: 4px;
-            left: 423px;
+            /* left: 423px; */
             color: white;
             display: flex;
             align-items: flex-end;
@@ -2497,9 +2614,38 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .section-civicrm-group .grid-x.grid-margin-x {
+            width: 100%;
+        }
+        .page-communication div#block-b-zf-content .contextual-region {
+            overflow-x: scroll;
+        }
+        .section-civicrm-group .grid-x.align-middle .medium-9.cell {
+            width: 93%;
+        }
+        .section-civicrm-group .align-right {
+            margin-left: 201px;
+        }
+
+        .layout--twocol-section.layout--twocol-section--50-50 .views-element-container.contextual-region h2 {
+            font-size: 20px !important;
+            text-transform: CAPITALIZE;
+        }
+                .section-civicrm-group .views-field.views-field-title .field-content {
+            width: 100%;
+        }
+        #block-b-zf-account-menu .contextual {
+            position: relative !important;
+        }
 
         div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li {
             border: none;
+        }
+        .page-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-3 {
+            margin: 0;
+        }
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 {
+            margin-left: 0;
         }
         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(1) {
             border: none;
@@ -2612,9 +2758,7 @@ input#site-search {
         .is-front .grid-x.grid-margin-x {
             margin: 0;
         }
-        .align-right {
-            left: 190px;
-        }
+ 
         .is-front .site-logo {
             width: 100%;
         }
@@ -2728,7 +2872,21 @@ input#site-search {
             float: right;
             position: absolute;
             margin-top: 4px;
-            margin-left: 40px;
+            /* margin-left: 40px; */
+            width: max-content;
+            /* margin-left: 40px; */
+        }
+        .is-front .block-system.block-b-zf-content table img{ 
+            width: 100%;
+            height: auto;
+        }
+        .is-front .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            /* margin-left: 40px; */
+            width: max-content;
+            margin-left: 195px;
         }
         .page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
             font-size: 20px !important;
@@ -2770,7 +2928,7 @@ input#site-search {
             flex-wrap: nowrap;
         }
         .section-accueil-extranet .grid-x.grid-margin-x.align-middle .medium-9.cell {
-            width: auto;
+            width: 86%;
         }
         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li,
          .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(4),
@@ -2842,6 +3000,7 @@ input#site-search {
             width: 100%;
             flex-direction: column;
         }
+
         .role--anonymous.is-front #content td:first-child {
             width: 95%;
         }
