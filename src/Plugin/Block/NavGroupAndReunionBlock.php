@@ -96,7 +96,8 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
 
     $is_term_taxo = false;
     $current_route_name = \Drupal::routeMatch()->getRouteName();
-    if ($current_route_name == 'entity.taxonomy_term.canonical') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($current_route_name == 'entity.taxonomy_term.canonical' || $node instanceof \Drupal\node\NodeInterface) {
       $is_term_taxo = true;
     }
     

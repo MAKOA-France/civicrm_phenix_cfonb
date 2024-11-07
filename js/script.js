@@ -5,7 +5,7 @@
 
         $(document).ready(function() {
 
-          once('cfonbConctext', '.page-c-taxonomy-ss .menu-c-nav-item', context).forEach((elem) => {
+          once('cfonbConctext', '.page-c-taxonomy-ss .menu-c-nav-item, .page-type-node-cus  .menu-c-nav-item, .section-contact .menu-c-nav-item ', context).forEach((elem) => {
             $(elem).on('mouseover', function(el, id) {
               let svg = $(this).find('svg')
               svg.css('background-color', '#971762');
