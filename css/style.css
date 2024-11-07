@@ -219,6 +219,7 @@ p.group-name {
 .icon-custom-group-person:before {
     content: '\e81a';
 }
+
 .section-civicrm-group .meeting-com .title-meet .title-meet-commission a, .page-toutes-mes-reunions .meeting-com .title-meet .title-meet-commission a {
     color: #140d3d;
     font-size: large;
@@ -230,6 +231,18 @@ p.group-name {
 }
 #content3.dynamic-content {
     top: 140px;
+}
+.page-c-taxonomy-ss .dynamic-content {
+    left: 4px;
+}
+.page-c-taxonomy-ss #content1.dynamic-content {
+    top: 1px;
+}
+.page-c-taxonomy-ss #content2.dynamic-content {
+    top: 93px;
+}
+.page-c-taxonomy-ss #content3.dynamic-content {
+    top: 168px;
 }
 .section-communication .grid-container.full.hero.communication .contextual-region.block-core h1 {
     display: none;
@@ -670,7 +683,18 @@ a[href="/rencontres-ateliers"]:before {
     display: flex;
     justify-content: space-around;
 }
-a[href="/rencontres-ateliers"]:before {
+.page-rencontres-ateliers .printParticipants ul li .views-field.views-field-title {
+    padding-left: 20px;
+}
+
+.page-c-taxonomy-ss .content-c-nav {
+    padding-right: 0;
+}
+
+.page-rencontres-ateliers .printParticipants ul li {
+    list-style: none;
+}
+.dropdown.menu a[href="/rencontres-ateliers"]:before {
     content: '';
     display: block;
     width: 25px;
@@ -960,6 +984,32 @@ li.menu-c-nav-item i {
     border-bottom-right-radius: 12px;
     padding-right: 11px;
 }
+.txt-comm-nav {
+    padding-left: 17px;
+    color: #003a74 ;
+    padding-top: 10px;
+}
+.page-c-taxonomy-ss  .content-c-nav {
+    padding: 0;
+}
+.page-c-taxonomy-ss  .sidebar-c-nav {
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    padding-left: 5px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding-right: 0;
+}
+.page-c-taxonomy-ss .menu-c-nav-item svg {
+    background-color: #d3278c;
+    border-radius: 9px !important;
+    height: 100%;
+    padding: 10px;
+    font-size: 23px !important;
+    width: 68px;
+    min-width: 57px;
+}
 #footer {
     margin-top: 0;
 }
@@ -1054,9 +1104,11 @@ li.menu-c-nav-item i {
     color: #d3278c; /* Couleur de l'icône */
     margin-right: 5px; /* Espacement entre l'icône et le texte */
 }
-
+.txt-comm-nav-mobile {
+    display: none;
+}
 .sidebar-c-nav li:hover {
-    background-color: #d0d0d0;
+    /* background-color: #d0d0d0; */
 }
 
 .content-c-nav {
@@ -2621,6 +2673,10 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+
+        .txt-comm-nav-mobile {
+            display: block;
+        }
         .section-civicrm-group .grid-x.grid-margin-x {
             width: 100%;
         }
@@ -3033,6 +3089,16 @@ input#site-search {
         .section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after {
             display: none;
         }
+        .txt-comm-nav-mobile {
+            text-align: center;
+            padding-bottom: 12px;
+        }
+        .text-bloc-c-nav {
+            gap: 0;
+        }
+        .page-c-taxonomy-ss #block-b-zf-account-menu {
+            margin-left: 205px;
+        }
         .dynamic-content {
             display: flex;
             height: auto;
@@ -3044,6 +3110,8 @@ input#site-search {
             top: -21px;
             width: 100%;
             border-radius: 6px;
+            
+            flex-direction: column;
         }
     
         .section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {

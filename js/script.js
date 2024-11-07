@@ -5,6 +5,17 @@
 
         $(document).ready(function() {
 
+          once('cfonbConctext', '.page-c-taxonomy-ss .menu-c-nav-item', context).forEach((elem) => {
+            $(elem).on('mouseover', function(el, id) {
+              let svg = $(this).find('svg')
+              svg.css('background-color', '#971762');
+            })
+            $(elem).on('mouseleave', function(el, id) {
+              let svg = $(this).find('svg')
+              svg.css('background-color', '#d3278c');
+            })
+          })
+
           once('cfonbContext', '.c-each-com', context).forEach((element) => {
             $(element).on('mouseout', function () {
               $(element).find('.img-illust-doc').removeClass('img-illust-doc-added')

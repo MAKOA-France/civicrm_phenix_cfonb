@@ -7,22 +7,32 @@
   <path id="Tracé_17" data-name="Tracé 17" d="M30.255,9.814A5.329,5.329,0,0,0,24.941,4.5H14.314A5.329,5.329,0,0,0,9,9.814V25.755H30.255Z" transform="translate(44.136 -4.5)" fill="#fff"></path>
   <path id="Tracé_18" data-name="Tracé 18" d="M46,9.814A5.329,5.329,0,0,0,40.691,4.5H30.064A5.329,5.329,0,0,0,24.75,9.814V25.755H46Z" transform="translate(177.168 -4.5)" fill="#fff"></path>
 </svg>
+{% if content.is_term %}
+    <h3 class="txt-meet-nav txt-comm-nav">Réunions</h3>
+{% endif %}
                 </li>
                 <li class="menu-c-nav-item second" data-text="Ceci est le texte pour l'élément 2"  data-target="content2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="287.688" height="183.076" viewBox="0 0 287.688 183.076">
   <path id="Icon_material-group" data-name="Icon material-group" d="M197.651,85.961a39.23,39.23,0,1,0-39.23-39.23A39.067,39.067,0,0,0,197.651,85.961Zm-104.614,0a39.23,39.23,0,1,0-39.23-39.23A39.067,39.067,0,0,0,93.037,85.961Zm0,26.154c-30.469,0-91.537,15.3-91.537,45.769v32.692H184.574V157.884C184.574,127.415,123.506,112.115,93.037,112.115Zm104.614,0c-3.792,0-8.108.262-12.684.654,15.169,10.985,25.761,25.761,25.761,45.115v32.692h78.46V157.884C289.188,127.415,228.119,112.115,197.651,112.115Z" transform="translate(-1.5 -7.5)" fill="#fff"></path>
 </svg>
+{% if content.is_term %}
+<h3 class="txt-group-nav txt-comm-nav">Commissions</h3>
+{% endif %}
                 </li>
                 <li class="menu-c-nav-item third" data-text="Ceci est le texte pour l'élément 3"  data-target="content3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="192.589" height="264.82" viewBox="0 0 192.589 264.82">
   <path id="Icon_simple-googledocs" data-name="Icon simple-googledocs" d="M131.294,74.227h-8.022V0H22.972A18.048,18.048,0,0,0,4.91,18.052V246.768A18.045,18.045,0,0,0,22.961,264.82H179.447A18.045,18.045,0,0,0,197.5,246.768V74.227h-66.2ZM125.28,189.589H47.027V174.539h78.232v15.051Zm30.09-36.115H47.038V138.424H155.37Zm0-36.115H47.038V102.32H155.37v15.04ZM131.294,66.205h66.2L131.294,0Z" transform="translate(-4.909)" fill="#fff"></path>
 </svg>
+{% if content.is_term %}
+<h3 class="txt-com-nav txt-comm-nav">Communications</h3>
+{% endif %}
                 </li>
             </ul>
         </nav>
         <div class="content-c-nav">
             <div class="text-bloc-c-nav" id="text-block">
                 <div id="content1" class="dynamic-content">
+                    <h2 class="txt-meetings-nav txt-comm-nav-mobile">Réunions</h2>
                     <div class="all-meetings">
                     {% if content.meet %}
                         {% for key, elm in content.meet %}
@@ -46,7 +56,7 @@
                 </div>
 
 
-                <div id="content2" class="dynamic-content">
+                <div id="content2" class="dynamic-content"> <h2 class="txt-group-nav txt-comm-nav-mobile">Commissions</h2>
                     <div class="all-groupes">
                     {% for keys, elms in content.groupes %}
                         <div class="each-group-c">
@@ -69,6 +79,7 @@
                 
                 
                 <div id="content3" class="dynamic-content">
+                 <h2 class="txt-commun-nav txt-comm-nav-mobile">Communications</h2>
                     <div class="b-communication">
                         {% for keys_com, com in content.all_com %}
                             <div class="each-title-and-date">

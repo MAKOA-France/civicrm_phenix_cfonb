@@ -93,6 +93,12 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
       // $linked_group = $burger_service->getLinkedGroupWithEvent ($meet->event_id); 
       // $meet->linked_group = $linked_group;
     }
+
+    $is_term_taxo = false;
+    $current_route_name = \Drupal::routeMatch()->getRouteName();
+    if ($current_route_name == 'entity.taxonomy_term.canonical') {
+      $is_term_taxo = true;
+    }
     
     // You can now use $this->entityTypeManager for entity operations.
     if (!$cid) {
@@ -105,7 +111,8 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
         'data' => [], // Assuming you have data to pass here.
         'meet' => $all_meetings,
         'groupes' => $all_groups,
-        'all_com' => $all_comm
+        'all_com' => $all_comm,
+        'is_term' => $is_term_taxo
       ],
     ];
   }
