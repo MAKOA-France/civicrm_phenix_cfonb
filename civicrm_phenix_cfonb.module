@@ -77,6 +77,19 @@ function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $vie
  * Implements hook_form_alter().
  */
 function civicrm_phenix_cfonb_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  if ($form['#id'] == 'views-exposed-form-communication-page-1') {
+    // dump($form);
+    $form['title']['#prefix'] = '<div class="parrrent">';
+    $form['depuis']['#suffix'] = '</div>';
+    $form['title']['#title_display'] = 'none';
+    $form['mots_cles']['#title_display'] = 'none';
+    $form['depuis']['#title_display'] = 'none';
+    $form['title']['#attributes']['placeholder'] = t('Trouver dans le texte');
+    $form['mots_cles']['#attributes']['placeholder'] = t('Mots clés');
+    $form['depuis']['#attributes']['placeholder'] = t('jj/mm/aaaa');
+  }
+
   $form['#attached']['library'][] = 'civicrm_phenix_cfonb/civicrm_phenix_cfonb';
 
   if ($form['#id'] == 'masquerade-block-form') {
@@ -140,10 +153,21 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       foreach ($terms as $term) {
         $term_names[] = $term->getName();  // Get the name of the term
       }
-      
       // Join the term names with a comma
       $term_names_string = implode(', ', $term_names);
-      $cus_desc = ['#markup' =>   '<div class="desc-pt"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div>'];  
+      if ($row->_entity->get('field_lien_vers_fichier_')->getValue()) {
+        $media_id = $row->_entity->get('field_lien_vers_fichier_')->getValue()[0]['target_id'];
+        $media = File::load($media_id);
+        if ($media) {
+          $uri = $media->get('uri')->getValue()[0]['value'];
+          if ($uri) {
+            $uri = str_replace('public:/', '', $uri);
+          }
+  
+        }
+ 
+      }
+      $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"><div class="desc-pt"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div></a>'];  
       $variables['output'] = $cus_desc;
 
     }

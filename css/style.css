@@ -492,6 +492,10 @@ p.keywords-com {
 .desc-pt {
     display: flex;
     flex-direction: column;
+    color: black;
+}
+.section-communication div#block-pagetitle--2 h1 {
+    display: none;
 }
 .group-presentation-description {
     z-index: 2;
@@ -1011,11 +1015,16 @@ li.menu-c-nav-item i {
     background: white;
 }
 .section-communication #sidebar_left{
-    z-index: 999;
+    z-index: 501;
 }
-
+.section-communication input#edit-depuis {
+    border: 1px;
+}
 .section-communication #sidebar_left {
     width: 6%;
+}
+.page-communication thead, .page-communication tbody, .page-communication tfoot {
+    border: 1px solid #ffffff;
 }
 .txt-comm-nav {
     padding-left: 17px;
@@ -1032,11 +1041,53 @@ li.menu-c-nav-item i {
 #masquerade-block-form > .container-inline {
     display: inline-flex;
 }
+.page-communication input#edit-mots-cles {
+    width: 100% !important;
+    border: 1px;
+}
+.page-communication div#edit-actions {
+    width: 100%;
+    border: 1px;
+}
+input#edit-submit-communication {
+    float: right;
+}
+form#views-exposed-form-communication-page-1 {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 13px;
+}
+.js-form-item.form-item.js-form-type-entity-autocomplete.form-item-mots-cles.js-form-item-mots-cles {
+    width: 100%;
+}
+.parrrent {
+    display: flex;
+    width: 100%;
+}
+form#views-exposed-form-communication-page-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 8px;
+
+}
+#content .block-b-zf-content .contextual-region .views-exposed-form #edit-submit-communication {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.js-form-item.form-item.js-form-type-textfield.form-item-title.js-form-item-title {
+    width: 50%;
+}
+.js-form-item.form-item.js-form-type-date.form-item-depuis.js-form-item-depuis {
+    width: 50%;
+}
 
 .page-c-taxonomy-ss  .content-c-nav, .page-type-node-cus  .content-c-nav{
     padding: 0;
 }
-.page-c-taxonomy-ss  .sidebar-c-nav, .page-type-node-cus.page-node-type-page-site .sidebar-c-nav, .section-contact .sidebar-c-nav  { 
+.page-c-taxonomy-ss  .sidebar-c-nav, .page-type-node-cus.page-node-type-page-site .sidebar-c-nav, .section-contact .sidebar-c-nav , .page-type-node-cus  .sidebar-c-nav{ 
     width: 100%;
     background-color: #f0f0f0;
     padding: 10px;
@@ -1125,10 +1176,61 @@ li.menu-c-nav-item i {
     width: 100%;
     height: auto;
 }
+.section-communication input#edit-title {
+    border: 0px;
+}
 
 .is-front .content table tr {
     display: flex;
 }
+.section-communication input#edit-submit-communication {
+    background-color: #d3278c;
+}
+.section-communication td.views-field.views-field-field-description {
+    position: relative;
+}
+.section-communication td.views-field.views-field-field-description:hover::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 88%;
+    z-index: 55;
+    position: absolute;
+    top: 43px;
+    right: 0;
+    background-image: url("/files/relooking/download_large.png");
+    background-size: contain;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    opacity: 0; /* Start with hidden image */
+    transition: opacity 1s ease;
+}
+.section-communication p.p-desc {
+    position: relative;
+    color: black;
+}
+input#edit-depuis {
+    color: gray;
+}
+.section-communication p.p-desc:hover::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 104px;
+    z-index: 55;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: url("/files/relooking/download_large.png");
+    background-size: contain;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    /* opacity: 0.5; Start with hidden image */
+    transition: opacity 1s ease;
+}
+.section-communication td.views-field.views-field-field-description:hover::before {
+    opacity: 1; /* Display the image gradually on hover */
+  }
 .is-front aside#sidebar_left {
     width: 13%;
 }
@@ -1651,6 +1753,17 @@ span.views-field.views-field-title .container-meet-c .date-complet a:before {
     position: relative;
     top: 50px;
 }
+
+
+.is-front div#block-sefairepasserpourquelquundautre {
+    position: absolute;
+    top: -38px;
+    margin-left: 30px;
+}
+.is-front aside#sidebar_left {
+    width: 0;
+    margin-left: 0;
+}
 .c-each-com {
     display: flex;
     background-color: #f1f1f1;
@@ -2039,7 +2152,7 @@ div.top-bar#main-menu {
 .page-node-type-page-site .breadcrumb ol li a {
     position: relative;
 }
-.page-node-type-page-site .breadcrumb ol li a:after {
+.page-node-type-page-site .breadcrumb ol li a:after, .page-type-node-cus .breadcrumb ol li a:after {
     border-width: 5px 5px 5px 0;
     left: 11px;
     z-index: 9;
@@ -2462,6 +2575,16 @@ input#site-search {
 }
 
     @media  (max-width: 1366px) {
+        .section-communication #main .grid-x.grid-margin-x .medium-9 {
+            width: 88%;
+            /* z-index: -1; */
+        }
+        .views-field.views-field-field-slide {
+            height: 420px;
+        }
+        nav#block-b-zf-account-menu .trigger.focusable {
+            left: 0;
+        }
         .section-accueil-extranet .grid-container.na-pages:before, .section-espace-documentaire .grid-container.hero-taxonomy:before, .page-node-type-page-site .grid-container.na-pages:before, .section-civicrm-event .grid-container.na-pages:before, .section-mentions-legales .grid-container.na-pages:before, .section-sitemap .grid-container.na-pages:before, .grid-container.hero.communication:before {
             display: none;
         }
@@ -2517,6 +2640,37 @@ input#site-search {
     @media (max-width: 1024px) { /*ipad pro */
         body {
             background-color: rgb(107, 177, 28);
+        }
+        .grid-container.full.hero.communication:after {
+            display: none;
+        }
+        .is-front .views-field.views-field-field-slide:after, .role--anonymous .views-field.views-field-field-slide:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 108%;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7));
+        }
+        .dropdown.menu a[href="/rencontres-ateliers"]:before {
+            display:none;
+        }
+        .is-front .content table tr td:first-child {
+            width: 230%;
+            border: none;
+            position: relative;
+        }
+        div#block-b-zf-textedebienvenuhome {
+            padding-left: 72px;
+        }
+        .section-communication #sidebar_left {
+            width: 8%;
+        }
+        .section-communication #main .grid-x.grid-margin-x .medium-9 {
+            width: 86%;
+            /* z-index: -1; */
         }
         .section-civicrm-group .views-send-selection-form form {
             overflow-x: scroll;
@@ -2760,11 +2914,26 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .section-communication section#main {
+            margin-top: 5px;
+        }
+        .section-communication #content3.dynamic-content, .section-communication #content2.dynamic-content  {
+            top: 0;
+        }
+        .section-communication #block-b-zf-navigationmeetingandgroupblock {
+            position: relative;
+            top: 0;
+        }
         .section-communication .hero .block-pagetitle--2 {
             display: none;
         }
+        .section-communication.dynamic-content {
+            display: flex;
+            height: auto;
+        } 
+        
         .section-communication .align-right {
-            margin-left: 170px;
+            margin-left: 201px;
         }
         .section-communication #sidebar_left {
             width: 95%;

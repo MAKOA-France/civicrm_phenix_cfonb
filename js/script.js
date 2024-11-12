@@ -77,7 +77,7 @@
               if (window.matchMedia("(min-width: 992px)").matches) {
                  
                 var scrollTop = $(window).scrollTop();
-                if ($('.detail-group-title').length) {
+                if ($('.detail-group-title').length || $('.page-communication').length) {
 
                     // if ($('.group-presentation-description').offset()) {                    
                       var elementOffset = $('.group-presentation-description').length ? $('.group-presentation-description').offset().top : $('.grid-container.na-pages').offset().top ;
