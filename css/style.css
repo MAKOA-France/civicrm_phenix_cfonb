@@ -1216,16 +1216,16 @@ input#edit-depuis {
     content: '';
     display: block;
     width: 100%;
-    height: 104px;
+    height: 41px;
     z-index: 55;
     position: absolute;
     top: 0;
     right: 0;
-    background-image: url("/files/relooking/download_large.png");
-    background-size: contain;
+    background-image: url(/files/relooking/download_large.png);
+    background-size: cover;
+    background-position-x: 48%;
     pointer-events: none;
     background-repeat: no-repeat;
-    /* opacity: 0.5; Start with hidden image */
     transition: opacity 1s ease;
 }
 .section-communication td.views-field.views-field-field-description:hover::before {
@@ -2579,6 +2579,9 @@ input#site-search {
             width: 88%;
             /* z-index: -1; */
         }
+        .is-front .content table tr td:first-child, .is-front .content table tr td:nth-child(2){
+            width: 100%;
+        }
         .views-field.views-field-field-slide {
             height: 420px;
         }
@@ -2635,6 +2638,9 @@ input#site-search {
         body {
             background-color: rgb(65, 42, 170);
         }
+        .is-front .content table tr td:first-child, .is-front .content table tr td:nth-child(2){
+            width: 100%;
+        }
     }
     
     @media (max-width: 1024px) { /*ipad pro */
@@ -2658,9 +2664,11 @@ input#site-search {
             display:none;
         }
         .is-front .content table tr td:first-child {
-            width: 230%;
             border: none;
             position: relative;
+        }
+        .is-front .content table tr td:first-child, .is-front .content table tr td:nth-child(2){
+            width: 100%;
         }
         div#block-b-zf-textedebienvenuhome {
             padding-left: 72px;
@@ -2835,7 +2843,7 @@ input#site-search {
         }
         .grid-x.align-middle button.float-right {
             position: absolute;
-            top: 28px;
+            top: 14px;
             right: 79px;
         }
         .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1 {
@@ -2914,6 +2922,18 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .section-communication ul.pager__items.js-pager__items li a {
+            padding: 8px;
+        }
+        .section-communication ul.pager__items.js-pager__items {
+            margin-left: 0;
+        }
+        .role--administrator.section-communication .container-c-nav {
+            margin-top: 51px;
+        } 
+        .section-communication div#block-sefairepasserpourquelquundautre {
+            top: 77px;
+        }
         .section-communication section#main {
             margin-top: 5px;
         }
@@ -3224,13 +3244,22 @@ input#site-search {
             width: 100%;
             height: auto;
         }
-        .is-front .align-right {
+        .role--administrator.is-front .align-right {
             float: right;
             position: absolute;
-            margin-top: 4px;
+            margin-top: 61px;
             /* margin-left: 40px; */
             width: max-content;
-            margin-left: 195px;
+            margin-left: 0;
+        }
+        .is-front.role--adherent .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 61px;
+            /* margin-left: 40px; */
+            width: auto;
+            margin-left: -42px;
+            left: 0;
         }
         .page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
             font-size: 20px !important;
@@ -3238,6 +3267,25 @@ input#site-search {
         [block="block-views-block-civievents-base-sur-le-contact-block-3"] header > h2:before {
             top: 4px;
             width: 35px;
+        }
+        .role--authenticated.is-front ul[block="block-b-zf-account-menu"] {
+            top: 40px;
+            right: 0;
+        }
+        .page-type-node-cus .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 68px;
+            width: 100%;
+        
+        }
+        .section-accueil-extranet ul[block="block-b-zf-account-menu"] {
+            position: absolute;
+            left: 44px;
+        }
+        .views-field.views-field-field-slide {
+            height: 285px;
         }
         .cu-navigation {
             display: flex;
@@ -3357,6 +3405,11 @@ input#site-search {
         .grid-x.align-middle button.float-right {
             position: absolute;
             top: -22px;
+            right: 9px;
+        }
+        .is-front .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: 23px;
             right: 9px;
         }
         input#site-search {

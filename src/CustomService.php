@@ -153,12 +153,26 @@ class CustomService {
         $dateComplete = $dateComplete['day'] . ' ' . $dateComplete['month'] . ' ' . $dateComplete['year'];
         $description = $this->getNodeFieldValue($node, 'field_description');
         $keywords = $this->getKeywords ($node);
+
+        
+        $media_id = $node->get('field_lien_vers_fichier_')->getValue()[0]['target_id'];
+        $media = File::load($media_id);
+        if ($media) {
+          $uri = $media->get('uri')->getValue()[0]['value'];
+          if ($uri) {
+            $uri = str_replace('public:/', '', $uri);
+          }
+  
+        }
+
+
         $neededData[] = [
           'title' => $title,
           'dateComplete' => $dateComplete,
           'description' => $description,
           'nid' => $nid,
-          'keywords' => $keywords
+          'keywords' => $keywords,
+          'uri' => $uri
         ];
       }
     }
