@@ -50,24 +50,7 @@ function civicrm_phenix_cfonb_views_post_render(&$view, &$output, &$cache) {
  
 }
 
-/**
- * Implements hook_views_view_build().
- */
-function civicrm_phenix_cfonb_views_view_build(ViewExecutable $view, &$build) {
-  // Check if it's the correct view and display ID.
-  if ($view->id() === 'reunion' && $view->current_display === 'page_1') {
-    // Add a custom header element to the view's build array.
-    $header = [
-      '#type' => 'markup',
-      '#markup' => '<h2>Mon en-tête personnalisé</h2>',
-      '#prefix' => '<div class="custom-view-header">',
-      '#suffix' => '</div>',
-    ];
-
-    // Add the header to the view build array.
-    array_unshift($build['#children'], $header);
-  }
-}
+ 
 
 
 
@@ -77,6 +60,16 @@ function civicrm_phenix_cfonb_views_view_build(ViewExecutable $view, &$build) {
  * This example excludes a specific field (column) from the View.
  */
 function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $view) {
+
+  
+
+  if (($view->id() === 'reunion' && $view->current_display === 'page_1') || $view->id() == 'test_event') {
+    $view->element['#prefix'] = '<a class="btn-add-meeting meet-btn-cu-add" href="/civicrm-event/add?group_id=306"><i class="fa fa-plus-circle"></i>Ajouter une réunion</a>';
+  }
+
+  // Add the custom markup above the view results.
+  // array_unshift($view->element['#children'], $custom_markup);
+  // dump($view->element);
   // Specify the view ID and display ID where you want to exclude the column.
   if ($view->id() === 'communication' && $view->current_display === 'page_1') {
     // Specify the field machine name to exclude.
@@ -889,6 +882,8 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query) {
 
   //Feuille de presence ==> ne pas afficher les contact qui sont supprimés
+  if ($view->storage->get('id') == 'reunion') {
+  }
   // if ($view->storage->get('id') == 'attendance_sheet' && $view->current_display == 'attendance_sheet_edit') {
   //   $query->where[] =  array(
   //     'conditions' => array(

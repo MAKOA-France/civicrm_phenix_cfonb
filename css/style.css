@@ -1189,6 +1189,12 @@ form#views-exposed-form-communication-page-1 {
 .section-communication td.views-field.views-field-field-description {
     position: relative;
 }
+.path-civicrm-event #edit-actions-submit {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    /* z-index: 9999; */
+}
 .section-communication td.views-field.views-field-field-description:hover::before {
     content: '';
     display: block;
@@ -1205,14 +1211,19 @@ form#views-exposed-form-communication-page-1 {
     opacity: 0; /* Start with hidden image */
     transition: opacity 1s ease;
 }
-.section-communication p.p-desc {
+.section-communication p.p-desc,  .page-c-taxonomy-ss p.p-desc {
     position: relative;
     color: black;
 }
 input#edit-depuis {
     color: gray;
 }
-.section-communication p.p-desc:hover::before {
+a.btn-add-meeting.meet-btn-cu-add {
+    width: 30%;
+    margin-top: 31px;
+    margin-bottom: 31px;
+}
+.section-communication p.p-desc:hover::before, .page-c-taxonomy-ss p.p-desc:hover::before {
     content: '';
     display: block;
     width: 100%;
