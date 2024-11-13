@@ -272,9 +272,9 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
         ' . $img_file . '
         <div class="c-title-description">
           <div class="title-and-date"><a href="/node/' .$nid. '">' . $title .  '</a><p class="date">Date : '.$fulldate.'</p></div>
-          <p class="com-desc">' . $desc . '</p>
+         <a href="/files/'. $uri .'"> <p class="com-desc">' . $desc . '</p>
           <p class="com-keyword"> ' . $allkeywords . ' </p>
-        </div>
+        </div></a>
       </div>';
       
       $hmltcom = ['#markup' =>  $hmltcom];  
