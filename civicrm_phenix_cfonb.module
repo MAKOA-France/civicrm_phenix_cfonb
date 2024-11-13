@@ -6,6 +6,7 @@ use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\media\Entity\Media;
 
 
@@ -282,7 +283,9 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
     }
   }
 
-  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_2') {
+
+
+  if ($view->storage->id() == 'civi_groupe_evenements' &&  $view->current_display == 'block_3') {
     $htmls = '';
     if ($field->field == 'title') {
       $value = $field->getValue($row);
@@ -306,17 +309,56 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
 
   }
 
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_2') {
+    $htmls = '';
+    if ($field->field == 'title') {
+      $value = $field->getValue($row);
+      $subject = $row->civicrm_event_civicrm_participant_title;
+      $daty = $row->civicrm_event_civicrm_participant_start_date;
+      $event_id = $row->civicrm_event_civicrm_participant_id;
+      $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
+      $event_id = $row->civicrm_event_civicrm_participant_id_1;
+      $date_complet = $date['day_letter'] . ' ' . $date['jour'];
+      $hour_complet = $date['day'] . ':' . $date['minute'];
+
+      
+      $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
+      $hours_c = $drupal_datetime->format('H');
+      $minute_c = $drupal_datetime->format('i');
+      $hour_complet = $hours_c . ':' . $minute_c;
+      // href="/civicrm-event/' . $event_id . '"
+      $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c">
+      <div class="date-complet"><p>' . $date_complet . '</p></div>
+      <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
+      <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">' . $subject . '</p></div>
+      </div></a>';
+      $htmls = ['#markup' =>  $htmls];  
+      $variables['output'] = $htmls;
+      // dump($htmls);
+    }
+
+  }
+
   if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_4') {
     $htmls = '';
     if ($field->field == 'title') {
       $subject = $field->getValue($row);
       // $subject = $row->civicrm_event_civicrm_participant_title;
-      $daty = $row->civicrm_event_civicrm_participant_start_date;
+      $daty = $row->created_id_civicrm_contact_start_date;
       $event_id = $row->civicrm_event_civicrm_participant_id;
       $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
-      $event_id = $row->civicrm_event_civicrm_participant_id;
+      $event_id = $row->created_id_civicrm_contact_id;
       $date_complet = $date['day_letter'] . ' ' . $date['jour'];
       $hour_complet = $date['day'] . ':' . $date['minute'];
+
+
+      $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
+      $hours_c = $drupal_datetime->format('H');
+      $minute_c = $drupal_datetime->format('i');
+      $hour_complet = $hours_c . ':' . $minute_c;
+
+
+
       // href="/civicrm-event/' . $event_id . '"
       $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c">
       <div class="date-complet"><p>' . $date_complet . '</p></div>
@@ -449,6 +491,14 @@ function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
         'render element' => 'children',
         'path' => $path . '/templates',
         'template' => 'alter-view-detail-commission-reunion'
+      ],
+      'civicrm_phenix_cfonb_alter_view_detail_commission_reunion_atelier' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'alter-view-detail-commission-reunion-atelier'
       ],
       'detail_group' => [
         'variables' => [
@@ -882,8 +932,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query) {
 
   //Feuille de presence ==> ne pas afficher les contact qui sont supprimés
-  if ($view->storage->get('id') == 'reunion') {
-  }
   // if ($view->storage->get('id') == 'attendance_sheet' && $view->current_display == 'attendance_sheet_edit') {
   //   $query->where[] =  array(
   //     'conditions' => array(

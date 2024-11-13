@@ -198,6 +198,16 @@ if (window.matchMedia("(min-width: 992px)").matches) {
   Drupal.behaviors.civicrm_phenix_cfonb = {
       attach: function(context, settings) {
         $(window).on('load', function() {
+console.log($('.btn-my-account').length,  ' LSK')
+          if ($('.btn-my-account').length) {
+            once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
+              element.addEventListener('click', function () {
+                if (!$('.role--anonymous').length) {
+                  $('[block="block-b-zf-account-menu"]').toggle();
+                }
+              });
+            });
+          }
 
           // Create the new div container
     // var $container = $('<div class="cust-actu-container"></div>');

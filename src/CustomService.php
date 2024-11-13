@@ -387,6 +387,23 @@ public function removeFalseValues($array) {
       $classOddAndEven = 'even';
     }
 
+
+    if ($view->current_display == 'block_3') {
+      $var['output'] = [
+        '#theme' => 'civicrm_phenix_cfonb_alter_view_detail_commission_reunion_atelier',
+        '#cache' => ['max-age' => 0],
+        '#content' => [
+          'start_date' => $start_date,
+          'event_id' => $current_id,
+          'class_odd_even' => $classOddAndEven,
+          'title' => $value
+        ]
+      ];
+      return;
+    }
+
+
+
     // dump($start_date);
     $var['output'] = [
       '#theme' => 'civicrm_phenix_cfonb_alter_view_detail_commission_reunion',
@@ -455,7 +472,7 @@ public function formatDateTo_Y_m_d ($dateString) {
 
 
       //Create a DrupalDateTime object.
-      $date = new DrupalDateTime($start_date, new \DateTimeZone('UTC'));
+      $date = new DrupalDateTime($start_date, new \DateTimeZone('UTC'));//dump($start_date, $date);
       $day_comm = $date->format('d');
       $year_comm = $date->format('Y');
       $month_comm = \Drupal::service('date.formatter')->format($date->getTimestamp(), 'custom', 'F', 'fr');
