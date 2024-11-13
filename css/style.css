@@ -609,6 +609,31 @@ nav#block-menuprincipal .dropdown.menu {
     height: auto;
     width: auto;
 }
+
+.sidebar #block-menuprincipal-2 h2 {
+    position: relative;
+}
+.sidebar #block-menuprincipal-2 h2::before {
+    margin-right: .3rem;
+    font-family: "Font Awesome 5 Free";
+    content: "\f101";
+    display: inline-block;
+    padding-right: 3px;
+    font-weight: 700;
+    color: #af1f7b;
+    content: "" !important;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 9%;
+    height: 52%;
+    background-image: url(/files/relooking/rdle_arrow.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
 .role--anonymous.is-front #content td:first-child {
     width: 62%;
 }
@@ -807,6 +832,9 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
+p.cu-home.do-not-diplay {
+    display: none;
+}
 
 .section-rencontres-ateliers .item-list ul li {
     list-style: none;
@@ -863,8 +891,12 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     position: absolute;
     background-size: contain;
 }
-
-.page-c-taxonomy-ss #block-menuprincipal-2 ul li.menu-item--expanded > a:after {
+.page-faq div#block-pagetitle--2 h1 {
+    display: none;
+}
+.page-c-taxonomy-ss #block-menuprincipal-2 ul li.menu-item--expanded > a:after,
+.page-type-node-cus #block-menuprincipal-2 ul li.menu-item--expanded > a:after,
+.page-type-node-cus #block-menuprincipal-2 ul li.menu-item--expanded ul li a.is-active::after {
     content: "" !important;
     display: inline-block;
     margin-left: 4px;
@@ -876,7 +908,8 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
     padding: 0 !important;
     right: 0;
 }
-.page-c-taxonomy-ss #block-menuprincipal-2 ul li.menu-item--expanded.menu-item--active-trail > a::after {
+.page-c-taxonomy-ss #block-menuprincipal-2 ul li.menu-item--expanded.menu-item--active-trail > a::after,
+.page-type-node-cus #block-menuprincipal-2 ul li.menu-item--expanded.menu-item--active-trail > a::after {
     content: "" !important;
     display: inline-block;
     margin-left: 69px;
@@ -1086,23 +1119,112 @@ li.menu-c-nav-item i {
 .section-communication input#edit-depuis {
     border: 1px;
 }
+.page-tous-mes-groupes div#block-b-zf-navigationmeetingandgroupblock {
+    z-index: 555;
+}
 .section-communication #sidebar_left {
     width: 6%;
 }
+.page-toutes-mes-reunions .item-list .views-field.views-field-title {
+    background-color: unset;
+}
+
+
+.page-toutes-mes-reunions  .item-list ul li:nth-child(1),
+ .page-toutes-mes-reunions  .item-list ul li:nth-child(5),
+  .page-toutes-mes-reunions  .item-list ul li:nth-child(9),
+   .page-toutes-mes-reunions  .item-list ul li:nth-child(13),
+    .page-toutes-mes-reunions  .item-list ul li:nth-child(17),
+     .page-toutes-mes-reunions  .item-list ul li:nth-child(21),
+      .page-toutes-mes-reunions  .item-list ul li:nth-child(25),
+       .page-toutes-mes-reunions  .item-list ul li:nth-child(29) {
+    border-left: 9px solid #003a7e;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+
+.page-toutes-mes-reunions  .item-list ul li:nth-child(4),
+ .page-toutes-mes-reunions  .item-list ul li:nth-child(8),
+  .page-toutes-mes-reunions  .item-list ul li:nth-child(12),
+   .page-toutes-mes-reunions  .item-list ul li:nth-child(16),
+    .page-toutes-mes-reunions  .item-list ul li:nth-child(20),
+     .page-toutes-mes-reunions  .item-list ul li:nth-child(24),
+      .page-toutes-mes-reunions  .item-list ul li:nth-child(28),
+       .page-toutes-mes-reunions  .item-list ul li:last-child {
+    border-right: 9px solid #003a7e;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.page-toutes-mes-reunions .item-list ul li {
+    list-style: none;
+    border: 12px solid #003a7e;
+    padding: 20px;
+    border-left: solid 5.5px #003a7e;
+    border-right: solid 5.5px #003a7e;
+    margin-bottom: 10px;
+}
+
+
+.page-toutes-mes-reunions .item-list ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 0;
+}
+.page-toutes-mes-reunions div#block-views-block-civievents-base-sur-le-contact-block-7 .item-list ul li  {
+    list-style: none;
+    padding-left: 17px;
+    padding-right: 1px;
+}
+.page-toutes-mes-reunions div#block-views-block-civievents-base-sur-le-contact-block-7 .item-list ul li .views-field-start-date{
+    display: none;
+}
+
 .page-communication thead, .page-communication tbody, .page-communication tfoot {
     border: 1px solid #ffffff;
+}
+.section-civicrm-group .go-home-cu a > svg {
+    width: 92% !important;
+}
+.section-communication .go-home-cu a > svg {
+    width: 88% !important;
+    padding-left: 15px;
 }
 .txt-comm-nav {
     padding-left: 17px;
     color: #003a74 ;
     padding-top: 10px;
 }
+.go-home-cu a > svg {
+    width: 14% !important;
+}
+.go-home-cu:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    border-radius: 10px;
+
+}
+.go-home-cu {
+    margin-top: 0;
+    padding-left: 10px;
+}
 #block-sefairepasserpourquelquundautre > h2 {
     display: none;
+}
+p.cu-home {
+    padding-left: 17px;
+    padding-bottom: 8px;
+    color: black;
+}
+.go-home-cu a {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
 }
 #masquerade-block-form > .container-inline .js-form-submit{
     margin-top: 0;
     background-color: #d3278c;
+    margin-right: 0;
 }
 #masquerade-block-form > .container-inline {
     display: inline-flex;
@@ -1911,6 +2033,14 @@ p.com-desc {
     font-weight: bold;
     color: black;
 }
+
+.section-actualites div#block-views-block-actualites-block-3 {
+    display: none;
+}
+.section-actualites .block-views-block-actualites-block-actualites .views-row {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    margin-bottom: 12px;
+}
 .c-title-description {
     width: 100%;
     padding-left: 30px;
@@ -2377,7 +2507,7 @@ article.grid-container {
     /* margin-left: 164px; */
 }
 .layout-container header .medium-3.cell {
-    margin-left: -6px;
+    margin-left: 13px;
 }
 #footer .site-logo img { 
     width: 35%;
@@ -2695,6 +2825,18 @@ input#site-search {
             width: 88%;
             /* z-index: -1; */
         }
+        form#masquerade-block-form {
+            width: 107%;
+        }
+        .page-node-type-page p, .section-civicrm-group p, .section-civicrm-event p {
+            font-size: 16px;
+        }
+        .page-node-type-page h3, .section-civicrm-group h3, .section-civicrm-event h3 {
+            font-size: 20px;
+        }
+        h3.txt-comm-nav {
+            font-size: 20px;
+        }
         .is-front .content table tr td:first-child, .is-front .content table tr td:nth-child(2){
             width: 100%;
         }
@@ -2794,6 +2936,18 @@ input#site-search {
         body {
             background-color: rgb(107, 177, 28);
         }
+        .page-accueil-extranet #masquerade-block-form > .container-inline, .page-type-node-cus  #masquerade-block-form > .container-inline {
+            display: inline-flex;
+            flex-direction: column;
+        }
+        h3.txt-comm-nav {
+            font-size: 18px;
+            display: none;
+        }
+        .page-c-taxonomy-ss .sidebar-c-nav, .page-type-node-cus.page-node-type-page-site .sidebar-c-nav, .section-contact .sidebar-c-nav, .page-type-node-cus .sidebar-c-nav {
+            width: 50%;
+        }
+
         .grid-container.full.hero.communication:after {
             display: none;
         }
@@ -3069,6 +3223,37 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .section-communication p.cu-home.do-not-diplay {
+            display: block;
+            font-size: 16px;
+        }
+        .section-communication .go-home-cu a > svg {
+            width: 16% !important;
+            padding-left: 15px;
+        }
+        .section-communication  .go-home-cu a {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            padding-top: 25px;
+        }
+        .section-actualites.page-type-node-cus .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 206px;
+            width: 100%;
+        }
+        .section-actualites.page-type-node-cus #content3.dynamic-content {
+            top: 0;
+        }
+        .section-actualites .content-c-nav {
+            margin-bottom: 37px;
+        }
+        .section-actualites.role--anonymous ul[block="block-b-zf-account-menu"] {
+            position: absolute;
+            left: 0;
+        }
         .section-communication ul.pager__items.js-pager__items li a {
             padding: 8px;
         }
@@ -3407,7 +3592,7 @@ input#site-search {
         .role--administrator.is-front .align-right {
             float: right;
             position: absolute;
-            margin-top: 61px;
+            margin-top: 70px;
             /* margin-left: 40px; */
             width: max-content;
             margin-left: 0;
@@ -3415,11 +3600,17 @@ input#site-search {
         .is-front.role--adherent .align-right {
             float: right;
             position: absolute;
-            margin-top: 61px;
+            margin-top: 70px;
             /* margin-left: 40px; */
             width: auto;
             margin-left: -42px;
             left: 0;
+        }
+        .role--adherent.page-type-node-cus .site-logo img {
+            width: 63%;
+            height: auto;
+            padding-top: 2px;
+            padding-bottom: 13px;
         }
         .page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
             font-size: 20px !important;
@@ -3436,9 +3627,25 @@ input#site-search {
             float: right;
             position: absolute;
             margin-top: 4px;
-            margin-left: 68px;
-            width: 100%;
+            margin-left: 188px;
+            width: 130%;
         
+        }
+        .section-accueil-extranet.page-type-node-cus .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 55px;
+            width: 100%;
+        }
+        .page-type-node-cus #content3.dynamic-content {
+            top: 10px;
+        }
+        .page-type-node-cus #content2.dynamic-content {
+            top: 10px;
+        }
+        .page-type-node-cus #content3.dynamic-content {
+            top: 10px;
         }
         .section-accueil-extranet ul[block="block-b-zf-account-menu"] {
             position: absolute;
@@ -3562,10 +3769,35 @@ input#site-search {
         a[href="/communication"]:before, a[href="/rencontres-ateliers"]:before, a[href="/faq"]:before {
            display: none;
         }
+        .section-accueil-extranet  .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -22px;
+            right: -62px;
+        }
+        .page-node-type-page-site .dynamic-content {
+            width: 100%;
+        }
+        .page-type-node-cus .site-logo img {
+            width: 63%;
+            height: auto;
+            padding-top: 44px;
+            padding-bottom: 13px;
+        }
         .grid-x.align-middle button.float-right {
             position: absolute;
             top: -22px;
             right: 9px;
+        }
+        .section-communication  .site-logo img {
+            width: 63%;
+            height: auto;
+            padding-top: 44px;
+            padding-bottom: 13px;
+        }
+        .section-communication  .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -22px;
+            right: -192px;
         }
         .is-front .grid-x.align-middle button.float-right {
             position: absolute;

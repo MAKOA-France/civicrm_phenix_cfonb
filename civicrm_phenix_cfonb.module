@@ -283,8 +283,6 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
     }
   }
 
-
-
   if ($view->storage->id() == 'civi_groupe_evenements' &&  $view->current_display == 'block_3') {
     $htmls = '';
     if ($field->field == 'title') {
@@ -453,15 +451,32 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
     if ($field->field == 'title') {
       $title = $field->getValue($row);
       
+      
       $date = $row->created_id_civicrm_contact_start_date;
-      $dateArray = $custom_service->formatDateWithMonthInLetterAndHours($date);
+      
+      
+      $daty = $row->created_id_civicrm_contact_start_date;
+      $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
+      $event_id = $row->created_id_civicrm_contact_start_date;
+      $date_complet = $date['day_letter'] . ' ' . $date['jour'];
+      
+      $dateArray = $custom_service->formatDateWithMonthInLetterAndHours($daty);
 
+      $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
+      $hours_c = $drupal_datetime->format('H');
+      $minute_c = $drupal_datetime->format('i');
+      $hour_complet = $hours_c . ':' . $minute_c;
+
+      
       $variables['output'] = [
         '#theme' => 'page_list_meeting',
         '#cache' => ['max-age' => 0],
         '#content' => [
           'meeting_info' => $dateArray,
           'title' => $title,
+          'event_id' => $row->created_id_civicrm_contact_id,
+          'date_complet' => $date_complet,
+          'hour_complet' => $hour_complet,
         ],
       ];
     }
@@ -483,6 +498,14 @@ function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
         'render element' => 'children',
         'path' => $path . '/templates',
         'template' => 'nav-meeting-and-group'
+      ],
+      'go_home_block' => [
+        'variables' => [
+        'content' => Null,
+        ],
+        'render element' => 'children',
+        'path' => $path . '/templates',
+        'template' => 'go-home'
       ],
       'civicrm_phenix_cfonb_alter_view_detail_commission_reunion' => [
         'variables' => [
