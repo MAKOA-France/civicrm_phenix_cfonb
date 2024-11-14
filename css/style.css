@@ -1444,6 +1444,10 @@ form#views-exposed-form-communication-page-1 {
     width: 100%;
     height: auto;
 }
+.section-recherche.role--anonymous .top-bar#main-menu .grid-container {
+    width: 84rem !important;
+    max-width: 84rem !important;
+}
 .section-communication input#edit-title {
     border: 0px;
 }
@@ -1653,7 +1657,12 @@ i.icon-custom-logout-accout.cus-cus, i.icon-custom-refresh.todiee {
 .date-com {
     color: gray;
 }
-.role--anonymous ul[block="block-b-zf-account-menu"] {
+.page-recherche.role--anonymous .grid-container nav#block-b-zf-account-menu ul li:nth-child(2) a {
+    display: inline-block;
+    background-color: unset !important;
+    color: white !important;
+}
+.online_people ul[block="block-b-zf-account-menu"] {/* SAOK KKKK*/
     position: absolute;
     left: auto;
     display: flex;

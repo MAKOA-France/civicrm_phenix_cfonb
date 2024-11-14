@@ -200,6 +200,14 @@ if (window.matchMedia("(min-width: 992px)").matches) {
         $(window).on('load', function() {
 
 
+          $('.float-right .fa-search').on('click', function(event) {
+            event.preventDefault();
+            console.log('groupee');
+            let searcs = $('#site-search').val();
+            if (searcs) {
+              location.href = "/recherche?recherche=" + searcs;
+            }
+          });
 
           
           if ($('.btn-my-account').length) {

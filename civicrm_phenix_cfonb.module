@@ -1149,8 +1149,12 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
 
 
 function civicrm_phenix_cfonb_preprocess_html(&$variables) {
+  $connected = \Drupal::currentUser()->isAuthenticated();
   if (\Drupal::request()->attributes->get('node')) {
     $variables['attributes']['class'][] = 'page-type-node-cus';
+  }
+  if (!$connected) {
+    $variables['attributes']['class'][] = 'online_people';
   }
 
   if (\Drupal::request()->attributes->get('taxonomy_term')) {
