@@ -198,6 +198,19 @@ if (window.matchMedia("(min-width: 992px)").matches) {
   Drupal.behaviors.civicrm_phenix_cfonb = {
       attach: function(context, settings) {
         $(window).on('load', function() {
+
+
+
+          
+          if ($('.btn-my-account').length) {
+            once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
+              element.addEventListener('click', function () {
+                console.log('cliky')
+                  $('[block="block-b-zf-account-menu"]').toggle();
+              });
+            });
+          }
+
 console.log($('.btn-my-account').length,  ' LSK')
           if ($('.btn-my-account').length) {
             once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
@@ -243,6 +256,7 @@ console.log($('.btn-my-account').length,  ' LSK')
           if ($('.btn-my-account').length) {
             once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
               element.addEventListener('click', function () {
+                console.log('cliky')
                 if (!$('.role--anonymous').length) {
                   $('[block="block-b-zf-account-menu"]').toggle();
                 }

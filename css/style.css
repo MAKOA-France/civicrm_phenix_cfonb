@@ -1363,7 +1363,41 @@ form#views-exposed-form-communication-page-1 {
     height: 410px;
     max-width: 100% !important;
 }
-.page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1, .slide-content-home h1 p {
+.section-civicrm-event section#main h2, .section-civicrm-event #main .civicrm-entity--type-civicrm-event .main-title-last-doc  {
+    color: #140d3d !important;
+    font-weight: 600 !important;
+    font-family: "Montserrat Variable", sans-serif !important;
+}
+.meeting-head .meetings {
+    color: #140d3d !important;
+    font-weight: 600 !important;
+    font-family: "Montserrat Variable", sans-serif !important;
+}
+.section-civicrm-group 
+.date-size-first-doc span, .date-size-first-doc a {
+    font-size: 16px;
+    font-family: "Montserrat Variable", sans-serif !important;
+}
+.section-civicrm-event section#main h2, .section-civicrm-event h3 {
+    font-family: "Montserrat Variable", sans-serif !important;
+}
+.section-civicrm-event h1 {
+    text-align: center;
+}
+
+.section-civicrm-event .title-first-doc::first-letter {
+    text-transform: uppercase;
+}
+.section-civicrm-event .title-first-doc {
+    font-family: "Montserrat Variable", sans-serif !important;
+    font-size: 25px !important;
+    text-transform: lowercase;
+}
+
+.section-civicrm-event .layout__region.layout__region--content .block- {
+    display: none;
+}
+.page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1, .slide-content-home h1 p , .section-civicrm-event h1{
     font-size: 60px !important;
 }
 .page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
@@ -1413,6 +1447,14 @@ form#views-exposed-form-communication-page-1 {
 .section-communication input#edit-title {
     border: 0px;
 }
+a.btn.button.all-communi{
+    background-color: #d3278c;
+}
+.views-element-container.contextual-region.block-views h2, .meeting-head h2.meetings, .section-civicrm-group h2
+                .section-civicrm-group .views-field.views-field-title .field-content {
+            width: 100%;
+            color: #140d3d !important;
+        }
 
 .is-front .content table tr {
     display: flex;
@@ -1420,7 +1462,7 @@ form#views-exposed-form-communication-page-1 {
 .section-communication input#edit-submit-communication {
     background-color: #d3278c;
 }
-.section-communication td.views-field.views-field-field-description {
+.section-communication td.views-field.views-field-field-description, .section-communication td.views-field.views-field-title {
     position: relative;
 }
 .path-civicrm-event #edit-actions-submit {
@@ -1429,7 +1471,7 @@ form#views-exposed-form-communication-page-1 {
     right: 0;
     /* z-index: 9999; */
 }
-.section-communication td.views-field.views-field-field-description:hover::before {
+.section-communication td.views-field.views-field-field-description:hover::before, .section-communication td.views-field.views-field-title:hover ~ td.views-field.views-field-field-description::before {
     content: '';
     display: block;
     width: 100%;
@@ -1442,7 +1484,7 @@ form#views-exposed-form-communication-page-1 {
     background-size: contain;
     pointer-events: none;
     background-repeat: no-repeat;
-    opacity: 0; /* Start with hidden image */
+    opacity: 1; /* Start with hidden image */
     transition: opacity 1s ease;
 }
 .section-communication p.p-desc,  .page-c-taxonomy-ss p.p-desc {
@@ -1461,11 +1503,11 @@ a.btn-add-meeting.meet-btn-cu-add {
     content: '';
     display: block;
     width: 100%;
-    height: 41px;
+    height: 45px;
     z-index: 55;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 11px;
     background-image: url(/files/relooking/download_large.png);
     background-size: cover;
     background-position-x: 48%;
@@ -2317,9 +2359,12 @@ div#block-makoa p {
     padding-left: 48px;
     position: relative;
 } 
+.role--anonymous div#block-b-zf-blockhomeadherentnavigation {
+    display: none;
+}
 
 .section-accueil-extranet .layout-container section.grid-container {
-    max-width: 82%;
+    /* max-width: 82%; */
 }
 .section-accueil-extranet .grid-container.na-pages:before {
     right: -131px !important;
@@ -2400,6 +2445,31 @@ div.top-bar#main-menu {
     display: none;
 }
 
+.page-c-taxonomy-ss .grid-container.full.hero.hero-taxonomy {
+    position: relative;
+}
+.section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:before, .section-civicrm-event #main .civicrm-entity--type-civicrm-event:before {
+    display: none;
+}
+.section-civicrm-group .block-blockdetailcommission--2 .detail-group-title:after, .section-civicrm-event #main .asheeeeeeeeeeeeee.meeting-page:after {
+    display: none;
+}
+
+.page-c-taxonomy-ss .grid-container.full.hero.hero-taxonomy:after {
+    content: '';
+    display: block;
+    width: 104%;
+    height: 100%;
+    z-index: 55;
+    position: absolute;
+    top: 12px;
+    right: 0;
+    background-image: url(/files/relooking/arrow_slide.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
 .is-front .full.hero .grid-container.contextual-region, .is-front .full.hero .grid-container {
     margin: unset;
     padding: unset;
@@ -2407,8 +2477,27 @@ div.top-bar#main-menu {
     max-width: none;
 }
 .section-contact .grid-container.full.hero.communication:after {
-    width: 126%;
-    height: 114%;    
+    width: 100%;
+    height: 100%;    
+}
+article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-civicrm-group.civicrm-entity--view-mode-full div#edit-actions input {
+    background-color: #d3278c;
+    border-radius: 8px;
+}
+.section-civicrm-group .grid-container.full.hero.communication:after {
+    content: '';
+    display: block;
+    width: 104%;
+    height: 96%;
+    z-index: 55;
+    position: absolute;
+    top: 12px;
+    right: 0;
+    background-image: url(/files/relooking/arrow_slide.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    left: 265px;
 }
 .section-contact .grid-container.full.hero.communication {
     background: url("/files/relooking/who contact.jpg");
@@ -2420,7 +2509,7 @@ div.top-bar#main-menu {
     background-repeat: no-repeat !important;
     width: 100%;
     max-width: 100%;
-    height: 493px;
+    height: 393px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -2982,6 +3071,38 @@ input#site-search {
         body {
             background-color: rgb(107, 177, 28);
         }
+        .page-rencontres-ateliers .item-list ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .section-rencontres-ateliers .item-list ul li:nth-child(1), 
+        .section-rencontres-ateliers .item-list ul li:nth-child(4),
+         .section-rencontres-ateliers .item-list ul li:nth-child(7),
+          .section-rencontres-ateliers .item-list ul li:nth-child(10),
+           .section-rencontres-ateliers .item-list ul li:nth-child(13),
+            .section-rencontres-ateliers .item-list ul li:nth-child(16), 
+            .section-rencontres-ateliers .item-list ul li:nth-child(19),
+            .section-rencontres-ateliers .item-list ul li:nth-child(22),
+            .section-rencontres-ateliers .item-list ul li:nth-child(25),
+             .section-rencontres-ateliers .item-list ul li:nth-child(28) {
+            border-left: 9px solid #003a7e;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        .section-rencontres-ateliers .item-list ul li:nth-child(3),
+         .section-rencontres-ateliers .item-list ul li:nth-child(6),
+         .section-rencontres-ateliers .item-list ul li:nth-child(9),
+         .section-rencontres-ateliers .item-list ul li:nth-child(12),
+         .section-rencontres-ateliers .item-list ul li:nth-child(15),
+         .section-rencontres-ateliers .item-list ul li:nth-child(18),
+         .section-rencontres-ateliers .item-list ul li:nth-child(21),
+         .section-rencontres-ateliers .item-list ul li:nth-child(24),
+         .section-rencontres-ateliers .item-list ul li:nth-child(27),
+         .section-rencontres-ateliers .item-list ul li:last-child {
+            border-right: 9px solid #003a7e;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
         .page-accueil-extranet #masquerade-block-form > .container-inline, .page-type-node-cus  #masquerade-block-form > .container-inline {
             display: inline-flex;
             flex-direction: column;
@@ -3178,6 +3299,10 @@ input#site-search {
         #footer-region nav.contextual-region, #footer-region nav.menu--footer {
             width: auto;
         }
+        .page-rencontres-ateliers .item-list ul {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
         p.btn-see-rapport {
             width: 46%;
         }
@@ -3269,9 +3394,45 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+
+
+        .role--anonymous.page-type-node-cus .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .role--anonymous .grid-x.align-middle .medium-9.cell {
+            width: 100%;
+        }
+
+
+        .section-civicrm-group .grid-container.full.hero.communication:after {
+            display: none;
+        }
+        .section-communication .go-home-cu a > svg, .section-civicrm-group .go-home-cu a > svg {
+            width: 15% !important;
+            padding-left: 15px;
+        }
         .section-communication p.cu-home.do-not-diplay {
             display: block;
             font-size: 16px;
+        }
+        .page-rencontres-ateliers .item-list ul {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .section-rencontres-ateliers .item-list ul li {
+            border-left: 9px solid #003a7e !important;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        .section-rencontres-ateliers .item-list ul li {
+            border-right: 9px solid #003a7e !important;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
         }
         .section-communication .go-home-cu a > svg {
             width: 16% !important;
@@ -3290,6 +3451,13 @@ input#site-search {
             margin-left: 206px;
             width: 100%;
         }
+        .role--anonymous.section-actualites.page-type-node-cus .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 0;
+            width: 100%;
+        }
         .section-actualites.page-type-node-cus #content3.dynamic-content {
             top: 0;
         }
@@ -3298,7 +3466,6 @@ input#site-search {
         }
         .section-actualites.role--anonymous ul[block="block-b-zf-account-menu"] {
             position: absolute;
-            left: 0;
         }
         .section-communication ul.pager__items.js-pager__items li a {
             padding: 8px;
@@ -3372,9 +3539,12 @@ input#site-search {
         .layout--twocol-section.layout--twocol-section--50-50 .views-element-container.contextual-region h2 {
             font-size: 20px !important;
             text-transform: CAPITALIZE;
+            color: #140d3d !important;
         }
+        .views-element-container.contextual-region.block-views h2, .meeting-head h2.meetings, .section-civicrm-group h2
                 .section-civicrm-group .views-field.views-field-title .field-content {
             width: 100%;
+            color: #140d3d !important;
         }
         #block-b-zf-account-menu .contextual {
             position: relative !important;
@@ -3584,10 +3754,13 @@ input#site-search {
             top: 80%;
             left: 0;
         }
-
+        .role--anonymous.is-front .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -25px;
+            right: 3px;
+        }
         .role--anonymous ul[block="block-b-zf-account-menu"] {
             position: absolute;
-            left: -133px;
             display: flex;
             top: 0;
             top: 38px;
@@ -3622,6 +3795,17 @@ input#site-search {
         }
         .page-node-type-page p, .section-civicrm-group p, .section-civicrm-event p {
             font-size: 16px;
+            text-align: center;
+        }
+        .section-civicrm-group .site-logo img {
+            width: 63%;
+            height: auto;
+            padding-top: 44px;
+            padding-bottom: 13px;
+        }
+        p.group-members {
+            display: flex;
+            justify-content: space-around;
         }
         .align-right {
             float: right;
@@ -3646,17 +3830,20 @@ input#site-search {
         .is-front.role--adherent .align-right {
             float: right;
             position: absolute;
-            margin-top: 70px;
+            margin-top: 49px;
             /* margin-left: 40px; */
             width: auto;
             margin-left: -42px;
             left: 0;
         }
-        .role--adherent.page-type-node-cus .site-logo img {
+        .role--adherent.page-type-node-cus .site-logo img, .page-c-taxonomy-ss .site-logo img {
             width: 63%;
             height: auto;
-            padding-top: 2px;
+            padding-top: 10px;
             padding-bottom: 13px;
+        }
+        .role--anonymous.page-c-taxonomy-ss #block-b-zf-account-menu {
+            margin-left: 342px;
         }
         .page-node-type-page h2, .section-civicrm-group h2, .section-civicrm-event h2 {
             font-size: 20px !important;
@@ -3826,7 +4013,7 @@ input#site-search {
         .page-type-node-cus .site-logo img {
             width: 63%;
             height: auto;
-            padding-top: 44px;
+            padding-top: 10px;
             padding-bottom: 13px;
         }
         .grid-x.align-middle button.float-right {

@@ -670,7 +670,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
       ->addWhere('id', '=', $idgroup)
       ->execute()->first()['title'];
     }
-    $title = '<div class="intitule-event">' . $intitule . '</div><h2 class="intitule-h2">' . $title  . '</h2>';
+    $title = '<div class="intitule-event">' . $intitule . '</div><h1 class="intitule-h2">' . $title  . '</h1>';
     // ($build);
     //Get start/end date values
     $start_date = getFieldValue('start_date', $entity);
@@ -722,7 +722,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $formatted_dateSt = str_replace(':00', 'h', $formatted_dateSt);
     
     $build['start_date'][0]['#text'] = $formatted_dateSt;
-    $build['start_date'][0]['#prefix'] = '<div class="date-start-and-end date-duration-meeting"><time class="eventt-time">' . $formatted_dateSt . ' - ' . $formatted_dateEn . '</time>';
+    $build['start_date'][0]['#prefix'] = '<div class="date-start-and-end date-duration-meeting"><time class="eventt-time">' . $formatted_dateSt . '</time>';
     $build['end_date'][0]['#suffix'] = '</div>';
     
     // $build['start_date']['#suffix'] = '<span> - </span>';

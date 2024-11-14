@@ -93,6 +93,9 @@ class BackToHomeBlock extends BlockBase implements ContainerFactoryPluginInterfa
     if ($current_path == '/contact/extranet_contactez_nous') {
       $is_term_taxo = 'to-display';
     }
+    if ($current_path == '/contact/demande_d_acces_a_l_extranet') {
+      $is_term_taxo = 'to-display';
+    }
     if (strpos($current_path, '/civicrm-event') !== false) {
       $is_term_taxo = 'to-display';
     }
