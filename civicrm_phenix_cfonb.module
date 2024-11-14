@@ -165,8 +165,49 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
     }
 
 
-
     
+    if ($field->field == 'title') {
+      $titr = $field->getValue($row);
+      if ($row->_entity->get('field_lien_vers_fichier_')->getValue()) {
+        $media_id = $row->_entity->get('field_lien_vers_fichier_')->getValue()[0]['target_id'];
+        $media = File::load($media_id);
+        if ($media) {
+          $uri = $media->get('uri')->getValue()[0]['value'];
+          if ($uri) {
+            $uri = str_replace('public:/', '', $uri);
+          }
+  
+        }
+      }
+      $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"> <p class="views-field views-field-title">' . $titr . '</p> </a>'];  
+      $variables['output'] = $cus_desc;
+    }
+    
+    if ($field->field == 'created') {
+      $timestamp = $field->getValue($row);
+
+      $date = new \DateTime();
+      $date->setTimestamp($timestamp);
+      $formatted_date = $date->format('d/m/Y');
+
+
+      if ($row->_entity->get('field_lien_vers_fichier_')->getValue()) {
+        $media_id = $row->_entity->get('field_lien_vers_fichier_')->getValue()[0]['target_id'];
+        $media = File::load($media_id);
+        if ($media) {
+          $uri = $media->get('uri')->getValue()[0]['value'];
+          if ($uri) {
+            $uri = str_replace('public:/', '', $uri);
+          }
+  
+        }
+      }
+      $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"> <p class="views-field views-field-title">' . $formatted_date . '</p> </a>'];  
+      $variables['output'] = $cus_desc;
+    }
+
+
+
     if ($field->field == 'field_description') {
       $desc = $field->getValue($row);
       $keywords = $row->_entity->get('field_mots_cles')->getValue();

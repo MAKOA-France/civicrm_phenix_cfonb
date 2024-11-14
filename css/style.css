@@ -613,6 +613,22 @@ nav#block-menuprincipal .dropdown.menu {
 .sidebar #block-menuprincipal-2 h2 {
     position: relative;
 }
+
+
+.section-civicrm-event .menu-c-nav-item svg {
+    background-color: #d3278c;
+    border-radius: 9px !important;
+    height: 110%;
+    padding: 10px;
+    font-size: 23px !important;
+    width: 62px;
+    min-width: 57px;
+}
+.section-civicrm-event .sidebar-c-nav {
+    width: 100%;
+ 
+}
+
 .sidebar #block-menuprincipal-2 h2::before {
     margin-right: .3rem;
     font-family: "Font Awesome 5 Free";
@@ -1027,10 +1043,15 @@ p.cu-home.do-not-diplay {
 	list-style: none;
 }
 .page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li:nth-of-type(odd),
-.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li:nth-of-type(odd),
-.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li:nth-of-type(odd) {
-    background-color: #e7e0d9;
-	border-radius: 20px 0;
+.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li:nth-of-type(odd) {
+    /* background-color: #e7e0d9;
+	border-radius: 20px 0; */
+}
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li:nth-of-type(odd) ,
+.page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li:nth-of-type(odd),
+.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li:nth-of-type(odd){
+    background-color: #f1f1f1;
+    border-radius: 20px 0;
 }
 .page-tous-mes-groupes .views-element-container .item-list ul {
 	margin-left: 0;
@@ -1055,9 +1076,8 @@ p.cu-home.do-not-diplay {
     font-weight: 600;
     font-size: 1.2rem;
 }
-.page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li a:before,
-.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a:before,
-.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li a:before {
+/* .page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li a:before,
+.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a:before{
     content: '\e81a';
     font-family: "custom-icon-cv";
     font-weight: 900;
@@ -1072,7 +1092,30 @@ p.cu-home.do-not-diplay {
     display: flex;
     justify-content: center;
     align-items: center;
+} */
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li a,
+.page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li a,
+.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a {
+   position: relative; 
+   padding-left: 70px;
 }
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li a:before,
+.page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li a:before,
+.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a:before
+{
+
+    content: "";
+    display: block;
+    width: 100%;
+    height: 26px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='Groupe_3068' data-name='Groupe 3068' width='181.063' height='181.063' viewBox='0 0 181.063 181.063'%3E%3Ccircle id='Ellipse_11' data-name='Ellipse 11' cx='90.531' cy='90.531' r='90.531' transform='translate(0)' fill='%23fca65e'/%3E%3Cpath id='Icon_material-group' data-name='Icon material-group' d='M67.026,33.711A13.105,13.105,0,1,0,53.921,20.605,13.051,13.051,0,0,0,67.026,33.711Zm-34.947,0A13.105,13.105,0,1,0,18.974,20.605,13.051,13.051,0,0,0,32.079,33.711Zm0,8.737C21.9,42.448,1.5,47.559,1.5,57.737V68.658H62.658V57.737C62.658,47.559,42.257,42.448,32.079,42.448Zm34.947,0c-1.267,0-2.708.087-4.237.218,5.067,3.669,8.606,8.606,8.606,15.071V68.658H97.6V57.737C97.6,47.559,77.2,42.448,67.026,42.448Z' transform='translate(40.643 46.819)'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 18px;
+    margin-left: -47px;
+}
+
 .section-civicrm-group .title-meet-commission a:before {
     display: none !important;
 }
@@ -1187,7 +1230,10 @@ li.menu-c-nav-item i {
 .section-civicrm-group .go-home-cu a > svg {
     width: 92% !important;
 }
-.section-communication .go-home-cu a > svg {
+.section-communication p.views-field.views-field-title {
+    color: black;
+}
+.section-communication .go-home-cu a > svg , .section-civicrm-group .go-home-cu a > svg{
     width: 88% !important;
     padding-left: 15px;
 }
