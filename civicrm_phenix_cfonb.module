@@ -23,6 +23,35 @@ function civicrm_phenix_cfonb_preprocess_page(&$variables)
 }
 
 
+/*
+* Dev function to set default values on existing entities
+* Needed if new field is added and there are existing entities created already
+*/
+
+function civicrm_phenix_cfonb_set_defaults($entity_type, $bundle) {
+  $field_instances = field_info_instances($entity_type, $bundle);
+  $entities = entity_load($entity_type);
+
+  dump($bundle, $entity_type);
+  
+/*   foreach ($field_instances as $field_name => $field_instance) {
+    
+    if (isset($field_instance['default_value'])) {
+      $default_value = $field_instance['default_value'][0]['value'];
+      $field_info = field_info_field($field_name);
+      
+      foreach ($entities as $entity) {
+      $lang = $field_info['translatable'] ? entity_language($entity_type, $entity) : LANGUAGE_NONE;
+      
+        if (empty($entity->{$field_name})) {
+        $entity->{$field_name}[$lang][0]['value'] = $default_value; //Note not all are 'value'
+        field_attach_update($entity_type, $entity);
+        }
+      }
+    }
+  } */
+}
+
 
 use Drupal\views\ViewExecutable;
 
@@ -807,7 +836,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
             }
 
 
-
+          $idTokenized = base64_encode($media->id());
           $all_documents[$title_doc][] = [
             'fileType' => $file_type,
             'fileurl' => $file->createFileUrl(),
@@ -816,6 +845,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
             'description' => $title_doc,
             'created_at' => $created_at,
             'media_id' => $media->id(), 
+            'idTokenized' => $idTokenized, 
           ];
 
 
@@ -851,6 +881,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $get_first_element = reset($all_documents);
     $first_title = isset(array_keys($all_documents)[0]) ? array_keys($all_documents)[0] : '';
     $first_element_id = $get_first_element[0]['media_id'];
+    $idTokenized = base64_encode($first_element_id);
     $media = Drupal\media\Entity\Media::load($first_element_id);
     $file_type = 'application/pdf';//default
     if ($media) {
@@ -919,7 +950,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
         break;
       }
 
-    
     $build['documents'] = [
       '#theme' => 'civicrm_phenix_cfonb_custom_last_doc',
       '#cache' => ['max-age' => 0],
@@ -932,6 +962,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
         'file_size' => $file_size_readable/* $file_size */,
         'date_doc' => $date_doc,
         'first_element_id' => $first_element_id,
+        'idTokenized' => $idTokenized,
         'first_element_title' => $first_title,
         'display_see_other_doc' => $display_see_other_doc,
         'is_page_last_doc' => true,

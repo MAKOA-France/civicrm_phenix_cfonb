@@ -95,7 +95,7 @@ class DocumentBlock  extends BlockBase  {
             }
 
 
-
+          $idTokenized = base64_encode($first_element_id);
           $all_documents[$title_doc][] = [
             'fileType' => $file_type,
             'fileurl' => $file->createFileUrl(),
@@ -104,6 +104,8 @@ class DocumentBlock  extends BlockBase  {
             'description' => $title_doc,
             'created_at' => $created_at,
             'media_id' => $media->id(), 
+            'idTokenized' => $idTokenized, 
+           
           ];
 
 
@@ -139,6 +141,7 @@ class DocumentBlock  extends BlockBase  {
     $get_first_element = reset($all_documents);
     $first_title = isset(array_keys($all_documents)[0]) ? array_keys($all_documents)[0] : '';
     $first_element_id = $get_first_element[0]['media_id'];
+    $idTokenized = base64_encode($first_element_id);
     $media = \Drupal\media\Entity\Media::load($first_element_id);
     $file_type = 'application/pdf';//default
     if ($media) {
@@ -220,6 +223,7 @@ class DocumentBlock  extends BlockBase  {
         'file_size' => $file_size_readable/* $file_size */,
         'date_doc' => $date_doc,
         'first_element_id' => $first_element_id,
+        'idTokenized' => $idTokenized,
         'first_element_title' => $first_title,
         'display_see_other_doc' => $display_see_other_doc,
         'is_page_last_doc' => true,

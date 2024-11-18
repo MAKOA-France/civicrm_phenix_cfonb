@@ -11,7 +11,7 @@
 
     
     <div class="first-element-doc ">
-      <a href="/media/{{ content.first_element_id }}/download" class="custom-icon-first-element first-left-element">
+      <a href="/media/{{ content.first_element_id }}/download?token={{ content.idTokenized }}" class="custom-icon-first-element first-left-element">
         <img src="/files/file/{{ content.file_type }}">
       </a>  
       <div class="content-frist-doc">
@@ -19,7 +19,7 @@
 
           <div class="extrait-resume">
             <h3 class="title-first-doc">
-              <a href="/media/{{ content.first_element_id }}/download">
+              <a href="/media/{{ content.first_element_id }}/download?token={{ content.idTokenized }}">
                 {{ content.first_element_title }}
               </a>
             </h2>
@@ -57,7 +57,7 @@
               <a href="/media/{{ content.first_element_id }}/edit" class="edit-doc-button btn-ask-question-home"> <i class="fas fa-edit"></i>  Modifier</a>
               {% endif %}
             </div>
-            <a href="/media/{{ content.first_element_id }}/download" class="media-download-file-first"><i class='icon-custom-download-file'></i>Télécharger le document</a>
+            <a href="/media/{{ content.first_element_id }}/download?token={{ content.idTokenized }}" class="media-download-file-first"><i class='icon-custom-download-file'></i>Télécharger le document</a>
           </div>
         </div>
   </div>
@@ -150,11 +150,11 @@
       {{ each_data['current_paragraph_contenu'] | raw }}
         {% set id_para = each_data['paragraph_id'] %}
       <div class="section-document custom-section-doc">
-        <a href="/media/{{ each_data['media_id'] }}/download" class="custom-icon-document each-img-link">
+        <a href="/media/{{ each_data['media_id'] }}/download?token={{ each_data['idTokenized'] }}" class="custom-icon-document each-img-link">
           <img class="" src="/files/file/{{ each_data['fileType'] }}">
         </a>
         <div class="description-with-date-size">
-          <a href="/media/{{ each_data['media_id'] }}/download" class="each-img-link">
+          <a href="/media/{{ each_data['media_id'] }}/download?token={{ each_data['idTokenized'] }}" class="each-img-link">
             <span class="description">{{ each_data['description'] }}</span>
           </a>
           <div class="date-and-size">
