@@ -1298,3 +1298,39 @@ function isAdherent () {
   }
   return $isAdherent;
 }
+
+
+
+
+/**
+ * Implements hook_preprocess_media().
+ */
+function civicrm_phenix_cfonb_preprocess_media(array &$variables) {
+  // Get the media entity.
+  $media = $variables['media'];
+
+  // Check if this is a media document.
+  if ($media->bundle() === 'document') {
+    // dump($media);
+    // Access the file entity from the 'field_media_file' field.
+    if ($media->hasField('field_media_document') && !$media->get('field_media_document')->isEmpty()) {
+      $file = $media->get('field_media_document')->entity;
+
+      if ($file) {
+        // Get file details.
+        $file_url = $file->createFileUrl();
+        $file_name = $file->getFilename();
+        $idTokenized = base64_encode($media->id());
+        // Customize the rendered output.
+        $variables['content']['custom_file_link'] = [
+          '#type' => 'markup',
+          '#markup' => '<a href="/media/' . $media->id() . '/download?token='.$idTokenized.'" target="_blank" class="custom-document-link">' . $file_name . '</a>',
+          '#allowed_tags' => ['a'],
+        ];
+
+        // Optionally hide the default field output.
+        unset($variables['content']['field_media_document']);
+      }
+    }
+  }
+}
