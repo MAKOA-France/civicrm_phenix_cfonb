@@ -1321,7 +1321,7 @@ form#views-exposed-form-communication-page-1 {
 .page-c-taxonomy-ss  .content-c-nav, .page-type-node-cus  .content-c-nav{
     padding: 0;
 }
-.page-c-taxonomy-ss  .sidebar-c-nav, .page-type-node-cus.page-node-type-page-site .sidebar-c-nav, .section-contact .sidebar-c-nav , .page-type-node-cus  .sidebar-c-nav{ 
+.section-contacts-etablissement .sidebar-c-nav, .page-c-taxonomy-ss  .sidebar-c-nav, .page-type-node-cus.page-node-type-page-site .sidebar-c-nav, .section-contact .sidebar-c-nav , .page-type-node-cus  .sidebar-c-nav{ 
     width: 100%;
     background-color: #f0f0f0;
     padding: 10px;
@@ -1330,13 +1330,16 @@ form#views-exposed-form-communication-page-1 {
     border-bottom-right-radius: 12px;
     padding-right: 0;
 }
+.role--authenticated [data-drupal-link-system-path="contact/demande_d_acces_a_l_extranet"] {
+    display: none;
+}
 #content2 .all-groupes .all-groupes {
     background-color: #d3278c;
 }
 .page-c-taxonomy-ss .dialog-off-canvas-main-canvas .grid-container.full.hero.hero-taxonomy {
     max-width: 1532px !important;
 }
-.page-c-taxonomy-ss .menu-c-nav-item svg, .page-type-node-cus  .menu-c-nav-item svg, .section-contact  .menu-c-nav-item svg {
+.section-contacts-etablissement  .menu-c-nav-item svg,.page-c-taxonomy-ss .menu-c-nav-item svg, .page-type-node-cus  .menu-c-nav-item svg, .section-contact  .menu-c-nav-item svg {
     background-color: #d3278c;
     border-radius: 9px !important;
     height: 100%;
@@ -1760,6 +1763,15 @@ ul[block="block-b-zf-account-menu"] li:nth-last-child(2)::after {
     top: 10px;
     margin-top: 8px;
 }
+.section-accueil-extranet .views-field.views-field-employer-id .button-purple {
+    padding: 2rem 2rem;
+}
+p.group-presentation-description {
+    display: none;
+}
+.section-accueil-extranet .views-field.views-field-employer-id {
+    margin-top: 20px;
+}
 
 li:has(a[href="/contact/demande_d_acces_a_l_extranet"]) {
     display: flex;
@@ -1767,9 +1779,12 @@ li:has(a[href="/contact/demande_d_acces_a_l_extranet"]) {
 }
 
 
+.role--animateur ul[block="block-b-zf-account-menu"] {
+    left: unset;
+}
 ul[block="block-b-zf-account-menu"] {
     position: absolute;
-    left: -142px;
+    left: auto;
     top: 40px;
     top: 145%;
     right: unset;

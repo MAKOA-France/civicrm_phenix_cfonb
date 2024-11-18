@@ -97,7 +97,12 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
     $is_term_taxo = false;
     $current_route_name = \Drupal::routeMatch()->getRouteName();
     $node = \Drupal::routeMatch()->getParameter('node');
-    // dump($node, \Drupal::request());
+    // dump($current_route_name, \Drupal::request());
+
+    if ($current_route_name == 'view.contacts_etablissement.page_1') {
+      $is_term_taxo = true;
+    }
+
     if (in_array($current_route_name, ['entity.taxonomy_term.canonical', 'entity.civicrm_event.canonical']) || $node instanceof \Drupal\node\NodeInterface) {
       $is_term_taxo = true;
     }

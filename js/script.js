@@ -4,6 +4,9 @@
       attach: function(context, settings) {
 
         $(document).ready(function() {
+          if ( jQuery('.bloc-head-meetings-in-theme .meeting-head').length) {
+            jQuery('.bloc-head-meetings-in-theme .meeting-head').insertAfter('.bloc-head-meetings-in-theme .block-layout-builder');
+          }
 
           once('cfonbConctext', '.page-c-taxonomy-ss .menu-c-nav-item, .page-type-node-cus  .menu-c-nav-item, .section-contact .menu-c-nav-item ', context).forEach((elem) => {
             $(elem).on('mouseover', function(el, id) {
