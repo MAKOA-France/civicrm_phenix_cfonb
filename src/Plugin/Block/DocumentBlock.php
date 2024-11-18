@@ -95,11 +95,11 @@ class DocumentBlock  extends BlockBase  {
             }
 
 
-          $idTokenized = base64_encode($first_element_id);
+          $idTokenized = base64_encode( $media->id());
           $all_documents[$title_doc][] = [
             'fileType' => $file_type,
             'fileurl' => $file->createFileUrl(),
-            'size' => $sizz,
+            'size' => $sizz . '',
             'fileId' => $file->id(),
             'description' => $title_doc,
             'created_at' => $created_at,
