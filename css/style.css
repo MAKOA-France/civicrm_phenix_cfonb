@@ -127,6 +127,15 @@ p.group-name {
 .section-civicrm-event article.contextual-region.civicrm-entity.civicrm-entity--type-civicrm-event.civicrm-entity--view-mode-full {
     top: 21px;
 }
+.section-civicrm-event a.media-download-file-first, .section-civicrm-event span.description , .section-civicrm-event span.date-creation {
+    font-size: 20px;
+}
+.section-civicrm-event aside#sidebar_left {
+    z-index: 1;
+}
+.title-and-chevron h2.main-title {
+    display: none;
+}
 .eventt-time {
     text-transform: capitalize;
     font-family: "new-order", sans-serif !important;
@@ -134,6 +143,8 @@ p.group-name {
     color: #707070;
     display: flex !important;
     font-weight: 600;
+    font-size: 20px;
+    font-family: "Montserrat Variable", sans-serif !important;
 }
 .section-civicrm-event #main .civicrm-entity--type-civicrm-event h2.intitule-h2 {
     color: #140d3d;
@@ -252,6 +263,35 @@ p.group-name {
 }
 .page-type-node-cus #content2.dynamic-content {
     top: 93px;
+}
+li.menu-c-nav-item.cus-back-home  {
+    padding-bottom: 0;
+}
+.cus-back-home svg{
+    min-width: 62px !important;
+}
+.is-front .more-link a {
+    font-size: 20px;
+}
+.cu-nav-my-etablissment .field-content {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+a.link-nav-c {
+    width: 100%;
+}
+.cus-back-home {
+    /* background-color: #d3278c; */
+    border-radius: 9px !important;
+    height: 110%;
+    padding: 10px;
+    font-size: 23px !important;
+    width: 62px;
+    min-width: 57px;
 }
 .page-type-node-cus #content3.dynamic-content {
     top: 168px;
@@ -951,11 +991,24 @@ p.cu-home.do-not-diplay {
     list-style: none;
     position: relative;
 }
+.is-front .views-field.views-field-field-texte-slider {
+    z-index: 11 !important;
+}
+#main-menu.top-bar li a {
+    font-size: 15px;
+    color: black;
+}
+.cell.medium-7 .lien-content a {
+    font-size: 20px;
+}
+.is-front div#block-b-zf-content .content table td li {
+    font-size: 20px;
+}
 .page-node-type-page div#block-b-zf-content table td ul li:before {
     content: '';
     position: absolute;
     left: 0;
-    top: 56%;
+    top: 16px;
     transform: translateY(-50%);
     width: 0;
     height: 0;
@@ -1771,8 +1824,17 @@ p.group-presentation-description {
 }
 .section-accueil-extranet .views-field.views-field-employer-id {
     margin-top: 20px;
+    display: none;
 }
-
+.cu-nav-my-etablissment svg {
+    width: 22%;
+}
+.cu-nav-my-etablissment span.field-content {
+    margin-top: -29px;
+}
+.cu-nav-my-etablissment svg {
+    margin-bottom: -11px;
+}
 li:has(a[href="/contact/demande_d_acces_a_l_extranet"]) {
     display: flex;
     justify-content: center;
@@ -2025,7 +2087,11 @@ div#block-views-block-civievents-base-sur-le-contact-block-2 .more-link a {
     border-radius: 10px;
     display: block;
     width: 42%;
+    font-size: 20px;
     text-align: center;
+}
+.section-accueil-extranet .lien-content a {
+    font-size: 20px;
 }
 .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(1),
  .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(5), 
@@ -2261,10 +2327,15 @@ div#block-makoa p {
 }
 .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li .field-content{
     width: 100%;
+    font-size: 20px;
+}
+.section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-1 {
+    height: 100%;
 }
 .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li {
     list-style: none;
     width: 25%;
+    height: 200px;
     border: 12px solid #003a7e;
     padding: 20px;
     border-left: solid 5.5px #003a7e;
@@ -2382,6 +2453,7 @@ div#block-makoa p {
     color: #003a74 !important;
     padding-left: 48px;
     position: relative;
+    font-size: 20px;
 } 
 .role--anonymous div#block-b-zf-blockhomeadherentnavigation {
     display: none;
@@ -2692,11 +2764,14 @@ article.grid-container {
     background-repeat: no-repeat !important;
     background-position: left !important;
 }
-
+div#block-blocbasdepage h4 {
+    font-family: "Montserrat Variable", sans-serif !important;
+}
 #footer #footer-region {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    align-content: center;
 }
 #footer-region nav.contextual-region, #footer-region nav.menu--footer {
     width: max-content;
@@ -2735,9 +2810,11 @@ article.grid-container {
     margin-top: 5vw;
     width: 100%;
     text-align: center;
+    font-size: 18px;
 }
 #footer nav ul li.menu-item a {
     font-size: 1.0rem !important;
+    font-size: 18px !important;
 }
 
 footer a.fab.fa-linkedin {
@@ -2748,6 +2825,7 @@ footer div#block-reseauxsociaux {
     margin-top: 45px;
     text-align: center;
     width: 100%;
+    padding-left: 160px;
 }
 .is-front #block-views-block-block-hero-block-1 .views-field-field-texte-slider {
     max-width: unset !important;
@@ -3095,6 +3173,17 @@ input#site-search {
         body {
             background-color: rgb(107, 177, 28);
         }
+        #block-b-zf-textedebienvenuhome h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            margin-left: 12px;
+            transform: translate(-50%, -50%);
+        }
+        .cu-nav-my-etablissment p {
+            text-align: center;
+        }
         .page-rencontres-ateliers .item-list ul {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -3130,6 +3219,10 @@ input#site-search {
         .page-accueil-extranet #masquerade-block-form > .container-inline, .page-type-node-cus  #masquerade-block-form > .container-inline {
             display: inline-flex;
             flex-direction: column;
+        }
+        .page-accueil-extranet #masquerade-block-form > .container-inline, .page-type-node-cus #masquerade-block-form > .container-inline {
+            display: inline-flex;
+            flex-direction: row;
         }
         h3.txt-comm-nav {
             font-size: 18px;
@@ -3238,10 +3331,16 @@ input#site-search {
             width: 97%;
         }
         .maclasse .cell.medium-7 h3 {
-            height: 183px;
+            height: 110px;
         }
         .c-bodyc {
-            height: 200px;
+            height: 168px;
+        }
+        footer div#block-reseauxsociaux {
+            margin-top: 45px;
+            text-align: center;
+            width: 100%;
+            padding-left: 0;
         }
 
 
@@ -3308,11 +3407,29 @@ input#site-search {
         .grid-x.align-middle button.float-right {
             position: absolute;
             top: 20.2%;
-            right: 270px;
+            right: 210px;
         }
         .views-field.views-field-field-slide:before {
             display: none;
      
+        }
+        .sidebar #block-menuprincipal-2 h2::before {
+            display: none !important;
+        }
+        #masquerade-block-form > .container-inline {
+            display: flex;
+            flex-direction: column;
+        }
+        #masquerade-block-form > .container-inline .js-form-submit {
+            margin-top: 0;
+            background-color: #d3278c;
+            margin-right: 0;
+            width: 100%;
+        }
+        .section-accueil-extranet.role--authenticated ul[block="block-b-zf-account-menu"] {
+            left: unset;
+        right: 10px;
+        margin: 0;
         }
         p.btn-see-rapport {
             width: 41%;
@@ -3522,7 +3639,27 @@ input#site-search {
         } 
         
         .section-communication .align-right {
-            margin-left: 201px;
+            margin-left: 228px;
+        }
+        .section-civicrm-event .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 229px;
+            width: 100%;
+            left: 0;
+            top: 0px;
+        }
+        .section-civicrm-event .site-logo img {
+            width: 63%;
+            height: auto;
+            padding-top: 10px;
+            padding-bottom: 13px;
+        } 
+        .section-civicrm-event .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -22px;
+            right: -223px;
         }
         .section-communication #sidebar_left {
             width: 95%;
@@ -3723,6 +3860,26 @@ input#site-search {
         }
         .views-element-container.contextual-region.block-views h2, .meeting-head h2.meetings, .section-civicrm-group h2 {
             font-size: 20px !important;
+            width: 90%;
+        }
+        .page-accueil-extranet #masquerade-block-form > .container-inline, .page-type-node-cus #masquerade-block-form > .container-inline {
+            display: inline-flex;
+            flex-direction: row;
+        }
+        .role--authenticated.is-front.page-type-node-cus .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 0;
+            width: 100%;
+            top: 51px;
+        }
+        .online_people.section-accueil-extranet ul[block="block-b-zf-account-menu"] {
+            position: absolute;
+            left: unset;
+        }
+        .section-communication div#content3 {
+            margin-top: 13px;
         }
         .is-front h1 {
             font-size: 20px !important;
@@ -3914,9 +4071,10 @@ input#site-search {
         .cu-navigation {
             display: flex;
             align-items: center;
-            width: 92%;
+            width: 100%;
             gap: 9px;
         }
+        
         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:last-child {
             border: none;
         }
@@ -4054,7 +4212,7 @@ input#site-search {
         .section-communication  .grid-x.align-middle button.float-right {
             position: absolute;
             top: -22px;
-            right: -192px;
+            right: -214px;
         }
         .is-front .grid-x.align-middle button.float-right {
             position: absolute;
@@ -4157,10 +4315,13 @@ input#site-search {
             top: -38px;
             margin-left: 15px;
         }
+        form#masquerade-block-form {
+            width: 100%;
+        }
         #block-b-zf-textedebienvenuhome h1 {
             position: relative;
             top: 0;
-            left: 18px;
+            left: 0;
             margin-left: 0;
             transform: none;
         }

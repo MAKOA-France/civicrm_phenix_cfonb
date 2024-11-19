@@ -98,8 +98,10 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
     $current_route_name = \Drupal::routeMatch()->getRouteName();
     $node = \Drupal::routeMatch()->getParameter('node');
     // dump($current_route_name, \Drupal::request());
-
     if ($current_route_name == 'view.contacts_etablissement.page_1') {
+      $is_term_taxo = true;
+    }
+    if ($current_route_name == 'entity.contact_form.canonical') {
       $is_term_taxo = true;
     }
 
