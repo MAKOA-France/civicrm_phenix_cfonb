@@ -2331,6 +2331,7 @@ div#block-makoa p {
 }
 .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-1 {
     height: 100%;
+    min-height: 425px;
 }
 .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li {
     list-style: none;
@@ -3173,6 +3174,22 @@ input#site-search {
         body {
             background-color: rgb(107, 177, 28);
         }
+        div#block-views-block-civievents-base-sur-le-contact-block-1:before {
+            content: '';
+            display: inline-block;
+            width: 52%;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-image: url(/files/relooking/labor-union-members-working-together.jpg);
+            border-radius: 20px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-x: 49%;
+            vertical-align: middle;
+            margin-top: 22px;
+            position: absolute;
+        }
         #block-b-zf-textedebienvenuhome h1 {
             position: absolute;
             top: 50%;
@@ -3456,11 +3473,64 @@ input#site-search {
         }
         .grid-x.align-middle button.float-right {
             position: absolute;
-            top: 14px;
-            right: 79px;
+            top: 24px;
+            right: 62px;
+        }
+        .online_people .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: 9px;
+            right: unset;
+            left: -5px;
+        }
+        .online_people ul[block="block-b-zf-account-menu"] {
+            position: absolute;
+            left: auto;
+            display: flex;
+            top: 0;
+            top: -16px;
+            right: -56px;
+            min-width: 0;
+            width: auto;
+            padding: 0;
+            color: #040000 !important;
+            font-size: 0.85rem;
+            background: none;
+            border-radius: 7px;
+            z-index: 10;
+            box-shadow: none;
+            flex-direction: row-reverse;
+        }
+        .role--anonymous .top-bar#main-menu > .grid-container {
+            /* text-align: center; */
+        }
+        .role--administrator .grid-x.align-middle button.float-right {
+            top: 26px;
+        }
+        .btn-my-account::before {
+            color: white;
+            font-family: "Font Awesome 5 Free";
+            content: "\f007";
+            font-weight: 900;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 27px !important;
+            border-radius: 50%;
+            border: 2px solid #003a74;
+            margin-left: 5px;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #003a74;
+            margin-left: 240px;
         }
         .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1 {
-            font-size: 25px !important;
+            font-size: 50px !important;
+        }
+        #footer nav ul li.menu-item a {
+            font-size: 16px !important;
+        }
+        #main-menu.top-bar li a {
+            font-size: 12px;
         }
         .is-front aside#sidebar_left {
             width: 100%;
@@ -3501,10 +3571,16 @@ input#site-search {
             right: 0;
         }
         .maclasse .cell.medium-7 h3 {
-            height: 203px;
+            height: 120px;
+        }
+        .cell.medium-7 .lien-content a {
+            font-size: 16px;
+        }
+        .is-front .more-link a {
+            font-size: 16px;
         }
         .c-bodyc {
-            height: 245px;
+            height: 156px;
         }
         div#block-b-zf-textedebienvenuhome {
             padding-left: 14px;
@@ -4077,10 +4153,15 @@ input#site-search {
         
         .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:last-child {
             border: none;
+            padding-top: 0;
         }
         .page-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-4"] header h2:before {
             height: 24px;
             top: 2px;
+        }
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-1 {
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
         .section-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-2"] h2 {
             margin-left: 78px;
