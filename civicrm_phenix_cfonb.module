@@ -365,6 +365,7 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $date_complet = $date['day_letter'] . ' ' . $date['jour'];
       $hour_complet = $date['day'] . ':' . $date['minute'];
       // href="/civicrm-event/' . $event_id . '"
+      
       $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c">
       <div class="date-complet"><p>' . $date_complet . '</p></div>
       <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>

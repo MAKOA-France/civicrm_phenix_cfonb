@@ -4,6 +4,48 @@
       attach: function(context, settings) {
 
         $(document).ready(function() {
+
+
+          // Créer un objet pour regrouper les éléments par année
+          var groupedByYear = {};
+
+          // Parcourir chaque .item-list
+          jQuery('.page-rencontres-ateliers .printParticipants .item-list').each(function () {
+            // Récupérer l'année depuis <h3>
+            var year = jQuery(this).find('h3 time').text().trim();
+
+            // Si l'année n'existe pas encore dans l'objet, on la crée
+            if (!groupedByYear[year]) {
+              groupedByYear[year] = [];
+            }
+
+            // Ajouter l'élément courant au groupe correspondant
+            groupedByYear[year].push(jQuery(this));
+          });
+
+          // Conteneur principal où se trouvent les .item-list
+          var container = jQuery('.printParticipants');
+
+          // Nettoyer le conteneur principal
+          container.empty();
+
+          // Ajouter chaque groupe au conteneur principal
+          jQuery.each(groupedByYear, function (year, items) {
+            // Créer un conteneur pour l'année
+            var yearContainer = jQuery('<div class="year-group"></div>').append('<h2>Année : ' + year + '</h2>');
+
+            // Ajouter les éléments de cette année au conteneur
+            items.forEach(function (item) {
+              yearContainer.append(item);
+            });
+
+            // Ajouter le conteneur d'année au conteneur principal
+            container.append(yearContainer);
+          });
+ 
+
+
+
           if ( jQuery('.bloc-head-meetings-in-theme .meeting-head').length) {
             if (!jQuery("[class^='js-view-dom-id-'] .fas.fa-users-cog").length) {
               jQuery('.bloc-head-meetings-in-theme .meeting-head').insertAfter('.bloc-head-meetings-in-theme .block-layout-builder');

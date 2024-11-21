@@ -343,8 +343,14 @@ div#block-b-zf-navigationmeetingandgroupblock {
 .page-type-node-cus #content1.dynamic-content {
     top: 101px;
 }
+.section-communication #content1.dynamic-content{
+    top: 60px !important;
+}
 .page-type-node-cus #content2.dynamic-content {
     top: 193px;
+}
+.section-communication  #content2.dynamic-content {
+    top: 144px !important;
 }
 li.menu-c-nav-item.cus-back-home  {
     padding-bottom: 0;
@@ -377,6 +383,9 @@ a.link-nav-c {
 }
 .page-type-node-cus #content3.dynamic-content {
     top: 268px;
+}
+.section-communication  #content3.dynamic-content {
+    top: 217px !important;
 }
 .section-communication .grid-container.full.hero.communication .contextual-region.block-core h1 {
     display: none;
