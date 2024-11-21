@@ -5,7 +5,12 @@
 
         $(document).ready(function() {
           if ( jQuery('.bloc-head-meetings-in-theme .meeting-head').length) {
-            jQuery('.bloc-head-meetings-in-theme .meeting-head').insertAfter('.bloc-head-meetings-in-theme .block-layout-builder');
+            if (!jQuery("[class^='js-view-dom-id-'] .fas.fa-users-cog").length) {
+              jQuery('.bloc-head-meetings-in-theme .meeting-head').insertAfter('.bloc-head-meetings-in-theme .block-layout-builder');
+            }else {
+              jQuery('.bloc-head-meetings-in-theme .meeting-head').insertBefore('.layout--twocol-section.layout--twocol-section--50-50');
+
+            }
           }
 
           once('cfonbConctext', '.page-c-taxonomy-ss .menu-c-nav-item, .page-type-node-cus  .menu-c-nav-item, .section-contact .menu-c-nav-item ', context).forEach((elem) => {
