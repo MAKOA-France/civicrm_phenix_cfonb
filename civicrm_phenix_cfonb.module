@@ -1196,14 +1196,17 @@ function civicrm_phenix_cfonb_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'page-c-taxonomy-ss';
     $term = \Drupal::request()->attributes->get('taxonomy_term');
     $tid = $term->get('tid')->getValue()[0]['value'];
-    $fileid = $term->get('field_image')->getValue()[0]['target_id'];
-    $media = Media::load($fileid);
-    $file = $media->get('field_media_image')->getValue()[0]['target_id'];
-    $file = File::load($file);
-    $uri = $file->get('uri')->getValue()[0]['value'];
-    if ($uri) {
-      $uri = str_replace('public:/', '/files', $uri);
-      $variables['attributes']['data-bg-img'] = $uri;
+    if ($term->get('field_image')->getValue()) {
+
+      $fileid = $term->get('field_image')->getValue()[0]['target_id'];
+      $media = Media::load($fileid);
+      $file = $media->get('field_media_image')->getValue()[0]['target_id'];
+      $file = File::load($file);
+      $uri = $file->get('uri')->getValue()[0]['value'];
+      if ($uri) {
+        $uri = str_replace('public:/', '/files', $uri);
+        $variables['attributes']['data-bg-img'] = $uri;
+      }
     }
   }
 }
@@ -1316,21 +1319,46 @@ function civicrm_phenix_cfonb_preprocess_media(array &$variables) {
     if ($media->hasField('field_media_document') && !$media->get('field_media_document')->isEmpty()) {
       $file = $media->get('field_media_document')->entity;
 
-      if ($file) {
+      /* if ($file) {
         // Get file details.
         $file_url = $file->createFileUrl();
         $file_name = $file->getFilename();
         $idTokenized = base64_encode($media->id());
+
+
+        // Get the file URI.
+        $file_uri = $file->getFileUri();
+
+        // Check if the file URI is a remote URL.
+        if (filter_var($file_uri, FILTER_VALIDATE_URL)) {
+          // Use cURL or file_get_contents to get the remote file size.
+          $headers = get_headers($file_uri, 1);
+          if (isset($headers['Content-Length'])) {
+            $file_size_in_bytes = $headers['Content-Length'];
+            $zize = round($file_size_in_bytes / 1024, 2);
+          }
+        }
+
+        // If the file is local, resolve its real path.
+        $file_path = \Drupal::service('file_system')->realpath($file_uri);
+        if ($file_path && file_exists($file_path)) {
+          $file_size_in_bytes = filesize($file_path);
+          $zize = round($file_size_in_bytes / 1024, 2);
+        }
+        if (!$file_path)  {
+          $zize = get_remote_file_size($file_uri);
+        }
+
         // Customize the rendered output.
         $variables['content']['custom_file_link'] = [
           '#type' => 'markup',
-          '#markup' => '<a href="/media/' . $media->id() . '/download?token='.$idTokenized.'" target="_blank" class="custom-document-link">' . $file_name . '</a>',
+          '#markup' => '<a href="/media/' . $media->id() . '/download?token='.$idTokenized.'" target="_blank" class="custom-document-link">' . $file_name . '</a> ('.$zize.')',
           '#allowed_tags' => ['a'],
         ];
 
         // Optionally hide the default field output.
         unset($variables['content']['field_media_document']);
-      }
+      } */
     }
   }
 }

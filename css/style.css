@@ -246,14 +246,32 @@ p.group-name {
 .page-c-taxonomy-ss .dynamic-content {
     left: 4px;
 }
+.page-accueil-extranet.section-accueil-extranet.role--super-utilisateur div#content {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+.section-accueil-extranet aside#sidebar_left {
+    margin-left: 0;
+}
 .page-c-taxonomy-ss #content1.dynamic-content {
-    top: 1px;
+    top: 104px;
 }
 .page-c-taxonomy-ss #content2.dynamic-content {
-    top: 93px;
+    top: 193px;
+}
+.page-c-taxonomy-ss .hero .block-pagetitle--2 h1, .page-c-taxonomy-ss .hero .views-field-title h1 {
+    font-family: 'Proza Libre', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 60px;
+    display: inline-block;
+    padding: 2rem;
+    color: white;
+    background-color: unset;
 }
 .page-c-taxonomy-ss #content3.dynamic-content {
-    top: 168px;
+    top: 268px;
 }
 .page-type-node-cus .dynamic-content {
     left: 4px;
@@ -1891,6 +1909,8 @@ a[data-drupal-link-system-path="node/96"]:before {
     left: 50%;
     margin-left: -208px;
     transform: translate(-50%, -50%);
+    margin-top: 431px;
+    z-index: 5;
 }
 
 
@@ -1902,7 +1922,7 @@ a[data-drupal-link-system-path="node/96"]:before {
 .role--anonymous .views-slideshow-controls-bottom.clearfix {
     position: absolute;
     z-index: 5;
-    top: 50%;
+    top: 193px;
     left: 50%;
     transform: translate(-50%, -50%);
     margin-left: -743px;
@@ -2713,9 +2733,25 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
 .is-front .views-field.views-field-field-slide .field-content img {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 100%;
+    max-height: 420px;
     max-width: none;
     max-width: 100%;
+}
+.is-front .grid-container.full {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    height: 700px;
+    margin-top: -24px;
+}
+.views-row.views-row-0.views-row-odd.views-row-first, .views-row.views-row-1.views-row-even.views-row-last {
+    width: 100%;
+}
+div#views_slideshow_cycle_div_block_hero-block_1_0, div#views_slideshow_cycle_div_block_hero-block_1_1, div#views_slideshow_cycle_div_block_hero-block_1_2, div#views_slideshow_cycle_div_block_hero-block_1_3 {
+    width: 100% !important;
+    height: 100% !important;
 }
 .views-field.views-field-field-texte-slider button:before {
     content: '';
@@ -2898,9 +2934,8 @@ a.btn.button.all-meeting {
     z-index: 9;
     position: absolute;
     top: 0;
-    left: 0px;
     background-image: url(/files/relooking/arrow_slide.png);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     pointer-events: none;
 }
@@ -2912,7 +2947,7 @@ a.btn.button.all-meeting {
 }
 .views-slideshow-controls-bottom.clearfix {
     position: absolute;
-    top: 50%;
+    top: 193px;
     z-index: 5;
     left: 50%;
     margin-left: -765px;
@@ -3059,6 +3094,16 @@ input#site-search {
 }
 
     @media  (max-width: 1366px) {
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li {
+            list-style: none;
+            width: 25%;
+            height: 270px;
+            border: 12px solid #003a7e;
+            padding: 20px;
+            border-left: solid 5.5px #003a7e;
+            border-right: solid 5.5px #003a7e;
+            margin-bottom: 10px;
+        }
         .section-communication #main .grid-x.grid-margin-x .medium-9 {
             width: 88%;
             /* z-index: -1; */
@@ -3612,7 +3657,17 @@ input#site-search {
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
 
-
+        #block-b-zf-textedebienvenuhome h1 {
+            margin-top: 320px;
+        }
+        .is-front .grid-container.full {
+            padding-right: 0;
+            padding-left: 0;
+            max-width: 100%;
+            margin: 0 auto;
+            height: auto;
+            margin-top: -24px;
+        }
         .role--anonymous.page-type-node-cus .align-right {
             float: right;
             position: absolute;
@@ -4011,11 +4066,15 @@ input#site-search {
             top: 80%;
             left: 0;
         }
+        .online_people.role--anonymous.is-front .grid-x.align-middle button.float-right {
+            right: -377px;
+        }
         .role--anonymous.is-front .grid-x.align-middle button.float-right {
             position: absolute;
             top: -25px;
             right: 3px;
         }
+
         .role--anonymous ul[block="block-b-zf-account-menu"] {
             position: absolute;
             display: flex;

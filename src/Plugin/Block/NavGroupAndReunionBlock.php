@@ -86,7 +86,7 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
     $all_comm = $c_service->getAllinfoCom($cid);
 
     foreach ($all_meetings as $meet) {
-      $formated_date = $c_service->formatDateWithMonthInLetterAndHours ($meet->event_start_date);
+      $formated_date = $c_service->formatDateWithMonthInLetterAndHours ($meet->civicrm_event_civicrm_participant_start_date);
       // dump($formated_date);
       $hour = isset($formated_date['hour']) ? ' | ' . $formated_date['hour'] . ':' . $formated_date['minute'] : '';
       $meet->formated_date = $formated_date['day_letter'] . '  ' . $formated_date['day']  . '/' . $formated_date['num_month'] . '/' . $formated_date['year'] . $hour;

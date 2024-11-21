@@ -15,7 +15,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Link;
 use \Drupal\Component\Utility\UrlHelper;
 use Drupal\node\Entity\Node;
-
+use Drupal\views\Views;
 
 /**
  * Class PubliciteService
@@ -281,55 +281,26 @@ class CustomService {
 
 
   public function getAllMeetings ($cid) {
-    /* $query = "SELECT
-    Event.start_date AS event_start_date,
-    civicrm_contact.id AS id,
-    Event.id AS event_id, Event.title as event_title
-  FROM
-    civicrm_contact
-  INNER JOIN civicrm_event AS Event ON civicrm_contact.id = Event.created_id
-  WHERE
-    (DATE_FORMAT((Event.start_date + INTERVAL 7200 SECOND), '%Y-%m-%dT%H:%i:%s') >= DATE_FORMAT(('2023-07-18T22:00:00' + INTERVAL 7200 SECOND), '%Y-%m-%dT%H:%i:%s'))
-    AND (Event.is_active = '1') AND civicrm_contact.id = $cid limit 3
-  ";
-  $results =  \Drupal::database()->query($query)->fetchAll();
-
-  return $results; */
-
-  $isAllowedMeeting = $this->checkIfContactIsInsideAGroup($cid);
     
-    // Use the ArrayFilter class to remove false values
-    $isAllowedMeeting = $this->removeFalseValues($isAllowedMeeting);
-    $isAllowedMeeting = array_keys($isAllowedMeeting);
-    if ($isAllowedMeeting) {
-      $isAllowedMeeting = implode(', ', $isAllowedMeeting);
-      
-      $query = "SELECT
-    `created_id_civicrm_contact`.`start_date` AS `event_start_date`,
-    `created_id_civicrm_contact`.`title`  as event_title,
-    `civicrm_contact`.`id` AS `id`,
-    `created_id_civicrm_contact`.`id` AS `created_id_civicrm_contact_id`
-FROM
-    `civicrm_contact`
-INNER JOIN
-    `civicrm_event` AS `created_id_civicrm_contact` ON `civicrm_contact`.`id` = `created_id_civicrm_contact`.`created_id`
-WHERE
-    (
-        DATE_FORMAT(
-            (`created_id_civicrm_contact`.`start_date` + INTERVAL 7200 SECOND),
-            '%Y-%m-%dT%H:%i:%s'
-        ) >= DATE_FORMAT(
-            (NOW() + INTERVAL 7200 SECOND),
-            '%Y-%m-%dT%H:%i:%s'
-        )
-    )
-    AND
-    (`created_id_civicrm_contact`.`is_active` = '1')  AND `created_id_civicrm_contact`.`id` IN (" . $isAllowedMeeting . ")   ORDER BY
-    `event_start_date` ASC limit 3;
-";
-    $results =  \Drupal::database()->query($query)->fetchAll();
+
+    $view = Views::getView('civievents_base_sur_le_contact_');
+
+    $data = [];
+    if ($view) {
+      // Set the display ID (e.g., "page_1", "block_1").
+      $view->setDisplay('block_2');
+
+      // Optionally, set arguments if the view uses contextual filters.
+      // $view->setArguments(['arg1', 'arg2']); // Replace with actual arguments.
+
+      // Execute the view query.
+      $view->execute();
+
+      // Get the results.
+      $results = $view->result;
+    }
+
     
-  }
    
     return $results;
 }
