@@ -274,7 +274,7 @@ p.group-name {
 
 
 .section-civicrm-group .bloc-head-meetings-in-theme .views-field.views-field-view span.field-content ul {
-    margin-left: 0;
+    margin-left: 50px;
 }
 div#block-b-zf-navigationmeetingandgroupblock {
     z-index: 8;
@@ -1138,11 +1138,25 @@ p.cu-home.do-not-diplay {
 }
 .section-civicrm-group .meeting-com.odd .date-meet, .section-civicrm-group .meeting-com.odd .title-meet .title-meet-commission a, .section-civicrm-group .meeting-com.odd span {
     color: #acacac;
-    pointer-events: none;
+    pointer-events: auto;
 }
 .section-civicrm-group .date-meet .month-and-year, .page-toutes-mes-reunions .date-meet .month-and-year {
     font-size: small;
     line-height: initial;
+}
+.year-group .all-itemss h3 {
+    display: none;
+}
+.all-itemss {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+li.group-par-annee {
+    width: max-content;
+    min-width: 362px;
+}
+.year-group .all-itemss h3 {
+    display: none;
 }
 .section-civicrm-group .layout--twocol-section--50-50 .layout__region .block-views h2 {
     background: #fff;
@@ -1185,6 +1199,12 @@ p.cu-home.do-not-diplay {
 .page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li,
 .page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li {
 	list-style: none;
+}
+.role--super-utilisateur.page-accueil-extranet nav.tabs {
+    width: 102%;
+}
+.role--authenticated div#block-views-block-civievents-base-sur-le-contact-block-13 > h2 {
+    display: none;
 }
 .page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li:nth-of-type(odd),
 .page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li:nth-of-type(odd) {
@@ -1984,6 +2004,8 @@ a[data-drupal-link-system-path="node/96"]:before {
     transform: translate(-50%, -50%);
     margin-top: 431px;
     z-index: 5;
+    
+    width: max-content;
 }
 
 

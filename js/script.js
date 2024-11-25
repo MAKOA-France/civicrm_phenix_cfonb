@@ -23,25 +23,42 @@
             groupedByYear[year].push(jQuery(this));
           });
 
-          // Conteneur principal où se trouvent les .item-list
-          var container = jQuery('.printParticipants');
 
-          // Nettoyer le conteneur principal
-          container.empty();
+          console.log(groupedByYear, ' l')
+      
+          if ($('.page-rencontres-ateliers').length) {
 
-          // Ajouter chaque groupe au conteneur principal
-          jQuery.each(groupedByYear, function (year, items) {
-            // Créer un conteneur pour l'année
-            var yearContainer = jQuery('<div class="year-group"></div>').append('<h2>Année : ' + year + '</h2>');
-
-            // Ajouter les éléments de cette année au conteneur
-            items.forEach(function (item) {
-              yearContainer.append(item);
+            // Conteneur principal où se trouvent les .item-list
+            var container = jQuery('.printParticipants');
+            
+            // Nettoyer le conteneur principal
+            container.empty();
+            console.log(groupedByYear, ' aol');
+            
+            // Trier les années par ordre décroissant
+            var sortedYears = Object.keys(groupedByYear).sort(function(a, b) {
+                return b - a;  // Tri décroissant des années
             });
-
-            // Ajouter le conteneur d'année au conteneur principal
-            container.append(yearContainer);
-          });
+            
+            // Ajouter chaque groupe au conteneur principal, année par année
+            jQuery.each(sortedYears, function (index, year) {
+                // Créer un conteneur pour l'année
+                var yearContainer = jQuery('<div class="year-group"></div>').append('<h2>' + year + '</h2>');
+                let itemContainer = jQuery('<div class="all-itemss"></div>');
+                
+                // Ajouter les éléments de cette année au conteneur
+                groupedByYear[year].forEach(function (item) {
+                    itemContainer.append(item);
+                });
+        
+                // Ajouter le conteneur des items au conteneur de l'année
+                yearContainer.append(itemContainer);
+        
+                // Ajouter le conteneur d'année au conteneur principal
+                container.append(yearContainer);
+            });
+        }
+        
  
 
 
