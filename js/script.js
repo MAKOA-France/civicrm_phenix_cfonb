@@ -5,6 +5,31 @@
 
         $(document).ready(function() {
 
+          if ($('.page-qui-sommes-nous-nos-adherents').length) {
+            let urlimg = jQuery('.page-qui-sommes-nous-nos-adherents #block-b-zf-content .content  img:first-of-type').attr('src');
+            $('.page-qui-sommes-nous-nos-adherents section#main').attr('data-bg', urlimg)
+            $('.page-qui-sommes-nous-nos-adherents section#main').addClass('has-before').attr('data-bg', urlimg);
+            let box = $('.page-qui-sommes-nous-nos-adherents .has-before')
+            const bgImage = box.attr('data-bgimage');
+            $('.page-qui-sommes-nous-nos-adherents section#main').attr('style', '--bgimage: url("'+urlimg+'")');
+            if (bgImage) {
+              console.log(bgimage, ' hasl')
+            }
+          }
+
+          if ($('.page-qui-sommes-nous-notre-histoire').length) {
+            let urlimg = jQuery('.section-qui-sommes-nous #block-b-zf-content .content  img:first-of-type').attr('src');
+            $('.section-qui-sommes-nous section#main').attr('data-bg', urlimg)
+            $('.section-qui-sommes-nous section#main').addClass('has-before').attr('data-bg', urlimg);
+            let box = $('.section-qui-sommes-nous .has-before')
+            const bgImage = box.attr('data-bgimage');
+            $('.section-qui-sommes-nous section#main').attr('style', '--bgimage: url("'+urlimg+'")');
+            if (bgImage) {
+              console.log(bgimage, ' hasl')
+            }
+
+          }
+
 
           // Créer un objet pour regrouper les éléments par année
           var groupedByYear = {};
@@ -58,7 +83,6 @@
                 container.append(yearContainer);
             });
         }
-        
  
 
 

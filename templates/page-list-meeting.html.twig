@@ -12,21 +12,22 @@
         </div>
     </span>
 </div> #}
-
+{# 
 <a href="/civicrm-event/{{ content.event_id }}"><div class="container-meet-c">
       <div class="date-complet"><p>{{ content.date_complet }}</p></div>
       <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">{{ content.hour_complet }}</p></div>
       <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">{{ content.title }}</p></div>
-      </div></a>
+      </div>
+    </a> #}
 
-{# <div class="meeting-com {{ content.class_odd_even }}">
+<div class="meeting-com {{ content.class_odd_even }}">
     <div class="date-meet">
-        <span class="day">{{ content.start_date.day }}</span>
-        <span class="month-and-year">{{ content.start_date.month }} {{  '  ' ~ content.start_date.year  }}</span>
-    </div>     #}
-   {#  <div class="title-meet">
+        <span class="day">{{ content.day }}</span>
+        <span class="month-and-year">{{ content.month }} {{  '  ' ~ content.year  }}</span>
+    </div>     
+     <div class="title-meet">
         <span class="field_sous_titre_slide"><a href="/civicrm-event/{{ content.event_id }}">{{ content.title }}</a></span>
         <span class="hour-begining-meet-commission">Début : </span>
         <span class="hourss">{{ content.meeting_info.hour ~ 'h ' ~ content.meeting_info.minute}}</span>
     </div>
-</div> #}
+</div>

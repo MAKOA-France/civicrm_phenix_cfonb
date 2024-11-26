@@ -519,7 +519,7 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
 
 
   
-  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_7') {
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  in_array($view->current_display, ['block_7', 'block_13'])) {
     // $custom_service->customizeMeetingList()
     $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
     if ($field->field == 'title') {
@@ -528,10 +528,15 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       
       $date = $row->created_id_civicrm_contact_start_date;
       
-      
       $daty = $row->created_id_civicrm_contact_start_date;
+      if ($view->current_display == 'block_13') {
+        $daty = $row->civicrm_event_civicrm_participant_start_date;
+      }
       $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
       $event_id = $row->created_id_civicrm_contact_start_date;
+      if ($view->current_display == 'block_13') {
+        $event_id = $row->civicrm_event_civicrm_participant_id;
+      }
       $date_complet = $date['day_letter'] . ' ' . $date['jour'];
       
       $dateArray = $custom_service->formatDateWithMonthInLetterAndHours($daty);
@@ -540,7 +545,6 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $hours_c = $drupal_datetime->format('H');
       $minute_c = $drupal_datetime->format('i');
       $hour_complet = $hours_c . ':' . $minute_c;
-
       
       $variables['output'] = [
         '#theme' => 'page_list_meeting',
@@ -548,9 +552,12 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
         '#content' => [
           'meeting_info' => $dateArray,
           'title' => $title,
-          'event_id' => $row->created_id_civicrm_contact_id,
+          'event_id' => $event_id,
           'date_complet' => $date_complet,
           'hour_complet' => $hour_complet,
+          'month' => $date['month'],
+          'day' => $date['day'],
+          'year' => $date['year'],
         ],
       ];
     }
