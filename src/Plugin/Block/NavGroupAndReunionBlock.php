@@ -89,7 +89,9 @@ class NavGroupAndReunionBlock extends BlockBase implements ContainerFactoryPlugi
       $formated_date = $c_service->formatDateWithMonthInLetterAndHours ($meet->civicrm_event_civicrm_participant_start_date);
       // dump($formated_date);
       $hour = isset($formated_date['hour']) ? ' | ' . $formated_date['hour'] . ':' . $formated_date['minute'] : '';
-      $meet->formated_date = $formated_date['day_letter'] . '  ' . $formated_date['day']  . '/' . $formated_date['num_month'] . '/' . $formated_date['year'] . $hour;
+      $drupalDate = new \DateTime($meet->civicrm_event_civicrm_participant_start_date);
+      $year = $drupalDate->format('Y');
+      $meet->formated_date = $formated_date['day_letter'] . '  ' . $formated_date['day']  . '/' . $formated_date['num_month'] . '/' . $year . $hour;
       // $linked_group = $burger_service->getLinkedGroupWithEvent ($meet->event_id); 
       // $meet->linked_group = $linked_group;
     }

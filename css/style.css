@@ -809,8 +809,8 @@ nav#block-menuprincipal .dropdown.menu {
 }
 
 .top-bar#main-menu .grid-container {
-    width: 84rem !important;
-    max-width: 84rem !important;
+    width: 86rem !important;
+    max-width: 86rem !important;
 }
  
 .role--anonymous .grid-container.hero [class*="js-view-dom-id-"] {
@@ -1024,6 +1024,7 @@ span.field_sous_titre_slide a, span.hour-begining-meet-commission, span.hourss  
 }
 li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/40"]:first-of-type,
 li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/38"], 
+li.menu-item  [data-drupal-link-system-path="contact/extranet_contactez_nous"],
 li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/39"]:first-of-type {
     display: inline-flex;
 }
@@ -1053,6 +1054,21 @@ li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-dr
     background-repeat: no-repeat;
     background-position: center;
 }
+
+li.menu-item  [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
+    content: '';
+    margin-right: 2px;
+    display: block;
+    width: 20px;
+    margin-top: -3px;
+    height: 22px;
+    padding: 0;
+    background-image: url(/files/relooking/conversation.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/38"]:first-of-type:before {
     content: '';
     display: block;
@@ -1060,7 +1076,7 @@ li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-dr
     margin-top: -3px;
     height: 22px;
     padding: 0;
-    background-image: url(/files/relooking/conversation.png);
+    background-image: url(/files/relooking/handbook.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -3473,6 +3489,9 @@ input#site-search {
         body {
             background-color: rgb(107, 177, 28);
         }
+        li.menu-item [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
+            display: none;
+        }
         li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/40"]:first-of-type:before, 
         li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/39"]:first-of-type:before,
         li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/38"]:first-of-type:before
@@ -3763,6 +3782,48 @@ input#site-search {
         #footer-region nav.contextual-region, #footer-region nav.menu--footer {
             width: auto;
         }
+        .page-c-taxonomy-ss.section-qui-sommes-nous .grid-x.align-middle .medium-9.cell {
+            width: 100%;
+        }
+        .page-c-taxonomy-ss .grid-x.align-middle button.float-right {
+            top: -23px;
+        }
+        .page-c-taxonomy-ss .align-right {
+            float: right;
+            position: absolute;
+            margin-top: -31px;
+            /* left: 423px; */
+            color: white;
+            display: flex
+    ;
+            align-items: flex-end;
+            left: unset;
+            right: 0;
+        }
+        .section-civicrm-event .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: 24px;
+            left: unset;
+            right: -291px;
+        }
+        .section-civicrm-event  .grid-x.align-middle button.float-right {
+            top: -29px !important;
+        }
+        .page-c-taxonomy-ss .grid-container.full.hero.hero-taxonomy:after {
+            display: none;
+        }
+        .section-civicrm-event .align-right {
+            float: right;
+            position: absolute;
+            margin-top: -37px;
+            /* left: 423px; */
+            color: white;
+            display: flex
+    ;
+            align-items: flex-end;
+            left: unset;
+            right: -382px;
+        }
         .section-qui-sommes-nous div#block-b-zf-page-title, .page-qui-sommes-nous-nos-adherents div#block-b-zf-page-title {
             position: relative;
             top: 0;
@@ -3821,7 +3882,15 @@ input#site-search {
             /* text-align: center; */
         }
         .role--administrator .grid-x.align-middle button.float-right {
-            top: 26px;
+            /* top: 26px; */
+        }
+        .page-c-taxonomy-ss .grid-x.align-middle .medium-9.cell {
+            width: 100%;
+        }
+        .page-communication #masquerade-block-form > .container-inline {
+            display: flex
+    ;
+            flex-direction: row;
         }
         .btn-my-account::before {
             color: white;
@@ -3931,11 +4000,28 @@ input#site-search {
         .page-c-taxonomy-ss .btn-my-account::before {
             margin-left: 13px;
         }
+        .views-slideshow-controls-bottom.clearfix {
+            position: absolute;
+            top: 193px;
+            z-index: 5;
+            left: 50%;
+            margin-left: -144px;
+            margin-top: 59px;
+        }
         .section-civicrm-event div#content {
             margin-top: 62px;
         }
         .section-civicrm-event #content1.dynamic-content {
             top: 0;
+        }
+        .is-front ul#widget_pager_bottom_block_hero-block_1 li {
+            display: inline-flex;
+        }
+        .views-slideshow-controls-bottom .views-slideshow-pager-bullets {
+            position: absolute;
+            margin-top: .5rem;
+            display: flex
+    ;
         }
         .section-civicrm-event #content2.dynamic-content {
             top: 20px;
