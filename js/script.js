@@ -5,6 +5,42 @@
 
         $(document).ready(function() {
 
+             var $list = jQuery('.block-views-block-civievents-base-sur-le-contact-block-3 .item-list ul');
+          if ($list) {
+
+            // Obtenir les <li> et les trier
+            var $items = $list.children('li').sort(function(a, b) {
+              // Extraire le texte dans <li> > div > span > a
+              var textA = jQuery(a).find('div > span > a').text().toLowerCase();
+              var textB = jQuery(b).find('div > span > a').text().toLowerCase();
+              
+              // Comparer alphabétiquement
+              return textA.localeCompare(textB);
+            });
+            
+            // Réattacher les <li> triés dans la liste <ul>
+            $list.append($items);
+          }
+
+
+          var $list = jQuery('.block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li');
+          if ($list) {
+
+           var listItems = jQuery('.block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li').get(); // Get all the <li> elements
+
+            // Sort the <li> elements alphabetically based on the text of the <a> tag inside the <li>
+            listItems.sort(function(a, b) {
+              var textA = jQuery(a).find('a').text().toUpperCase(); // Get the anchor text
+              var textB = jQuery(b).find('a').text().toUpperCase(); // Get the anchor text
+
+              return textA.localeCompare(textB); // Compare the text values
+            });
+
+            // Re-append the sorted <li> elements back to the <ul>
+            jQuery('.block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul').append(listItems);
+          }
+
+
           if ($('.page-qui-sommes-nous-nos-adherents').length) {
             let urlimg = jQuery('.page-qui-sommes-nous-nos-adherents #block-b-zf-content .content  img:first-of-type').attr('src');
             $('.page-qui-sommes-nous-nos-adherents section#main').attr('data-bg', urlimg)
@@ -291,6 +327,36 @@ if (window.matchMedia("(min-width: 992px)").matches) {
         $(window).on('load', function() {
 
 
+          let visible = jQuery('[block="block-b-zf-account-menu"]').is(':visible');
+
+          if (visible) {
+            jQuery('[block="block-b-zf-account-menu"]').hide();
+          }
+
+
+
+          //Trier les element dans la rubrique instrument de paiement 
+          // Select all elements with the target class
+          var gridElements = jQuery('.page-espace-documentaire-instruments-de-paiement .grid-x.grid-margin-x.grid-margin-y');
+
+          if (gridElements) {
+            // Select all elements with the target class
+            // var gridElements = jQuery('.grid-x.grid-margin-x.grid-margin-y');
+
+            // Sort elements based on the text of the <h2> inside each element
+            gridElements.sort(function (a, b) {
+              var textA = jQuery(a).find('h2').first().text().trim().toLowerCase();
+              var textB = jQuery(b).find('h2').first().text().trim().toLowerCase();
+              return textA.localeCompare(textB);
+            });
+
+            // Append the sorted elements back to the parent container
+            gridElements.appendTo(gridElements.parent());
+          }
+
+
+
+
           $('.float-right .fa-search').on('click', function(event) {
             event.preventDefault();
             console.log('groupee');
@@ -310,7 +376,7 @@ if (window.matchMedia("(min-width: 992px)").matches) {
             });
           }
 
-console.log($('.btn-my-account').length,  ' LSK')
+ 
           if ($('.btn-my-account').length) {
             once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
               element.addEventListener('click', function () {
@@ -354,15 +420,30 @@ console.log($('.btn-my-account').length,  ' LSK')
 
           if ($('.btn-my-account').length) {
             once('civicrm_phenix_cfonb', '#block-b-zf-account-menu', context).forEach(function (element) {
+              $('[block="block-b-zf-account-menu"]').hide();
               element.addEventListener('click', function () {
                 console.log('cliky')
                 if (!$('.role--anonymous').length) {
                   $('[block="block-b-zf-account-menu"]').toggle();
                 }
               });
+
+              // Ajouter un gestionnaire d'événements pour cacher le menu si on clique ailleurs sur la page
+
             });
           }
-        }) 
+            // Ajouter un gestionnaire d'événements pour cacher le menu si on clique ailleurs sur la page
+            let elem = $('#block-b-zf-account-menu');
+            var $menu = $('[block="block-b-zf-account-menu"]');
+            $(document).click(function(event) {
+              if ($menu && elem) {
+                if (!$(event.target).closest($menu).length && !$(event.target).closest(elem).length) {
+                  $menu.hide(); // Cacher le menu
+                }
+              }
+            });
+
+      }) 
       }
   }
 })(jQuery)

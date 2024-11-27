@@ -32,7 +32,7 @@ function civicrm_phenix_cfonb_set_defaults($entity_type, $bundle) {
   $field_instances = field_info_instances($entity_type, $bundle);
   $entities = entity_load($entity_type);
 
-  dump($bundle, $entity_type);
+
   
 /*   foreach ($field_instances as $field_name => $field_instance) {
     
@@ -92,6 +92,35 @@ function civicrm_phenix_cfonb_views_post_render(&$view, &$output, &$cache) {
 function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $view) {
 
   
+  if ($view->storage->get('id') == 'civievents_base_sur_le_contact_' && $view->current_display == 'block_5') {
+    $results = &$view->result;
+    // usort($results, function ($a, $b) {
+    //   // Récupérer les titres.
+    //   // dump($a);
+    //   $titleA = strtolower($a->civicrm_group_civicrm_group_contact_title ? $a->civicrm_group_civicrm_group_contact_title :  '');
+    //   $titleB = strtolower($b->civicrm_group_civicrm_group_contact_title ? $b->civicrm_group_civicrm_group_contact_title  :  '');
+    
+    //   // Comparer alphabétiquement.
+    //   return $titleA <=> $titleB;
+    // });
+    // dump($results, $view->result , $view);
+    // $view->result = $results;
+  }
+  if ($view->storage->get('id') == 'civievents_base_sur_le_contact_' && $view->current_display == 'block_3') {
+    $results = &$view->result;
+ 
+    usort($results, function ($a, $b) {
+      // Récupérer les titres.
+      // dump($a);
+      $titleA = strtolower($a->civicrm_group_civicrm_group_contact_title ? $a->civicrm_group_civicrm_group_contact_title :  '');
+      $titleB = strtolower($b->civicrm_group_civicrm_group_contact_title ? $b->civicrm_group_civicrm_group_contact_title  :  '');
+    
+      // Comparer alphabétiquement.
+      return $titleA <=> $titleB;
+    });
+    // dump($results, $view->result , $view);
+    $view->result = $results;
+  }
 
   if (($view->id() === 'reunion' && $view->current_display === 'page_1') || $view->id() == 'test_event') {
     $view->element['#prefix'] = '<a class="btn-add-meeting meet-btn-cu-add" href="/civicrm-event/add?group_id=306"><i class="fa fa-plus-circle"></i>Ajouter une réunion</a>';
@@ -732,9 +761,9 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $formated_Y_m_d_end_date = $civi_service->formatDateTo_Y_m_d($get_end_date);
     setlocale(LC_TIME, 'fr_FR');
     $formated_start_date = new \DateTime($get_start_date);
-    $formatted_dateSt = \Drupal::service('date.formatter')->format($formated_start_date->getTimestamp(), 'custom', 'l, j F  Y H:i');
+    $formatted_dateSt = \Drupal::service('date.formatter')->format($formated_start_date->getTimestamp(), 'custom', 'l, j F  Y - H:i');
     $formated_end_date = new \DateTime($get_end_date);
-    $formatted_dateEn = \Drupal::service('date.formatter')->format($formated_end_date->getTimestamp(), 'custom', 'l, j F  Y H:i');
+    $formatted_dateEn = \Drupal::service('date.formatter')->format($formated_end_date->getTimestamp(), 'custom', 'l j F  Y - H:i');
 
     //enlever la minute si c'est 00
     $formatted_dateEn = str_replace(':00', 'h', $formatted_dateEn);
@@ -748,7 +777,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
       $end_date_val = isset($build['end_date'][0]['#context']) ?  $build['end_date'][0]['#context'] : '';
       $formated_end_date = new \DateTime($get_end_date);
       $formated_end_date = $formated_end_date->format('H:i');
-      $formated_date_start = $formated_start_date->format('Y-m-d H:i');
+      $formated_date_start = $formated_start_date->format('Y-m-d - H:i');
 
       //enlever la minute si c'est 00
       $formated_end_date = str_replace(':00', 'h', $formated_end_date);
@@ -760,7 +789,8 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     
     //enlever la minute si c'est 00
     $formatted_dateSt = str_replace(':00', 'h', $formatted_dateSt);
-    
+    $formatted_dateSt = str_replace(',', '', $formatted_dateSt);
+
     $build['start_date'][0]['#text'] = $formatted_dateSt;
     $build['start_date'][0]['#prefix'] = '<div class="date-start-and-end date-duration-meeting"><time class="eventt-time">' . $formatted_dateSt . '</time>';
     $build['end_date'][0]['#suffix'] = '</div>';
@@ -1038,7 +1068,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query) {
 
   //Feuille de presence ==> ne pas afficher les contact qui sont supprimés
-  // if ($view->storage->get('id') == 'attendance_sheet' && $view->current_display == 'attendance_sheet_edit') {
+  // if ($view->storage->get('id') == 'civievents_base_sur_le_contact_' && $view->current_display == 'block_3') {
   //   $query->where[] =  array(
   //     'conditions' => array(
   //       array(
@@ -1050,6 +1080,7 @@ function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $vi
   //     'type' => 'AND',
   //   );
   // }
+
 }
 
 /**

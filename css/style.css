@@ -143,7 +143,7 @@ p.group-name {
     color: #707070;
     display: flex !important;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 25px;
     font-family: "Montserrat Variable", sans-serif !important;
 }
 .section-civicrm-event #main .civicrm-entity--type-civicrm-event h2.intitule-h2 {
@@ -550,13 +550,21 @@ a.link-nav-c {
     width: 15%;
     height: auto;
 }
+.page-accueil-extranet .messages.messages--error {
+    display: none;
+}
 .first-element-doc .content-frist-doc {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
 }
-
+.block-views-block-civievents-base-sur-le-contact-block-2-2 li a:before, .block-views-block-civievents-base-sur-le-contact-block-2 .views-field-title a:before, .civicrm-entity > div:nth-child(2) .layout__region.layout__region--second li a:before, .block-views-block-civievents-base-sur-le-contact-block-13 li a:before {
+    display: none;
+}
+.block-views-block-civievents-base-sur-le-contact-block-2-2 li a:before, .block-views-block-civievents-base-sur-le-contact-block-2 .views-field-title a:before, .civicrm-entity > div:nth-child(2) .layout__region.layout__region--second li a:before, .block-views-block-civievents-base-sur-le-contact-block-13 li a:before  {
+    display: none;
+}
 
 .detail-title-resume-first-doc {
     gap: 155px;
@@ -1022,13 +1030,13 @@ span.field_sous_titre_slide a:before {
 span.field_sous_titre_slide a, span.hour-begining-meet-commission, span.hourss  {
     font-size: 18px !important;
 }
-li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/40"]:first-of-type,
-li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/38"], 
-li.menu-item  [data-drupal-link-system-path="contact/extranet_contactez_nous"],
-li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/39"]:first-of-type {
+#block-menuprincipal li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/40"]:first-of-type,
+#block-menuprincipal li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/38"], 
+#block-menuprincipal li.menu-item  [data-drupal-link-system-path="contact/extranet_contactez_nous"],
+#block-menuprincipal li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/39"]:first-of-type {
     display: inline-flex;
 }
-li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/40"]:first-of-type:before {
+#block-menuprincipal li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/40"]:first-of-type:before {
     content: '';
     display: block;
     width: 20px;
@@ -1041,7 +1049,7 @@ li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-dr
     background-repeat: no-repeat;
     background-position: center;
 }
-li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/39"]:first-of-type:before {
+#block-menuprincipal li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/39"]:first-of-type:before {
     content: '';
     margin-right: 2px;
     display: block;
@@ -1054,8 +1062,10 @@ li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-dr
     background-repeat: no-repeat;
     background-position: center;
 }
-
-li.menu-item  [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
+.title-bar {
+    z-index: 999999;
+}
+#block-menuprincipal li.menu-item  [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
     content: '';
     margin-right: 2px;
     display: block;
@@ -1068,8 +1078,10 @@ li.menu-item  [data-drupal-link-system-path="contact/extranet_contactez_nous"]:f
     background-repeat: no-repeat;
     background-position: center;
 }
-
-li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/38"]:first-of-type:before {
+div#block-b-zf-views-block-civievents-base-sur-le-contact-block-10 > h2:first-of-type {
+    display: none;
+}
+#block-menuprincipal li.menu-item.menu-item--expanded.is-dropdown-submenu-parent.opens-right [data-drupal-link-system-path="taxonomy/term/38"]:first-of-type:before {
     content: '';
     display: block;
     width: 25px;
@@ -1488,7 +1500,7 @@ li.menu-c-nav-item i {
     border: 1px;
 }
 .page-tous-mes-groupes div#block-b-zf-navigationmeetingandgroupblock {
-    z-index: 555;
+    z-index: 55;
 }
 .section-communication #sidebar_left {
     width: 6%;
@@ -2166,7 +2178,7 @@ a[data-drupal-link-system-path="node/96"]:before {
     left: 50%;
     margin-left: -208px;
     transform: translate(-50%, -50%);
-    margin-top: 431px;
+     margin-top: 431px; 
     z-index: 5;
     
     width: max-content;
@@ -3007,7 +3019,7 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
     max-width: 100%;
     margin: 0 auto;
     height: 700px;
-    margin-top: -24px;
+    margin-top: 0;
 }
 .views-row.views-row-0.views-row-odd.views-row-first, .views-row.views-row-1.views-row-even.views-row-last {
     width: 100%;
@@ -3134,7 +3146,7 @@ footer div#block-reseauxsociaux {
     color: white;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 73% !important;
+    width: 1400px !important;
     margin-left: -744px;
     margin-top: -122px;
     top: 50%;
@@ -3318,6 +3330,9 @@ h2.meetings .icon-custom-calendar {
     margin-bottom: 20px;
     padding-left: 0;
     padding-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-bottom: 5px;
 }
 .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 {
     padding-left: 0;
@@ -3783,22 +3798,25 @@ input#site-search {
             width: auto;
         }
         .page-c-taxonomy-ss.section-qui-sommes-nous .grid-x.align-middle .medium-9.cell {
-            width: 100%;
+            width: 60%;
         }
         .page-c-taxonomy-ss .grid-x.align-middle button.float-right {
             top: -23px;
         }
+        .online_people.page-c-taxonomy-ss .align-right {
+            margin-top: 5px;
+        }
         .page-c-taxonomy-ss .align-right {
             float: right;
             position: absolute;
-            margin-top: -31px;
+            margin-top: 3px;
             /* left: 423px; */
             color: white;
             display: flex
     ;
             align-items: flex-end;
             left: unset;
-            right: 0;
+            right: -161px;
         }
         .section-civicrm-event .grid-x.align-middle button.float-right {
             position: absolute;
@@ -3997,6 +4015,25 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) { 
+        .is-front section.grid-container.section1 {
+            padding-top: 0;
+        }
+        .title-bar {
+            padding: 0.5rem !important;
+        }
+        article.grid-container .grid-x.align-middle .medium-9.cell {
+            width: 60%;
+        }
+        article.grid-container .grid-x.align-middle .medium-3.cell {
+            width: 33%;
+        }
+        .is-front div#block-views-block-actualites-block-1 h2:first-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .is-front div#block-views-block-actualites-block-1 {
+            margin-top: 0;
+        }
         .page-c-taxonomy-ss .btn-my-account::before {
             margin-left: 13px;
         }
@@ -4099,7 +4136,7 @@ input#site-search {
             right: 0;
         }
         #block-b-zf-textedebienvenuhome h1 {
-            margin-top: 320px;
+            margin-top: 362px;
         }
         .page-node-type-page h3, .section-civicrm-group h3, .section-civicrm-event h3, .page-c-taxonomy-ss h3 {
             font-size: 16px;
@@ -4136,7 +4173,7 @@ input#site-search {
             float: right;
             position: absolute;
             margin-top: -6px;
-            margin-left: 223px;
+            margin-left: 156px;
             width: 100%;
         }
         .has-before::after {
@@ -4263,7 +4300,7 @@ input#site-search {
         } 
         
         .section-communication .align-right {
-            margin-left: 213px;
+            right: -166px;
         }
         .section-civicrm-event .align-right {
             float: right;
@@ -4553,7 +4590,7 @@ input#site-search {
             margin-top: 4px;
             margin-left: 0;
             width: 100%;
-            top: 51px;
+            top: 38px;
         }
         .online_people.section-accueil-extranet ul[block="block-b-zf-account-menu"] {
             position: absolute;
@@ -4647,18 +4684,25 @@ input#site-search {
         }
         .role--anonymous.is-front .grid-x.align-middle button.float-right {
             position: absolute;
-            top: -25px;
+            top: 8px;
             right: 3px;
         }
         .online_people.is-front.role--anonymous.is-front .grid-x.align-middle button.float-right {
-            right: 26px;
+            right: -133px;
         }
         .role--anonymous.is-front.page-type-node-cus.online_people .align-right {
-            float: right;
+            float: none;
             position: absolute;
-            margin-top: 4px;
-            margin-left: 0px;
-            width: 95%;
+            margin-top: 0;
+            margin-left: 201px;
+            width: 77%;
+            z-index: 55;
+        }
+        .role--anonymous ul[block="block-b-zf-account-menu"] {
+            display: none;
+        }
+        [block="block-b-zf-account-menu"] {
+            display: none;
         }
         .section-contact.online_people .btn-my-account::before {
             margin-left: 118px;
@@ -4684,12 +4728,42 @@ input#site-search {
             background-color: #003a74;
             margin-left: 0;
         }
-        .role--anonymous.page-type-node-cus.online_people .align-right {
+        .online_people.role--anonymous.page-type-node-cus.online_people .align-right {
             float: right;
             position: absolute;
             margin-top: 4px;
-            margin-left: -12px;
-            width: 95%;
+            margin-left: 250px;
+            width: 60%;
+        }
+        .online_people.is-front.role--anonymous.page-type-node-cus.online_people .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 45px;
+            margin-left: 100px;
+            width: 60%;
+        }
+        .online_people.role--anonymous.is-front .grid-x.align-middle {
+            display: block; 
+             justify-content: space-between;
+        }
+            .online_people.is-front.role--anonymous.page-type-node-cus.online_people .align-right {
+                float: right;
+                position: absolute;
+                margin-top: 0;
+                margin-left: 234px;
+                width: 60%;
+    }
+    .online_people.is-front.role--anonymous ul[block="block-b-zf-account-menu"] {
+        position: absolute;
+        display: flex
+;
+        top: 0;
+        top: 44px
+    }
+        .online_people.page-type-node-cus .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -22px;
+            right: -148px;
         }
         .page-qui-sommes-nous-notre-histoire div#block-b-zf-page-title h1, .page-qui-sommes-nous-nos-adherents div#block-b-zf-page-title h1 {
             font-size: 40px;
@@ -4745,6 +4819,9 @@ input#site-search {
         }
         .role--anonymous .views-slideshow-controls-bottom.clearfix {
             display: none;
+        }
+        .is-front .medium-8.cell#content {
+            margin-left: 11px;
         }
         .role--anonymous .medium-8.cell#content {
             width: 95%;
@@ -4996,7 +5073,7 @@ input#site-search {
         .grid-x.align-middle button.float-right {
             position: absolute;
             top: -22px;
-            right: 9px;
+            right: -154px;
         }
         .section-communication  .site-logo img {
             width: 63%;
@@ -5007,11 +5084,11 @@ input#site-search {
         .section-communication  .grid-x.align-middle button.float-right {
             position: absolute;
             top: -22px;
-            right: -214px;
+            right: -157px;
         }
         .is-front .grid-x.align-middle button.float-right {
             position: absolute;
-            top: 23px;
+            top: 14px;
             right: 9px;
         }
         input#site-search {
