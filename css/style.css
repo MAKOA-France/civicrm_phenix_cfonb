@@ -110,6 +110,10 @@ ul.submenu.is-dropdown-submenu.first-sub.vertical.js-dropdown-active {
     margin-right: 1rem;
     padding-right: 5px;
 }
+span.title-meet-commission:first-letter {
+    text-transform: uppercase;
+}
+
 p.group-name {
     font-size: 45px !important;
 }
@@ -1130,6 +1134,16 @@ div#block-b-zf-views-block-civievents-base-sur-le-contact-block-10 > h2:first-of
     padding: 0;
     margin-bottom: 20px;
 }
+.section-rencontres-ateliers  .meeting-com {
+    display: flex;
+    align-items: center;
+    width: 378px;
+    gap: 20px;
+    background-color: #e7e0d9;
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 20px;
+}
 span.month-and-year {
     font-size: 16px !important;
 }
@@ -1147,7 +1161,7 @@ span.month-and-year {
     margin-bottom: 15px;
 }
 .section-rencontres-ateliers .meeting-com, .section-rencontres-ateliers .item-list .views-field.views-field-title {
-    background-color: unset;
+    /* background-color: unset; */
 }
 
 
@@ -1160,9 +1174,9 @@ span.month-and-year {
  .section-rencontres-ateliers  .item-list ul li:nth-child(25),
  .section-rencontres-ateliers  .item-list ul li:nth-child(29)
    {
-    border-left: 9px solid #003a7e;
+   /*  border-left: 9px solid #003a7e;
     border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 8px; */
 }
 
 .section-rencontres-ateliers  .item-list ul li:nth-child(4),
@@ -1175,21 +1189,45 @@ span.month-and-year {
   /* .section-rencontres-ateliers  .item-list ul li:nth-child(32), */
   /* .section-rencontres-ateliers  .item-list ul li:nth-child(36) */
    .section-rencontres-ateliers  .item-list ul li:last-child {
-    border-right: 9px solid #003a7e;
+    /* border-right: 9px solid #003a7e;
     border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 8px; */
 }
 p.cu-home.do-not-diplay {
     display: none;
 }
 
+.section-rencontres-ateliers  .meeting-com .date-meet .day {
+    font-size: xxx-large;
+    font-weight: bold;
+    line-height: normal;
+    font-family: 'Montserrat Variable';
+}
+
+li.group-par-annee .views-field.views-field-title {
+    display: flex
+    ;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+        /* background-color: #e7e0d9; */
+        border-radius: 11px;
+        padding: 17px;
+        margin-bottom: 20px;
+        padding-left: 0;
+        padding-bottom: 0;
+        padding-bottom: 0;
+        padding-top: 0;
+        margin-bottom: 5px;
+}
+
 .section-rencontres-ateliers .item-list ul li {
-    list-style: none;
+    /* list-style: none;
     border: 12px solid #003a7e;
     padding: 20px;
     border-left: solid 5.5px #003a7e;
     border-right: solid 5.5px #003a7e;
-    margin-bottom: 10px;
+    margin-bottom: 10px; */
 }
 
 .section-civicrm-group .grid-container.full.hero.communication {
@@ -4096,7 +4134,25 @@ input#site-search {
         .content-c-nav {
             display: none;
         }
-        
+        #block-views-block-block-hero-block-1 {
+            margin-top: 0;
+            margin-bottom: 0 !important;
+        }
+        .page-c-taxonomy-ss div.top-bar#main-menu {
+            margin-top:0;
+        }
+        .page-type-node-cus.page-qui-sommes-nous-les-roles-du-cfonb .grid-x.align-middle button.float-right,
+        .page-type-node-cus.page-qui-sommes-nous-notre-histoire .grid-x.align-middle button.float-right
+         {
+            position: absolute;
+            top: -22px;
+            right: -151px;
+        }
+        #main-menu > .grid-container {
+            background-color: #eee;
+            z-index: 999;
+            margin-top: -15px;
+        }
         .date-meet {
             margin-left: 0;
         }
@@ -4331,7 +4387,7 @@ input#site-search {
             margin-top: 0;
         }
         .is-front header {
-            height: 91px;
+            height: 115px;
         }
         .role--anonymous.page-type-node-cus .align-right {
             float: right;
@@ -4561,7 +4617,7 @@ input#site-search {
             color: #140d3d !important;
         }
         .page-type-node-cus div#main-menu {
-            margin-top: 0 !important;
+            margin-top: 3px !important;
         }
         .section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50  .views-element-container.contextual-region h2 {
             text-transform: lowercase;

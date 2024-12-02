@@ -19,15 +19,17 @@
       <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">{{ content.title }}</p></div>
       </div>
     </a> #}
-
+<a href="/civicrm-event/{{ content.event_id }}">
 <div class="meeting-com {{ content.class_odd_even }}">
     <div class="date-meet">
         <span class="day">{{ content.day }}</span>
         <span class="month-and-year">{{ content.month }} {{  '  ' ~ content.year  }}</span>
+        <div class="debuth">
+            <span class="hourss">{{ content.meeting_info.hour ~ 'h ' ~ content.meeting_info.minute}}</span>
+        </div>
     </div>     
      <div class="title-meet">
-        <span class="field_sous_titre_slide"><a href="/civicrm-event/{{ content.event_id }}">{{ content.title }}</a></span>
-        <span class="hour-begining-meet-commission">Début : </span>
-        <span class="hourss">{{ content.meeting_info.hour ~ 'h ' ~ content.meeting_info.minute}}</span>
+        <span class="field_sous_titre_slide aaa">{{ content.title }}</span>
+        
     </div>
-</div>
+</div></a>

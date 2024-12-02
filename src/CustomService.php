@@ -12,6 +12,8 @@ use Drupal\file\Entity\File;
 use Drupal\Component\Utility\Unicode;
 use IntlDateFormatter;
 use Drupal\Core\Url;
+
+use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\Core\Link;
 use \Drupal\Component\Utility\UrlHelper;
 use Drupal\node\Entity\Node;
@@ -225,8 +227,10 @@ class CustomService {
 
       // Get the year
       $year = $dateTime->format('Y');
-      $month_in_letters = strftime('%B', $dateTime->getTimestamp());
+      // $month_in_letters = strftime('%B', $dateTime->getTimestamp());
       
+      $dateTimer = new \DateTime(); // Example DateTime object
+      $month_in_letters = $dateTimer->format('F');
 
       return ['month' => $month_in_letters, 'day' => $day, 'year' => $year ];
   }
@@ -350,9 +354,19 @@ public function removeFalseValues($array) {
 
   if ($field->field == 'title' ) {
     $current_id = $var['row']->id;
-    $start_date = $row->civicrm_event_start_date;
-    $start_date = $this->formatDateWithMonthInLetterAndHours($start_date);
-    $value = $field->getValue($row);
+    
+    if ($view->current_display == 'block_3'){
+      $daty = $row->_entity->event_start_date;
+    $start_date = $this->formatDateWithMonthInLetterAndHours($daty);
+
+    $date = $this->formatDateWithMonthInLetterAndHours($daty);
+      $value = $row->_entity->event_title;
+    $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
+      $hours_c = $drupal_datetime->format('H');
+      $minute_c = $drupal_datetime->format('i');
+      $hour_complet = $hours_c . ':' . $minute_c;
+  }
+    // $value = $field->getValue($row);
     $classOddAndEven = 'odd';
     if ($view->current_display == 'block_1') {
       $classOddAndEven = 'even';
@@ -367,7 +381,11 @@ public function removeFalseValues($array) {
           'start_date' => $start_date,
           'event_id' => $current_id,
           'class_odd_even' => $classOddAndEven,
-          'title' => $value
+          'title' => $value,
+          'month' => $date['month'],
+          'day' => $date['day'],
+          'year' => $date['year'],
+          'hour_complet' => $hour_complet,
         ]
       ];
       return;

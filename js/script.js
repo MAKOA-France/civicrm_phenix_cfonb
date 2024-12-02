@@ -5,6 +5,8 @@
 
         $(document).ready(function() {
 
+        
+
              var $list = jQuery('.block-views-block-civievents-base-sur-le-contact-block-3 .item-list ul');
           if ($list) {
 
@@ -124,7 +126,7 @@
 
 
           if ( jQuery('.bloc-head-meetings-in-theme .meeting-head').length) {
-            if (!jQuery("[class^='js-view-dom-id-'] .fas.fa-users-cog").length) {
+            if (!jQuery('.contextual-region h2:contains("Les sous-groupes")').length) {
               jQuery('.bloc-head-meetings-in-theme .meeting-head').insertAfter('.bloc-head-meetings-in-theme .block-layout-builder');
             }else {
               jQuery('.bloc-head-meetings-in-theme .meeting-head').insertBefore('.layout--twocol-section.layout--twocol-section--50-50');
@@ -143,6 +145,13 @@
             })
           })
 
+          once('cfonbContextz', '.btn-see-rapport', context).forEach((elementss) => {
+            $(elementss).on('click', function() {
+              let ur = $(elementss).find('a').attr('href');
+              location.href = ur; 
+            })
+          });
+
           once('cfonbContext', '.c-each-com', context).forEach((element) => {
             $(element).on('mouseout', function () {
               $(element).find('.img-illust-doc').removeClass('img-illust-doc-added')
@@ -154,6 +163,10 @@
             });
           });
 
+          if ($('#views_slideshow_cycle_div_block_hero-block_1_1').length)
+          {
+            $('#block-b-zf-textedebienvenuhome h1').addClass('custom-margin'); 
+          }
           let img = jQuery('.page-c-taxonomy-ss').attr('data-bg-img');
           if (img) {
 
@@ -207,7 +220,7 @@
                 if ($('.detail-group-title').length || $('.page-communication').length) {
 
                     // if ($('.group-presentation-description').offset()) {                    
-                      var elementOffset = $('.group-presentation-description').length ? $('.group-presentation-description').offset().top : $('.grid-container.na-pages').offset().top ;
+                      var elementOffset = $('.detail-group-title').length ? $('.detail-group-title').offset().top : $('.grid-container.na-pages').offset().top ;
                       // Check if the element touches the top of the screen
                       if (scrollTop <= elementOffset) {
                         $('#block-b-zf-navigationmeetingandgroupblock').css('position', 'static');
@@ -241,7 +254,7 @@
                     // Si l'élément #test atteint le #footer
                     if (scrollTop + testHeight >= footerOffset) {
                         $('#block-b-zf-navigationmeetingandgroupblock').css({
-                            'position': 'sticky',
+                            'position': 'static',
                             'top': '0'
                         });
                       }

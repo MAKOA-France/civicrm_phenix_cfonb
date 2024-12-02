@@ -200,9 +200,7 @@ function getfulldate ($timestamp) {
   return $formatted_date;
 }
 
-
-
-
+ 
 
 function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $view = $variables['view'];
@@ -216,7 +214,69 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   
   
   
-  
+  if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
+    if ($field->field == 'rendered_item') {
+      // dump($row, $variables['output']);
+      //$variables['output'] = 'test';
+      header('Content-Type: text/html; charset=UTF-8');
+
+      // Suppress warnings for invalid HTML
+libxml_use_internal_errors(true);
+
+$crruent_row = $variables['output'];
+// dump($crruent_row);
+// Load the HTML
+// $dom = new DOMDocument();
+// $dom->loadHTML( $variables['output'], LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+// // 1. Remove outer <a> tags wrapping <article>
+// $xpath = new DOMXPath($dom);
+// $outerAnchor = $xpath->query("//a[article]")->item(0); // Find <a> containing <article>
+// if ($outerAnchor) {
+//     $article = $outerAnchor->getElementsByTagName('article')->item(0);
+//     if ($article) {
+//         $outerAnchor->parentNode->replaceChild($article, $outerAnchor);
+//     }
+// }
+
+// // 2. Fix inner <a> tags inside <h2>
+// $innerAnchors = $xpath->query("//h2/a");
+// foreach ($innerAnchors as $innerAnchor) {
+//     // Update href, hreflang, and rel dynamically
+//     $innerAnchor->setAttribute('href', '/dynamic-path');
+//     $innerAnchor->setAttribute('hreflang', 'fr');
+//     $innerAnchor->setAttribute('rel', 'bookmark');
+//     $innerAnchor->nodeValue = "Dynamic Content Example"; // Set dynamic content
+// }
+ 
+// $decoded_string = html_entity_decode($dom->saveHTML(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+// $decoded_string = mb_convert_encoding($dom->saveHTML(), "UTF-8", "ISO-8859-1");
+// $decoded_string = htmlspecialchars_decode($dom->saveHTML(), ENT_NOQUOTES);
+// $decoded_string = html_entity_decode($encoded_string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+
+// $cus_desc = ['#markup' =>mb_convert_encoding($dom->saveHTML(), "UTF-8", "ISO-8859-1")];
+// $decoded_markup = decode_html_entities($cus_desc);
+// $cus_desc = html_entity_decode($dom->saveHTML(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+// $cus_desc = str_replace
+
+// $variables['output'] = mb_convert_encoding($cus_desc, "UTF-8", "ISO-8859-1");
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+  }
+
   if ($view->storage->id() == 'communication' &&  $view->current_display == 'page_1') {
     if ($field->field == 'field_mots_cles') {
   
@@ -382,7 +442,7 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
     }
   }
 
-  if ($view->storage->id() == 'civi_groupe_evenements' &&  $view->current_display == 'block_3') {
+  if ($view->storage->id() == 'civi_groupe_evenements' &&  $view->current_display == 'block_3_') {
     $htmls = '';
     if ($field->field == 'title') {
       $value = $field->getValue($row);
@@ -395,11 +455,32 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $hour_complet = $date['day'] . ':' . $date['minute'];
       // href="/civicrm-event/' . $event_id . '"
       
-      $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c">
-      <div class="date-complet"><p>' . $date_complet . '</p></div>
-      <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
-      <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">' . $subject . '</p></div>
+      // $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c">
+      // <div class="date-complet"><p>' . $date_complet . '</p></div>
+      // <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
+      // <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">' . $subject . '</p></div>
+      // </div></a>';
+
+
+
+      
+      $htmls = '<a href="/civicrm-event/'.$event_id.'">
+      <div class="meeting-com  ">
+          <div class="date-meet">
+              <span class="day cusday">' . $date['day']  .'</span>
+              <span class="month-and-year">' . $date['month']  . ' ' .  $date['year']  . '</span>
+              <div class="debuth">
+                  <span class="hourss">'. $hour_complet.'</span>
+              </div>
+          </div>     
+           <div class="title-meet">
+              <span class="field_sous_titre_slide aaa"> '.$subject.'</span>
+              
+          </div>
       </div></a>';
+
+
+
       $htmls = ['#markup' =>  $htmls];  
       $variables['output'] = $htmls;
       // dump($htmls);
@@ -407,7 +488,7 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
 
   }
 
-  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_2') {
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_2zz') {
     $htmls = '';
     if ($field->field == 'title') {
       $value = $field->getValue($row);
@@ -444,8 +525,8 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       // $subject = $row->civicrm_event_civicrm_participant_title;
       $daty = $row->created_id_civicrm_contact_start_date;
 
-      if (property_exists($row, 'civicrm_event_civicrm_participant_id')) {
-        $event_id = $row->civicrm_event_civicrm_participant_id;
+      if (property_exists($row, 'created_id_civicrm_contact_id')) {
+        $event_id = $row->created_id_civicrm_contact_id;
         $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
         $event_id = $row->created_id_civicrm_contact_id;
         $date_complet = $date['day_letter'] . ' ' . $date['jour'];
@@ -460,11 +541,34 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
 
 
         // href="/civicrm-event/' . $event_id . '"
-        $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c">
+        $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c asaa">
         <div class="date-complet"><p>' . $date_complet . '</p></div>
         <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
         <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">' . $subject . '</p></div>
         </div></a>';
+
+
+
+
+        $htmls = '<a href="/civicrm-event/'.$event_id.'">
+        <div class="meeting-com  ">
+            <div class="date-meet">
+                <span class="day cusday">' . $date['day']  .'</span>
+                <span class="month-and-year">' . $date['month']  . ' ' .  $date['year']  . '</span>
+                <div class="debuth">
+                    <span class="hourss">'. $hour_complet.'</span>
+                </div>
+            </div>     
+             <div class="title-meet">
+                <span class="field_sous_titre_slide aaa"> '.$subject.'</span>
+                
+            </div>
+        </div></a>';
+
+
+
+
+
         $htmls = ['#markup' =>  $htmls];  
         $variables['output'] = $htmls;
         // dump($htmls);
@@ -565,6 +669,9 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $event_id = $row->created_id_civicrm_contact_start_date;
       if ($view->current_display == 'block_13') {
         $event_id = $row->civicrm_event_civicrm_participant_id;
+      }
+      if ($view->current_display == 'block_7') {
+        $event_id = $row->created_id_civicrm_contact_id;
       }
       $date_complet = $date['day_letter'] . ' ' . $date['jour'];
       
