@@ -5,6 +5,14 @@
 
         $(document).ready(function() {
 
+
+
+          if ($('.section-civicrm-event').length) {
+            let table_event_participant = $('.section-civicrm-event .vbo-view-form table.vbo-table')
+            if (!table_event_participant.length) {
+              $('.layout__region.layout__region--content .views-element-container.contextual-region.block-views').hide();
+            }
+          }
         
 
              var $list = jQuery('.block-views-block-civievents-base-sur-le-contact-block-3 .item-list ul');
@@ -371,9 +379,9 @@ if (window.matchMedia("(min-width: 992px)").matches) {
 
 
           $('.float-right .fa-search').on('click', function(event) {
-            event.preventDefault();
-            console.log('groupee');
+            // event.preventDefault();
             let searcs = $('#site-search').val();
+            console.log('azil', searcs);
             if (searcs) {
               location.href = "/recherche?recherche=" + searcs;
             }

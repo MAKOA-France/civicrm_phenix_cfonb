@@ -471,7 +471,15 @@ a.link-nav-c {
     top: 217px !important;
 }
 .section-communication .grid-container.full.hero.communication .contextual-region.block-core h1 {
-    display: none;
+    /* display: none; */
+    font-family: 'Proza Libre', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 60px;
+    display: inline-block;
+    padding: 2rem;
+    color: white;
+    background-color: unset;
 }
 .grid-container.full.hero.communication {
     position: relative;
@@ -726,7 +734,7 @@ p.keywords-com {
     color: black;
 }
 .section-communication div#block-pagetitle--2 h1 {
-    display: none;
+    /* display: none; */
 }
 .group-presentation-description {
     z-index: 2;
@@ -1095,7 +1103,10 @@ span.hour-begining-meet-commission {
 .title-bar {
     z-index: 999999;
 }
-#block-menuprincipal li.menu-item  [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
+#block-menuprincipal  li.menu-item.is-dropdown-submenu-item >  [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
+    display: none;
+}
+#block-menuprincipal  li.menu-item >  [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
     content: '';
     margin-right: 2px;
     display: block;
@@ -1723,7 +1734,11 @@ form#views-exposed-form-communication-page-1 {
 .page-c-taxonomy-ss  .content-c-nav, .page-type-node-cus  .content-c-nav{
     padding: 0;
 }
-.section-contacts-etablissement .sidebar-c-nav, .page-c-taxonomy-ss  .sidebar-c-nav, .page-type-node-cus.page-node-type-page-site .sidebar-c-nav, .section-contact .sidebar-c-nav , .page-type-node-cus  .sidebar-c-nav{ 
+.section-contacts-etablissement .sidebar-c-nav, .page-c-taxonomy-ss  .sidebar-c-nav, .page-type-node-cus.page-node-type-page-site .sidebar-c-nav,
+.section-contact .sidebar-c-nav , .page-type-node-cus  .sidebar-c-nav,
+.page-sitemap .sidebar-c-nav 
+
+ { 
     width: 100%;
     background-color: #f0f0f0;
     padding: 10px;
@@ -1741,7 +1756,7 @@ form#views-exposed-form-communication-page-1 {
 .page-c-taxonomy-ss .dialog-off-canvas-main-canvas .grid-container.full.hero.hero-taxonomy {
     max-width: 1532px !important;
 }
-.section-contacts-etablissement  .menu-c-nav-item svg,.page-c-taxonomy-ss .menu-c-nav-item svg, .page-type-node-cus  .menu-c-nav-item svg, .section-contact  .menu-c-nav-item svg {
+.page-sitemap  .menu-c-nav-item svg,.section-contacts-etablissement  .menu-c-nav-item svg,.page-c-taxonomy-ss .menu-c-nav-item svg, .page-type-node-cus  .menu-c-nav-item svg, .section-contact  .menu-c-nav-item svg {
     background-color: #d3278c;
     border-radius: 9px !important;
     height: 100%;
@@ -2244,17 +2259,27 @@ p.btn-see-rapport {
     cursor: pointer;
 }
 .custom-margin {
-    margin-top: 431px;
+    /* margin-top: 431px; */
 }
 #block-b-zf-textedebienvenuhome h1 { 
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -208px;
+    margin-left: -109px;
     transform: translate(-50%, -50%);
      /* margin-top: 431px;  */
     z-index: 5;
     
+    width: max-content;
+}
+.online_people  #block-b-zf-textedebienvenuhome h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -244px;
+    transform: translate(-50%, -50%);
+    /* margin-top: 431px; */
+    z-index: 5;
     width: max-content;
 }
 
@@ -2533,7 +2558,7 @@ span.views-field.views-field-title .container-meet-c .date-complet a:before {
 
 .is-front div#block-sefairepasserpourquelquundautre {
     position: absolute;
-    top: -38px;
+    top: 95px;
     margin-left: 30px;
 }
 .is-front aside#sidebar_left {
@@ -3099,7 +3124,7 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
 .is-front #block-views-block-block-hero-block-1 {
     background: url(/files/2021-10/carrouselBg.png);
     max-height: none;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
 }
 .is-front .views-field.views-field-field-slide {
     width: 100% !important;
@@ -3124,7 +3149,7 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
     padding-left: 0;
     max-width: 100%;
     margin: 0 auto;
-    height: 700px;
+    height: 400px;
     margin-top: 0;
 }
 .views-row.views-row-0.views-row-odd.views-row-first, .views-row.views-row-1.views-row-even.views-row-last {
@@ -3487,6 +3512,13 @@ input#site-search {
 }
 
     @media  (max-width: 1366px) {
+        ul[block="block-b-zf-account-menu"] {
+            position: absolute;
+            left: auto;
+            top: 40px;
+            top: 145%;
+            right: 0;
+        }
         .all-itemss {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -3642,13 +3674,18 @@ input#site-search {
             margin-top: 22px;
             position: absolute;
         }
-        #block-b-zf-textedebienvenuhome h1 {
+        .online_people #block-b-zf-textedebienvenuhome h1 {
             position: absolute;
             top: 50%;
             left: 50%;
             width: 100%;
             margin-left: 12px;
             transform: translate(-50%, -50%);
+            padding-top: 12px;
+        }
+        .online_people div#block-b-zf-textedebienvenuhome h1:first-of-type {
+            color: #d3278c;
+            font-weight: bold;
         }
         .cu-nav-my-etablissment p {
             text-align: center;
@@ -3667,9 +3704,9 @@ input#site-search {
             .section-rencontres-ateliers .item-list ul li:nth-child(22),
             .section-rencontres-ateliers .item-list ul li:nth-child(25),
              .section-rencontres-ateliers .item-list ul li:nth-child(28) {
-            border-left: 9px solid #003a7e;
+          /*   border-left: 9px solid #003a7e;
             border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
+            border-bottom-left-radius: 8px; */
         }
         .section-rencontres-ateliers .item-list ul li:nth-child(3),
          .section-rencontres-ateliers .item-list ul li:nth-child(6),
@@ -3681,9 +3718,9 @@ input#site-search {
          .section-rencontres-ateliers .item-list ul li:nth-child(24),
          .section-rencontres-ateliers .item-list ul li:nth-child(27),
          .section-rencontres-ateliers .item-list ul li:last-child {
-            border-right: 9px solid #003a7e;
+           /*  border-right: 9px solid #003a7e;
             border-top-right-radius: 8px;
-            border-bottom-right-radius: 8px;
+            border-bottom-right-radius: 8px; */
         }
         .page-accueil-extranet #masquerade-block-form > .container-inline, .page-type-node-cus  #masquerade-block-form > .container-inline {
             display: inline-flex;
@@ -3909,6 +3946,21 @@ input#site-search {
         .dropdown.menu .menu-item a[href="/communication"]:before, .dropdown.menu .menu-item a[href="/faq"]:before , .dropdown.menu .menu-item a[href="/rencontres-ateliers"]:before {
             content: '';
             display: block !important;
+        }
+
+
+      
+        .page-c-taxonomy-ss.page-rencontres-ateliers .align-right {
+            float: right;
+            position: absolute;
+            margin-top: -26px;
+            /* left: 423px; */
+            color: white;
+            display: flex
+    ;
+            align-items: flex-end;
+            left: unset;
+            right: 15px;
         }
         .is-front #block-views-block-block-hero-block-1 {
             margin-bottom: 0;
@@ -4182,6 +4234,24 @@ input#site-search {
             right: -157px;
             left: unset;
         }
+        .page-faq .taxo-second-niveau .layout {
+            width: auto;
+        }
+        .online_people.section-espace-documentaire .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -33px;
+            right: -153px;
+            left: unset;
+        }
+
+        .is-front.online_people.page-type-node-cus .grid-x.align-middle button.float-right {
+            top: -32px;
+        }
+    
+
+        .section-civicrm-group .meeting-com .date-meet, .page-toutes-mes-reunions .meeting-com .date-meet, .section-rencontres-ateliers .meeting-com .date-meet {
+            margin-left: 10px;
+        }
         div.top-bar#main-menu {
             margin-top: 17px;
             padding-top: 12px;
@@ -4386,7 +4456,11 @@ input#site-search {
             padding-bottom: 0;
         }
         #block-b-zf-textedebienvenuhome h1 {
-            margin-top: 362px;
+            margin-top: 217px;
+        }
+        .online_people  #block-b-zf-textedebienvenuhome h1 {
+            margin-top: 0;
+            margin-left: 0;
         }
         .page-node-type-page h3, .section-civicrm-group h3, .section-civicrm-event h3, .page-c-taxonomy-ss h3 {
             font-size: 16px;
@@ -4440,6 +4514,9 @@ input#site-search {
             background-image: var(--bgimage, none);
             background-position-y: 55%;
         }
+        .online_people.is-front .grid-container.full {
+            height: 295px;
+        }
         .is-front .grid-container.full {
             padding-right: 0;
             padding-left: 0;
@@ -4449,7 +4526,7 @@ input#site-search {
             margin-top: 0;
         }
         .is-front header {
-            height: 115px;
+            height: auto;
         }
         .role--anonymous.page-type-node-cus .align-right {
             float: right;
@@ -4480,14 +4557,14 @@ input#site-search {
             grid-template-columns: repeat(1, 1fr);
         }
         .section-rencontres-ateliers .item-list ul li {
-            border-left: 9px solid #003a7e !important;
+        /*     border-left: 9px solid #003a7e !important;
             border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
+            border-bottom-left-radius: 8px; */
         }
         .section-rencontres-ateliers .item-list ul li {
-            border-right: 9px solid #003a7e !important;
+            /* border-right: 9px solid #003a7e !important;
             border-top-right-radius: 8px;
-            border-bottom-right-radius: 8px;
+            border-bottom-right-radius: 8px; */
         }
         .section-communication .go-home-cu a > svg {
             width: 16% !important;
@@ -5468,7 +5545,7 @@ input#site-search {
         }
         .is-front div#block-sefairepasserpourquelquundautre {
             position: absolute;
-            top: -38px;
+            top: 326px;
             margin-left: 15px;
         }
         form#masquerade-block-form {
