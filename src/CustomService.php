@@ -355,6 +355,7 @@ public function removeFalseValues($array) {
   if ($field->field == 'title' ) {
     $current_id = $var['row']->id;
     
+    
     if ($view->current_display == 'block_3'){
       $daty = $row->_entity->event_start_date;
     $start_date = $this->formatDateWithMonthInLetterAndHours($daty);
@@ -392,6 +393,31 @@ public function removeFalseValues($array) {
     }
 
 
+    if ($view->current_display == 'block_2' or $view->current_display == 'block_1'){
+       $daty = $row->civicrm_event_start_date;
+       $date = $this->formatDateWithMonthInLetterAndHours($daty);
+       $value = $row->_entity->event_title;
+        $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
+       $hours_c = $drupal_datetime->format('H');
+       $minute_c = $drupal_datetime->format('i');
+       $hour_complet = $hours_c . ':' . $minute_c;
+      $var['output'] = [
+        '#theme' => 'civicrm_phenix_cfonb_alter_view_detail_commission_reunion',
+        '#cache' => ['max-age' => 0],
+        '#content' => [
+          'start_date' => $start_date,
+          'event_id' => $current_id,
+          'class_odd_even' => $classOddAndEven,
+          'title' => $value,
+          'month' => $date['month'],
+          'day' => $date['day'],
+          'year' => $date['year'],
+          'hour' => $date['hour'],
+          'minute' => $date['minute'],
+        ]
+      ];
+      return;
+    }
 
     // dump($start_date);
     $var['output'] = [

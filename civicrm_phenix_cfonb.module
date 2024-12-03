@@ -488,7 +488,7 @@ $crruent_row = $variables['output'];
 
   }
 
-  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_2zz') {
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_2z') {
     $htmls = '';
     if ($field->field == 'title') {
       $value = $field->getValue($row);

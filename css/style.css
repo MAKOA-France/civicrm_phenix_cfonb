@@ -2906,9 +2906,10 @@ div#block-views-block-civievents-base-sur-le-contact-block-1:before {
 }
 div.top-bar#main-menu {
     margin-top: 17px;
-    padding-top: 15px;
+    padding-top: 10px;
     padding-bottom: 15px;
 }
+
 .is-front .more-link {
     text-align: center;
 }
@@ -3909,6 +3910,56 @@ input#site-search {
             content: '';
             display: block !important;
         }
+        .is-front #block-views-block-block-hero-block-1 {
+            margin-bottom: 0;
+        }
+        .grid-x.align-middle .medium-9.cell {
+            width: 70%;
+        }
+        .grid-x.align-middle .medium-3.cell {
+            width: 22%;
+        }
+
+        .btn-my-account::before {
+            margin-left: 366px;
+        }
+        .page-type-node-cus .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 17px;
+ 
+        }
+
+        .page-type-node-cus #masquerade-block-form > .container-inline {
+            display: inline-flex;
+            flex-direction: column;
+        }
+        .is-front #masquerade-block-form > .container-inline {
+            display: flex;
+            flex-direction: row;
+        }
+        .online_people .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: 9px;
+            right: unset;
+            left: unset;
+        }
+
+        .online_people .btn-my-account::before {
+ 
+            margin-left: 469px;
+        }
+        .views-field.views-field-field-slide {
+            height: 391px;
+        }
+
+        .online_people.is-front .grid-x.align-middle button.float-right, .page-type-node-cus  .grid-x.align-middle button.float-right{
+            position: absolute;
+            top: 22px;
+            right: 78px;
+            left: unset;
+        }
+
         #footer-region nav.contextual-region, #footer-region nav.menu--footer {
             width: auto;
         }
@@ -3987,12 +4038,7 @@ input#site-search {
             top: 24px;
             right: 62px;
         }
-        .online_people .grid-x.align-middle button.float-right {
-            position: absolute;
-            top: 9px;
-            right: unset;
-            left: unset;
-        }
+
         .online_people ul[block="block-b-zf-account-menu"] {
             position: absolute;
             left: auto;
@@ -4057,7 +4103,7 @@ input#site-search {
         .is-front .views-field.views-field-field-slide .field-content img {
             position: relative;
             width: 100%;
-            height: 370px;
+            height: 421px;
             max-width: none;
             max-width: 100%;
             object-fit: cover;
@@ -4130,6 +4176,22 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) {
+        .online_people.section-normalisation .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -29px;
+            right: -157px;
+            left: unset;
+        }
+        div.top-bar#main-menu {
+            margin-top: 17px;
+            padding-top: 12px;
+            padding-bottom: 15px;
+        }
+        .online_people div.top-bar#main-menu {
+            margin-top: 17px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
 
         .content-c-nav {
             display: none;
@@ -4441,7 +4503,7 @@ input#site-search {
             float: right;
             position: absolute;
             margin-top: 4px;
-            margin-left: 206px;
+            margin-left: 161px;
             width: 100%;
         }
         .role--anonymous.section-actualites.page-type-node-cus .align-right {
