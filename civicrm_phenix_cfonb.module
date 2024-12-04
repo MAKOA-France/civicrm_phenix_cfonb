@@ -652,7 +652,7 @@ $crruent_row = $variables['output'];
 
 
   
-  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  in_array($view->current_display, ['block_7', 'block_13'])) {
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  in_array($view->current_display, ['block_7', 'block_2', 'block_13'])) {
     // $custom_service->customizeMeetingList()
     $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
     if ($field->field == 'title') {

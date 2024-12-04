@@ -1317,6 +1317,12 @@ li.group-par-annee .views-field.views-field-title {
     padding: 0 !important;
     right: 0px !important;
 }
+.page-accueil-extranet .date-meet span.day {
+    font-size: xxx-large;
+    font-weight: bold;
+    line-height: normal;
+    font-family: 'Montserrat Variable';
+}
 .section-civicrm-group .printParticipants footer a, .section-civicrm-group .printParticipants .more-link a {
     background-color: #d3278c;
     color: white;
@@ -1687,6 +1693,15 @@ p.cu-home {
 }
 #masquerade-block-form > .container-inline {
     display: inline-flex;
+}
+.role--authenticated div#block-pagetitle--2 h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 60px;
+    display: inline-block;
+    padding: 2rem;
+    color: white;
+    background-color: unset;
 }
 .page-communication input#edit-mots-cles {
     width: 100% !important;
@@ -2438,13 +2453,13 @@ div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li .f
 }
 
 div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li {
-    padding-bottom: 0;
+   /*  padding-bottom: 0;
     list-style: none;
     border: 12px solid #003a7e;
     padding: 20px;
     border-left: solid 5.5px #003a7e;
     border-right: solid 5.5px #003a7e;
-    margin-bottom: 10px;
+    margin-bottom: 10px; */
 }
 
 div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul{
@@ -2489,18 +2504,18 @@ div#block-views-block-civievents-base-sur-le-contact-block-2 .more-link a {
 .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(1),
  .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(5), 
  .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(9) {
-    border-left: 9px solid #003a7e;
+   /*  border-left: 9px solid #003a7e;
     border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 8px; */
 }
 
 .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(4),
  .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(8), 
  .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:nth-child(12),
   .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 .item-list ul li:last-child {
-    border-right: 9px solid #003a7e;
+   /*  border-right: 9px solid #003a7e;
     border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 8px; */
 }
 
 
@@ -3418,6 +3433,9 @@ a.btn.button.all-meeting {
 .grid-container.full.hero.hero-taxonomy {
     background-image: none !important;
 }
+.is-front section#main {
+    margin-top: 20px;
+}
 .grid-container.na-pages.new-before-style:before {
     /* content: ""; */
     /* background: url(/files/relooking/arrow%20vertical.png) no-repeat center 0; */
@@ -4228,12 +4246,79 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) {
+        .role--animateur.page-type-node-cus .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: 4px;
+            right: 0;
+        }
+
+        .role--animateur.is-front.page-type-node-cus .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: 4px;
+            right: 0;
+        }
+
+        .role--authenticated.page-rencontres-ateliers .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 0;
+            /* left: 423px; */
+            color: white;
+            display: flex;
+            align-items: flex-end;
+            left: unset;
+            right: -159px;
+        }
+
+        .role--animateur.page-type-node-cus .grid-x.align-middle button.float-right {
+            position: absolute;
+            top: -22px;
+            right: -163px;
+        }
+
+        .role--animateur div#block-views-block-civievents-base-sur-le-contact-block-13 .item-list {
+            text-align: center;
+        }
+        .page-toutes-mes-reunions .item-list ul {
+            display: grid
+        ;
+            grid-template-columns: repeat(1, 1fr);
+            margin-left: 0;
+        }
+
+
+        .role--animateur.page-type-node-cus .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 170px;
+            width: 100%;
+        }
+
         .online_people.section-normalisation .grid-x.align-middle button.float-right {
             position: absolute;
             top: -29px;
             right: -157px;
             left: unset;
         }
+
+        .section-accueil-extranet .grid-x.grid-margin-x.grid-margin-y {
+            display: flex
+        ;
+            flex-direction: column;
+            align-items: center;
+        }
+        .section-accueil-extranet div#block-b-zf-blockhomeadherentnavigation {
+            margin-bottom: 30px;
+            width: 91%;
+        }
+
+        .role--authenticated.role--animateur #block-b-zf-textedebienvenuhome h1 {
+            width: 100%;
+            margin-top: 266px;
+        }
+
+
         .page-faq .taxo-second-niveau .layout {
             width: auto;
         }
@@ -4621,8 +4706,9 @@ input#site-search {
             position: relative;
             top: 0;
         }
-        .section-communication .hero .block-pagetitle--2 {
-            display: none;
+        .section-communication .hero .block-pagetitle--2 h1 {
+            font-size: 30px !important;
+            /* display: none; */
         }
         .section-communication.dynamic-content {
             display: flex;
@@ -4818,17 +4904,42 @@ input#site-search {
             display: none !important;
         }
         div#block-views-block-civievents-base-sur-le-contact-block-2 .field-content {
-            border-top-left-radius: 8px;
+        /*     border-top-left-radius: 8px;
             border-top-right-radius: 8px;
             border: 12px solid #003a7e;
             padding: 20px;
+            width: 100%; */
+        }
+        .section-accueil-extranet div#block-views-block-communication-block-1 > h2::before {
+            top: 12px;
+        }
+        div#block-formulaireexposerechercheresultats-recherche {
+            padding-top: 30%;
+        }
+        .section-recherche .align-right {
+            float: right;
+            position: absolute;
+            margin-top: 4px;
+            margin-left: 158px;
             width: 100%;
+        }
+        .section-recherche .site-logo img {
+            width: 63%;
+            height: auto;
+            padding-top: 10px;
+            padding-bottom: 13px;
+        }
+        .section-recherche .btn-my-account::before {
+            margin-left: 15px;
         }
         .slide-content-home h1 p {
             font-size: 22px !important;
         }
+        
         .grid-container.section1 .grid-x.grid-margin-x.grid-margin-y > h2:first-of-type {
-            padding-left: 80px;
+            padding-left: 0;
+            margin-bottom: 0;
+            padding-top: 12px;
         }
  
         .section-accueil-extranet .layout-container section.grid-container {
@@ -5330,7 +5441,18 @@ input#site-search {
             padding: 0;
             margin-bottom: 20px;
             flex-direction: column;
-            margin-left: -13px;
+            margin-left: 0;
+        }
+        .page-toutes-mes-reunions .item-list .views-field.views-field-title {
+            background-color: unset;
+            padding-right: 0;
+        }
+        .section-civicrm-group div#content {
+            width: 98%;
+            padding-left: 10px;
+        }
+        .section-civicrm-group .views-field.views-field-title span.field-content {
+            width: 98%;
         }
          .page-accueil-extranet .title-meet {
             width: 300px;
@@ -5531,6 +5653,10 @@ input#site-search {
             padding: 17px;
             margin-bottom: 20px;
             flex-direction: column;
+            align-items: center;
+        }
+        .page-toutes-mes-reunions .views-field.views-field-title span.field-content {
+            width: 100%;
         }
         .maclasse {
             display: flex;

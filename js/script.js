@@ -134,7 +134,7 @@
 
 
           if ( jQuery('.bloc-head-meetings-in-theme .meeting-head').length) {
-            if (!jQuery('.contextual-region h2:contains("Les sous-groupes")').length) {
+            if (!jQuery('.views-element-container.block-views').length) {
               jQuery('.bloc-head-meetings-in-theme .meeting-head').insertAfter('.bloc-head-meetings-in-theme .block-layout-builder');
             }else {
               jQuery('.bloc-head-meetings-in-theme .meeting-head').insertBefore('.layout--twocol-section.layout--twocol-section--50-50');
