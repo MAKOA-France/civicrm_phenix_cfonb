@@ -636,8 +636,11 @@ $crruent_row = $variables['output'];
 
     //Page detail commissions / groupe
     if ($view->storage->id() == 'civi_groupe_evenements' /* && $view->current_display == 'block_1' */) {
-      $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
-      $custom_service->customizeViewReunionOfTheCommissionPage($variables);
+      if(  $view->current_display != 'page_2') {
+
+        $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+        $custom_service->customizeViewReunionOfTheCommissionPage($variables);
+      }
   
       
     }
@@ -673,6 +676,17 @@ $crruent_row = $variables['output'];
       if ($view->current_display == 'block_7') {
         $event_id = $row->created_id_civicrm_contact_id;
       }
+      
+      
+      
+      if ($view->current_display == 'block_2') {
+        $daty = $row->civicrm_event_civicrm_participant_start_date;
+        $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
+        $event_id = $row->civicrm_event_civicrm_participant_id_1;
+      }
+
+
+
       $date_complet = $date['day_letter'] . ' ' . $date['jour'];
       
       $dateArray = $custom_service->formatDateWithMonthInLetterAndHours($daty);

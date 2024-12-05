@@ -491,7 +491,7 @@ public function formatDateTo_Y_m_d ($dateString) {
       $day_comm = $date->format('d');
       $year_comm = $date->format('Y');
       $month_comm = \Drupal::service('date.formatter')->format($date->getTimestamp(), 'custom', 'F', 'fr');
-
+ 
             // Get the hour
             $hour_comm = $date->format('H');
 
@@ -547,12 +547,12 @@ public function formatDateTo_Y_m_d ($dateString) {
 
       // Get the minute value.
       $minute = $dateTime->format('i');
-
+// dump([$month_comm, $months]);
       return [
           'day' => $day_comm, 
           'month' => $month_comm, 
           'num_month' => $months, 
-          'year' => $year,
+          'year' => $year_comm,
           'hour' => $hour_comm,
           'minute' => $minute_comm,
           'jour' => $day_abbreviation,

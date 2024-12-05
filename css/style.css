@@ -3158,6 +3158,7 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
     max-height: 420px;
     max-width: none;
     max-width: 100%;
+    object-fit: cover;
 }
 .is-front .grid-container.full {
     padding-right: 0;
@@ -3528,6 +3529,60 @@ input#site-search {
 .dynamic-content {
     display: none;
 }
+
+.page-qui-sommes-nous-organisation .grid-container.na-pages:before{
+    /* content: "";
+    background: url(/files/relooking/arrow%20vertical.png) no-repeat center 0;
+    right: -140px;
+    width: 23%;
+    height: 800px;
+    background-size: contain;
+    position: fixed; */
+}
+.section-qui-sommes-nous .grid-container.na-pages:before{
+    top: 332px;
+}
+
+
+
+    /* Below or equal to 1920px */
+    @media (max-width: 1920px) {
+        /* Styles for screens 1920px wide or narrower */
+        body {
+            background-color: rgb(110, 150, 19);
+        }
+        .page-type-node-cus .grid-container.na-pages:before {
+            right: -140px !important;
+        }
+    }
+
+    /* Below or equal to 1600px */
+    @media (max-width: 1600px) {
+        .page-c-taxonomy-ss div#content {
+            width: 70%;
+        }
+        /* Styles for screens 1600px wide or narrower */
+        body {
+            background-color: rgb(153, 28, 202);
+        }
+        .page-type-node-cus .grid-margin-x > .medium-9 {
+            width: 70%;
+        }
+        .page-node-type-page-site .grid-container.na-pages:before {
+            right: -154px !important;
+        }
+    }
+
+    /* Below or equal to 1440px */
+    @media (max-width: 1440px) {
+        /* Styles for screens 1440px wide or narrower */
+        body {
+            background-color: rgb(202, 28, 100);
+        }
+        .page-node-type-page-site .grid-container.na-pages:before {
+            right: -154px !important;
+        }
+    }
 
     @media  (max-width: 1366px) {
         ul[block="block-b-zf-account-menu"] {
@@ -4799,7 +4854,7 @@ input#site-search {
             width: 93%;
         }
         .section-civicrm-group .align-right {
-            margin-left: 205px;
+            margin-left: 234px;
         }
         .section-civicrm-group .btn-my-account::before {
              
@@ -4807,7 +4862,7 @@ input#site-search {
         }
         .section-civicrm-group .grid-x.align-middle button.float-right {
             top: -26px;
-            right: -122px;
+            right: -153px;
         }
         .page-contact-extranet_contactez_nous .align-right {
             margin-left: 229px;
@@ -5440,12 +5495,30 @@ input#site-search {
             border-radius: 10px;
             padding: 0;
             margin-bottom: 20px;
-            flex-direction: column;
+            flex-direction: row;
             margin-left: 0;
+        }
+        .section-recherche .views-element-container {
+            overflow: auto;
         }
         .page-toutes-mes-reunions .item-list .views-field.views-field-title {
             background-color: unset;
             padding-right: 0;
+        }
+        .page-accueil-extranet .meeting-com .date-meet {
+            padding: 10px;
+            display: grid
+        ;
+            text-align: center;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #140d3d;
+            min-width: 150px;
+            height: 149px;
+            margin-top: 15px;
+            width: 150px;
+            margin-left: 16px;
+            margin-bottom: 15px;
         }
         .section-civicrm-group div#content {
             width: 98%;
@@ -5627,6 +5700,9 @@ input#site-search {
             margin: 3rem 0 1rem;
             padding: 0;
         }
+        .section-civicrm-group .views-field.views-field-title span.field-content {
+            width: 100%;
+        }
         .section-civicrm-group .civicrm-entity .layout__region .block-views .contextual-region ul li {
             margin-left: 0;
         }
@@ -5652,7 +5728,7 @@ input#site-search {
             border-radius: 20px;
             padding: 17px;
             margin-bottom: 20px;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
         }
         .page-toutes-mes-reunions .views-field.views-field-title span.field-content {
