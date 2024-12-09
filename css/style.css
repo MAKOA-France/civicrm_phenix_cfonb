@@ -2324,6 +2324,7 @@ p.btn-see-rapport {
 
 .slide-content-home h1 {
     margin-top: -95px;
+    width: 95%;
 }
 
 
@@ -3620,6 +3621,10 @@ input#site-search {
             top: 145%;
             right: 0;
         }
+        .slide-content-home h1 {
+            margin-top: -10px;
+            width: 125%;
+        }
         .all-itemss {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -3748,6 +3753,15 @@ input#site-search {
     @media (max-width: 1024px) { /*ipad pro */
         body {
             background-color: rgb(107, 177, 28);
+        }
+        .page-node-type-page.is-front h1 {
+            margin-top: 10px;
+        } 
+        div#block-b-zf-textedebienvenuhome h1:first-of-type {
+            margin-left: -44px;
+        }
+        .is-front section#main {
+            margin-top: 45px;
         }
         li.menu-item [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
             display: none;
