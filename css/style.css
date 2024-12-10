@@ -2312,11 +2312,13 @@ p.btn-see-rapport {
 .is-front .skin-default {
     position : relative;
 }
-
+nav#block-b-zf-account-menu ul.menu li {
+    cursor: pointer;
+}
  
 .role--anonymous .views-slideshow-controls-bottom.clearfix {
     position: absolute;
-    z-index: 5;
+    z-index: 59;
     top: 193px;
     left: 50%;
     transform: translate(-50%, -50%);
