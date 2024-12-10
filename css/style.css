@@ -32,7 +32,9 @@
    {
     display: none;
 }
-
+.views_slideshow_cycle_teaser_section {
+    width: 100% !important;
+}
 .page-civicrm a, .page-civicrm p, .page-civicrm h1, .page-civicrm h2, .page-civicrm h3, .page-civicrm div{
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
@@ -3389,10 +3391,13 @@ a.btn.button.all-meeting {
 .views-field.views-field-field-slide {
     position: relative;
 }
+.views_slideshow_cycle_slide {
+    width: 100% !important;
+}
 .views-slideshow-controls-bottom.clearfix {
     position: absolute;
     top: 193px;
-    z-index: 5;
+    z-index: 59;
     left: 50%;
     margin-left: -765px;
     margin-top: 184px;
@@ -3614,6 +3619,35 @@ input#site-search {
     }
 
     @media  (max-width: 1366px) {
+        .is-front ul#widget_pager_bottom_block_hero-block_1 li {
+            display: inline-flex !important;
+        }
+        #block-b-zf-textedebienvenuhome h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -194px;
+            transform: translate(-50%, -50%);
+            /* margin-top: 431px; */
+            z-index: 5;
+            width: max-content;
+        }
+        
+        .views-slideshow-controls-bottom.clearfix {
+            position: absolute;
+            top: 193px;
+            z-index: 59;
+            left: 50%;
+            margin-left: -591px;
+            margin-top: 184px;
+        }
+        .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1, .slide-content-home h1 p, .section-civicrm-event h1 {
+            font-size: 40px !important;
+        }
+        .slide-content-home h1 {
+            margin-top: 48px;
+            width: 100%;
+        }
         ul[block="block-b-zf-account-menu"] {
             position: absolute;
             left: auto;
@@ -3621,10 +3655,7 @@ input#site-search {
             top: 145%;
             right: 0;
         }
-        .slide-content-home h1 {
-            margin-top: -10px;
-            width: 125%;
-        }
+    
         .all-itemss {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -3753,6 +3784,29 @@ input#site-search {
     @media (max-width: 1024px) { /*ipad pro */
         body {
             background-color: rgb(107, 177, 28);
+        }
+        .views-slideshow-controls-bottom.clearfix {
+            position: absolute;
+            top: 193px;
+            z-index: 59;
+            left: 50%;
+            margin-left: -483px;
+            margin-top: 184px;
+        }
+        .views-field.views-field-field-slide {
+            height: 391px;
+        }
+        .page-accueil-extranet section#main .grid-x.grid-margin-x aside#sidebar_left {
+            width: 100%;
+        }
+        .page-accueil-extranet section#main .grid-x.grid-margin-x {
+            display: flex
+        ;
+            flex-direction: column;
+        }
+        .page-accueil-extranet section#main .grid-x.grid-margin-x div#content {
+            margin-left: 0;
+            width: 104%;
         }
         .page-node-type-page.is-front h1 {
             margin-top: 10px;
@@ -4063,6 +4117,59 @@ input#site-search {
             display: block !important;
         }
 
+        .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1, .slide-content-home h1 p {
+            font-size: 35px !important;
+        }
+
+        .is-front #block-views-block-block-hero-block-1 .views-field-field-texte-slider {
+            margin-top: -149px;
+        }
+
+        div#block-b-zf-textedebienvenuhome h1:first-of-type {
+            margin-left: 0;
+        }
+        #block-b-zf-textedebienvenuhome {
+            position: relative;
+            height: auto;
+            margin-top: 0px;
+            margin-bottom: 58px;
+        }
+        .section-accueil-extranet .layout-container section.grid-container {
+            max-width: 100%;
+            padding-left: 23px;
+        }
+        .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul {
+            display: grid
+    ;
+            grid-template-columns: auto;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .section-accueil-extranet div#block-b-zf-blockhomeadherentnavigation {
+            margin-bottom: 30px;
+            width: 95%;
+        }
+        .section-accueil-extranet .layout-container section.grid-container {
+            max-width: 96%;
+            padding-left: 23px;
+        }
+    
+        .section-accueil-extranet .grid-container.na-pages#main .grid-x.grid-margin-x div#content {
+            width: 95%;
+            margin-left: 0;
+        }
+        .section-accueil-extranet .grid-container.na-pages#main .grid-x.grid-margin-x {
+            display: flex
+        ;
+            flex-direction: column;
+        }
+        .page-node-type-page.is-front #block-b-zf-textedebienvenuhome h1 {
+            margin-top: 82px;
+            font-size: 35px !important;
+            margin-left: -128px;
+            font-size: 29px !important;
+        }
 
       
         .page-c-taxonomy-ss.page-rencontres-ateliers .align-right {
@@ -4303,7 +4410,13 @@ input#site-search {
             right: 0;
         }
         .maclasse .cell.medium-7 h3 {
-            height: 120px;
+            height: 147px;
+        }
+        #block-b-zf-textedebienvenuhome {
+            position: relative;
+            height: auto;
+            margin-top: 0px;
+            margin-bottom: 100px;
         }
         .cell.medium-7 .lien-content a {
             font-size: 16px;
@@ -4348,6 +4461,16 @@ input#site-search {
             top: 4px;
             right: 0;
         }
+        .page-node-type-page.is-front #block-b-zf-textedebienvenuhome h1 {
+            margin-top: -22px;
+            font-size: 35px !important;
+            margin-left: 0px;
+            font-size: 25px !important;
+            width: 400px;
+        }
+        div#block-b-zf-textedebienvenuhome {
+            margin-bottom: 70px;
+        }
         .role--administrator #block-b-zf-textedebienvenuhome {
             margin-top: 0;
             margin-bottom: 0;
@@ -4358,7 +4481,7 @@ input#site-search {
         }
         .role--administrator.is-front div#block-sefairepasserpourquelquundautre {
             position: absolute;
-            top: 242px;
+            top: 259px;
             margin-left: 15px;
         }
 
@@ -4434,7 +4557,7 @@ input#site-search {
 
         .role--authenticated.role--animateur #block-b-zf-textedebienvenuhome h1 {
             width: 100%;
-            margin-top: 266px;
+            margin-top: -34px;
         }
 
 
@@ -5746,7 +5869,9 @@ input#site-search {
             
             flex-direction: column;
         }
-    
+        .page-node-type-page.is-front .slide-content-home h1 {
+            margin-top: -52px;
+        }
         .section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
             background-color: #f7f5f3;
             border-radius: 50px 0;
