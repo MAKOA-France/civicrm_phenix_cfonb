@@ -1469,7 +1469,9 @@ li.group-par-annee {
 
 .page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li,
 .page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li,
-.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li {
+.page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li,
+.page-tous-mes-groupes [block="block-views-block-civievents-base-sur-le-contact-block-10"] .item-list ul li
+{
 	list-style: none;
 }
 .role--super-utilisateur.page-accueil-extranet nav.tabs {
@@ -1485,7 +1487,9 @@ li.group-par-annee {
 }
 .page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li:nth-of-type(odd) ,
 .page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li:nth-of-type(odd),
-.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li:nth-of-type(odd){
+.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li:nth-of-type(odd),
+.page-tous-mes-groupes [block="block-views-block-civievents-base-sur-le-contact-block-10"] .item-list ul li:nth-of-type(odd),
+.page-tous-mes-groupes  .item-list ul li:nth-of-type(odd){
     background-color: #f1f1f1;
     border-radius: 20px 0;
 }
@@ -1501,6 +1505,7 @@ li.group-par-annee {
 
 .page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li a ,
 .page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a ,
+.page-tous-mes-groupes [block="block-views-block-civievents-base-sur-le-contact-block-10"] .item-list ul li a ,
 .page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li a {
     padding: 20px;
     width: 100%;
@@ -1531,13 +1536,16 @@ li.group-par-annee {
 } */
 .page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li a,
 .page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li a,
-.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a {
+.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a, 
+.page-tous-mes-groupes [block="block-views-block-civievents-base-sur-le-contact-block-10"] .item-list ul li a 
+{
    position: relative; 
    padding-left: 70px;
 }
 .page-tous-mes-groupes .block-views-block-civievents-base-sur-le-contact-block-5 .item-list ul li a:before,
 .page-tous-mes-groupes .block-views-block-civi-groupes-block-groupes-archives .item-list ul li a:before,
-.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a:before
+.page-tous-mes-groupes .block-b-zf-views-block-civievents-base-sur-le-contact-block-10 .item-list ul li a:before,
+.page-tous-mes-groupes [block="block-views-block-civievents-base-sur-le-contact-block-10"] .item-list ul li a:before
 {
 
     content: "";
