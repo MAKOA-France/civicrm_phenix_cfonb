@@ -123,6 +123,10 @@ ul.submenu.is-dropdown-submenu.first-sub.vertical.js-dropdown-active {
 span.title-meet-commission:first-letter {
     text-transform: uppercase;
 }
+.site-logo img {
+    height: 118px;
+    /* width: 190px; */
+}
 
 p.group-name {
     font-size: 45px !important;
@@ -152,6 +156,9 @@ p.group-name {
     z-index: 1;
 }
 .title-and-chevron h2.main-title {
+    display: none;
+}
+.is-front div#block-views-block-actualites-block-3 {/*TODOOO*/
     display: none;
 }
 .eventt-time {
@@ -2564,8 +2571,8 @@ p.label-hour, .label-subject {
     background: #f7f5f3;
     padding: 10px;
 }
-div#block-views-block-civievents-base-sur-le-contact-block-2 span.views-field.views-field-title {
-    background: no-repeat;
+.page-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-2 span.views-field.views-field-title {
+    background: #e7e0d9;
 }
 span.views-field.views-field-title .container-meet-c .date-complet a:before {
     display: none;
@@ -3301,16 +3308,56 @@ div#block-blocbasdepage h4 {
     font-size: 1.0rem !important;
     font-size: 18px !important;
 }
-
+#sidebar_left .block-menu {
+    background: #eee;
+    padding: .5rem;
+    margin-bottom: 1.5rem;
+}
 footer a.fab.fa-linkedin {
     font-size: 33px;
     color: #003a74 !important;
+}
+#block-breadcrumbs .breadcrumb li a{
+    background: url(/files/2022-03/BreadCrumbleBG.png) no-repeat scroll right 8px transparent;
+    color: #003a74;
+    line-height: 18px;
+    padding: 9px 15px 15px 5px;
+    font-weight: normal;
+    font-size: 1rem;
+}
+#block-breadcrumbs{
+    margin-left: -26px;
+}
+#block-breadcrumbs .breadcrumb li:hover{
+    text-decoration: underline;
+ }
+#block-breadcrumbs .breadcrumb li a:hover{
+   text-decoration: underline;
 }
 footer div#block-reseauxsociaux {
     margin-top: 45px;
     text-align: center;
     width: 100%;
-    padding-left: 160px;
+    padding-left: 0;
+}
+#main-menu.top-bar {
+    background: #F1F1F1;
+}
+.section-civicrm-group .button-purple {
+    border: 1px solid #af1f7b;
+    padding: 1rem 1rem;
+    border-radius: 3px;
+    text-align: center;
+}
+.page-communication li.pager__item.pager__item--last, .page-communication li.pager__item.pager__item--first {
+    display: none;
+}
+.section-civicrm-group.role--administrator #main {
+    padding-top: 5.6rem;
+}
+.section-civicrm-group.role--administrator div#block-sefairepasserpourquelquundautre {
+    position: absolute;
+    margin-top: -84px;
 }
 .is-front #block-views-block-block-hero-block-1 .views-field-field-texte-slider {
     max-width: unset !important;
@@ -3787,6 +3834,9 @@ input#site-search {
         body {
             background-color: rgb(107, 177, 28);
         }
+        .online_people.role--anonymous.is-front div#block-b-zf-textedebienvenuhome h1:first-of-type {
+            margin-left: -2px;
+        }
         .views-slideshow-controls-bottom.clearfix {
             position: absolute;
             top: 193px;
@@ -3814,10 +3864,13 @@ input#site-search {
             margin-top: 10px;
         } 
         div#block-b-zf-textedebienvenuhome h1:first-of-type {
-            margin-left: -44px;
+            margin-left: -34px;
         }
         .is-front section#main {
             margin-top: 45px;
+        }
+        .online_people.is-front section#main {
+            margin-top: -30px;
         }
         li.menu-item [data-drupal-link-system-path="contact/extranet_contactez_nous"]:first-of-type:before {
             display: none;
@@ -4118,7 +4171,20 @@ input#site-search {
             content: '';
             display: block !important;
         }
-
+        .online_people.is-front .views-field.views-field-field-texte-slider .field-content {
+            margin-left: -13px;
+            margin-top: 11%;
+        }
+        .is-front .views-field.views-field-field-texte-slider .field-content {
+            margin-left: -13px;
+            margin-top: 10%;
+        }
+        .page-node-type-page.is-front.online_people #block-b-zf-textedebienvenuhome h1 {
+            margin-top: 82px;
+            font-size: 35px !important;
+            margin-left: 0;
+            font-size: 29px !important;
+        }
         .page-node-type-page h1, .section-civicrm-group h1, .section-civicrm-event h1, .slide-content-home h1 p {
             font-size: 35px !important;
         }
@@ -4458,10 +4524,16 @@ input#site-search {
 
     /* Medium devices (tablets, 768px and up) */
     @media (max-width: 768px) {
+        .is-front section#main {
+            margin-top: 313px;
+        }
         .role--animateur.page-type-node-cus .grid-x.align-middle button.float-right {
             position: absolute;
             top: 4px;
             right: 0;
+        }
+        .views-slideshow-controls-bottom.clearfix{
+            display: none;
         }
         .page-node-type-page.is-front #block-b-zf-textedebienvenuhome h1 {
             margin-top: -22px;
