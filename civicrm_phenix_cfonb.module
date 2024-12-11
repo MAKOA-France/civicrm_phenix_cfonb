@@ -1026,7 +1026,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
             $tmp_name = str_replace ('public://documents/', '', $tmp_uri);
             $nom_document = $nom_document ? $nom_document : $tmp_name;
 
-            $file_url = file_create_url($file_uri);
+            $file_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file_uri);
             $link = \Drupal\Core\Link::fromTextAndUrl($nom_document, \Drupal\Core\Url::fromUri($file_url));
             $link_html .= '
             <img loading="lazy" src="/files/styles/vignette_24x24/public/media-icons/generic/generic.png">

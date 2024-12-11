@@ -3708,6 +3708,12 @@ input#site-search {
         .page-node-type-page-site .grid-container.na-pages:before {
             right: -154px !important;
         }
+        .role--adherent #block-b-zf-textedebienvenuhome h1, .role--administrator  #block-b-zf-textedebienvenuhome h1{
+            margin-left: -24px;
+        }
+        .is-front .views-field.views-field-field-texte-slider .field-content {
+            margin-left: 74px;
+        }
     }
 
     @media  (max-width: 1366px) {

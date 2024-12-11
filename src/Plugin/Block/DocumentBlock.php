@@ -123,7 +123,7 @@ class DocumentBlock  extends BlockBase  {
             $tmp_name = str_replace ('public://documents/', '', $tmp_uri);
             $nom_document = $nom_document ? $nom_document : $tmp_name;
 
-            $file_url = file_create_url($file_uri);
+            $file_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file_uri);
             $link = \Drupal\Core\Link::fromTextAndUrl($nom_document, \Drupal\Core\Url::fromUri($file_url));
             $link_html .= '
             <img loading="lazy" src="/files/styles/vignette_24x24/public/media-icons/generic/generic.png">
@@ -285,7 +285,7 @@ class DocumentBlock  extends BlockBase  {
 
       // // Get the file size in bytes   TODO GET FILE PATH
       $file_uri = $custom_service->getNodeFieldValue($file, 'uri');
-      $file_path = file_create_url($file_uri);
+      $file_path = \Drupal::service('file_url_generator')->generateAbsoluteString($file_uri);
       $file_size_bytes = filesize($file_path);
       $file_size_bytes = round($file_size_bytes / 1024, 0);
       $allInfoDocs['file_size_readable'] = $file_size_bytes;
@@ -317,7 +317,7 @@ class DocumentBlock  extends BlockBase  {
     $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
     $file = $this->getFile($media);
     $file_uri = $custom_service->getNodeFieldValue($file, 'uri');
-    $file_path = file_create_url($file_uri);
+    $file_path = \Drupal::service('file_url_generator')->generateAbsoluteString($file_uri);
     $file_size_bytes = filesize($file_path);
     $file_size_bytes = round($file_size_bytes / 1024, 0);
     return $file_size_bytes;
