@@ -814,6 +814,10 @@ p.text-above-img span {
     
     display: block;
 }
+
+.page-accueil-extranet [block="block-views-block-civievents-base-sur-le-contact-block-4"] .meeting-com {
+    background-color: #e7e0d9;
+}
  
 .dropdown.menu a[href="/communication"]:before {
     content: '';
@@ -3646,6 +3650,10 @@ input#site-search {
 
 .role--authenticated .messages.messages--status {
     display: none;
+}
+
+.section-feuille-de-presence .messages.messages--status {
+    display: block;    
 }
 
 .dynamic-content {
