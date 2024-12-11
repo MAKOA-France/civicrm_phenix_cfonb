@@ -159,6 +159,10 @@ function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $vie
  */
 function civicrm_phenix_cfonb_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
 
+  if ($form['#id'] == 'contact-message-demande-d-acces-a-l-extranet-form') {
+    $form['#prefix'] = '<h2 class="dmd-access-extranet">Demande d\'accès à l\'extranet du CFONB</div>';
+  }
+
   if ($form['#id'] == 'views-exposed-form-communication-page-1') {
     // dump($form);
     $form['title']['#prefix'] = '<div class="parrrent">';

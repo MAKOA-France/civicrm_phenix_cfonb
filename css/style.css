@@ -2312,6 +2312,9 @@ p.btn-see-rapport {
     
     width: max-content;
 }
+h2.dmd-access-extranet {
+    padding-top: 14px;
+}
 .online_people  #block-b-zf-textedebienvenuhome h1 {
     position: absolute;
     top: 50%;
