@@ -3424,9 +3424,6 @@ footer div#block-reseauxsociaux {
     border-radius: 9px !important;
 }
 
-div#block-b-zf-textedebienvenuhome {
-    padding-left: 186px;
-}
 div#block-b-zf-textedebienvenuhome h1:first-of-type {
     color: #d3278c;
     font-weight: bold;
@@ -3738,11 +3735,11 @@ input#site-search {
             z-index: 5;
             width: max-content;
         }
-        .role--administrator #block-b-zf-textedebienvenuhome h1, .role--adherent #block-b-zf-textedebienvenuhome h1 {
+        .role--administrator #block-b-zf-textedebienvenuhome h1 {
             position: absolute;
             top: 50%;
             left: 50%;
-            margin-left: -104px;
+            margin-left: -160px;
             transform: translate(-50%, -50%);
             /* margin-top: 431px; */
             z-index: 5;
@@ -3914,30 +3911,11 @@ input#site-search {
         .is-front .content table tr td:first-child, .is-front .content table tr td:nth-child(2){
             width: 100%;
         }
-        .role--adherent #block-b-zf-textedebienvenuhome h1 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -36px;
-        }
-        .role--adherent p.btn-see-rapport {
-            width: 29%;
-        }
     }
     
     @media (max-width: 1024px) { /*ipad pro */
         body {
             background-color: rgb(107, 177, 28);
-        }
-        .role--administrator div#block-b-zf-textedebienvenuhome h1:first-of-type {
-            margin-left: 0px;
-        }
-        .role--administrator section#main {
-            padding-left: 33px;
-        }
-        .online_people .content table {
-            margin-top: 89px;
-            padding-top: 18px;
         }
         .online_people.role--anonymous.is-front div#block-b-zf-textedebienvenuhome h1:first-of-type {
             margin-left: -2px;
@@ -4002,15 +3980,6 @@ input#site-search {
             vertical-align: middle;
             margin-top: 22px;
             position: absolute;
-        }
-        .online_people #block-b-zf-textedebienvenuhome h1 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            margin-left: 12px;
-            transform: translate(-50%, -50%);
-            padding-top: 12px;
         }
         .online_people div#block-b-zf-textedebienvenuhome h1:first-of-type {
             color: #d3278c;
@@ -4275,9 +4244,6 @@ input#site-search {
     }
     
     @media (max-width: 992px) { /* ipad air */
-        .role--adherent p.btn-see-rapport {
-            width: 28%;
-        }
         .dropdown.menu .menu-item a[href="/communication"]:before, .dropdown.menu .menu-item a[href="/faq"]:before , .dropdown.menu .menu-item a[href="/rencontres-ateliers"]:before {
             content: '';
             display: block !important;
@@ -4675,29 +4641,6 @@ input#site-search {
         .is-front section#main {
             margin-top: 313px;
         }
-        .role--adherent #block-b-zf-textedebienvenuhome h1 {
-            width: 100%;
-            margin-top: 14px !important;
-        }
-
-        .role--adherent.is-front .layout-container section.grid-container {
-            padding-left: 0;
-            padding-right: 0;
-        }
-        .role--adherent .slide-content-home {
-            text-align: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .role--adherent p.btn-see-rapport {
-            width: 50%;
-            padding-left: 0;
-        }
-
-
-
         .role--animateur.page-type-node-cus .grid-x.align-middle button.float-right {
             position: absolute;
             top: 4px;
