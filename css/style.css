@@ -4641,6 +4641,13 @@ input#site-search {
         .is-front section#main {
             margin-top: 313px;
         }
+        .role--administrator.is-front section#main {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .role--administrator.page-node-type-page.is-front #block-b-zf-textedebienvenuhome h1 {
+            margin-top: 23px;
+        }
         .role--animateur.page-type-node-cus .grid-x.align-middle button.float-right {
             position: absolute;
             top: 4px;
@@ -5539,7 +5546,7 @@ input#site-search {
             padding: 6px;
             border-radius: 7px;
             position: relative;
-            padding-left: 83px;
+            padding-left: 0;
             padding-top: 12px;
             padding-bottom: 12px;
         }
