@@ -5,8 +5,9 @@
 
         $(document).ready(function() {
 
-
- 
+          $('div').filter(function() {
+            return $(this).text().trim() === 'document reservé aux adhérents';
+          }).hide();
 
            
 

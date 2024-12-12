@@ -883,11 +883,7 @@ nav#block-menuprincipal .dropdown.menu {
 .role--anonymous.is-front div#content {
     width: 100%;
 }
-.role--anonymous.is-front #content tr img{ 
-
-    height: auto;
-    width: auto;
-}
+ 
 
 .sidebar #block-menuprincipal-2 h2 {
     position: relative;
@@ -1078,6 +1074,35 @@ body.section-civicrm-group .layout--twocol-section--50-50 .layout__region .block
 span.field_sous_titre_slide a {
     color: black;
     font-weight: bold;
+}
+
+.section-user div#edit-account {
+    display: flex
+;
+    flex-direction: column;
+    gap: 30px;
+}
+form#user-form {
+    padding-top: 25px;
+}
+div#edit-mail--description, div#edit-name--description, .password-strength__title, div#edit-pass--description,
+.js-form-item.form-item.js-form-type-password.form-item-pass-pass2.js-form-item-pass-pass2.confirm-parent  {
+    font-size: 14px;
+}
+input#edit-name ,input#edit-mail{
+    font-size: 20px;
+}
+.js-form-item.form-item.js-form-type-password.form-item-pass-pass1.js-form-item-pass-pass1.password-parent label,
+.js-form-item.form-item.js-form-type-password.form-item-pass-pass2.js-form-item-pass-pass2.confirm-parent label,
+.js-form-item.form-item.js-form-type-textfield.form-item-name.js-form-item-name label,
+.js-form-item.form-item.js-form-type-email.form-item-mail.js-form-item-mail label,
+form#user-form input#edit-submit, .section-user li.tabs-title a
+{
+    font-size: 23px;
+    font-weight: bold;
+}
+.js-form-item.form-item.js-form-type-password.form-item-pass-pass2.js-form-item-pass-pass2.confirm-parent {
+    padding-top: 30px;
 }
 span.field_sous_titre_slide a:before {
     display: none;
@@ -1592,13 +1617,15 @@ li.menu-c-nav-item i {
 }
 .section-communication section#main {
     margin-top: 64px;
+    padding-left: 23px;
+    padding-right: 0;
 }
 .section-communication #block-sefairepasserpourquelquundautre {
     position: absolute;
     margin-top: -62px;
 }
 .section-communication #main .grid-x.grid-margin-x .medium-9{
-    width: 90%;
+    width: 88%;
     /* z-index: -1; */
 }
 .page-c-taxonomy-ss header, .section-communication header, .section-contact header {
@@ -1901,7 +1928,7 @@ form#views-exposed-form-communication-page-1 {
     position: relative;
 }
 .role--anonymous p.text-above-img {
-    top: 77%;
+    top: 376px;
 }
 .is-front .content tbody th, tbody td {
     padding: 0.5rem 0.625rem 0.625rem;
@@ -2232,6 +2259,11 @@ ul[block="block-b-zf-account-menu"] li:nth-last-child(2)::after {
 }
 p.group-presentation-description {
     display: none;
+}
+
+.role--adherent table td img, .online_people  table td img{
+    height: 444px;
+    width: auto;
 }
 .section-accueil-extranet .views-field.views-field-employer-id {
     margin-top: 20px;
@@ -3686,6 +3718,9 @@ input#site-search {
 
     /* Below or equal to 1600px */
     @media (max-width: 1600px) {
+        .views-field.views-field-field-slide img {
+            height: 500px !important;
+        }
         .page-c-taxonomy-ss div#content {
             width: 70%;
         }
@@ -3914,6 +3949,11 @@ input#site-search {
     }
     
     @media (max-width: 1024px) { /*ipad pro */
+        .section-communication section#main {
+            margin-top: 64px;
+            padding-left: 11px;
+            padding-right: 0;
+        }
         body {
             background-color: rgb(107, 177, 28);
         }
@@ -4066,7 +4106,7 @@ input#site-search {
             width: 8%;
         }
         .section-communication #main .grid-x.grid-margin-x .medium-9 {
-            width: 86%;
+            width: 84%;
             /* z-index: -1; */
         }
         .section-civicrm-group .views-send-selection-form form {
@@ -5209,7 +5249,7 @@ input#site-search {
             float: right;
             position: absolute;
             margin-top: 4px;
-            margin-left: 229px;
+            margin-left: 150px;
             width: 100%;
             left: 0;
             top: 0px;
@@ -5242,6 +5282,10 @@ input#site-search {
             background-color: #003a74;
             margin-left: 19px;
         }
+        .section-civicrm-event section#main {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
         .section-civicrm-event .site-logo img {
             width: 63%;
             height: auto;
@@ -5251,7 +5295,7 @@ input#site-search {
         .section-civicrm-event .grid-x.align-middle button.float-right {
             position: absolute;
             top: -22px;
-            right: -223px;
+            right: -143px;
         }
         .section-communication #sidebar_left {
             width: 95%;
@@ -6203,3 +6247,23 @@ input#site-search {
             object-fit: cover;
         }
     }
+
+    @media print {
+        button.trigger.focusable.visually-hidden {
+            display: none;
+        }
+        .site-logo img {
+            margin-bottom: -296px;
+        }
+        #block-b-zf-account-menu, input#site-search,div#block-sefairepasserpourquelquundautre, div#main-menu, nav.tabs, #footer{
+          display: none !important;
+        }
+        input#site-search , a#printerParticipants{
+            display: none !important;
+        }
+        .grid-margin-x > .medium-9 {
+            width: 100% !important;
+            margin-top: -800px;
+        }
+        
+      }
