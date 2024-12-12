@@ -4648,6 +4648,18 @@ input#site-search {
         .role--administrator.page-node-type-page.is-front #block-b-zf-textedebienvenuhome h1 {
             margin-top: 23px;
         }
+
+        .role--adherent.is-front section#main {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .role--adherent p.btn-see-rapport {
+            width: 50%;
+        }
+        .role--adherent #block-b-zf-textedebienvenuhome h1 {
+            width: 100%;
+            margin-top: 18px;
+        }
         .role--animateur.page-type-node-cus .grid-x.align-middle button.float-right {
             position: absolute;
             top: 4px;
@@ -4752,7 +4764,7 @@ input#site-search {
 
         .role--authenticated.role--animateur #block-b-zf-textedebienvenuhome h1 {
             width: 100%;
-            margin-top: -34px;
+            margin-top: 15px;
         }
 
 
@@ -4855,9 +4867,47 @@ input#site-search {
         }
         .is-front section.grid-container.section1 {
             padding-top: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .page-c-taxonomy-ss section#main {
+            padding-left: 15px;
+            padding-right: 15px;
         }
         .title-bar {
             padding: 0.5rem !important;
+        }
+        .page-c-taxonomy-ss div#content {
+            width: 93%;
+        }
+        .section-espace-documentaire.online_people.page-c-taxonomy-ss .align-right {
+            margin-top: 5px;
+            right: -159px;
+        }
+        .section-contact section#main {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .section-espace-documentaire.online_people ul[block="block-b-zf-account-menu"], .section-qui-sommes-nous.online_people ul[block="block-b-zf-account-menu"] {
+            position: absolute;
+            display: flex
+        ;
+            top: 0;
+            top: 38px;
+            background-color: bue;
+            right: 0;
+            min-width: 0;
+            width: 186px;
+            padding: 0;
+            color: #040000 !important;
+            font-size: 0.85rem;
+            background: none;
+            border-radius: 7px;
+            z-index: 1055;
+            box-shadow: none;
+            flex-direction: row;
+            background-color: #003b74;
+            padding-bottom: 11px;
         }
         article.grid-container .grid-x.align-middle .medium-9.cell {
             width: 60%;
