@@ -402,9 +402,10 @@ if (window.matchMedia("(min-width: 992px)").matches) {
                   $('[block="block-b-zf-account-menu"]').toggle();
                 }
                 if ($(window).width() < 992) {
+                  
+                  console.log('here we')
                   $('[block="block-b-zf-account-menu"]').toggle();
                 }
-                console.log('vouchh')
               })
               element.addEventListener('click', function () {
                 // console.log('cliky')
