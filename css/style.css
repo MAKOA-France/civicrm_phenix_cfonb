@@ -95,8 +95,11 @@ ul.submenu.is-dropdown-submenu.first-sub.vertical.js-dropdown-active {
     padding: 15px 0 0;
 }
 .line-container-plus, .line-container-moins {
-    display: flex;
+    display: none;
     align-items: center;
+}
+.last-doc-title {
+    padding-top: 38px;
 }
 .hr-line-accoredon, .title-and-chevron .hr-other-doc {
     border: 1px solid #7070704d;
@@ -677,7 +680,7 @@ p.icon-meet-c, .icon-commis, .icon-comm{
     font-size: 0.7rem;
 }
 .section-others-documents {
-    display: none;
+    /* display: none; */
 }
 .title-first-doc a, .title-first-doc a:hover {
     color: #e52329;
@@ -1191,10 +1194,14 @@ div#block-b-zf-views-block-civievents-base-sur-le-contact-block-10 > h2:first-of
     padding: 0;
     margin-bottom: 20px;
 }
+span.date-creation {
+    font-size: 0.89rem !important;
+    color: black;
+}
 .section-rencontres-ateliers  .meeting-com {
     display: flex;
     align-items: center;
-    width: 378px;
+    width: 500px;
     gap: 20px;
     background-color: #e7e0d9;
     border-radius: 10px;
@@ -1450,7 +1457,7 @@ li.group-par-annee .views-field.views-field-title {
 }
 .all-itemss {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 li.group-par-annee {
     width: 100%;
@@ -3172,6 +3179,7 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
 .page-rencontres-ateliers .item-list ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 0;
 }
 .page-node-type-page-site.not-front .breadcrumb ol li a:after, .page-type-node-cus.not-front .breadcrumb ol li a:after {
     border-width: 5px 5px 5px 0;
@@ -6249,6 +6257,9 @@ input#site-search {
     }
 
     @media print {
+        .print-hide {
+            /* display: none !important; */
+          }
         button.trigger.focusable.visually-hidden {
             display: none;
         }

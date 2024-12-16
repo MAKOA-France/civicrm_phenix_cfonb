@@ -5,6 +5,17 @@
 
         $(document).ready(function() {
 
+          $(window).on('beforeprint', function() {
+            $('a.site-logo.editeddd').addClass('print-hide');
+            jQuery('.site-logo').removeAttr('href');
+          });
+          
+          $(window).on('afterprint', function() {
+            $('a.site-logo.editeddd').removeClass('print-hide');
+            jQuery('.site-logo').attr('href', '/');
+          });
+          
+
           $('div').filter(function() {
             return $(this).text().trim() === 'document reservé aux adhérents';
           }).hide();
