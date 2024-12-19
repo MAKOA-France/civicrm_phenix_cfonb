@@ -804,13 +804,20 @@ span.hourss {
 .dropdown.menu a[href="/communication"], .dropdown.menu a[href="/rencontres-ateliers"], .dropdown.menu a[href="/faq"] {
     display: flex !important;
 }
+
+.custom-section-doc .description-with-date-size:last-of-type {
+    padding-bottom: 26px;
+}
+
 p.btn-see-rapport a {
     color: white !important;
 }
 p.text-above-img {
     position: absolute;
-    top: 53%;
     left: 46px;
+}
+.section-civicrm-event.role--authenticated .messages.messages--status {
+    display: block;
 }
 p.text-above-img span {
     color: white;
@@ -1935,7 +1942,7 @@ form#views-exposed-form-communication-page-1 {
     position: relative;
 }
 .role--anonymous p.text-above-img {
-    top: 376px;
+    top: 509px;
 }
 .is-front .content tbody th, tbody td {
     padding: 0.5rem 0.625rem 0.625rem;

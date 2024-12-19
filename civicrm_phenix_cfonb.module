@@ -1129,6 +1129,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
         'first_element_title' => $first_title,
         'display_see_other_doc' => $display_see_other_doc,
         'is_page_last_doc' => true,
+        'event_id' => $event_id,
         'can_edit_doc' => true,//$allowToEdit,
         // 'second_document_data' => $secondDataDoc
       ]
