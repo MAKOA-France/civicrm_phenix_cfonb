@@ -353,7 +353,11 @@ $crruent_row = $variables['output'];
         }
  
       }
-      $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"><div class="desc-pt"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div></a>'];  
+      if ($uri) {
+        $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"><div class="desc-pt pas-de-doc"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div></a>'];  
+      }else {
+        $cus_desc = ['#markup' =>   '<div class="desc-pt"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div>'];  
+      }
       $variables['output'] = $cus_desc;
 
     }

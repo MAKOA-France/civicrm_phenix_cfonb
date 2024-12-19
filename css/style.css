@@ -3143,7 +3143,7 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
 .section-civicrm-group .grid-container.full.hero.communication:after {
     content: '';
     display: block;
-    width: 104%;
+    width: 94%;
     height: 96%;
     z-index: 55;
     position: absolute;
@@ -3154,6 +3154,14 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
     background-repeat: no-repeat;
     pointer-events: none;
     left: 265px;
+}
+.section-politique-de-confidentialite div#block-pagetitle--2 h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.00001), rgba(0, 0, 0, 0.000001));
 }
 .section-contact .grid-container.full.hero.communication {
     background: url("/files/relooking/who contact.jpg");
@@ -3968,6 +3976,18 @@ input#site-search {
             margin-top: 64px;
             padding-left: 11px;
             padding-right: 0;
+        }
+        .section-civicrm-group .layout__region.layout__region--content {
+            width: 100%;
+        }
+        .section-civicrm-group .grid-container.full.hero.communication:after {
+            display:none;
+        }
+        .section-civicrm-group .meeting-com, .page-toutes-mes-reunions .meeting-com, .section-rencontres-ateliers .meeting-com {
+            display: flex
+        ;
+            align-items: center;
+            width: 372px; 
         }
         body {
             background-color: rgb(107, 177, 28);
