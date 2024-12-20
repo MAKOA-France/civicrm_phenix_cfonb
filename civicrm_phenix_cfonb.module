@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use \Drupal\views\Views;
 use Drupal\file\Entity\File;
@@ -18,7 +18,7 @@ function civicrm_phenix_cfonb_preprocess_page(&$variables)
 {
   $variables['#attached']['library'][] = 'civicrm_phenix_cfonb/civicrm_phenix_cfonb';
   $current_path = \Drupal::service('path.current')->getPath();
-  
+
 
 }
 
@@ -33,16 +33,16 @@ function civicrm_phenix_cfonb_set_defaults($entity_type, $bundle) {
   $entities = entity_load($entity_type);
 
 
-  
+
 /*   foreach ($field_instances as $field_name => $field_instance) {
-    
+
     if (isset($field_instance['default_value'])) {
       $default_value = $field_instance['default_value'][0]['value'];
       $field_info = field_info_field($field_name);
-      
+
       foreach ($entities as $entity) {
       $lang = $field_info['translatable'] ? entity_language($entity_type, $entity) : LANGUAGE_NONE;
-      
+
         if (empty($entity->{$field_name})) {
         $entity->{$field_name}[$lang][0]['value'] = $default_value; //Note not all are 'value'
         field_attach_update($entity_type, $entity);
@@ -60,13 +60,13 @@ use Drupal\views\ViewExecutable;
  */
 function civicrm_phenix_cfonb_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
   // Check if it's the view you want to alter.
-  
+
 
 
 
   //Page admin utilisateurs
   if ($view->id() == 'user_admin_people' && $display_id == 'page_1') {
-    
+
   }
 
 
@@ -77,10 +77,10 @@ function civicrm_phenix_cfonb_views_pre_view(ViewExecutable $view, $display_id, 
  */
 function civicrm_phenix_cfonb_views_post_render(&$view, &$output, &$cache) {
   // Ensure we're targeting the correct view and display ID.
- 
+
 }
 
- 
+
 
 
 
@@ -91,7 +91,7 @@ function civicrm_phenix_cfonb_views_post_render(&$view, &$output, &$cache) {
  */
 function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $view) {
 
-  
+
   if ($view->storage->get('id') == 'civievents_base_sur_le_contact_' && $view->current_display == 'block_5') {
     $results = &$view->result;
     // usort($results, function ($a, $b) {
@@ -99,7 +99,7 @@ function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $vie
     //   // dump($a);
     //   $titleA = strtolower($a->civicrm_group_civicrm_group_contact_title ? $a->civicrm_group_civicrm_group_contact_title :  '');
     //   $titleB = strtolower($b->civicrm_group_civicrm_group_contact_title ? $b->civicrm_group_civicrm_group_contact_title  :  '');
-    
+
     //   // Comparer alphabétiquement.
     //   return $titleA <=> $titleB;
     // });
@@ -108,13 +108,13 @@ function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $vie
   }
   if ($view->storage->get('id') == 'civievents_base_sur_le_contact_' && $view->current_display == 'block_3') {
     $results = &$view->result;
- 
+
     usort($results, function ($a, $b) {
       // Récupérer les titres.
       // dump($a);
       $titleA = strtolower($a->civicrm_group_civicrm_group_contact_title ? $a->civicrm_group_civicrm_group_contact_title :  '');
       $titleB = strtolower($b->civicrm_group_civicrm_group_contact_title ? $b->civicrm_group_civicrm_group_contact_title  :  '');
-    
+
       // Comparer alphabétiquement.
       return $titleA <=> $titleB;
     });
@@ -133,7 +133,7 @@ function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $vie
   if ($view->id() === 'communication' && $view->current_display === 'page_1') {
     // Specify the field machine name to exclude.
     $field_to_exclude = 'field_mots_cles';
-    $field_to_exclude1 = 'field_lien_vers_fichier_';
+   // $field_to_exclude1 = 'field_lien_vers_fichier_';
     $field_to_exclude2 = 'field_nne';
 
 
@@ -142,9 +142,9 @@ function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $vie
       unset($view->field[$field_to_exclude2]);
     }
     // Check if the field is in the view's result fields and remove it.
-    if (isset($view->field[$field_to_exclude1])) {
-      unset($view->field[$field_to_exclude1]);
-    }
+//    if (isset($view->field[$field_to_exclude1])) {
+ //     unset($view->field[$field_to_exclude1]);
+  //  }
     // Check if the field is in the view's result fields and remove it.
     if (isset($view->field[$field_to_exclude])) {
       unset($view->field[$field_to_exclude]);
@@ -204,7 +204,7 @@ function getfulldate ($timestamp) {
   return $formatted_date;
 }
 
- 
+
 
 function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $view = $variables['view'];
@@ -214,10 +214,10 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $current_user = \Drupal::currentUser();
   $user_roles = $current_user->getRoles();
   $cus_serv = \Drupal::service('civicrm_phenix_cfonb.custom_service');
-  
-  
-  
-  
+
+
+
+
   if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
     if ($field->field == 'rendered_item') {
       // dump($row, $variables['output']);
@@ -252,7 +252,7 @@ $crruent_row = $variables['output'];
 //     $innerAnchor->setAttribute('rel', 'bookmark');
 //     $innerAnchor->nodeValue = "Dynamic Content Example"; // Set dynamic content
 // }
- 
+
 // $decoded_string = html_entity_decode($dom->saveHTML(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
 // $decoded_string = mb_convert_encoding($dom->saveHTML(), "UTF-8", "ISO-8859-1");
 // $decoded_string = htmlspecialchars_decode($dom->saveHTML(), ENT_NOQUOTES);
@@ -283,11 +283,11 @@ $crruent_row = $variables['output'];
 
   if ($view->storage->id() == 'communication' &&  $view->current_display == 'page_1') {
     if ($field->field == 'field_mots_cles') {
-  
+
     }
 
 
-    
+
     if ($field->field == 'title') {
       $titr = $field->getValue($row);
       if ($row->_entity->get('field_lien_vers_fichier_')->getValue()) {
@@ -298,13 +298,13 @@ $crruent_row = $variables['output'];
           if ($uri) {
             $uri = str_replace('public:/', '', $uri);
           }
-  
+
         }
       }
-      $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"> <p class="views-field views-field-title">' . $titr . '</p> </a>'];  
+      $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"> <p class="views-field views-field-title">' . $titr . '</p> </a>'];
       $variables['output'] = $cus_desc;
     }
-    
+
     if ($field->field == 'created') {
       $timestamp = $field->getValue($row);
 
@@ -321,10 +321,10 @@ $crruent_row = $variables['output'];
           if ($uri) {
             $uri = str_replace('public:/', '', $uri);
           }
-  
+
         }
       }
-      $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"> <p class="views-field views-field-title">' . $formatted_date . '</p> </a>'];  
+      $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"> <p class="views-field views-field-title">' . $formatted_date . '</p> </a>'];
       $variables['output'] = $cus_desc;
     }
 
@@ -349,14 +349,14 @@ $crruent_row = $variables['output'];
           if ($uri) {
             $uri = str_replace('public:/', '', $uri);
           }
-  
+
         }
- 
+
       }
       if ($uri) {
-        $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"><div class="desc-pt pas-de-doc"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div></a>'];  
+        $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"><div class="desc-pt pas-de-doc"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div></a>'];
       }else {
-        $cus_desc = ['#markup' =>   '<div class="desc-pt"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div>'];  
+        $cus_desc = ['#markup' =>   '<div class="desc-pt"><p>' . $desc . '</p><p class="keywords-com">' . $term_names_string . '</p></div>'];
       }
       $variables['output'] = $cus_desc;
 
@@ -379,7 +379,7 @@ $crruent_row = $variables['output'];
       $fichier = $cus_serv->getNodeFieldValue($row->_entity, 'field_lien_vers_fichier_');
 
 
-  
+
 
       $filedisplay = '';
       if ($fichier) {
@@ -417,9 +417,9 @@ $crruent_row = $variables['output'];
 
             $img_file = $filedisplay ? '<a class="linked-a-c" href="/files/'. $uri .'"><div class="img-illust-doc"><img src="/files/file/'. $filedisplay .'"></div></a>' : '';
         }
-        
+
       }
-      
+
       $allkeywords = '';
       if ($keywordsIds)  {
         $keywordsIds = array_column($keywordsIds, 'target_id');
@@ -443,8 +443,8 @@ $crruent_row = $variables['output'];
           <p class="com-keyword"> ' . $allkeywords . ' </p>
         </div></a>
       </div>';
-      
-      $hmltcom = ['#markup' =>  $hmltcom];  
+
+      $hmltcom = ['#markup' =>  $hmltcom];
       $variables['output'] = $hmltcom;
       // dump($field->field);
     }
@@ -462,7 +462,7 @@ $crruent_row = $variables['output'];
       $date_complet = $date['day_letter'] . ' ' . $date['jour'];
       $hour_complet = $date['day'] . ':' . $date['minute'];
       // href="/civicrm-event/' . $event_id . '"
-      
+
       // $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c">
       // <div class="date-complet"><p>' . $date_complet . '</p></div>
       // <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
@@ -471,7 +471,7 @@ $crruent_row = $variables['output'];
 
 
 
-      
+
       $htmls = '<a href="/civicrm-event/'.$event_id.'">
       <div class="meeting-com  ">
           <div class="date-meet">
@@ -480,16 +480,16 @@ $crruent_row = $variables['output'];
               <div class="debuth">
                   <span class="hourss">'. $hour_complet.'</span>
               </div>
-          </div>     
+          </div>
            <div class="title-meet">
               <span class="field_sous_titre_slide aaa"> '.$subject.'</span>
-              
+
           </div>
       </div></a>';
 
 
 
-      $htmls = ['#markup' =>  $htmls];  
+      $htmls = ['#markup' =>  $htmls];
       $variables['output'] = $htmls;
       // dump($htmls);
     }
@@ -508,7 +508,7 @@ $crruent_row = $variables['output'];
       $date_complet = $date['day_letter'] . ' ' . $date['jour'];
       $hour_complet = $date['day'] . ':' . $date['minute'];
 
-      
+
       $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
       $hours_c = $drupal_datetime->format('H');
       $minute_c = $drupal_datetime->format('i');
@@ -519,7 +519,7 @@ $crruent_row = $variables['output'];
       <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
       <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">' . $subject . '</p></div>
       </div></a>';
-      $htmls = ['#markup' =>  $htmls];  
+      $htmls = ['#markup' =>  $htmls];
       $variables['output'] = $htmls;
       // dump($htmls);
     }
@@ -566,10 +566,10 @@ $crruent_row = $variables['output'];
                 <div class="debuth">
                     <span class="hourss">'. $hour_complet.'</span>
                 </div>
-            </div>     
+            </div>
              <div class="title-meet">
                 <span class="field_sous_titre_slide aaa"> '.$subject.'</span>
-                
+
             </div>
         </div></a>';
 
@@ -577,7 +577,7 @@ $crruent_row = $variables['output'];
 
 
 
-        $htmls = ['#markup' =>  $htmls];  
+        $htmls = ['#markup' =>  $htmls];
         $variables['output'] = $htmls;
         // dump($htmls);
       }
@@ -586,7 +586,7 @@ $crruent_row = $variables['output'];
   }
 
   if ($view->storage->id() == 'block_hero' &&  $view->current_display == 'block_1') {
-    
+
     $html = '';
     $btn = '';
     if ($field->field == 'field_texte_slider') {
@@ -608,7 +608,7 @@ $crruent_row = $variables['output'];
         <h2>' . $slide_subtitle . ' </h2>
         ' . $btn . '
         </div>';
-        $html = ['#markup' =>  $html]; 
+        $html = ['#markup' =>  $html];
         $variables['output'] = $html;
       }
     }
@@ -623,7 +623,7 @@ $crruent_row = $variables['output'];
     }
   }
 
-  
+
 
 
 
@@ -637,7 +637,7 @@ $crruent_row = $variables['output'];
 			$html = '<div class="my-meeting">
       <a href="/civicrm-group/' . $group_id . '">' . $default_title . '</a>
       </div>';
-      $html = ['#markup' =>  $html]; 
+      $html = ['#markup' =>  $html];
       $variables['output'] = $html;
     }
   }
@@ -649,8 +649,8 @@ $crruent_row = $variables['output'];
         $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
         $custom_service->customizeViewReunionOfTheCommissionPage($variables);
       }
-  
-      
+
+
     }
 
       // You can now use $email for further processing.
@@ -658,20 +658,20 @@ $crruent_row = $variables['output'];
     // $variables['view']->header['area']->options['content'] = [];
     if ((!in_array('super_utilisateur', $user_roles) && !in_array('admin_client', $user_roles) && !in_array('permanent', $user_roles) && !in_array('administrator', $user_roles))) {
       $variables['view']->header['area']->options['content']['value'] = '<h2><i class="far fa-calendar-alt"></i> [view:title] </h2>';
-    }    
+    }
   }
 
 
-  
+
   if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  in_array($view->current_display, ['block_7', 'block_2', 'block_13'])) {
     // $custom_service->customizeMeetingList()
     $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
     if ($field->field == 'title') {
       $title = $field->getValue($row);
-      
-      
+
+
       $date = $row->created_id_civicrm_contact_start_date;
-      
+
       $daty = $row->created_id_civicrm_contact_start_date;
       if ($view->current_display == 'block_13') {
         $daty = $row->civicrm_event_civicrm_participant_start_date;
@@ -684,9 +684,9 @@ $crruent_row = $variables['output'];
       if ($view->current_display == 'block_7') {
         $event_id = $row->created_id_civicrm_contact_id;
       }
-      
-      
-      
+
+
+
       if ($view->current_display == 'block_2') {
         $daty = $row->civicrm_event_civicrm_participant_start_date;
         $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
@@ -696,14 +696,14 @@ $crruent_row = $variables['output'];
 
 
       $date_complet = $date['day_letter'] . ' ' . $date['jour'];
-      
+
       $dateArray = $custom_service->formatDateWithMonthInLetterAndHours($daty);
 
       $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
       $hours_c = $drupal_datetime->format('H');
       $minute_c = $drupal_datetime->format('i');
       $hour_complet = $hours_c . ':' . $minute_c;
-      
+
       $variables['output'] = [
         '#theme' => 'page_list_meeting',
         '#cache' => ['max-age' => 0],
@@ -807,14 +807,14 @@ function civicrm_phenix_cfonb_theme($existing, $type, $theme, $path)
 
 
 /**
- * 
+ *
  * Gestion de permission par rapport à l'utilisateur anonyme
- * 
+ *
  * Implements hook_entity_access().
  */
 function civicrm_phenix_cfonb_media_access(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Session\AccountInterface $account) {
   if ($account->isAnonymous()) {
-   
+
   }
 }
 
@@ -829,7 +829,7 @@ function hideLabelOfValueField (&$build, $fieldName) {
 }
 
 /**
- * Ce code sert à afficher 
+ * Ce code sert à afficher
  * Implements hook_entity_view_alter().
  */
 function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
@@ -879,13 +879,13 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     // ($build);
 
     $current_path = \Drupal::service('path.current')->getPath();
-    
+
     $db = \Drupal::database();
     // ($build);
     $all_dates = $db->query('select title, start_date, end_date from civicrm_event where id = ' . $entity->id())->fetch();
     $get_end_date = $all_dates->end_date;
     $get_start_date = $all_dates->start_date;
-    
+
     $formated_Y_m_d_start_date = $civi_service->formatDateTo_Y_m_d($get_start_date);
     $formated_Y_m_d_end_date = $civi_service->formatDateTo_Y_m_d($get_end_date);
     setlocale(LC_TIME, 'fr_FR');
@@ -897,10 +897,10 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     //enlever la minute si c'est 00
     $formatted_dateEn = str_replace(':00', 'h', $formatted_dateEn);
     $build['end_date'][0]['#text'] = $formatted_dateEn;
-   
 
 
-    
+
+
 
     if ($formated_Y_m_d_start_date === $formated_Y_m_d_end_date) { //if event started and end at the same day
       $end_date_val = isset($build['end_date'][0]['#context']) ?  $build['end_date'][0]['#context'] : '';
@@ -915,7 +915,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $build['end_date'][0]['#text'] = $formated_end_date;
 
 
-    
+
     //enlever la minute si c'est 00
     $formatted_dateSt = str_replace(':00', 'h', $formatted_dateSt);
     $formatted_dateSt = str_replace(',', '', $formatted_dateSt);
@@ -923,7 +923,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $build['start_date'][0]['#text'] = $formatted_dateSt;
     $build['start_date'][0]['#prefix'] = '<div class="date-start-and-end date-duration-meeting"><time class="eventt-time">' . $formatted_dateSt . '</time>';
     $build['end_date'][0]['#suffix'] = '</div>';
-    
+
     // $build['start_date']['#suffix'] = '<span> - </span>';
     $build['start_date']['#weight'] = -2;
     $build['end_date']['#weight'] = -2;
@@ -960,7 +960,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 
     $doc = $build['#civicrm_event']->get('field_documents')->getValue();
       $doc_ids = array_column($doc, 'target_id');
-    
+
 
     $all_documents = [];
     $total_docs = 0;
@@ -1011,8 +1011,8 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
             'fileId' => $file->id(),
             'description' => $title_doc,
             'created_at' => $created_at,
-            'media_id' => $media->id(), 
-            'idTokenized' => $idTokenized, 
+            'media_id' => $media->id(),
+            'idTokenized' => $idTokenized,
           ];
 
 
@@ -1077,15 +1077,15 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $secondDataDoc = $civi_service->getDataSecondDocument($media);
     unset($all_documents[$first_title][1]);   *///TODO Commenté pour le moment à decommenté si on en a besoin
     //end recuperation ****----------
-    
+
     // $allowToEdit = $civi_service->checkIfUserCanEditDoc ();
-    
+
     $counted_doc = count(reset($all_documents));
 
     $file_id = $civi_service->getNodeFieldValue($media, 'field_media_document');
     $file0bj = File::load($file_id);
     $file_size_readable = $civi_service->getFileSize($file0bj);
-    // $display_see_other_doc = ($counted_doc > 1); TODO 
+    // $display_see_other_doc = ($counted_doc > 1); TODO
     $display_see_other_doc = (count($all_documents) > 2 || count(reset($all_documents)));//TODO à mettre sup à 2 car les deux seront au dessus
 
 
@@ -1143,7 +1143,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 
 
     $build['download_all_doc']['#markup'] = $total_docs > 1 ? '<br>
-    
+
     <a data-total-docs="'.$total_docs.'" href="/media_download_all/civicrm_event/' . $event_id . '/field_documents" class="media-download-all">Télécharger tous les fichiers (zip)aaaaaa</a>' : '';
     //custom title display
     $build['start_date']['#prefix'] = ucfirst($title) . '<br>';
@@ -1168,7 +1168,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
             // Get the block's configuration and context.
             // $block_plugin->setConfiguration([]);
             // $block_plugin->setContext([]);
-            
+
             // Build the block render array.
             $block_build = $block_plugin->build();
 
@@ -1178,7 +1178,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 
               $build['_layout_builder'][$key]['content'][$k]['content'][0] = [ '#theme' =>  'document_group', "#content" => $block_content ];
             }
-            
+
           }
         }
       }
@@ -1190,7 +1190,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
   // }
 
 }
- 
+
 
 /**
  * Implements hook_views_query_alter().
@@ -1198,7 +1198,7 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query) {
 
   //Feuille de presence ==> ne pas afficher les contact qui sont supprimés
-  // 
+  //
   // if ($view->storage->get('id') == 'civievents_base_sur_le_contact_' && $view->current_display == 'block_3') {
   //   $query->where[] =  array(
   //     'conditions' => array(
@@ -1214,7 +1214,7 @@ function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $vi
 
   if ($view->storage->get('id') == 'civi_groupe_evenements' && $view->current_display == 'block_2') {
 
- 
+
   }
 }
 
@@ -1239,7 +1239,7 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
 
 
   if ($entity->getEntityTypeId() === 'civicrm_group' and $view_mode === 'full') {
-    //unset($build['#civicrm_group']->getFieldDefinitions()['field_documents_groupe']); 
+    //unset($build['#civicrm_group']->getFieldDefinitions()['field_documents_groupe']);
     $build['#attributes']['class'][] = 'group-detail-page kkiiii';
 
 
@@ -1278,7 +1278,7 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
       $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
       // Add a custom field to the entity view.
       unset($build['max_participants']);
-      
+
       // Get the current user object.
       $current_user = \Drupal::currentUser();
       // Check if the user is authenticated (logged in).
@@ -1302,20 +1302,20 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
 
         $build['custom_179']['#prefix'] = '<div class=" asheeeeeeeeeeeeee meeting-page"><i class="icon-custom-calendar custom-icon-meeting"></i></div>';
         /* $build['description']['#prefix'] = '<div class="meeting-confirm-my-presence">
-        
+
         <a href="/civicrm-participant/' . $participant_id . '/edit" class="button js-form-submit form-submit">Je confirme ma présence</a>
         </div>'
         ; */
         // $ex = '<a href="#" class="button js-form-submit form-submit">Excuser</a>';
       }
     }
-    
-    
+
+
     //Ne pas afficher l'affichage par defaut des documents
     // $build['_layout_builder'][1]['#settings']['#id'] = 'nouveau-test-partici';
     // ($build['_layout_builder'][1]);
     if (isset($build['_layout_builder'][0]['content'])) {
-      
+
       foreach($build['_layout_builder'][0]['content'] as $key_layout => $value_layout){
         if (!isset($build['_layout_builder'][0]['content'][$key_layout]['content'])) {
           continue;
@@ -1342,7 +1342,7 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
         if (isset($value_layout['content'][0]['#field_name']) && ($value_layout['content'][0]['#field_name'] == 'title' || $value_layout['content'][0]['#field_name'] == 'start_date' || $value_layout['content'][0]['#field_name'] == 'end_date')){
           $build['_layout_builder'][0]['content'][$key_layout]['content'][0]['#title'] = '';
           $build['_layout_builder'][0]['content'][$key_layout]['content'][0][0]['#text'] = '';
-          
+
           if ($value_layout['content'][0]['#field_name'] == 'title') {
             $build['_layout_builder'][0]['content'][$key_layout]['content'][0][0]['#context']['value'] = '';
             // dump($build['_layout_builder'][0]['content'][$key_layout]['content']);
@@ -1397,7 +1397,7 @@ function civicrm_phenix_cfonb_preprocess_block(&$variables) {
 
     }
   }
-  
+
 
   // Check if the block is a specific block you want to alter.
   // For example, if you want to target a block with a specific machine name:
@@ -1407,7 +1407,7 @@ function civicrm_phenix_cfonb_preprocess_block(&$variables) {
     if (isAdherent()) {
       $btn_add_meet = '';
     }
-    
+
     // dump($variables['content']);
       $variables['content'][0][0]['#context']['value'] = Drupal\Core\Render\Markup::create('<div class="meeting-head"><h2 class="meetings"><i class="icon-custom-calendar"></i>Réunions</h2> ' . $btn_add_meet . '');
       $variables['attributes']['class'][] = 'bloc-head-meetings-in-theme '. json_encode(\Drupal::currentUser()->getRoles());
@@ -1432,30 +1432,30 @@ function civicrm_phenix_cfonb_preprocess_block(&$variables) {
         '#attributes' => ['class' => ['custom-element']],
         '#value' => $username,
       ];
-  
+
       // Append the custom element directly to the block's content array.
       $variables['title_suffix']['custom_element'] = $custom_element;
 
 
       if (isset($variables['content']['#items'])) {
         $items = &$variables['content']['#items'];
-    
+
         // Get the last item key and check if it's 'masquerade.unmasquerade'.
         $last_item_key = array_key_last($items);
         if ($last_item_key && strpos($last_item_key, 'masquerade.unmasquerade') !== false) {
-    
+
           // Get the last item (masquerade.unmasquerade).
           $last_item = $items[$last_item_key];
-    
+
           // Remove the last item from the array.
           unset($items[$last_item_key]);
-    
+
           // Convert the array into an indexed array.
           $items = array_values($items);
-    
+
           // Insert the 'masquerade.unmasquerade' item into the second-to-last position.
           array_splice($items, count($items) - 1, 0, [$last_item]);
-    
+
           // Convert the indexed array back to its original structure.
           $items = array_combine(
             array_keys($variables['content']['#items']),
