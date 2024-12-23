@@ -1983,7 +1983,7 @@ a.btn.button.all-communi{
     right: 0;
     /* z-index: 9999; */
 }
-.section-communication td.views-field.views-field-field-description:hover::before, .section-communication td.views-field.views-field-title:hover ~ td.views-field.views-field-field-description::before {
+/* .section-communication td.views-field.views-field-field-description:hover::before, .section-communication td.views-field.views-field-title:hover ~ td.views-field.views-field-field-description::before {
     content: '';
     display: block;
     width: 100%;
@@ -1996,7 +1996,26 @@ a.btn.button.all-communi{
     background-size: contain;
     pointer-events: none;
     background-repeat: no-repeat;
-    opacity: 1; /* Start with hidden image */
+    opacity: 1; 
+    transition: opacity 1s ease;
+} */
+body.toolbar-icon-10.adminimal-admin-toolbar.adminimal.user-logged-in.path-admin .js-form-item.form-item.js-form-type-textfield.form-item-name.js-form-item-name label {
+    font-size: small;
+}
+.to-add-beofore:before {
+        content: '';
+    display: block;
+    width: 100%;
+    height: 88%;
+    z-index: 55;
+    position: absolute;
+    top: 43px;
+    right: 0;
+    background-image: url("/files/relooking/download_large.png");
+    background-size: contain;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    opacity: 1; 
     transition: opacity 1s ease;
 }
 .section-communication p.p-desc,  .page-c-taxonomy-ss p.p-desc {
@@ -3154,6 +3173,11 @@ article.group-detail-page.contextual-region.civicrm-entity.civicrm-entity--type-
     background-repeat: no-repeat;
     pointer-events: none;
     left: 265px;
+}
+
+.section-communication td.views-field.views-field-field-description:hover::before, 
+.section-communication td.views-field.views-field-title:hover ~ td.views-field.views-field-field-description::before {
+
 }
 .section-politique-de-confidentialite div#block-pagetitle--2 h1 {
     text-transform: uppercase;

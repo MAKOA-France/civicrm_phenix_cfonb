@@ -5,6 +5,54 @@
 
         $(document).ready(function() {
 
+
+
+
+
+
+          // Hover effect for .section-communication td.views-field
+    $('.section-communication td.views-field.views-field-field-description, .section-communication td.views-field.views-field-title').hover(function() {
+      // Check if the td contains a child with the class "desc-pt"
+      var descriptionCell = $(this).closest('td').find('.views-field-field-description');
+      console.log('firing hover')
+      // If the td contains a child with the class "desc-pt", apply the effect
+      if (descriptionCell.find('.desc-pt').length > 0) {
+        descriptionCell.addClass('to-add-boefoer');
+          // Create the "before" element if it doesn't already exist
+          if (descriptionCell.find('.pseudo-before').length === 0) {
+              var pseudoBefore = $('<div class="pseudo-before"></div>');
+              descriptionCell.append(pseudoBefore);
+          }
+
+          // Style the pseudo element (similar to your CSS)
+          descriptionCell.find('.pseudo-before').css({
+              'content': '""',
+              'display': 'block',
+              'width': '100%',
+              'height': '88%',
+              'z-index': '55',
+              'position': 'absolute',
+              'top': '43px',
+              'right': '0',
+              'background-image': 'url(/files/relooking/download_large.png)',
+              'background-size': 'contain',
+              'pointer-events': 'none',
+              'background-repeat': 'no-repeat',
+              'opacity': '1',
+              'transition': 'opacity 1s ease'
+          });
+      }
+  }, function() {
+      // Hover-out
+      var descriptionCell = $(this).closest('td').find('.views-field-field-description');
+      
+      // Only remove the pseudo element if the td has the "desc-pt" child
+      if (descriptionCell.find('.desc-pt').length > 0) {
+          descriptionCell.find('.pseudo-before').remove();
+      }
+  });
+
+
           $(window).on('beforeprint', function() {
             $('a.site-logo.editeddd').addClass('print-hide');
             jQuery('.site-logo').removeAttr('href');
@@ -381,6 +429,23 @@ if (window.matchMedia("(min-width: 992px)").matches) {
         $(window).on('load', function() {
 
 
+          
+          once('cfonbConctext', '.section-communication td.views-field.views-field-field-description, .section-communication td.views-field.views-field-title', context).forEach((elem) => {
+            $(elem).on('mouseover', function(el, id) {
+              var descriptionCell = $(this).closest('td').find('.views-field-field-description');
+              if ( $(this).children('a').children('.desc-pt')) {
+                $(this).children('a').children('.desc-pt').addClass('to-add-beofore')
+              }
+            })
+
+
+            $(elem).on('mouseout', function() {
+              if ($(this).children('a').children('.desc-pt').length) {
+                  $(this).children('a').children('.desc-pt').removeClass('to-add-beofore');
+              }
+          });
+
+          })
 
           
           once('cfonbConctext', 'nav#block-b-zf-account-menu ul.menu li ', context).forEach((elem) => {
