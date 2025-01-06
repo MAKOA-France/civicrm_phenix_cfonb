@@ -180,6 +180,7 @@ class DetailGroupBlock  extends BlockBase  {
       ->addSelect('COUNT(id) AS count')
       ->addWhere('group_id', '=', $group_id)
       ->addWhere('status', '!=', 'Removed')
+      ->addWhere('contact_id.is_deleted', '=', FALSE)
       ->execute()->first()['count'];
   }
 
