@@ -182,7 +182,7 @@ function civicrm_phenix_cfonb_form_alter (&$form, \Drupal\Core\Form\FormStateInt
   $form['#attached']['library'][] = 'civicrm_phenix_cfonb/civicrm_phenix_cfonb';
 
   if ($form['#id'] == 'masquerade-block-form') {
-    $form['autocomplete']['actions']['submit']['#value'] = "Passer à cet utilisateur";
+    $form['autocomplete']['actions']['submit']['#value'] = "Passer pour...";
   }
 
   $query = \Drupal::request()->query;
@@ -357,14 +357,14 @@ $crruent_row = $variables['output'];
         }
 
       }elseif ($row->_entity->get('field_lien_fichier_')->getValue()) {
-        
+
         $file_uri = $row->_entity->get('field_lien_fichier_')->getValue()[0]['value'];
           if (strpos($file_uri, 'unication') !== false) {
             $file_uri = str_replace(COMMUNICATION, Communication, $file_uri);
           }
         $uri = Path_doc . $file_uri;
       }
-      
+
         if (($row->_entity->get('field_lien_fichier_')->getValue()[0]['value'] == 'NULL') &&  empty($row->_entity->get('field_lien_vers_fichier_')->getValue())) {
           $uri = '';
         }
