@@ -2710,6 +2710,7 @@ span.views-field.views-field-title .container-meet-c .date-complet a:before {
     position: absolute;
     top: 95px;
     margin-left: 30px;
+    padding-left : 363px;
 }
 .is-front aside#sidebar_left {
     width: 0;
@@ -2915,12 +2916,13 @@ div#block-makoa p {
 .page-accueil-extranet .meeting-com {
     display: flex;
     align-items: center;
-    width: 468px;
+    width: 416px;
     gap: 20px;
     /* background-color: #e7e0d9; */
     border-radius: 10px;
     padding: 0;
     margin-bottom: 20px;
+    overflow:hidden;
 }
 /* .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(1), .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(5), .section-accueil-extranet div#block-views-block-civievents-base-sur-le-contact-block-4 .item-list ul li:nth-child(9) {
     border-left: 9px solid #003a7e;
@@ -4622,8 +4624,7 @@ input#site-search {
             width: 100%;
         }
         .page-communication #masquerade-block-form > .container-inline {
-            display: flex
-    ;
+            display: flex;
             flex-direction: row;
         }
         .btn-my-account::before {
