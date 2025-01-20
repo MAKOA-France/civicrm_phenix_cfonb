@@ -9,11 +9,10 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\media\Entity\Media;
 
-
-
 const COMMUNICATION = 'Communication';
 const Communication = 'communication';
 const Path_doc =  '/fichiers/';
+
 
 /**
  * Implements hook_preprocess_page().
@@ -22,8 +21,6 @@ function civicrm_phenix_cfonb_preprocess_page(&$variables)
 {
   $variables['#attached']['library'][] = 'civicrm_phenix_cfonb/civicrm_phenix_cfonb';
   $current_path = \Drupal::service('path.current')->getPath();
-
-
 }
 
 
@@ -35,10 +32,7 @@ function civicrm_phenix_cfonb_preprocess_page(&$variables)
 function civicrm_phenix_cfonb_set_defaults($entity_type, $bundle) {
   $field_instances = field_info_instances($entity_type, $bundle);
   $entities = entity_load($entity_type);
-
-
-
-/*   foreach ($field_instances as $field_name => $field_instance) {
+  /*   foreach ($field_instances as $field_name => $field_instance) {
 
     if (isset($field_instance['default_value'])) {
       $default_value = $field_instance['default_value'][0]['value'];
@@ -64,16 +58,10 @@ use Drupal\views\ViewExecutable;
  */
 function civicrm_phenix_cfonb_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
   // Check if it's the view you want to alter.
-
-
-
-
   //Page admin utilisateurs
   if ($view->id() == 'user_admin_people' && $display_id == 'page_1') {
 
   }
-
-
 }
 
 /**
@@ -83,9 +71,6 @@ function civicrm_phenix_cfonb_views_post_render(&$view, &$output, &$cache) {
   // Ensure we're targeting the correct view and display ID.
 
 }
-
-
-
 
 
 /**
@@ -146,16 +131,15 @@ function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $vie
       unset($view->field[$field_to_exclude2]);
     }
     // Check if the field is in the view's result fields and remove it.
-//    if (isset($view->field[$field_to_exclude1])) {
- //     unset($view->field[$field_to_exclude1]);
-  //  }
+    //    if (isset($view->field[$field_to_exclude1])) {
+    //     unset($view->field[$field_to_exclude1]);
+    //  }
     // Check if the field is in the view's result fields and remove it.
     if (isset($view->field[$field_to_exclude])) {
       unset($view->field[$field_to_exclude]);
     }
   }
 }
-
 
 /**
  * selectionner automatiquemtn le groupe
@@ -219,8 +203,7 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $user_roles = $current_user->getRoles();
   $cus_serv = \Drupal::service('civicrm_phenix_cfonb.custom_service');
 
-
-
+  // dump($variables);
 
   if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
     if ($field->field == 'rendered_item') {
@@ -229,59 +212,51 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       header('Content-Type: text/html; charset=UTF-8');
 
       // Suppress warnings for invalid HTML
-libxml_use_internal_errors(true);
+      libxml_use_internal_errors(true);
 
-$crruent_row = $variables['output'];
-// dump($crruent_row);
-// Load the HTML
-// $dom = new DOMDocument();
-// $dom->loadHTML( $variables['output'], LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+      $crruent_row = $variables['output'];
+      // dump($crruent_row);
+      // Load the HTML
+      // $dom = new DOMDocument();
+      // $dom->loadHTML( $variables['output'], LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-// // 1. Remove outer <a> tags wrapping <article>
-// $xpath = new DOMXPath($dom);
-// $outerAnchor = $xpath->query("//a[article]")->item(0); // Find <a> containing <article>
-// if ($outerAnchor) {
-//     $article = $outerAnchor->getElementsByTagName('article')->item(0);
-//     if ($article) {
-//         $outerAnchor->parentNode->replaceChild($article, $outerAnchor);
-//     }
-// }
+      // // 1. Remove outer <a> tags wrapping <article>
+      // $xpath = new DOMXPath($dom);
+      // $outerAnchor = $xpath->query("//a[article]")->item(0); // Find <a> containing <article>
+      // if ($outerAnchor) {
+      //     $article = $outerAnchor->getElementsByTagName('article')->item(0);
+      //     if ($article) {
+      //         $outerAnchor->parentNode->replaceChild($article, $outerAnchor);
+      //     }
+      // }
 
-// // 2. Fix inner <a> tags inside <h2>
-// $innerAnchors = $xpath->query("//h2/a");
-// foreach ($innerAnchors as $innerAnchor) {
-//     // Update href, hreflang, and rel dynamically
-//     $innerAnchor->setAttribute('href', '/dynamic-path');
-//     $innerAnchor->setAttribute('hreflang', 'fr');
-//     $innerAnchor->setAttribute('rel', 'bookmark');
-//     $innerAnchor->nodeValue = "Dynamic Content Example"; // Set dynamic content
-// }
+      // // 2. Fix inner <a> tags inside <h2>
+      // $innerAnchors = $xpath->query("//h2/a");
+      // foreach ($innerAnchors as $innerAnchor) {
+      //     // Update href, hreflang, and rel dynamically
+      //     $innerAnchor->setAttribute('href', '/dynamic-path');
+      //     $innerAnchor->setAttribute('hreflang', 'fr');
+      //     $innerAnchor->setAttribute('rel', 'bookmark');
+      //     $innerAnchor->nodeValue = "Dynamic Content Example"; // Set dynamic content
+      // }
 
-// $decoded_string = html_entity_decode($dom->saveHTML(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
-// $decoded_string = mb_convert_encoding($dom->saveHTML(), "UTF-8", "ISO-8859-1");
-// $decoded_string = htmlspecialchars_decode($dom->saveHTML(), ENT_NOQUOTES);
-// $decoded_string = html_entity_decode($encoded_string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-
-
-// $cus_desc = ['#markup' =>mb_convert_encoding($dom->saveHTML(), "UTF-8", "ISO-8859-1")];
-// $decoded_markup = decode_html_entities($cus_desc);
-// $cus_desc = html_entity_decode($dom->saveHTML(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
-// $cus_desc = str_replace
-
-// $variables['output'] = mb_convert_encoding($cus_desc, "UTF-8", "ISO-8859-1");
+      // $decoded_string = html_entity_decode($dom->saveHTML(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+      // $decoded_string = mb_convert_encoding($dom->saveHTML(), "UTF-8", "ISO-8859-1");
+      // $decoded_string = htmlspecialchars_decode($dom->saveHTML(), ENT_NOQUOTES);
+      // $decoded_string = html_entity_decode($encoded_string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
 
+      // $cus_desc = ['#markup' =>mb_convert_encoding($dom->saveHTML(), "UTF-8", "ISO-8859-1")];
+      // $decoded_markup = decode_html_entities($cus_desc);
+      // $cus_desc = html_entity_decode($dom->saveHTML(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+      // $cus_desc = str_replace
 
-
-
-
-
-
-
-
-
-
-
+      // $variables['output'] = mb_convert_encoding($cus_desc, "UTF-8", "ISO-8859-1");
+    }
+  }
+  if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
+    if ($field->field == 'rendered_item') {
+      // ($row);
     }
   }
 
@@ -289,9 +264,6 @@ $crruent_row = $variables['output'];
     if ($field->field == 'field_mots_cles') {
 
     }
-
-
-
     if ($field->field == 'title') {
       $titr = $field->getValue($row);
       if ($row->_entity->get('field_lien_vers_fichier_')->getValue()) {
@@ -510,6 +482,43 @@ $crruent_row = $variables['output'];
     }
 
   }
+   //Page detail commissions / groupe
+  if ($view->storage->id() == 'civi_groupe_evenements' /* && $view->current_display == 'block_1' */) {
+    if(  $view->current_display != 'page_2') {
+
+      $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
+      $custom_service->customizeViewReunionOfTheCommissionPage($variables);
+    }
+  }
+
+  if ($view->storage->id() == 'block_hero' &&  $view->current_display == 'block_1') {
+
+    $html = '';
+    $btn = '';
+    if ($field->field == 'field_texte_slider') {
+      $the_value = $field->getValue($row);
+      $nid = $row->nid;
+      $node = Node::load($nid);
+      if ($node) {
+        $slide_subtitle = $cus_serv->getNodeFieldValue($node, 'field_sous_titre_slide');
+        $field_titre_slide = $cus_serv->getNodeFieldValue($node, 'field_titre_slide');
+        $btn_slide = $node->get('field_lien_qui_s_affiche_comme_b')->getValue();
+        if ($btn_slide) {
+          $txt_btn = $btn_slide[0]['title'];
+          $link_btn = $btn_slide[0]['uri'];
+          $link_btn = str_replace('internal:', '', $link_btn);
+          $btn = '<p class="btn-see-rapport"><button><a href="' . $link_btn . '">' . $txt_btn . '</a></button></p>';
+        }
+        $html .= '<div class="slide-content-home">
+        <h1>' . $field_titre_slide . ' </h1>
+        <h2>' . $slide_subtitle . ' </h2>
+        ' . $btn . '
+        </div>';
+        $html = ['#markup' =>  $html];
+        $variables['output'] = $html;
+      }
+    }
+  }
 
   if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_2z') {
     $htmls = '';
@@ -555,13 +564,10 @@ $crruent_row = $variables['output'];
         $date_complet = $date['day_letter'] . ' ' . $date['jour'];
         $hour_complet = $date['day'] . ':' . $date['minute'];
 
-
         $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
         $hours_c = $drupal_datetime->format('H');
         $minute_c = $drupal_datetime->format('i');
         $hour_complet = $hours_c . ':' . $minute_c;
-
-
 
         // href="/civicrm-event/' . $event_id . '"
         $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c asaa">
@@ -569,9 +575,6 @@ $crruent_row = $variables['output'];
         <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
         <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">' . $subject . '</p></div>
         </div></a>';
-
-
-
 
         $htmls = '<a href="/civicrm-event/'.$event_id.'">
         <div class="meeting-com  ">
@@ -588,10 +591,6 @@ $crruent_row = $variables['output'];
             </div>
         </div></a>';
 
-
-
-
-
         $htmls = ['#markup' =>  $htmls];
         $variables['output'] = $htmls;
         // dump($htmls);
@@ -599,49 +598,6 @@ $crruent_row = $variables['output'];
     }
 
   }
-
-  if ($view->storage->id() == 'block_hero' &&  $view->current_display == 'block_1') {
-
-    $html = '';
-    $btn = '';
-    if ($field->field == 'field_texte_slider') {
-      $the_value = $field->getValue($row);
-      $nid = $row->nid;
-      $node = Node::load($nid);
-      if ($node) {
-        $slide_subtitle = $cus_serv->getNodeFieldValue($node, 'field_sous_titre_slide');
-        $field_titre_slide = $cus_serv->getNodeFieldValue($node, 'field_titre_slide');
-        $btn_slide = $node->get('field_lien_qui_s_affiche_comme_b')->getValue();
-        if ($btn_slide) {
-          $txt_btn = $btn_slide[0]['title'];
-          $link_btn = $btn_slide[0]['uri'];
-          $link_btn = str_replace('internal:', '', $link_btn);
-          $btn = '<p class="btn-see-rapport"><button><a href="' . $link_btn . '">' . $txt_btn . '</a></button></p>';
-        }
-        $html .= '<div class="slide-content-home">
-        <h1>' . $field_titre_slide . ' </h1>
-        <h2>' . $slide_subtitle . ' </h2>
-        ' . $btn . '
-        </div>';
-        $html = ['#markup' =>  $html];
-        $variables['output'] = $html;
-      }
-    }
-  }
-
-
-
-
-  if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
-    if ($field->field == 'rendered_item') {
-      // ($row);
-    }
-  }
-
-
-
-
-
 
 	if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_5') {
     if ($field->field == 'frontend_title') {
@@ -657,18 +613,7 @@ $crruent_row = $variables['output'];
     }
   }
 
-    //Page detail commissions / groupe
-    if ($view->storage->id() == 'civi_groupe_evenements' /* && $view->current_display == 'block_1' */) {
-      if(  $view->current_display != 'page_2') {
-
-        $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
-        $custom_service->customizeViewReunionOfTheCommissionPage($variables);
-      }
-
-
-    }
-
-      // You can now use $email for further processing.
+  // You can now use $email for further processing.
 	if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_7') {
     // $variables['view']->header['area']->options['content'] = [];
     if ((!in_array('super_utilisateur', $user_roles) && !in_array('admin_client', $user_roles) && !in_array('permanent', $user_roles) && !in_array('administrator', $user_roles))) {
@@ -676,9 +621,7 @@ $crruent_row = $variables['output'];
     }
   }
 
-
-
-  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  in_array($view->current_display, ['block_7', 'block_2', 'block_13'])) {
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  in_array($view->current_display, ['block_7'])){ // }, 'block_2', 'block_13'])) {
     // $custom_service->customizeMeetingList()
     $custom_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
     if ($field->field == 'title') {
@@ -688,25 +631,25 @@ $crruent_row = $variables['output'];
       $date = $row->created_id_civicrm_contact_start_date;
 
       $daty = $row->created_id_civicrm_contact_start_date;
-      if ($view->current_display == 'block_13') {
-        $daty = $row->civicrm_event_civicrm_participant_start_date;
-      }
+      // if ($view->current_display == 'block_13') {
+      //   $daty = $row->civicrm_event_civicrm_participant_start_date;
+      // }
       $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
       $event_id = $row->created_id_civicrm_contact_start_date;
-      if ($view->current_display == 'block_13') {
-        $event_id = $row->civicrm_event_civicrm_participant_id;
-      }
+      // if ($view->current_display == 'block_13') {
+      //   $event_id = $row->civicrm_event_civicrm_participant_id;
+      // }
       if ($view->current_display == 'block_7') {
         $event_id = $row->created_id_civicrm_contact_id;
       }
 
 
 
-      if ($view->current_display == 'block_2') {
-        $daty = $row->civicrm_event_civicrm_participant_start_date;
-        $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
-        $event_id = $row->civicrm_event_civicrm_participant_id_1;
-      }
+      // if ($view->current_display == 'block_2') {
+      //   $daty = $row->civicrm_event_civicrm_participant_start_date;
+      //   $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
+      //   $event_id = $row->civicrm_event_civicrm_participant_id_1;
+      // }
 
 
 
@@ -736,6 +679,114 @@ $crruent_row = $variables['output'];
     }
   }
 
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  in_array($view->current_display, ['block_2', 'block_13']) ) {
+    $htmls = '';
+    // print_r("<br /> block_2 $field->field : ");
+
+    if ($field->field == 'title') {
+      $subject = $field->getValue($row);
+      $daty = $row->civicrm_event_civicrm_participant_start_date;
+
+      if (property_exists($row, 'created_id_civicrm_contact_id')) {
+        $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
+        $event_id = $row->civicrm_event_civicrm_participant_id_1;
+        $participant_id = $row->contact_id_civicrm_contact_id_1;
+        if ($view->current_display == 'block_13') $participant_id = $row->contact_id_civicrm_contact_id;
+       
+        $title = $row->civicrm_event_civicrm_participant_title;
+        // print_r("<br /> block_2 $title : ");
+        $date_complet = $date['day_letter'] . ' ' . $date['jour'];
+        $hour_complet = $date['day'] . ':' . $date['minute'];
+
+        $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
+        $hours_c = $drupal_datetime->format('H');
+        $minute_c = $drupal_datetime->format('i');
+        $hour_complet = $hours_c . ':' . $minute_c;
+
+        // href="/civicrm-event/' . $event_id . '"
+        $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c asaa">
+        <div class="date-complet"><p>' . $date_complet . '</p></div>
+        <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
+        <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">' . $subject . '</p></div>
+        </div></a>';
+
+        $htmls = '<a href="/civicrm-event/'.$event_id.'">
+        <div class="meeting-com  ">
+            <div class="date-meet">
+                <span class="day cusday">' . $date['day']  .'</span>
+                <span class="month-and-year">' . $date['month']  . ' ' .  $date['year']  . '</span>
+                <div class="debuth">
+                    <span class="hourss">'. $hour_complet.'</span>
+                </div>
+            </div>
+             <div class="title-meet">
+                <span class="field_sous_titre_slide aaa"> '.$title.'</span>
+                <a href ="/civicrm-participant/'.$participant_id.'/edit">oui/non</a>
+            </div>
+        </div></a>';
+
+        $htmls = ['#markup' =>  $htmls];
+        $variables['output'] = $htmls;
+        // dump($htmls);
+      }
+    }
+
+  }
+
+  if ($view->storage->id() == 'civievents_base_sur_le_contact_' &&  $view->current_display == 'block_1xx3') {
+    $htmls = '';
+    // print_r("<br /> block_2 $field->field : ");
+
+    if ($field->field == 'title') {
+      $subject = $field->getValue($row);
+      // $subject = $row->civicrm_event_civicrm_participant_title;
+      $daty = $row->created_id_civicrm_contact_start_date;
+      // print_r("<br />");
+      // print_r($row->created_id_civicrm_contact_id);
+      if (property_exists($row, 'created_id_civicrm_contact_id')) {
+        $event_id = $row->created_id_civicrm_contact_id;
+        $date = $cus_serv->formatDateWithMonthInLetterAndHours($daty);
+        $event_id = $row->created_id_civicrm_contact_id;
+        $participant_id = $row->contact_id_civicrm_contact_id_1;
+        $title = $row->civicrm_event_civicrm_participant_title;
+        // print_r("<br /> block_2 $title : ");
+        $date_complet = $date['day_letter'] . ' ' . $date['jour'];
+        $hour_complet = $date['day'] . ':' . $date['minute'];
+
+        $drupal_datetime = new DateTimePlus($daty, new \DateTimeZone('UTC'));
+        $hours_c = $drupal_datetime->format('H');
+        $minute_c = $drupal_datetime->format('i');
+        $hour_complet = $hours_c . ':' . $minute_c;
+
+        // href="/civicrm-event/' . $event_id . '"
+        $htmls .= '<a href="/civicrm-event/'.$event_id.'"><div class="container-meet-c asaa">
+        <div class="date-complet"><p>' . $date_complet . '</p></div>
+        <div class="hour-complet"><p class="label-hour">Début : </p><p class="hour-value">' . $hour_complet . '</p></div>
+        <div class="subject-complet"><p class="label-subject">Objet : </p><p class="subject-value">' . $subject . '</p></div>
+        </div></a>';
+
+        $htmls = '<a href="/civicrm-event/'.$event_id.'">
+        <div class="meeting-com  ">
+            <div class="date-meet">
+                <span class="day cusday">' . $date['day']  .'</span>
+                <span class="month-and-year">' . $date['month']  . ' ' .  $date['year']  . '</span>
+                <div class="debuth">
+                    <span class="hourss">'. $hour_complet.'</span>
+                </div>
+            </div>
+             <div class="title-meet">
+                <span class="field_sous_titre_slide aaa"> '.$title.'</span>
+                <a href ="/civicrm-participant/'.$participant_id.'/edit">oui/non</a>
+            </div>
+        </div></a>';
+
+        $htmls = ['#markup' =>  $htmls];
+        $variables['output'] = $htmls;
+        // dump($htmls);
+      }
+    }
+
+  }
 
 }
 
