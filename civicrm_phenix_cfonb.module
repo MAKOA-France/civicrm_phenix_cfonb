@@ -146,6 +146,19 @@ function civicrm_phenix_cfonb_views_pre_render(\Drupal\views\ViewExecutable $vie
  * Implements hook_form_alter().
  */
 function civicrm_phenix_cfonb_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  
+  // ajout champ question pour contrôle formulaire (captcha maison)
+  /*if($form['#id'] == 'contact-message-extranet-contactez-nous-form') {
+    $form['question_calcul'] = [
+      '#type' => 'textfield',
+      '#title' => 'Combien font 10 + quinze ?',
+      '#required' => TRUE,
+      '#weight' => 99, // <- on donne un poids supérieur aux autres champs, mais inférieur à celui du bouton
+    ];
+    
+    // On s'assure que notre fonction de validation est appelée
+    $form['#validate'][] = 'civicrm_phenix_cfonb_validate_question_calcul';
+  }*/
 
   if ($form['#id'] == 'contact-message-demande-d-acces-a-l-extranet-form') {
     $form['#prefix'] = '<h2 class="dmd-access-extranet">Demande d\'accès à l\'extranet du CFONB</div>';
@@ -188,7 +201,7 @@ function getfulldate ($timestamp) {
   $date = DrupalDateTime::createFromTimestamp($timestamp);
 
   // Format the date to "day month year" with the locale.
-  $formatted_date = strftime('%d %B %Y', $date->getTimestamp());
+  $formatted_date = date('d F Y', $date->getTimestamp());
   return $formatted_date;
 }
 
