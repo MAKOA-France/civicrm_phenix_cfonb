@@ -192,8 +192,6 @@ function getfulldate ($timestamp) {
   return $formatted_date;
 }
 
-
-
 function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
   $view = $variables['view'];
   $field = $variables['field'];
@@ -288,7 +286,6 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $date->setTimestamp($timestamp);
       $formatted_date = $date->format('d/m/Y');
 
-
       if ($row->_entity->get('field_lien_vers_fichier_')->getValue()) {
         $media_id = $row->_entity->get('field_lien_vers_fichier_')->getValue()[0]['target_id'];
         $media = File::load($media_id);
@@ -303,8 +300,6 @@ function civicrm_phenix_cfonb_preprocess_views_view_field(&$variables) {
       $cus_desc = ['#markup' =>   '<a href="/files/' . $uri . '"> <p class="views-field views-field-title">' . $formatted_date . '</p> </a>'];
       $variables['output'] = $cus_desc;
     }
-
-
 
     if ($field->field == 'field_description') {
       $desc = $field->getValue($row);
@@ -899,7 +894,8 @@ function hideLabelOfValueField (&$build, $fieldName) {
  * Implements hook_entity_view_alter().
  */
 function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
-/* Formattage page civicrm-event */
+  
+  /* Formattage page civicrm-event */
   if (isset($build['#entity_type']) && $build['#entity_type'] == 'civicrm_event') {
     $civi_service = \Drupal::service('civicrm_phenix_cfonb.custom_service');
     //hide these fields
@@ -930,9 +926,9 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     if ($entity->hasField('custom_179')) {
       $idgroup = getNodeFieldValue($entity, 'custom_179');
       $intitule = \Civi\Api4\Group::get(FALSE)
-      ->addSelect('title')
-      ->addWhere('id', '=', $idgroup)
-      ->execute()->first()['title'];
+        ->addSelect('title')
+        ->addWhere('id', '=', $idgroup)
+        ->execute()->first()['title'];
     }
     $title = '<div class="intitule-event">' . $intitule . '</div><h1 class="intitule-h2">' . $title  . '</h1>';
     // ($build);
@@ -964,10 +960,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
     $formatted_dateEn = str_replace(':00', 'h', $formatted_dateEn);
     $build['end_date'][0]['#text'] = $formatted_dateEn;
 
-
-
-
-
     if ($formated_Y_m_d_start_date === $formated_Y_m_d_end_date) { //if event started and end at the same day
       $end_date_val = isset($build['end_date'][0]['#context']) ?  $build['end_date'][0]['#context'] : '';
       $formated_end_date = new \DateTime($get_end_date);
@@ -979,8 +971,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
       $build['end_date'][0]['#text'] = $formated_end_date;
     }
     $build['end_date'][0]['#text'] = $formated_end_date;
-
-
 
     //enlever la minute si c'est 00
     $formatted_dateSt = str_replace(':00', 'h', $formatted_dateSt);
@@ -1016,17 +1006,16 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
         $compte_rendu_proc_s_verbal = isset($view_result[0]->civicrm_value_sp_cifique_r__38_compte_rendu_proc_s_verbal_12) ? $view_result[0]->civicrm_value_sp_cifique_r__38_compte_rendu_proc_s_verbal_12 : '';
 
         if ($compte_rendu_proc_s_verbal || $convocation_ordre_du_jour || $pouvoir_pour_ag) {
-        $content = $view->buildRenderable('block_1', $args);
-        $rendered_view = \Drupal::service('renderer')->render($content);
-        $build['custom_131']['#suffix'] = '<p class="attachmennts">Documents : </p>' . $rendered_view->__toString();
+          $content = $view->buildRenderable('block_1', $args);
+          $rendered_view = \Drupal::service('renderer')->render($content);
+          $build['custom_131']['#suffix'] = '<p class="attachmennts">Documents : </p>' . $rendered_view->__toString();
         }
 
       }
     }
 
     $doc = $build['#civicrm_event']->get('field_documents')->getValue();
-      $doc_ids = array_column($doc, 'target_id');
-
+    $doc_ids = array_column($doc, 'target_id');
 
     $all_documents = [];
     $total_docs = 0;
@@ -1068,7 +1057,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
               break;
             }
 
-
           $idTokenized = base64_encode($media->id());
           $all_documents[$title_doc][] = [
             'fileType' => $file_type,
@@ -1080,9 +1068,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
             'media_id' => $media->id(),
             'idTokenized' => $idTokenized,
           ];
-
-
-
 
           /* $nom_document = $id_document[0]['description'];
           $id_document = $id_document[0]['target_id'];
@@ -1108,108 +1093,98 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
       }
     }
 
-     if (!empty($all_documents)) {
+    if (!empty($all_documents)) {
+      $get_first_element = reset($all_documents);
+      $first_title = isset(array_keys($all_documents)[0]) ? array_keys($all_documents)[0] : '';
+      $first_element_id = $get_first_element[0]['media_id'];
+      $idTokenized = base64_encode($first_element_id);
+      $media = Drupal\media\Entity\Media::load($first_element_id);
+      $file_type = 'application/pdf';//default
+      if ($media) {
+        // $title = $first_title;
+        // $first_element_file_id = getNodeFieldValue($media, 'field_media_document');
+        // $first_file_document = File::load($first_element_file_id);
+        // $first_file_extension = getNodeFieldValue($first_file_document, 'filemime');
+        $file_type = $get_first_element[0]['fileType'];
+      }
+      $file_size_readable = $get_first_element[0]['size'];
 
+      // // Convert the size to a human-readable format
+      // $file_size_readable = round($file_size_bytes / 1024, 2);
 
-    $get_first_element = reset($all_documents);
-    $first_title = isset(array_keys($all_documents)[0]) ? array_keys($all_documents)[0] : '';
-    $first_element_id = $get_first_element[0]['media_id'];
-    $idTokenized = base64_encode($first_element_id);
-    $media = Drupal\media\Entity\Media::load($first_element_id);
-    $file_type = 'application/pdf';//default
-    if ($media) {
-      // $title = $first_title;
-      // $first_element_file_id = getNodeFieldValue($media, 'field_media_document');
-      // $first_file_document = File::load($first_element_file_id);
-      // $first_file_extension = getNodeFieldValue($first_file_document, 'filemime');
-      $file_type = $get_first_element[0]['fileType'];
-    }
-    $file_size_readable = $get_first_element[0]['size'];
+      $date_doc = $civi_service->convertTimesptamToDate($civi_service->getNodeFieldValue($media, 'created'));
 
+      // $html = ['#markup' => $media_extrait];
+      // $html = \Drupal::service('renderer')->render($html);
+      unset($all_documents[$first_title][0]);
 
-    // // Convert the size to a human-readable format
-    // $file_size_readable = round($file_size_bytes / 1024, 2);
+      //Récuperation du second dernier document
+      /* $secondElm = reset($all_documents)[1];
+      $secondElmId = $secondElm['media_id'];
+      $media = Media::load($secondElmId);
+      $secondDataDoc = $civi_service->getDataSecondDocument($media);
+      unset($all_documents[$first_title][1]);   *///TODO Commenté pour le moment à decommenté si on en a besoin
+      //end recuperation ****----------
 
-    $date_doc = $civi_service->convertTimesptamToDate($civi_service->getNodeFieldValue($media, 'created'));
+      // $allowToEdit = $civi_service->checkIfUserCanEditDoc ();
 
-    // $html = ['#markup' => $media_extrait];
-    // $html = \Drupal::service('renderer')->render($html);
-    unset($all_documents[$first_title][0]);
+      $counted_doc = count(reset($all_documents));
 
-    //Récuperation du second dernier document
-    /* $secondElm = reset($all_documents)[1];
-    $secondElmId = $secondElm['media_id'];
-    $media = Media::load($secondElmId);
-    $secondDataDoc = $civi_service->getDataSecondDocument($media);
-    unset($all_documents[$first_title][1]);   *///TODO Commenté pour le moment à decommenté si on en a besoin
-    //end recuperation ****----------
+      $file_id = $civi_service->getNodeFieldValue($media, 'field_media_document');
+      $file0bj = File::load($file_id);
+      $file_size_readable = $civi_service->getFileSize($file0bj);
+      // $display_see_other_doc = ($counted_doc > 1); TODO
+      $display_see_other_doc = (count($all_documents) > 2 || count(reset($all_documents)));//TODO à mettre sup à 2 car les deux seront au dessus
 
-    // $allowToEdit = $civi_service->checkIfUserCanEditDoc ();
+      $module_path = \Drupal::service('module_handler')->getModule('civicrm_phenix_cfonb')->getPath();
+      $image_path = $module_path . '/file/pdf-3.png';
+      $event_id = $build['#civicrm_event']->get('id')->getValue()[0]['value'];
 
-    $counted_doc = count(reset($all_documents));
-
-    $file_id = $civi_service->getNodeFieldValue($media, 'field_media_document');
-    $file0bj = File::load($file_id);
-    $file_size_readable = $civi_service->getFileSize($file0bj);
-    // $display_see_other_doc = ($counted_doc > 1); TODO
-    $display_see_other_doc = (count($all_documents) > 2 || count(reset($all_documents)));//TODO à mettre sup à 2 car les deux seront au dessus
-
-
-
-    $module_path = \Drupal::service('module_handler')->getModule('civicrm_phenix_cfonb')->getPath();
-    $image_path = $module_path . '/file/pdf-3.png';
-
-    $event_id = $build['#civicrm_event']->get('id')->getValue()[0]['value'];
-
-
-    switch($file_type) {
-      case 'application/pdf':
-        $file_type = 'pdf-3.png';
-        break;
-      case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-        $file_type = 'pdf-2.png';
-        break;
-        case 'application/msword':
-        $file_type = 'pdf-2.png';
-        break;
-        case 'application/rtf':
-          $txt_file = '.rtf';
-        break;
-      case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
-        $file_type = 'pdf.png';
-        break;
-      case 'application/vnd.ms-excel':
-        $file_type = 'pdf.png';
-        break;
+      switch($file_type) {
+        case 'application/pdf':
+          $file_type = 'pdf-3.png';
+          break;
+        case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+          $file_type = 'pdf-2.png';
+          break;
+          case 'application/msword':
+          $file_type = 'pdf-2.png';
+          break;
+          case 'application/rtf':
+            $txt_file = '.rtf';
+          break;
+        case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+          $file_type = 'pdf.png';
+          break;
+        case 'application/vnd.ms-excel':
+          $file_type = 'pdf.png';
+          break;
       }
 
-    $build['documents'] = [
-      '#theme' => 'civicrm_phenix_cfonb_custom_last_doc',
-      '#cache' => ['max-age' => 0],
-      '#content' => [
-        'pic' => $image_path,
-        'data' => $all_documents,
-        'first_element' => $get_first_element,
-        'first_title' => $first_title,
-        'file_type' => $file_type,
-        'file_size' => $file_size_readable/* $file_size */,
-        'date_doc' => $date_doc,
-        'first_element_id' => $first_element_id,
-        'idTokenized' => $idTokenized,
-        'first_element_title' => $first_title,
-        'display_see_other_doc' => $display_see_other_doc,
-        'is_page_last_doc' => true,
-        'event_id' => $event_id,
-        'can_edit_doc' => true,//$allowToEdit,
-        // 'second_document_data' => $secondDataDoc
-      ]
-    ];
-
-  }
-
+      $build['documents'] = [
+        '#theme' => 'civicrm_phenix_cfonb_custom_last_doc',
+        '#cache' => ['max-age' => 0],
+        '#content' => [
+          'pic' => $image_path,
+          'data' => $all_documents,
+          'first_element' => $get_first_element,
+          'first_title' => $first_title,
+          'file_type' => $file_type,
+          'file_size' => $file_size_readable/* $file_size */,
+          'date_doc' => $date_doc,
+          'first_element_id' => $first_element_id,
+          'idTokenized' => $idTokenized,
+          'first_element_title' => $first_title,
+          'display_see_other_doc' => $display_see_other_doc,
+          'is_page_last_doc' => true,
+          'event_id' => $event_id,
+          'can_edit_doc' => true,//$allowToEdit,
+          // 'second_document_data' => $secondDataDoc
+        ]
+      ];
+    }
 
     $build['download_all_doc']['#markup'] = $total_docs > 1 ? '<br>
-
     <a data-total-docs="'.$total_docs.'" href="/media_download_all/civicrm_event/' . $event_id . '/field_documents" class="media-download-all">Télécharger tous les fichiers (zip)aaaaaa</a>' : '';
     //custom title display
     $build['start_date']['#prefix'] = ucfirst($title) . '<br>';
@@ -1217,34 +1192,30 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
 
   if (isset($build['#entity_type']) && $build['#entity_type'] == 'civicrm_group') {
     if (isset($build['_layout_builder'])) {
-
       foreach ($build['_layout_builder'] as $key => $value) {
         // dump($build['_layout_builder']);
         if (isset($value['content'])) {
           foreach($value['content'] as $k => $v) {
             if (isset($v['#plugin_id']) && $v['#plugin_id'] == 'field_block:civicrm_group:civicrm_group:field_documents_groupe') {
 
+              // Get the block plugin manager service.
+              $block_manager = \Drupal::service('plugin.manager.block');
 
-            // Get the block plugin manager service.
-            $block_manager = \Drupal::service('plugin.manager.block');
+              // Create a block plugin instance.
+              $block_plugin = $block_manager->createInstance('document_document_group');
 
-            // Create a block plugin instance.
-            $block_plugin = $block_manager->createInstance('document_document_group');
+              // Get the block's configuration and context.
+              // $block_plugin->setConfiguration([]);
+              // $block_plugin->setContext([]);
 
-            // Get the block's configuration and context.
-            // $block_plugin->setConfiguration([]);
-            // $block_plugin->setContext([]);
+              // Build the block render array.
+              $block_build = $block_plugin->build();
 
-            // Build the block render array.
-            $block_build = $block_plugin->build();
-
-            // Render the block.
-            $renderer = \Drupal::service('renderer');
-            $block_content = $renderer->render($block_build);
-
+              // Render the block.
+              $renderer = \Drupal::service('renderer');
+              $block_content = $renderer->render($block_build);
               $build['_layout_builder'][$key]['content'][$k]['content'][0] = [ '#theme' =>  'document_group', "#content" => $block_content ];
             }
-
           }
         }
       }
@@ -1254,7 +1225,6 @@ function civicrm_phenix_cfonb_entity_view_alter(array &$build, \Drupal\Core\Enti
   // if ($build['#entity_type'] == 'civicrm_group') {
   //   // ($build);
   // }
-
 }
 
 
@@ -1279,8 +1249,6 @@ function civicrm_phenix_cfonb_views_query_alter(\Drupal\views\ViewExecutable $vi
   // }
 
   if ($view->storage->get('id') == 'civi_groupe_evenements' && $view->current_display == 'block_2') {
-
-
   }
 }
 
@@ -1294,8 +1262,8 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
   // Get the path of the current request.
   $current_path = $request->getPathInfo();
 
-   // Check if the path contains "/civicrm-group/".
-   if (strpos($current_path, '/civicrm-group/') !== false) {
+  // Check if the path contains "/civicrm-group/".
+  if (strpos($current_path, '/civicrm-group/') !== false) {
     if ($entity->getEntityTypeId() == 'media') {
       // unset($build[''])
       $build['field_media_document'][0]['#attributes']['class'][] = 'to-hide-doc';
@@ -1303,13 +1271,9 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
     }
   }
 
-
   if ($entity->getEntityTypeId() === 'civicrm_group' and $view_mode === 'full') {
     //unset($build['#civicrm_group']->getFieldDefinitions()['field_documents_groupe']);
     $build['#attributes']['class'][] = 'group-detail-page kkiiii';
-
-
-
 
     if (isset($build['_layout_builder'][0]['content'])) {
       foreach($build['_layout_builder'][0]['content'] as $key_layout => $value_layout){
@@ -1332,11 +1296,7 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
         // }
       }
     }
-
-
-
   }
-
 
   if ($entity->getEntityTypeId() === 'civicrm_event') {
     // Modify the node view for the 'full' view mode.
@@ -1376,7 +1336,6 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
       }
     }
 
-
     //Ne pas afficher l'affichage par defaut des documents
     // $build['_layout_builder'][1]['#settings']['#id'] = 'nouveau-test-partici';
     // ($build['_layout_builder'][1]);
@@ -1402,7 +1361,6 @@ function civicrm_phenix_cfonb_entity_view(array &$build, \Drupal\Core\Entity\Ent
         if (isset($value_layout['#plugin_id']) && strpos($value_layout['#plugin_id'], 'civicrm_event:civicrm_event:field_documents') !== false) {
           unset($build['_layout_builder'][0]['content'][$key_layout]);
         }
-
 
         //ne pas afficher la date
         if (isset($value_layout['content'][0]['#field_name']) && ($value_layout['content'][0]['#field_name'] == 'title' || $value_layout['content'][0]['#field_name'] == 'start_date' || $value_layout['content'][0]['#field_name'] == 'end_date')){
@@ -1464,7 +1422,6 @@ function civicrm_phenix_cfonb_preprocess_block(&$variables) {
     }
   }
 
-
   // Check if the block is a specific block you want to alter.
   // For example, if you want to target a block with a specific machine name:
   if (isset($variables['content'][0]['#bundle']) && $variables['content'][0]['#bundle'] == 'civicrm_group' && $variables['plugin_id'] == 'field_block:civicrm_group:civicrm_group:title') {
@@ -1475,60 +1432,59 @@ function civicrm_phenix_cfonb_preprocess_block(&$variables) {
     }
 
     // dump($variables['content']);
-      $variables['content'][0][0]['#context']['value'] = Drupal\Core\Render\Markup::create('<div class="meeting-head"><h2 class="meetings"><i class="icon-custom-calendar"></i>Réunions</h2> ' . $btn_add_meet . '');
-      $variables['attributes']['class'][] = 'bloc-head-meetings-in-theme '. json_encode(\Drupal::currentUser()->getRoles());
+    $variables['content'][0][0]['#context']['value'] = Drupal\Core\Render\Markup::create('<div class="meeting-head"><h2 class="meetings"><i class="icon-custom-calendar"></i>Réunions</h2> ' . $btn_add_meet . '');
+    $variables['attributes']['class'][] = 'bloc-head-meetings-in-theme '. json_encode(\Drupal::currentUser()->getRoles());
 
   }
 
   if (isset($variables['plugin_id']) && $variables['plugin_id'] == 'system_menu_block:account') {
 
-      // Get the current user.
-      $current_user = \Drupal::currentUser();
+    // Get the current user.
+    $current_user = \Drupal::currentUser();
 
-      // Get the user ID.
-      $uid = $current_user->id();
+    // Get the user ID.
+    $uid = $current_user->id();
 
-      // Get the username.
-      $username = $current_user->getAccountName();
+    // Get the username.
+    $username = $current_user->getAccountName();
 
-      $variables['elements']['#suffix'] = '<p> bloo </p>';
-      $custom_element = [
-        '#type' => 'html_tag',
-        '#tag' => 'div',
-        '#attributes' => ['class' => ['custom-element']],
-        '#value' => $username,
-      ];
+    $variables['elements']['#suffix'] = '<p> bloo </p>';
+    $custom_element = [
+      '#type' => 'html_tag',
+      '#tag' => 'div',
+      '#attributes' => ['class' => ['custom-element']],
+      '#value' => $username,
+    ];
 
-      // Append the custom element directly to the block's content array.
-      $variables['title_suffix']['custom_element'] = $custom_element;
+    // Append the custom element directly to the block's content array.
+    $variables['title_suffix']['custom_element'] = $custom_element;
 
+    if (isset($variables['content']['#items'])) {
+      $items = &$variables['content']['#items'];
 
-      if (isset($variables['content']['#items'])) {
-        $items = &$variables['content']['#items'];
+      // Get the last item key and check if it's 'masquerade.unmasquerade'.
+      $last_item_key = array_key_last($items);
+      if ($last_item_key && strpos($last_item_key, 'masquerade.unmasquerade') !== false) {
 
-        // Get the last item key and check if it's 'masquerade.unmasquerade'.
-        $last_item_key = array_key_last($items);
-        if ($last_item_key && strpos($last_item_key, 'masquerade.unmasquerade') !== false) {
+        // Get the last item (masquerade.unmasquerade).
+        $last_item = $items[$last_item_key];
 
-          // Get the last item (masquerade.unmasquerade).
-          $last_item = $items[$last_item_key];
+        // Remove the last item from the array.
+        unset($items[$last_item_key]);
 
-          // Remove the last item from the array.
-          unset($items[$last_item_key]);
+        // Convert the array into an indexed array.
+        $items = array_values($items);
 
-          // Convert the array into an indexed array.
-          $items = array_values($items);
+        // Insert the 'masquerade.unmasquerade' item into the second-to-last position.
+        array_splice($items, count($items) - 1, 0, [$last_item]);
 
-          // Insert the 'masquerade.unmasquerade' item into the second-to-last position.
-          array_splice($items, count($items) - 1, 0, [$last_item]);
-
-          // Convert the indexed array back to its original structure.
-          $items = array_combine(
-            array_keys($variables['content']['#items']),
-            $items
-          );
-        }
-        }
+        // Convert the indexed array back to its original structure.
+        $items = array_combine(
+          array_keys($variables['content']['#items']),
+          $items
+        );
+      }
+    }
   }
 }
 
@@ -1541,9 +1497,6 @@ function isAdherent () {
   }
   return $isAdherent;
 }
-
-
-
 
 /**
  * Implements hook_preprocess_media().
